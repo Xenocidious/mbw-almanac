@@ -8,6 +8,9 @@ header{
     background-color: transparent;
     position: absolute;
     top: 0;
+    position: fixed;
+    border-bottom: .5px solid rgba(255, 255, 255, 0);
+    transition: .35s;
 }
 
 header a{
@@ -30,13 +33,25 @@ header a:hover{
     mix-blend-mode: screen;
 }
 
+.header.active {
+    border-bottom: .5px solid rgba(255, 255, 255, 1);
+    position: fixed;
+    z-index: 99;
+    backdrop-filter: blur(4px);
+}
+
 /* styling homepage (index.blade.php) */
 
 #index_content_1{
     height: 100vh;
     width: 100vw;
     background-image: url('../images/cities/NY.jpg');
+    -webkit-transition: background 3s;
+    -moz-transition: background 3s;
+    -o-transition: background 3s;
+    transition: background 3s;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 #index_content_1 h1{
@@ -62,14 +77,51 @@ header a:hover{
 #index_cards_wrapper{
     align-items: center;
     margin: auto;
+    margin-top: 50px;
     text-align: center;
     position: relative;
     top: 30%;
 }
 
 .index_cards{
-    background-color: yellow;
+    color: white;
     width: 22.5%;
     margin: 0 2.5%;
     display: inline-block;
+    border-radius: 15px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 15px black;
+    padding: 0;
+}
+
+.index_cards>div{
+    background-color: rgba(0,0,0,.5);
+    margin: 0;
+    border-radius: 15px;
+}
+
+.index_cards h2{
+    font-size: 250%;
+    margin: 0;
+}
+
+.index_cards h3{
+    font-size: 150%;
+}
+
+.index_cards h4{
+    margin-top: -5px;
+}
+
+.index_cards i{
+    font-size: 250%;
+}
+
+
+
+
+
+#temp_filler{
+    height: 100vh;
+    width: 100vw;
 }

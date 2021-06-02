@@ -4,6 +4,7 @@ version manager:
 1.0.0: added the homepage, including the routing and the WelcomeController + index function
 1.0.1: added the version manager file in the data map
 1.0.2: slight progress on the homepage styling
+1.0.3: more progress on the homepage styling, fixed a transition bug with the background
 
 
 
