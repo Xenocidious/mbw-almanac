@@ -1,0 +1,75 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    width: 100vw;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+}
+
+header a{
+    border:  1.5px solid white;
+    font-size: 25px;
+    color: white;
+    text-decoration: none;
+    font-family: montserrat, sans-serif;
+    margin: 20px 25px;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+
+    transition: .35s;
+}
+
+header a:hover{
+    background-color: white;
+    color: black;
+    mix-blend-mode: screen;
+}
+
+/* styling homepage (index.blade.php) */
+
+#index_content_1{
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../images/cities/NY.jpg');
+    background-size: cover;
+}
+
+#index_content_1 h1{
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    top: 30vh;
+
+    font-weight: bold;
+    font-size: 550%;
+    font-family: montserrat;
+    color: white;
+    text-shadow: 0 0 10px black;
+}
+
+#index_header_content{
+    width: 100vw;
+    text-align: center;
+}
+
+/* homepage cards */
+
+#index_cards_wrapper{
+    align-items: center;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    top: 30%;
+}
+
+.index_cards{
+    background-color: yellow;
+    width: 22.5%;
+    margin: 0 2.5%;
+    display: inline-block;
+}
