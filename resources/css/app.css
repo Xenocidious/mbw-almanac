@@ -1,0 +1,127 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    width: 100vw;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    position: fixed;
+    border-bottom: .5px solid rgba(255, 255, 255, 0);
+    transition: .35s;
+}
+
+header a{
+    border:  1.5px solid white;
+    font-size: 25px;
+    color: white;
+    text-decoration: none;
+    font-family: montserrat, sans-serif;
+    margin: 20px 25px;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+
+    transition: .35s;
+}
+
+header a:hover{
+    background-color: white;
+    color: black;
+    mix-blend-mode: screen;
+}
+
+.header.active {
+    border-bottom: .5px solid rgba(255, 255, 255, 1);
+    position: fixed;
+    z-index: 99;
+    backdrop-filter: blur(4px);
+}
+
+/* styling homepage (index.blade.php) */
+
+#index_content_1{
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../images/cities/NY.jpg');
+    -webkit-transition: background 3s;
+    -moz-transition: background 3s;
+    -o-transition: background 3s;
+    transition: background 3s;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#index_content_1 h1{
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    top: 30vh;
+
+    font-weight: bold;
+    font-size: 550%;
+    font-family: montserrat;
+    color: white;
+    text-shadow: 0 0 10px black;
+}
+
+#index_header_content{
+    width: 100vw;
+    text-align: center;
+}
+
+/* homepage cards */
+
+#index_cards_wrapper{
+    align-items: center;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+    position: relative;
+    top: 30%;
+}
+
+.index_cards{
+    color: white;
+    width: 22.5%;
+    margin: 0 2.5%;
+    display: inline-block;
+    border-radius: 15px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 15px black;
+    padding: 0;
+}
+
+.index_cards>div{
+    background-color: rgba(0,0,0,.5);
+    margin: 0;
+    border-radius: 15px;
+}
+
+.index_cards h2{
+    font-size: 250%;
+    margin: 0;
+}
+
+.index_cards h3{
+    font-size: 150%;
+}
+
+.index_cards h4{
+    margin-top: -5px;
+}
+
+.index_cards i{
+    font-size: 250%;
+}
+
+
+
+
+
+#temp_filler{
+    height: 100vh;
+    width: 100vw;
+}
