@@ -162,7 +162,7 @@ header a:hover{
 
 #index_about_us_wrapper .text{
     background-color: transparent;
-    padding: 3vw;
+    padding: 1.5vw 3vw;
 }
 #index_about_us_wrapper h1{
     text-align: center;
@@ -265,11 +265,13 @@ header a:hover{
 footer{
     padding-top: 5vh;
     width: 100vw;
-    background-color: black;
+    background-color: rgb(8, 8, 8);
     font-family: montserrat;
     display: grid;
     grid-template-rows: 10vh 10vh 10vh 10vh 10vh;
     grid-template-columns: 50vw 50vw;
+    border-top: 2px solid white;
+    margin-top: -5px;
 }
 
 footer div:nth-child(1n){

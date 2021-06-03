@@ -140,7 +140,7 @@
                                 <span class="fa fa-twitter"></span>
                             </a> 
                         </li>
-                        <p>follow us on twitter</p>
+                        <p>follow us on <a>twitter</a></p>
                     </ul>
                     <hr style="width:50%;text-align:left;margin-left:2.5vw">
                 </span>
