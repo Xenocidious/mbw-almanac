@@ -152,6 +152,7 @@
                             <a href="#">
                                 <span></span><span></span><span></span><span></span>
                                 <span class="fa fa-instagram"></span>
+                                <span class="fa fa-instagram insta_button"></span>
                             </a> 
                         </li>
                         <p id='footer_p'>follow us on instagram</p>
