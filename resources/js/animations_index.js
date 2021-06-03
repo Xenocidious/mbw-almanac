@@ -1,5 +1,3 @@
-console.log('reached');
-
 var images = ['NY', 'NY2', 'LO', 'UK1', 'UK2'];
 
 var lastRand = 0;
