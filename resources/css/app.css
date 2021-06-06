@@ -1,6 +1,11 @@
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+
 body{
     margin: 0;
     padding: 0;
+    background-color: rgb(30,30,30);
+    color: white;
+    overflow-x: hidden;
 }
 
 header{
@@ -10,6 +15,8 @@ header{
     top: 0;
     position: fixed;
     border-bottom: .5px solid rgba(255, 255, 255, 0);
+    width: 100vw;
+    text-align: center;
     transition: .35s;
 }
 
@@ -43,6 +50,7 @@ header a:hover{
 /* styling homepage (index.blade.php) */
 
 #index_content_1{
+    border-bottom: 2px solid white;
     height: 100vh;
     width: 100vw;
     background-image: url('../images/cities/NY.jpg');
@@ -62,15 +70,11 @@ header a:hover{
 
     font-weight: bold;
     font-size: 550%;
-    font-family: montserrat;
+    font-family: montserrat, sans-serif;
     color: white;
     text-shadow: 0 0 10px black;
 }
 
-#index_header_content{
-    width: 100vw;
-    text-align: center;
-}
 
 /* homepage cards */
 
@@ -117,11 +121,210 @@ header a:hover{
     font-size: 250%;
 }
 
+.index_cards i{
+    margin-bottom: 10%;
+}
+
+
+
+/* historical data segment in the index */
+
+#index_content_2{
+    padding-top: 10vh;
+    width: 60vw;
+    align-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+#index_content_2 h1{
+    text-align: center;
+    font-family: montserrat;
+    letter-spacing: 3.5px;
+}
+
+#index_content_2 div{
+    width: 40vw;
+    margin: 0 auto;
+}
+
+#index_about_us_wrapper{
+    display: inline-block;
+    padding-left: 20vw;
+    margin-top: 5vh;
+}
+
+#index_about_us_wrapper .images, #index_about_us_wrapper .text{
+    float: left;
+    width: 30vw;
+    height: 50vh;
+}
+
+#index_about_us_wrapper .text{
+    background-color: transparent;
+    padding: 1.5vw 3vw;
+}
+#index_about_us_wrapper h1{
+    text-align: center;
+}
+
+#index_about_us_wrapper .images{
+    background-image: url('../images/error/no_image_found.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: center;
+}
+
+#index_about_us_wrapper #img_1{
+    background-image: url('../images/stock/programmers.jpg');
+}
+#index_about_us_wrapper #img_2{
+    background-image: url('../images/stock/analyst.jpg');
+}
+#index_about_us_wrapper #img_3{
+    background-image: url('../images/stock/deal.jpg');
+}
+#index_about_us_wrapper #img_4{
+    background-image: url('../images/stock/team.jpg');
+}
+
+/* styling for the enter now button to historical data */
+
+#historical_data_button{
+    text-align: center;
+    position: relative;
+    left: 50%;
+    margin: 5vh 0 0 -7.5vw;
+    padding: 20px;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 15vw;
+    overflow: hidden;                           /* this hides all parts of elements outside the button, improving the illusion of the animation' */
+    border-radius: 40px;
+}
+
+#historical_data_button span{
+    position: relative;
+    color: #fff;
+    font-size: 20px;
+    font-family: Montserrat, sans-serif;
+    letter-spacing: 8px;
+    z-index: 1;
+}
+
+#historical_data_button .liquid{
+    position: absolute;
+    top: -13vh;
+    left: 0;
+    width: 15vw;
+    height: 15vw;
+    background: rgb(5, 129, 245);        /* liquid color */
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, .5);
+    transition: .5s;
+}
+
+/* styling for the social media buttons in footer */
+
+ #social_media_wrapper ul{
+   position: relative;
+   display: flex;                               /* displaying the items inline. remove this for a 'ladder' formation */
+   transform: skew(12.5deg);                    /* rotation of the items */
+   /* transform: rotate(-25deg); */
+}
+
+#social_media_wrapper li{
+    position: relative;
+    list-style: none;
+    width: 60px;
+    height: 60px;
+    margin: 0px 2.5%;                           /* regulates distance between items */
+}
+
+#social_media_wrapper li span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex !important;
+    background: #2a2a2a;                            /* background buttons */
+    justify-content: center;
+    align-items: center;
+    color: white;                                    /* color of the icons */
+    font-size: 30px !important;                        /* size of the icons */
+    transition: 1s ease-out;                           /* time to return back to origin */
+}
 
 
 
 
-#temp_filler{
-    height: 100vh;
+
+/* styling footer */
+
+footer{
+    padding-top: 5vh;
     width: 100vw;
+    background-color: rgb(8, 8, 8);
+    font-family: montserrat;
+    display: grid;
+    grid-template-rows: 10vh 10vh 10vh 10vh 10vh;
+    grid-template-columns: 50vw 50vw;
+    border-top: 2px solid white;
+    margin-top: -5px;
+}
+
+footer div:nth-child(1n){
+    grid-row: 1;
+    grid-column: 1/2;
+}
+footer div:nth-child(2n){
+    grid-row: 2;
+    grid-column: 1/2;
+}
+footer div:nth-child(3n){
+    grid-row: 3;
+    grid-column: 1/2;
+}
+footer div:nth-child(4n){
+    grid-row: 4;
+    grid-column: 1/2;
+}
+footer div:nth-child(5n){
+    grid-row: 5;
+    grid-column: 1/2;
+}
+footer div:nth-child(6n){
+    grid-row: 1;
+    grid-column: 2/3;
+}
+footer div:nth-child(7n){
+    grid-row: 2;
+    grid-column: 2/3;
+}
+footer div:nth-child(8n){
+    grid-row: 3;
+    grid-column: 2/3;
+}
+footer div:nth-child(9n){
+    grid-row: 4;
+    grid-column: 2/3;
+}
+footer div:nth-child(10n){
+    grid-row: 6;
+    grid-column: 1/3;
+}
+
+.footer_left_items, .footer_copyright{
+    padding-left: 5vw;
+    text-decoration: none;
+}
+
+.footer_copyright{
+    padding: 5vh 0 0 0;
+    text-align: center;
+}
+
+footer ul p{
+    transform: skew(-12.5deg);
 }
