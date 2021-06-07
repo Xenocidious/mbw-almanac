@@ -22,6 +22,6 @@ its possible that a update of this caliber wouldn't happen during this project.
 the [19] indicates an update which added content such as a new page
 or an update which incluces logic, such as a login system.
 
-the [36] indicates a smal update, this can either be added styling to a page,
+the [36] indicates a small update, this can either be added styling to a page,
 or a small logic fix (resolved bugs/slightly expanded features)
 
