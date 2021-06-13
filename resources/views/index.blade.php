@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-
-
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="../resources/css/animations.css">
-        <link rel="stylesheet" href="../resources/css/app.css">
-        <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
+{{--        <link rel="stylesheet" href="{{ asset('css/animations.css') }}">--}}
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+
+        <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
+
         <title>title</title>
     </head>
     <body>
@@ -19,34 +20,34 @@
                 <a href='/'>history</a>
                 <a href='/'>photo's</a>
                 @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <a href="">Profile</a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <a href="">Profile</a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endguest
             </div>
         </header>
         <div id='index_content_1'>
@@ -90,12 +91,6 @@
                 <div class="liquid"></div>
             </a>
         </div>
-
-
-
-
-
-
         <div id='index_about_us_wrapper'>
 
             <div id='img_1' class='images'></div>
@@ -207,8 +202,7 @@
             <div class='footer_copyright'>
                 <p>copyright project almanac Aya, Mert en Pieterjan: ©2021 - <?= date("Y"); ?></p>
             </div>
-        </footer
-
-        <script src='../resources/js/animations_index.js'></script>
+        </footer>
+{{--        <script src="{{ asset('js/animations_index.js') }}"></script>--}}
     </body>
 </html>
