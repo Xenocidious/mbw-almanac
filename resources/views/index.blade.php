@@ -22,13 +22,13 @@
                 <a href='/'>photo's</a>
 
                 @guest
-                            <li class="nav-item">
+
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
+
                             @if (Route::has('register'))
-                                <li class="nav-item">
+
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
+
                             @endif
                         @else
                             <li class="nav-item dropdown">
@@ -208,7 +208,7 @@
                 <p>copyright project almanac Aya, Mert en Pieterjan: ©2021 - <?= date("Y"); ?></p>
             </div>
         </footer>
->>>>>>>>> Temporary merge branch 2
+
 
         <script src='../resources/js/animations_index.js'></script>
     </body>
