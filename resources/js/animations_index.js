@@ -22,3 +22,21 @@ $(window).on("scroll", function() {
        $(".header").removeClass("active");
     }
 });
+
+
+
+
+
+
+
+// var check = false;
+
+// function accountDropdown(){
+//     if(check == false){
+//         invisibleAccountdropdown.id = 'visibleAccountdropdown';
+//         check = true;
+//     }else{
+//         visibleAccountdropdown.id = 'invisibleAccountdropdown';
+//         check = false;
+//     }
+// }

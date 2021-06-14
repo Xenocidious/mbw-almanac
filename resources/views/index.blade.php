@@ -14,45 +14,40 @@
         <title>title</title>
     </head>
     <body>
+    
         <header id='header' class='header_top header'>
             <div id='header_content'>
-                <a href='/'>about us</a>
-                <a href='/'>weather</a>
-                <a href='/'>history</a>
-                <a href='/'>photo's</a>
+                <a class='header_button' href='/'>about us</a>
+                <a class='header_button' href='/'>weather</a>
+                <a class='header_button' href='/'>history</a>
+                <a class='header_button' href='/'>photo's</a>
+                
+                <div class="dropdown header_button">
+                    <a>account</a>
+                    <div class="dropdown-content w3-bar-block w3-card-4 w3-animate-opacity">
+                        <!-- <a class='header_dropdown_button' href="#">Link 1</a>
+                        <a class='header_dropdown_button' href="#">Link 2</a>
+                        <a class='header_dropdown_button' href="#">Link 3</a> -->
 
-                @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <a href="{{route('accounts.index')}}">Profile</a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-
-
-
+                        @if (Route::has('login'))
+                        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                            @auth
+                                <a class='header_dropdown_button' href="{{route('accounts.index')}}" class="dropdown-item w3-bar-item">{{Auth::user()->name}}</a>
+                                <a class='header_dropdown_button' href="{{ route('logout') }}" class="dropdown-item w3-bar-item" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">Uitloggen</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            @else
+                                <a class='header_dropdown_button' href="{{ route('login') }}" class="dropdown-item w3-bar-item w3-button">login</a>
+                                @if (Route::has('register'))
+                                    <a class='header_dropdown_button' href="{{ route('register') }}" class="dropdown-item w3-bar-item w3-button">Registrer</a>
+                                @endif
+                            @endauth
+                        </div>
+                    @endif
+                    </div>
+                </div>
             </div>
         </header>
         <div id='index_content_1'>
@@ -86,6 +81,9 @@
                 </div>
             </div>
         </div>
+
+        <div id="curve_chart" style="width: 900px; height: 500px"></div>
+
         <div id='index_content_2'>
             <h1>Check our historical weather data</h1>
             <div>
@@ -208,8 +206,9 @@
                 <p>copyright project almanac Aya, Mert en Pieterjan: ©2021 - <?= date("Y"); ?></p>
             </div>
         </footer>
->>>>>>>>> Temporary merge branch 2
 
         <script src='../resources/js/animations_index.js'></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src='../resources/js/chart_test.js'></script>
     </body>
 </html>
