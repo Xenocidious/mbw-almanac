@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-
-
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -8,7 +6,11 @@
         <link rel="stylesheet" href="../resources/css/app.css">
         <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+
+        <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
+
         <title>title</title>
     </head>
     <body>
@@ -18,6 +20,7 @@
                 <a href='/'>weather</a>
                 <a href='/'>history</a>
                 <a href='/'>photo's</a>
+
                 @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -39,7 +42,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    <a href="">Profile</a>
+                                    <a href="{{route('accounts.index')}}">Profile</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
@@ -47,6 +50,9 @@
                                 </div>
                             </li>
                         @endguest
+
+
+
             </div>
         </header>
         <div id='index_content_1'>
@@ -90,12 +96,6 @@
                 <div class="liquid"></div>
             </a>
         </div>
-
-
-
-
-
-
         <div id='index_about_us_wrapper'>
 
             <div id='img_1' class='images'></div>
@@ -207,7 +207,8 @@
             <div class='footer_copyright'>
                 <p>copyright project almanac Aya, Mert en Pieterjan: ©2021 - <?= date("Y"); ?></p>
             </div>
-        </footer
+        </footer>
+>>>>>>>>> Temporary merge branch 2
 
         <script src='../resources/js/animations_index.js'></script>
     </body>

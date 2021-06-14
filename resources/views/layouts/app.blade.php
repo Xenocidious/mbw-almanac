@@ -60,7 +60,7 @@
                                                  document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-                                <a href="{{route('')}}">Profile</a>
+                                <a href="{{ route('accounts.index') }}">Profile</a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
@@ -74,6 +74,19 @@
         </nav>
 
         <main class="py-4">
+
+            @if(session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session()->get('success') }}
+                </div>
+            @endif
+
+            @if(session()->has('error'))
+                <div class="alert alert-danger">
+                    {{ session()->get('error') }}
+                </div>
+            @endif
+
             @yield('content')
         </main>
     </div>
