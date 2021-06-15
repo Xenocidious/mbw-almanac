@@ -26,6 +26,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/statistics', 'StatisticsController@index')->name('statistics');
+
+Route::get('/photohub', 'PhotohubController@index')->name('photohub');
+
 // Middleware zodat deze routes alleen maar worden gebruikt als je bent ingelogd.
 // https://laravel.com/docs/8.x/routing#route-group-middleware
 Route::middleware(['auth'])->group(function() {
