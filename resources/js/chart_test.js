@@ -50,7 +50,7 @@ function drawChart() {
         legend: {textStyle: {color: 'white'}}
 
     };
-    
+
 
     var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 

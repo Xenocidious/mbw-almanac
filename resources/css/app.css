@@ -18,6 +18,7 @@ header{
     width: 100vw;
     text-align: center;
     transition: .35s;
+    z-index: 100;
 }
 
 .header_button, .header_dropdown_button{
@@ -395,4 +396,22 @@ footer ul p{
 
 #content_statistics{
     margin: 0 auto;
+}
+
+
+
+
+
+/* photohub page */
+
+#spacefiller{
+    width: 100vw;
+    height: 5vh;
+}
+
+#main_content_photohub{
+    width: 100vw;
+    padding: 5vw;
+    display: grid;
+
 }
