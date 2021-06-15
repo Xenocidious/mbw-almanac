@@ -14,7 +14,9 @@
         <title>title</title>
     </head>
     <body>
-    
+
+
+
         <header id='header' class='header_top header'>
             <div id='header_content'>
                 <a class='header_button' href='index'>home</a>
@@ -22,7 +24,7 @@
                 <a class='header_button' href='statistics'>weather</a>
                 <a class='header_button' href='/'>history</a>
                 <a class='header_button' href='{{Route("photohub")}}'>photo's</a>
-                
+
                 <div class="dropdown header_button">
                     <a>account</a>
                     <div class="dropdown-content w3-bar-block w3-card-4 w3-animate-opacity">
@@ -52,31 +54,37 @@
             </div>
         </header>
         <div id='index_content_1'>
-            <h1>26 °C</h1>
+            <h1>{{$todayData[0]['tempmax']}}°C</h1>
             <h1><i class="fas fa-sun"></i></h1>
 
-            <div id='index_cards_wrapper'>
+             <div id='index_cards_wrapper'>
+
+
+                @foreach ($yesterdayData as $item)
                 <div id='index_cards_wrapper_card_1' class='index_cards'>
                     <div>
                         <h2>Yesterday</h2>
-                        <h3>20°</h3>
-                        <h4>warm</h4>
+                        <h3>{{$yesterdayData[0]['tempmax']}}°</h3>
+                        <h4>{{$yesterdayData[0]['conditions']}}</h4>
                         <i class="fas fa-sun"></i>
                     </div>
                 </div>
+                @endforeach
+
+
                 <div id='index_cards_wrapper_card_2' class='index_cards'>
                     <div>
-                        <h2>today</h2>
-                        <h3>26°</h3>
-                        <h4>extra warm</h4>
+                        <h2>Today</h2>
+                        <h3>{{$todayData[0]['tempmax']}}°</h3>
+                        <h4>{{$todayData[0]['conditions']}}</h4>
                         <i class="fas fa-sun"></i>
                     </div>
                 </div>
                 <div id='index_cards_wrapper_card_3' class='index_cards'>
                     <div>
                         <h2>Tomorrow</h2>
-                        <h3>22°</h3>
-                        <h4>warm</h4>
+                        <h3>{{$forecastData[1]['tempmax']}}°</h3>
+                        <h4>{{$forecastData[1]['conditions']}}</h4>
                         <i class="fas fa-sun"></i>
                     </div>
                 </div>
