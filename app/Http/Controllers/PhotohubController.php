@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Image;
+use App\Vote;
+use App\Comment;
+use Auth;
 
 class PhotohubController extends Controller
 {
@@ -23,6 +27,19 @@ class PhotohubController extends Controller
      */
     public function index()
     {
-        return view('photohub');
+        $images = Image::get();
+        $votes = Vote::get();
+        $comments = Comment::get();
+
+        return view('photohub', [
+            'images' => $images,
+            'votes' => $votes,
+            'comments' => $comments
+        ]);
+    }
+
+    public function photoform()
+    {
+        return view('uploadphoto');
     }
 }
