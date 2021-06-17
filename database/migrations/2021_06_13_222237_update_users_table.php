@@ -15,6 +15,7 @@ class UpdateUsersTable extends Migration
     {
         Schema::table('users', function($table) {
             $table->string('photo')->nullable();
+            $table->string('role')->nullable();
         });
     }
 
@@ -27,6 +28,7 @@ class UpdateUsersTable extends Migration
     {
         Schema::table('users', function($table) {
             $table->dropColumn('photo');
+            $table->string('role')->nullable();
         });
     }
 }

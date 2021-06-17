@@ -91,7 +91,6 @@ class ImageController extends Controller
         $images = Image::where('id', $image_id)->get();
         $votes = Vote::get();
         $comments = Comment::get();
-
         return view('image', [
             'image' => $images,
             'votes' => $votes,

@@ -48,9 +48,14 @@
                         </div>
                     @endif
                     </div>
-                </div>
             </div>
+            @auth
+                @if (Auth::user()->role == 'admin')
+                    <a class='header_button' href='{{Route("office")}}'>office</a>
+                @endif
+            @endauth
         </header>
+        
         <div id='index_content_1'>
             <h1>26 °C</h1>
             <h1><i class="fas fa-sun"></i></h1>

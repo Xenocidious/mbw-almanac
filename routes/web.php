@@ -36,6 +36,8 @@ Route::resource('images', 'ImageController');
 
 Route::resource('comment', 'CommentController');
 
+Route::get('/office', 'OfficeController@index')->name('office');
+
 Route::get('/upvote/{id}', [
     'uses' => 'Imagecontroller@upvote', 
     'as' => 'image.upvote'
