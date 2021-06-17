@@ -409,9 +409,248 @@ footer ul p{
     height: 5vh;
 }
 
+.photohub_content_wrapper{
+    margin-left: .5vw;
+}
+
+.wrap_photohub{
+    display: inline-flex;
+}
+
 #main_content_photohub{
     width: 100vw;
     padding: 5vw;
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+}
 
+.photohub_content{
+    width: 29vw;
+    height: 40vh;
+    display: flex;
+    margin: 0 0;   
+    background: linear-gradient(90deg, rgba(0,0,0,.5) 0%, rgba(33,33,33,.51) 50%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%);
+}
+
+#main_content_photohub{
+    overflow: hidden;
+}
+
+.photohub_content a {
+    flex: 1;
+    height: 100%;
+    transform: skew(-15deg);
+    overflow: hidden;
+}
+
+.photohub_content a img , .photohub_content a div{
+    width: 140%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+    transform: skew(15deg);
+}
+
+.photohub_content a div{
+    z-index: 99;
+}
+
+.photohub_stats{
+    width: 26.3vw;
+    display: grid;
+    grid-gap: 0;
+    text-align: center;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.photohub_stats .description{
+    grid-row: 1;
+    grid-column: 1/5;
+}
+
+.photohub_stats .description h1{
+    margin: 0;
+    text-align: center;
+}
+
+.photohub_stats i{
+    font-size: 1.5vw;
+}
+
+.upvote_amount, .comment_amount, .favourite, .user{
+    margin-top: 1vh;
+}
+
+.upvote_amount{
+    grid-row: 2;
+    grid-column: 1/2;
+}
+
+.comment_amount{
+    grid-row: 2;
+    grid-column: 2/3;
+}
+
+.favourite{
+    grid-row: 2;
+    grid-column: 3/4;
+}
+
+.user{
+    grid-row: 2;
+    grid-column: 4/5;
+}
+
+#add_image_photohub{
+    float: right;
+    margin: 2vh 5vw 0 0;
+    font-size: 4vw;
+    color: white;
+    transition: .4s;
+}
+
+/* upload photo form page */
+
+
+.main_content_uploadphoto{
+    height: 80vh;
+}
+
+#add_image_photohub:hover{
+    color: gray;
+}
+
+.fa-arrow-circle-up, .fa-arrow-circle-down{
+    transition: .3s;
+}
+
+.fa-arrow-circle-up:hover, .upvoted{
+    color: greenyellow;
+    cursor: pointer;
+}
+
+
+
+/* image page styling */
+
+#image_container_wrapper{
+    width: 60vw;
+    margin: 0 auto;
+    grid-template-columns: 19vw 19vw 19vw;
+}
+
+#image_container_wrapper img{
+    width: 60vw;
+}
+
+#commentsection_top_bar{
+    width: 60vw;
+    background-color: rgba(0,0,0,.3);
+    display: grid;
+    padding: 1vw;
+    color: white;
+}
+
+#commentsection_top_bar i{
+    font-size: 3vw;
+}
+
+#commentsection_top_bar{
+    font-size: 1.5vw;
+}
+
+#image_like_section p{
+    margin-left: 1vw;
+}
+
+#image_like_section>div{
+    width: 6vw;
+}
+
+#image_like_section i{
+    margin: 0 auto;
+}
+
+#image_like_section{
+    grid-row: 1;
+    grid-column: 1/2;
+}
+
+#image_comment_section{
+    grid-row: 1;
+    grid-column: 2/3;
+}
+
+#image_favourite_section{
+    grid-row: 1;
+    grid-column: 3/4;
+}
+
+.image_OP_section{
+    grid-row: 1;
+    grid-column: 4/5;
+}
+
+.image_delete_section{
+    grid-row: 1;
+    grid-column: 4/6;
+}
+
+#image_overlay{
+    height: 10vh;
+    position: relative;
+    top: 10vh;
+    background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 20%, rgba(0,0,0,1) 100%);
+    text-align: center;
+}
+
+#image_overlay h1{
+    font-family: montserrat, sans-serif;
+    font-size: 2.5vw;
+}
+
+.fa-minus-circle{
+    transition:  .4s;;
+}
+
+.fa-minus-circle:hover{
+    color: red;
+}
+
+#comment_section{
+    background-color: rgba(0,0,0,.5);
+}
+
+.comment{
+    background-color: rgba(0,0,0,.5);
+    display: grid;
+    padding: 1vw;
+}
+
+.commenter_profile{
+    grid-row: 1;
+    grid-column: 1/2;
+}
+
+.commenter_profile i{
+    font-size: 4vw;
+}
+
+.commenter_comment{
+    grid-row: 1/5;
+    grid-column: 2/6;
+}
+
+#commenting_form{
+    margin-bottom: 2vh;
+}
+#commenting_form #body_comment{
+    width: 55vw;
+    height: 5vh;
+}
+
+.comment_delete{
+    float: right;
+    font-size: 1.5vw;
 }

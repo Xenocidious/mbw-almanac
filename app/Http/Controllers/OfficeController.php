@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Image;
-use App\Vote;
-use App\Comment;
 use Auth;
+use Image;
+use vote;
+use Comment;
 
-class PhotohubController extends Controller
+class OfficeController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -31,15 +31,10 @@ class PhotohubController extends Controller
         $votes = Vote::get();
         $comments = Comment::get();
 
-        return view('photohub', [
+        return view('office', [
             'images' => $images,
             'votes' => $votes,
             'comments' => $comments
         ]);
-    }
-
-    public function photoform()
-    {
-        return view('uploadphoto');
     }
 }

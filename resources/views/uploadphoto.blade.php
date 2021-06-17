@@ -14,35 +14,39 @@
         <title>title</title>
     </head>
     <body>
-
+    
         <header id='header' class='header_top header'>
             <div id='header_content'>
-                <a class='header_button' href='{{route("home")}}'>home</a>
+                <a class='header_button' href='index'>home</a>
                 <a class='header_button' href='/'>about us</a>
                 <a class='header_button' href='statistics'>weather</a>
                 <a class='header_button' href='/'>history</a>
                 <a class='header_button' href='photohub'>photo's</a>
-
+                
                 <div class="dropdown header_button">
                     <a>account</a>
                     <div class="dropdown-content w3-bar-block w3-card-4 w3-animate-opacity">
+                        <!-- <a class='header_dropdown_button' href="#">Link 1</a>
+                        <a class='header_dropdown_button' href="#">Link 2</a>
+                        <a class='header_dropdown_button' href="#">Link 3</a> -->
+
                         @if (Route::has('login'))
-                            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                                @auth
-                                    <a class='header_dropdown_button' href="{{route('accounts.index')}}" class="dropdown-item w3-bar-item">{{Auth::user()->name}}</a>
-                                    <a class='header_dropdown_button' href="{{ route('logout') }}" class="dropdown-item w3-bar-item" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">Uitloggen</a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                @else
-                                    <a class='header_dropdown_button' href="{{ route('login') }}" class="dropdown-item w3-bar-item w3-button">login</a>
-                                    @if (Route::has('register'))
-                                        <a class='header_dropdown_button' href="{{ route('register') }}" class="dropdown-item w3-bar-item w3-button">Registrer</a>
-                                    @endif
-                                @endauth
-                            </div>
-                        @endif
+                        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                            @auth
+                                <a class='header_dropdown_button' href="{{route('accounts.index')}}" class="dropdown-item w3-bar-item">{{Auth::user()->name}}</a>
+                                <a class='header_dropdown_button' href="{{ route('logout') }}" class="dropdown-item w3-bar-item" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">Uitloggen</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            @else
+                                <a class='header_dropdown_button' href="{{ route('login') }}" class="dropdown-item w3-bar-item w3-button">login</a>
+                                @if (Route::has('register'))
+                                    <a class='header_dropdown_button' href="{{ route('register') }}" class="dropdown-item w3-bar-item w3-button">Registrer</a>
+                                @endif
+                            @endauth
+                        </div>
+                    @endif
                     </div>
                 </div>
                 <a href='uploadphoto'><i id='add_image_photohub' class="fas fa-image"></i></a>
@@ -50,72 +54,40 @@
         </header>
 
         <div id='spacefiller'></div>
+        <div id='spacefiller'></div>
+        
+        <div class="main_content_uploadphoto">
+            <h1>Upload a photo</h1>
 
+            @if (Route::has('login'))
+                @auth
+                <i class="fas fa-user"></i>
+                <p>{{Auth::user()->name}}<p>
 
-
-
-
-        <div id="main_content_photohub">
-            <? foreach($images as $image){
-            ?>
-            <div class='photohub_content_wrapper'>
-                <div class="photohub_content" id='photohub_content1'>
-                    <a href='{{Route("open.image", ["id" => $image->id])}}'>
-                        <img alt='image' src="../storage/app/public/image/{{$image->file_path}}">
-                    </a>
-                </div>
-                <div class='photohub_stats'>
-                    <div class="description">
-                        <h1>{{$image->name}}</h1>
-                        <hr style="width:100%;text-align:left;margin-left:0">
+                <form action="{{ route('images.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                    <div class="form-group">
+                        <label>title</label>
+                        <input type="text" class="form-control" name="name" required>
                     </div>
-                    <div class="upvote_amount">
+                    <div class="form-group">
+                        <input type="file" name="file" required>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
 
-                        <?
 
-                        $upvotes = 0;
-                        $disable_upvote = false;
-                        for($i=0; $i<count($votes); $i++){
-                            if($votes[$i]->image_id == $image->id && $votes[$i]->user_id == Auth::user()->id){
-                                $disable_upvote = true;
-                            }
-                            if($votes[$i]->image_id == $image->id){
-                                $upvotes++;
-                            }
-                        }
 
-                        if($disable_upvote == false){
-                            ?>      
-                            <a href='{{Route("image.upvote", ["id" => $image->id])}}'><i class="fas fa-arrow-circle-up"></i></a>
-                        <? }else{ ?>
-                            <a href='{{Route("image.remove_upvote", ["id" => $image->id])}}'><i class="fas fa-arrow-circle-up upvoted"></i></a>
-                        <? } ?>
-                        <p>{{$upvotes}}</p>
-                    </div>
-                    <div class="comment_amount">
-                        <i class="far fa-comments"></i>
-                        <?php
-                            $commentCount = 0;
-                            foreach($comments as $comment){
-                                if($comment->image_id == $image->id){
-                                    $commentCount++;
-                                }
-                            }
-                        ?>
-                        <p>{{$commentCount}}</p>
-                    </div>
-                    <div class="favourite">
-                        <i class="far fa-heart"></i>
-                        <!-- <i class="fas fa-heart"></i> -->
-                    </div>
-                    <div class="user">
-                        <i class="fas fa-user"></i>
-                        <p>{{$image->user_name}}</p>
-                    </div>
-                </div>
-            </div>
-            <? } ?>
+                @else
+                    <h2>An account is neccesery to upload a photo. please <a href='/'>login</a>, or if you don't have an account yet: <a href='/'>register</a>, its free!<p>
+                    <a class='header_dropdown_button' href="{{ route('login') }}" class="dropdown-item w3-bar-item w3-button">login</a>
+                    @if (Route::has('register'))
+                        <a class='header_dropdown_button' href="{{ route('register') }}" class="dropdown-item w3-bar-item w3-button">Registrer</a>
+                    @endif
+                @endauth
+            @endif
         </div>
+
         <footer>
             <div class='footer_left_items'>
                 <a>Frequently Asked Questions</a><br>
@@ -200,5 +172,7 @@
                 <p>copyright project almanac Aya, Mert en Pieterjan: ©2021 - <?= date("Y"); ?></p>
             </div>
         </footer>
+
+        <script src='../resources/js/animations_index.js'></script>
     </body>
 </html>
