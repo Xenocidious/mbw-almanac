@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use Image;
-use vote;
-use Comment;
+use App\Image;
+use App\Vote;
+use App\Comment;
 
 class OfficeController extends Controller
 {
