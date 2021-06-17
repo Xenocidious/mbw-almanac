@@ -33,7 +33,7 @@
                         @if (Route::has('login'))
                         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                             @auth
-                                <a class='header_dropdown_button' href="{{route('accounts.index')}}" class="dropdown-item w3-bar-item">{{Auth::user()->name}}</a>
+                                <a class='header_dropdown_button' href="{{route('home')}}" class="dropdown-item w3-bar-item">{{Auth::user()->name}}</a>
                                 <a class='header_dropdown_button' href="{{ route('logout') }}" class="dropdown-item w3-bar-item" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">Uitloggen</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
