@@ -659,7 +659,7 @@ footer ul p{
 
 /* admin office styling */
 
-.office_roles_wrapper{
+.office_roles_wrapper, .office_statistics{
     background-color: rgba(0,0,0,.5);
     width: 60vw;
     margin: 0 auto;
