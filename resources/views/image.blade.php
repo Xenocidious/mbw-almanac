@@ -142,6 +142,9 @@
                             <a href="{{ route('comment.delete', ['id' => $comment->id]) }}" onclick="return confirm('Are you sure that you want to delete your comment?')"><i class="fas fa-minus-circle comment_delete"></i></a>
                         @endif @endif
                     </div>
+                    @auth @if(Auth::user()->role == 'admin' || Auth::user()->role == 'moderator')
+                        <a href="{{ route('comment.delete', ['id' => $comment->id]) }}" onclick="return confirm('Are you sure that you want to delete your comment?')"><i class="fas fa-minus-circle comment_delete"></i></a>
+                    @endif @endif
                 </div><?php
                         }
                     }
