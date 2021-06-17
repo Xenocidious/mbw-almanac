@@ -15,8 +15,6 @@
     </head>
     <body>
 
-
-
         <header id='header' class='header_top header'>
             <div id='header_content'>
                 <a class='header_button' href='index'>home</a>
