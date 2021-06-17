@@ -12,6 +12,10 @@ use Illuminate\Routing\Controller as BaseController;
 class WelcomeController extends Controller
 {
     function index(){
-        return view('index');
+        $response = "hey";
+
+
+        return view('index' , ['data'=> $response]);
+
     }
 }
