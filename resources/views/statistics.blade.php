@@ -14,17 +14,15 @@
         <title>title</title>
     </head>
     <body>
-
-
-
+    
         <header id='header' class='header_top header'>
             <div id='header_content'>
                 <a class='header_button' href='index'>home</a>
                 <a class='header_button' href='/'>about us</a>
                 <a class='header_button' href='statistics'>weather</a>
                 <a class='header_button' href='/'>history</a>
-                <a class='header_button' href='{{Route("photohub")}}'>photo's</a>
-
+                <a class='header_button' href='/'>photo's</a>
+                
                 <div class="dropdown header_button">
                     <a>account</a>
                     <div class="dropdown-content w3-bar-block w3-card-4 w3-animate-opacity">
@@ -50,92 +48,17 @@
                         </div>
                     @endif
                     </div>
+                </div>
             </div>
-            @auth
-                @if (Auth::user()->role == 'admin')
-                    <a class='header_button' href='{{Route("office")}}'>office</a>
-                @endif
-            @endauth
         </header>
         
-        <div id='index_content_1'>
-            <h1>{{$todayData[0]['tempmax']}}°C</h1>
-            <h1><i class="fas fa-sun"></i></h1>
 
-             <div id='index_cards_wrapper'>
+        <div id='content_statistics'>
 
-
-                @foreach ($yesterdayData as $item)
-                <div id='index_cards_wrapper_card_1' class='index_cards'>
-                    <div>
-                        <h2>Yesterday</h2>
-                        <h3>{{$yesterdayData[0]['tempmax']}}°</h3>
-                        <h4>{{$yesterdayData[0]['conditions']}}</h4>
-                        <i class="fas fa-sun"></i>
-                    </div>
-                </div>
-                @endforeach
-
-
-                <div id='index_cards_wrapper_card_2' class='index_cards'>
-                    <div>
-                        <h2>Today</h2>
-                        <h3>{{$todayData[0]['tempmax']}}°</h3>
-                        <h4>{{$todayData[0]['conditions']}}</h4>
-                        <i class="fas fa-sun"></i>
-                    </div>
-                </div>
-                <div id='index_cards_wrapper_card_3' class='index_cards'>
-                    <div>
-                        <h2>Tomorrow</h2>
-                        <h3>{{$forecastData[1]['tempmax']}}°</h3>
-                        <h4>{{$forecastData[1]['conditions']}}</h4>
-                        <i class="fas fa-sun"></i>
-                    </div>
-                </div>
-            </div>
+            <div id="curve_chart" style="width: 900px; height: 500px"></div>
+            
         </div>
 
-        <h1 id='chart_index'>Check our data</h1>
-        <a href='statistics'><div id="curve_chart" style="width: 900px; height: 500px"></div></a>
-
-        <div id='index_content_2'>
-            <h1>Check our historical weather data</h1>
-            <div>
-                <p>Hey there! Ever wondered what the weather looked like 6 moths ago in your city? Or maybe a year, a decade?! This is your chance! Our very precise weather API has the historical data of 30+ years. What are you waiting for?</p>
-            </div>
-            <a id='historical_data_button' href="#">
-                <span>enter now</span>
-                <div class="liquid"></div>
-            </a>
-        </div>
-        <div id='index_about_us_wrapper'>
-
-            <div id='img_1' class='images'></div>
-            <div id='content_1' class='text'>
-                <h1>About us</h1>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-
-            <div id='content_2' class='text'>
-                <h1>What do we do</h1>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <div id='img_2' class='images'></div>
-
-            <div id='img_3' class='images'></div>
-            <div id='content_3' class='text'>
-                <h1>What we can provide for your company</h1>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-
-            <div id='content_4' class='text'>
-                <h1>Our team</h1>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <div id='img_4' class='images'></div>
-
-        </div>
 
         <footer>
             <div class='footer_left_items'>
@@ -221,7 +144,6 @@
                 <p>copyright project almanac Aya, Mert en Pieterjan: ©2021 - <?= date("Y"); ?></p>
             </div>
         </footer>
-
 
         <script src='../resources/js/animations_index.js'></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
