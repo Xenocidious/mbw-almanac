@@ -46,6 +46,8 @@ Route::resource('images', 'ImageController');
 
 Route::resource('comment', 'CommentController');
 
+Route::post('user/promote', 'OfficeController@promote')->name('user.promote');
+
 Route::get('/office', 'OfficeController@index')->name('office');
 
 Route::get('/upvote/{id}', [

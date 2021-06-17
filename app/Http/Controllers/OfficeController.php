@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use Image;
-use vote;
-use Comment;
+use App\Image;
+use App\Vote;
+use App\Comment;
+use App\User;
 
 class OfficeController extends Controller
 {
@@ -30,11 +31,23 @@ class OfficeController extends Controller
         $images = Image::get();
         $votes = Vote::get();
         $comments = Comment::get();
+        $users = User::get();
 
         return view('office', [
             'images' => $images,
             'votes' => $votes,
-            'comments' => $comments
+            'users' => $users
         ]);
+    }
+
+    public function promote(Request $request){
+
+        $username = $request->get('username');
+        $newRole = $request->get('role'); 
+
+        User::where('name', $username)->update(['role' => $newRole]);
+
+        return view('index');
+
     }
 }

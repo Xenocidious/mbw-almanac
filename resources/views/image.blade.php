@@ -81,9 +81,9 @@
                         if($disable_upvote == false){
                             ?>      
                             <a href='{{Route("image.upvote", ["id" => $image[0]->id])}}'><i class="fas fa-arrow-circle-up"></i></a>
-                        <? }else{ ?>
+                        <?php }else{ ?>
                             <a href='{{Route("image.remove_upvote", ["id" => $image[0]->id])}}'><i class="fas fa-arrow-circle-up upvoted"></i></a>
-                        <? } ?>
+                        <?php } ?>
                     </div>
                     <p>{{$upvotes}}</p>
                 </div>
@@ -114,9 +114,13 @@
                         <div class="image_delete_section">
                             <a href="{{ route('post.delete', ['id' => $image[0]->id]) }}" onclick='return confirm("are you sure that you want to delete this post?")'><i class="fas fa-minus-circle comment_delete"></i></a>
                         </div>
-                    <?php }
-                ?>
-
+                    <?php } ?>
+                        
+                    @auth @if(Auth::user()->role == 'admin' || Auth::user()->role == 'moderator')
+                        <div class="image_delete_section">
+                            <a href="{{ route('post.delete', ['id' => $image[0]->id]) }}" onclick='return confirm("are you sure that you want to delete post `{{$image[0]->name}}` from user `{{$image[0]->user_name}}`?")'><i class="fas fa-minus-circle comment_delete"></i></a>
+                        </div>
+                    @endif @endif
             </div>
             <div id="comment_section">
 
@@ -133,8 +137,10 @@
                         <?php
                             if($comment->user_id == Auth::user()->id){ ?>
                                 <a href="{{ route('comment.delete', ['id' => $comment->id]) }}" onclick="return confirm('Are you sure that you want to delete your comment?')"><i class="fas fa-minus-circle comment_delete"></i></a>
-                            <? } 
-                        ?>
+                        <?php } ?>
+                        @auth @if(Auth::user()->role == 'admin' || Auth::user()->role == 'moderator')
+                            <a href="{{ route('comment.delete', ['id' => $comment->id]) }}" onclick="return confirm('Are you sure that you want to delete your comment?')"><i class="fas fa-minus-circle comment_delete"></i></a>
+                        @endif @endif
                     </div>
                 </div><?php
                         }

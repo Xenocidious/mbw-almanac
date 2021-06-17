@@ -54,9 +54,8 @@
 
 
 
-
         <div id="main_content_photohub">
-            <? foreach($images as $image){
+            <?php foreach($images as $image){
             ?>
             <div class='photohub_content_wrapper'>
                 <div class="photohub_content" id='photohub_content1'>
@@ -71,7 +70,7 @@
                     </div>
                     <div class="upvote_amount">
 
-                        <?
+                        <?php
 
                         $upvotes = 0;
                         $disable_upvote = false;
@@ -87,9 +86,9 @@
                         if($disable_upvote == false){
                             ?>      
                             <a href='{{Route("image.upvote", ["id" => $image->id])}}'><i class="fas fa-arrow-circle-up"></i></a>
-                        <? }else{ ?>
+                        <?php }else{ ?>
                             <a href='{{Route("image.remove_upvote", ["id" => $image->id])}}'><i class="fas fa-arrow-circle-up upvoted"></i></a>
-                        <? } ?>
+                        <?php } ?>
                         <p>{{$upvotes}}</p>
                     </div>
                     <div class="comment_amount">
@@ -114,7 +113,7 @@
                     </div>
                 </div>
             </div>
-            <? } ?>
+            <?php } ?>
         </div>
         <footer>
             <div class='footer_left_items'>
