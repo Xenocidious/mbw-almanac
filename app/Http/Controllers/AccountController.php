@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
+use function json_encode;
 
 class AccountController extends Controller
 {
@@ -26,15 +27,16 @@ class AccountController extends Controller
                     Storage::delete('public/profile-pictures/' . $user->photo);
                 }
 
-                $path = explode('/',$photo->store('public/profile-pictures'));
+                $path = explode('/', $photo->store('public/profile-pictures'));
                 $user->photo = end($path);
             }
         }
 
         $user->email = $request->post('email');
         $user->name = $request->post('name');
+        $user->settings = $request->post('settings');
 
-        if ($request->has('password')) {
+        if ($request->has('password') && !empty($request->post('password'))) {
             if (!Hash::check($request->post('password_old'), $user->password)) {
                 return redirect()->route('accounts.index')->with('error', __('Wrong password'));
             }
