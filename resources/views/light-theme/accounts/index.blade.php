@@ -2,7 +2,6 @@
 
 @section('content')
 
-    DIT IS LIGHT THEME
 
     <div class="container">
         <div class="row justify-content-center">
@@ -12,52 +11,79 @@
                     @csrf
                     @method('patch')
 
-                    <div class="form-group">
-                        <label class="form-label" for="email">{{ __('E-mail address') }}</label>
-                        <input class="form-control" name="email" id="email" value="{{ $user->email }}" type="email"/>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="name">{{ __('Name') }}</label>
-                        <input class="form-control" name="name" id="name" value="{{ $user->name }}" type="text"/>
-                    </div>
+                    <fieldset>
+                        <legend class="text-dark">{{ __('Profile picture') }}</legend>
 
-                    <div class="form-group">
-                        <input class="form-check-control" name="settings[dark-mode]" id="dark-mode"
-                               type="checkbox"
-                               @if (isset($user->settings['dark-mode']) && $user->settings['dark-mode'] === "on") checked @endif/>
-                        <label class="form-check-label"
-                               for="password-confirmation">{{ __('Enable dark mode') }}</label>
-                    </div>
+                        <div class="row">
+                            <div class="col">
+                                @if ($user->photo)
+                                    <img src="{{ asset('storage/profile-pictures/'.$user->photo) }}"
+                                         width="120"
+                                         height="120"
+                                         class="rounded-circle"
+                                         alt="{{ __('Profile picture') }}" id="profile-picture"/>
+                                @endif
+                            </div>
+                            <div class="col">
+                                <input class="form-control-file text-dark" name="photo" id="photo" type="file"/>
+                            </div>
+                            <div class="col">
 
-                    <div class="form-group">
-                        @if ($user->photo)
-                            <img src="{{ asset('storage/profile-pictures/'.$user->photo) }}" width="80" height="120"
-                                 alt="{{ __('Profile picture') }}" id="profile-picture"/>
-                        @endif
-                        <label class="form-label" for="photo">{{ __('Profile picture') }}</label>
-                        <input class="form-control-file" name="photo" id="photo" type="file"/>
+                                <button type="button" role="button"
+                                        onclick="$('#photo').val(''); $('#profile-picture').hide();"
+                                        class="btn btn-sm btn-danger text-dark">
+                                    {{ __('Remove image') }}
+                                </button>
+                            </div>
+                        </div>
+                    </fieldset>
 
-                        <button type="button" role="button" onclick="$('#photo').val(''); $('#profile-picture').hide();"
-                                class="btn btn-sm btn-danger">
-                            {{ __('Remove image') }}
-                        </button>
-                    </div>
+                    <hr class="text-light bg-dark border-color-dark"/>
 
-                    <h4>{{ __('Edit password') }}</h4>
+                    <fieldset>
+                        <legend class="text-dark">{{ __('Info') }}</legend>
 
-                    <div class="form-group">
-                        <label class="form-label" for="password_old">{{ __('Old password') }}</label>
-                        <input class="form-control" name="password_old" id="password_old" value="" type="password"/>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="password">{{ __('Password') }}</label>
-                        <input class="form-control" name="password" id="password" value="" type="password"/>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="password-confirmation">{{ __('Password confirmation') }}</label>
-                        <input class="form-control" name="password_confirmation" id="password-confirmation" value=""
-                               type="password"/>
-                    </div>
+                        <div class="form-group">
+                            <label class="form-label text-dark" for="email">{{ __('E-mail address') }}</label>
+                            <input class="form-control" name="email" id="email" value="{{ $user->email }}"
+                                   type="email"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label text-dark" for="name">{{ __('Name') }}</label>
+                            <input class="form-control" name="name" id="name" value="{{ $user->name }}" type="text"/>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend class="text-dark">{{ __('Settings') }}</legend>
+
+                        <div class="form-group">
+                            <input class="form-check-control" name="settings[dark-mode]" id="dark-mode"
+                                   type="checkbox"
+                                   @if (isset($user->settings['dark-mode']) && $user->settings['dark-mode'] === "on") checked @endif/>
+                            <label class="form-check-label text-dark"
+                                   for="password-confirmation">{{ __('Enable dark mode') }}</label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend class="text-dark pt-5">{{ __('Edit password') }}</legend>
+
+                        <div class="form-group">
+                            <label class="form-label text-dark" for="password_old">{{ __('Old password') }}</label>
+                            <input class="form-control" name="password_old" id="password_old" value="" type="password"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label text-dark" for="password">{{ __('Password') }}</label>
+                            <input class="form-control" name="password" id="password" value="" type="password"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label text-dark"
+                                   for="password-confirmation">{{ __('Password confirmation') }}</label>
+                            <input class="form-control" name="password_confirmation" id="password-confirmation" value=""
+                                   type="password"/>
+                        </div>
+                    </fieldset>
 
                     <div class="form-group">
                         <button class="btn btn-lg btn-primary" type="submit">{{ __('Save') }}</button>
@@ -76,3 +102,4 @@
         </div>
     </div>
 @endsection
+
