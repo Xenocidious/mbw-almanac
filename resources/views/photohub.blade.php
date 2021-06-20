@@ -14,13 +14,12 @@
         <title>title</title>
     </head>
     <body>
-
         <header id='header' class='header_top header'>
             <div id='header_content'>
                 <a class='header_button' href='{{route("home")}}'>home</a>
                 <a class='header_button' href='/'>about us</a>
                 <a class='header_button' href='statistics'>weather</a>
-                <a class='header_button' href='/'>history</a>
+                <a class='header_button' href='{{Route("history")}}'>history</a>
                 <a class='header_button' href='photohub'>photo's</a>
 
                 <div class="dropdown header_button">
@@ -56,8 +55,9 @@
 
 
         <div id="main_content_photohub">
-            <? foreach($images as $image){
-            ?>
+             @foreach($images as $image)
+
+
             <div class='photohub_content_wrapper'>
                 <div class="photohub_content" id='photohub_content1'>
                     <a href='{{Route("open.image", ["id" => $image->id])}}'>
@@ -71,8 +71,8 @@
                     </div>
                     <div class="upvote_amount">
 
-                        <?
 
+                        <?php
                         $upvotes = 0;
                         $disable_upvote = false;
                         for($i=0; $i<count($votes); $i++){
@@ -85,11 +85,11 @@
                         }
 
                         if($disable_upvote == false){
-                            ?>      
+                            ?>
                             <a href='{{Route("image.upvote", ["id" => $image->id])}}'><i class="fas fa-arrow-circle-up"></i></a>
-                        <? }else{ ?>
+                        <?php }else{ ?>
                             <a href='{{Route("image.remove_upvote", ["id" => $image->id])}}'><i class="fas fa-arrow-circle-up upvoted"></i></a>
-                        <? } ?>
+                        <?php } ?>
                         <p>{{$upvotes}}</p>
                     </div>
                     <div class="comment_amount">
@@ -114,7 +114,7 @@
                     </div>
                 </div>
             </div>
-            <? } ?>
+            @endforeach
         </div>
         <footer>
             <div class='footer_left_items'>

@@ -32,9 +32,6 @@ Route::get('/', function () {
 
 Route::get('/index', 'WelcomeController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/statistics', 'StatisticsController@index')->name('statistics');
 
@@ -49,34 +46,35 @@ Route::resource('comment', 'CommentController');
 Route::get('/office', 'OfficeController@index')->name('office');
 
 Route::get('/upvote/{id}', [
-    'uses' => 'Imagecontroller@upvote', 
+    'uses' => 'Imagecontroller@upvote',
     'as' => 'image.upvote'
 ]);
 
 Route::get('/removeUpvote/{id}', [
-    'uses' => 'Imagecontroller@removeUpvote', 
+    'uses' => 'Imagecontroller@removeUpvote',
     'as' => 'image.remove_upvote'
 ]);
 
 Route::get('/openImage/{id}', [
-    'uses' => 'Imagecontroller@openImage', 
+    'uses' => 'Imagecontroller@openImage',
     'as' => 'open.image'
 ]);
 
 Route::get('/deleteComment/{id}', [
-    'uses' => 'CommentController@delete', 
+    'uses' => 'CommentController@delete',
     'as' => 'comment.delete'
 ]);
 
 Route::get('/deletePost/{id}', [
-    'uses' => 'ImageController@delete', 
+    'uses' => 'ImageController@delete',
     'as' => 'post.delete'
 ]);
 
+//get the history weather
 
+Route::get('/history', 'HistoryController@index')->name('history');
 
-
-
+Route::get('/history/result', 'HistoryController@getDate')->name('get.date');
 
 
 

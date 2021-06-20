@@ -20,7 +20,7 @@
                 <a class='header_button' href='{{route("home")}}'>home</a>
                 <a class='header_button' href='/'>about us</a>
                 <a class='header_button' href='statistics'>weather</a>
-                <a class='header_button' href='/'>history</a>
+                <a class='header_button' href='{{Route("history")}}'>history</a>
                 <a class='header_button' href='photohub'>photo's</a>
 
                 <div class="dropdown header_button">
@@ -72,18 +72,18 @@
                 <h1>{{$image[0]->name}}</h1>
             </div>
             <img src="../../storage/app/public/image/{{$image[0]->file_path}}" alt="image">
-            
+
             <div id="commentsection_top_bar">
                 <div id="image_like_section">
                     <div>
 
-                        <?
+                        <?php
                         if($disable_upvote == false){
-                            ?>      
+                            ?>
                             <a href='{{Route("image.upvote", ["id" => $image[0]->id])}}'><i class="fas fa-arrow-circle-up"></i></a>
-                        <? }else{ ?>
+                        <?php } else { ?>
                             <a href='{{Route("image.remove_upvote", ["id" => $image[0]->id])}}'><i class="fas fa-arrow-circle-up upvoted"></i></a>
-                        <? } ?>
+                        <?php } ?>
                     </div>
                     <p>{{$upvotes}}</p>
                 </div>
@@ -122,7 +122,7 @@
 
                 <?php
                     foreach($comments as $comment){
-                        if($comment->image_id == $image[0]->id){ ?>       
+                        if($comment->image_id == $image[0]->id){ ?>
                 <div class="comment user" id='comment{{$comment->id}}'>
                     <div class="commenter_profile">
                         <i class="fas fa-user"></i>
@@ -133,7 +133,7 @@
                         <?php
                             if($comment->user_id == Auth::user()->id){ ?>
                                 <a href="{{ route('comment.delete', ['id' => $comment->id]) }}" onclick="return confirm('Are you sure that you want to delete your comment?')"><i class="fas fa-minus-circle comment_delete"></i></a>
-                            <? } 
+                            <?php }
                         ?>
                     </div>
                 </div><?php
