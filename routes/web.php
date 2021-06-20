@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,79 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+/**
+ * De api word gefetched met data van 'yesterday' en doorgestuurd naar de index
+ */
 Route::get('/', function () {
-    return view('welcome');
+
+    $yesterday = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/yesterday?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH&include=obs%2Ccurrent%2Chistfcst')['days'];
+
+    $today = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/today?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH&include=stats%2Ccurrent')['days'];
+
+    $forecast = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH&include=fcst%2Cstats%2Ccurrent')['days'];
+
+    return view('index' , ['yesterdayData'=> $yesterday, 'forecastData'=>$forecast, 'todayData'=>$today]);
+
 });
+
+Route::get('/index', 'WelcomeController@index')->name('home');
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/statistics', 'StatisticsController@index')->name('statistics');
+
+Route::get('/photohub', 'PhotohubController@index')->name('photohub');
+
+Route::get('/uploadphoto', 'PhotohubController@photoform')->name('uploadphoto');
+
+Route::resource('images', 'ImageController');
+
+Route::resource('comment', 'CommentController');
+
+Route::post('user/promote', 'OfficeController@promote')->name('user.promote');
+
+Route::get('/office', 'OfficeController@index')->name('office');
+
+Route::get('/upvote/{id}', [
+    'uses' => 'Imagecontroller@upvote', 
+    'as' => 'image.upvote'
+]);
+
+Route::get('/removeUpvote/{id}', [
+    'uses' => 'Imagecontroller@removeUpvote', 
+    'as' => 'image.remove_upvote'
+]);
+
+Route::get('/openImage/{id}', [
+    'uses' => 'Imagecontroller@openImage', 
+    'as' => 'open.image'
+]);
+
+Route::get('/deleteComment/{id}', [
+    'uses' => 'CommentController@delete', 
+    'as' => 'comment.delete'
+]);
+
+Route::get('/deletePost/{id}', [
+    'uses' => 'ImageController@delete', 
+    'as' => 'post.delete'
+]);
+
+
+
+
+
+
+
+
+// Middleware zodat deze routes alleen maar worden gebruikt als je bent ingelogd.
+// https://laravel.com/docs/8.x/routing#route-group-middleware
+Route::middleware(['auth'])->group(function() {
+    // Route wanneer je bent ingelogd zodat je naar je account kan gaan.
+    Route::get('/account', 'AccountController@index')->name('accounts.index');
+    Route::patch('/account/{user}', 'AccountController@update')->name('accounts.update');
+    Route::delete('/account/{user}', 'AccountController@destroy')->name('accounts.delete');
+});
+
+Auth::routes();
