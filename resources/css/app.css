@@ -428,7 +428,7 @@ footer ul p{
     width: 29vw;
     height: 40vh;
     display: flex;
-    margin: 0 0;   
+    margin: 0 0;
     background: linear-gradient(90deg, rgba(0,0,0,.5) 0%, rgba(33,33,33,.51) 50%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%);
 }
 
@@ -653,4 +653,9 @@ footer ul p{
 .comment_delete{
     float: right;
     font-size: 1.5vw;
+}
+
+/*Detailed data from history tab */
+#expandedData{
+    display: none;
 }

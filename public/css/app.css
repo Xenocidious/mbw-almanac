@@ -654,3 +654,8 @@ footer ul p{
     float: right;
     font-size: 1.5vw;
 }
+
+/*Detailed data from history tab */
+#expandedData{
+    display: none;
+}
