@@ -2,23 +2,26 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="../resources/css/animations.css">
+        <link rel="stylesheet" href="{{asset('css/animation.css')}}">
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
 
         <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="{{ asset('js/app.js') }}"></script>
-        <script type='text/javascript' src='../resources/js/conditions.js'>test();</script>
 
-        <title>title</title>
+        <title>Almanac</title>
     </head>
     <body>
 
         <header id='header' class='header_top header'>
             <div id='header_content'>
-                <a class='header_button' href='index'>home</a>
+                <a class='header_button' href='{{route("home")}}'>home</a>
                 <a class='header_button' href='/'>about us</a>
                 <a class='header_button' href='statistics'>weather</a>
                 <a class='header_button' href='{{Route("history")}}'>history</a>
@@ -57,85 +60,45 @@
             @endauth
         </header>
 
-        <div id='index_content_1'>
-            <h1>{{$todayData[0]['tempmax']}}°C</h1>
-            <h1><i class="fas fa-sun"></i></h1>
+        <div id='spacefiller'></div>
+        <div id='spacefiller'></div>
+        <div id='spacefiller'></div>
 
-             <div id='index_cards_wrapper'>
+        <form action="{{Route('get.date')}}" autocomplete="off" mindate>
+        {{  Form::text('date', '', array('id' => 'datepicker')) }}
 
+        <input type="submit" value="Submit">
+        </form>
 
-                @foreach ($yesterdayData as $item)
-                <div id='index_cards_wrapper_card_1' class='index_cards'>
-                    <div>
-                        <h2>Yesterday</h2>
-                        <h3>{{$yesterdayData[0]['tempmax']}}°</h3>
-                        <h4>{{$yesterdayData[0]['conditions']}}</h4>
-                        <?php $condition = $yesterdayData[0]['conditions'] ?>
-                        <script>returnConditionIcon('{{$condition}}');</script>
-                    </div>
-                </div>
-                @endforeach
-
-
-                <div id='index_cards_wrapper_card_2' class='index_cards'>
-                    <div>
-                        <h2>Today</h2>
-                        <h3>{{$todayData[0]['tempmax']}}°</h3>
-                        <h4>{{$todayData[0]['conditions']}}</h4>
-                        <script>returnConditionIcon('{{$condition}}');</script>
-                    </div>
-                </div>
-                <div id='index_cards_wrapper_card_3' class='index_cards'>
-                    <div>
-                        <h2>Tomorrow</h2>
-                        <h3>{{$forecastData[1]['tempmax']}}°</h3>
-                        <h4>{{$forecastData[1]['conditions']}}</h4>
-                        <script>returnConditionIcon('{{$condition}}');</script>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <h1 id='chart_index'>Check our data</h1>
-        <a href='statistics'><div id="curve_chart" style="width: 900px; height: 500px"></div></a>
-
-        <div id='index_content_2'>
-            <h1>Check our historical weather data</h1>
+        @if (isset($fetchedDate))
+        @foreach ($fetchedDate as $item)
+        <div id='index_cards_wrapper_card_1' class='index_cards'>
             <div>
-                <p>Hey there! Ever wondered what the weather looked like 6 moths ago in your city? Or maybe a year, a decade?! This is your chance! Our very precise weather API has the historical data of 30+ years. What are you waiting for?</p>
+                <h2>{{$weekDay}}</h2>
+                <h6>{{$fetchedDate[0]['datetime']}}</h6>
+                <h2>{{$fetchedDate[0]['tempmax']}}°</h2>
+                <h3>{{$fetchedDate[0]['conditions']}}</h3>
+                <h5>{{$fetchedDate[0]['description']}}</h5>
             </div>
-            <a id='historical_data_button' href="#">
-                <span>enter now</span>
-                <div class="liquid"></div>
-            </a>
+           <button onclick="toggleExpandedData()"> <i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+            <div id="expandedData">
+                <h3>Max: {{$fetchedDate[0]['tempmax']}}°</h3>
+                <h3>Min: {{$fetchedDate[0]['tempmin']}}°</h3>
+                <h3>Feels like: {{$fetchedDate[0]['feelslikemax']}}°</h3>
+                <h3>Windspeed: {{$fetchedDate[0]['windspeed']}}km/h</h3>
+                <h3>Humidity: {{$fetchedDate[0]['humidity']}}</h3>
+                <h3>Sunrise: {{$fetchedDate[0]['sunrise']}}</h3>
+                <h3>Sunrise: {{$fetchedDate[0]['sunset']}}</h3>
+            </div>
         </div>
-        <div id='index_about_us_wrapper'>
+        @endforeach
+        @else
+        @endif
 
-            <div id='img_1' class='images'></div>
-            <div id='content_1' class='text'>
-                <h1>About us</h1>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
+        <div id='spacefiller'></div>
+        <div id='spacefiller'></div>
+        <div id='spacefiller'></div>
 
-            <div id='content_2' class='text'>
-                <h1>What do we do</h1>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <div id='img_2' class='images'></div>
-
-            <div id='img_3' class='images'></div>
-            <div id='content_3' class='text'>
-                <h1>What we can provide for your company</h1>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-
-            <div id='content_4' class='text'>
-                <h1>Our team</h1>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <div id='img_4' class='images'></div>
-
-        </div>
 
         <footer>
             <div class='footer_left_items'>
@@ -216,6 +179,35 @@
                     <hr style="width:50%;text-align:left;margin-left:2.5vw">
                 </span>
             </div>
+            <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+            <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+        <script>
+            $(function() {
+    $("#datepicker").datepicker({
+        dateFormat: "yy-mm-dd",
+        minDate: '-46Y',
+        maxDate: '0',
+        changeMonth: true,
+        changeYear: true,
+        onSelect: function(){
+            var selected = $(this).val();
+            alert(h);
+         }
+            });
+                });
+
+
+
+                function toggleExpandedData() {
+                    var x = document.getElementById("expandedData");
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                    } else {
+                        x.style.display = "none";
+                    }
+                    }
+        </script>
 
             <div class='footer_copyright'>
                 <p>copyright project almanac Aya, Mert en Pieterjan: ©2021 - <?= date("Y"); ?></p>
@@ -224,8 +216,7 @@
 
 
         <script src='../resources/js/animations_index.js'></script>
-        <script src='../resources/js/header_blur.js'></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script src={{'js/chart_test.js'}}></script>
+        <script src='../resources/js/chart_test.js'></script>
     </body>
 </html>

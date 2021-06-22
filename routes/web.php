@@ -20,11 +20,11 @@ use Illuminate\Support\Facades\Route;
  */
 Route::get('/', function () {
 
-    $yesterday = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/yesterday?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH&include=obs%2Ccurrent%2Chistfcst')['days'];
+    $yesterday = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/yesterday?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=obs%2Ccurrent%2Chistfcst')['days'];
 
-    $today = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/today?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH&include=stats%2Ccurrent')['days'];
+    $today = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/today?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=stats%2Ccurrent')['days'];
 
-    $forecast = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH&include=fcst%2Cstats%2Ccurrent')['days'];
+    $forecast = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=fcst%2Cstats%2Ccurrent')['days'];
 
     return view('index' , ['yesterdayData'=> $yesterday, 'forecastData'=>$forecast, 'todayData'=>$today]);
 
@@ -32,7 +32,6 @@ Route::get('/', function () {
 
 Route::get('/index', 'WelcomeController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/statistics', 'StatisticsController@index')->name('statistics');
 
@@ -49,34 +48,35 @@ Route::post('user/promote', 'OfficeController@promote')->name('user.promote');
 Route::get('/office', 'OfficeController@index')->name('office');
 
 Route::get('/upvote/{id}', [
-    'uses' => 'Imagecontroller@upvote', 
+    'uses' => 'Imagecontroller@upvote',
     'as' => 'image.upvote'
 ]);
 
 Route::get('/removeUpvote/{id}', [
-    'uses' => 'Imagecontroller@removeUpvote', 
+    'uses' => 'Imagecontroller@removeUpvote',
     'as' => 'image.remove_upvote'
 ]);
 
 Route::get('/openImage/{id}', [
-    'uses' => 'Imagecontroller@openImage', 
+    'uses' => 'Imagecontroller@openImage',
     'as' => 'open.image'
 ]);
 
 Route::get('/deleteComment/{id}', [
-    'uses' => 'CommentController@delete', 
+    'uses' => 'CommentController@delete',
     'as' => 'comment.delete'
 ]);
 
 Route::get('/deletePost/{id}', [
-    'uses' => 'ImageController@delete', 
+    'uses' => 'ImageController@delete',
     'as' => 'post.delete'
 ]);
 
+//get the history weather
 
+Route::get('/history', 'HistoryController@index')->name('history');
 
-
-
+Route::get('/history/result', 'HistoryController@getDate')->name('get.date');
 
 
 

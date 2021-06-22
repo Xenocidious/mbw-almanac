@@ -14,13 +14,12 @@
         <title>title</title>
     </head>
     <body>
-
         <header id='header' class='header_top header'>
             <div id='header_content'>
                 <a class='header_button' href='{{route("home")}}'>home</a>
                 <a class='header_button' href='/'>about us</a>
                 <a class='header_button' href='statistics'>weather</a>
-                <a class='header_button' href='/'>history</a>
+                <a class='header_button' href='{{Route("history")}}'>history</a>
                 <a class='header_button' href='photohub'>photo's</a>
 
                 <div class="dropdown header_button">
@@ -72,6 +71,7 @@
 
                         <?php
 
+                        <?php
                         $upvotes = 0;
                         $disable_upvote = false;
                         for($i=0; $i<count($votes); $i++){
@@ -84,7 +84,7 @@
                         }
 
                         if($disable_upvote == false){
-                            ?>      
+                            ?>
                             <a href='{{Route("image.upvote", ["id" => $image->id])}}'><i class="fas fa-arrow-circle-up"></i></a>
                         <?php }else{ ?>
                             <a href='{{Route("image.remove_upvote", ["id" => $image->id])}}'><i class="fas fa-arrow-circle-up upvoted"></i></a>
