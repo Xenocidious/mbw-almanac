@@ -14,15 +14,15 @@
         <title>title</title>
     </head>
     <body>
-    
+
         <header id='header' class='header_top header'>
             <div id='header_content'>
                 <a class='header_button' href='index'>home</a>
                 <a class='header_button' href='/'>about us</a>
                 <a class='header_button' href='statistics'>weather</a>
-                <a class='header_button' href='/'>history</a>
-                <a class='header_button' href='/'>photo's</a>
-                
+                <a class='header_button' href='{{Route("history")}}'>history</a>
+                <a class='header_button' href='{{Route("photohub")}}'>photo's</a>
+
                 <div class="dropdown header_button">
                     <a>account</a>
                     <div class="dropdown-content w3-bar-block w3-card-4 w3-animate-opacity">
@@ -50,13 +50,14 @@
                     </div>
                 </div>
             </div>
+
         </header>
-        
+
 
         <div id='content_statistics'>
 
             <div id="curve_chart" style="width: 900px; height: 500px"></div>
-            
+
         </div>
 
 

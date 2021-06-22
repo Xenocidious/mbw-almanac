@@ -6,7 +6,7 @@ use Auth;
 use App\Vote;
 use App\Image;
 use App\Comment;
-use Auth;
+
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

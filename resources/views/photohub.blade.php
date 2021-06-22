@@ -69,7 +69,7 @@
                     </div>
                     <div class="upvote_amount">
 
-                        <?php
+
 
                         <?php
                         $upvotes = 0;
