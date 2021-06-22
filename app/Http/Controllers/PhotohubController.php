@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Image;
 use App\Vote;
 use App\Comment;
+use App\User;
 use Auth;
 use Illuminate\Support\Facades\Http;
 
@@ -41,6 +42,10 @@ class PhotohubController extends Controller
 
     public function photoform()
     {
-        return view('uploadphoto');
+        $users = User::get();
+
+        return view('uploadphoto', [
+            'users' => $users
+        ]);
     }
 }

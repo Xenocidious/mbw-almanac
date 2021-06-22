@@ -171,6 +171,8 @@ header .dropdown-content a:hover{
 
 .index_cards i{
     font-size: 250%;
+    margin-left: .3vw;
+    margin-right: .3vw;
 }
 
 .index_cards i{
@@ -320,11 +322,11 @@ header .dropdown-content a:hover{
 
 
 
-
-
 /* styling footer */
 
 footer{
+    position: relative;
+    z-index: 10;
     padding-top: 5vh;
     width: 100vw;
     background-color: rgb(8, 8, 8);
@@ -530,6 +532,101 @@ footer ul p{
     cursor: pointer;
 }
 
+.upload_photo_form{
+    background-color: transparent;
+    width: 40vw;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: rgba(0,0,0,.55);
+    backdrop-filter: blur(0.156vw);
+    color: white;
+}
+
+.form_row>p>a{
+    text-decoration: underline;
+}
+
+.form_row input{
+    border: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    outline: none;
+    border-bottom: rgba(0,0,255,0) solid 1px;
+    transition: .4s ease-in-out;
+    width: 100%;
+    color: white;
+    font-size: 20px;
+}
+
+.form_row input::placeholder{
+    color: rgba(255,255,255,.65)
+}
+
+.form_row input:active, .form_row:focus{
+    border: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    outline: none;
+    border-bottom: rgba(0,0,255,1) solid 0.052vw;
+}
+
+.form_row{
+    border-bottom: 2px solid rgb(229,190,3);
+    margin-top: 1.302vw;
+}
+
+.upload_image_form_wrapper{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 3.906vw;
+}
+
+form img{
+    width: 100%;
+    height: auto;
+}
+
+form{
+    border-radius: 1vw;
+}
+
+.no_border{
+    border: none;
+}
+
+#file{
+    text-align: left !important;
+}
+
+#file:hover{
+    cursor: pointer;
+    text-align: left;
+}
+
+#output_img1{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    z-index: 0;
+    filter: brightness(50%);
+}
+
+#upload_image_form_submit{
+    width: 7.5vw;
+    height: auto;
+    font-size: 1.25vw;
+    font-family: montserrat, sans-serif;
+}
+
+#upload_image_form_submit:hover{
+    cursor: pointer;
+}
+
+
+
+
 
 
 /* image page styling */
@@ -664,3 +761,4 @@ footer ul p{
     width: 60vw;
     margin: 0 auto;
 }
+

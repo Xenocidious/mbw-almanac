@@ -14,6 +14,7 @@
         <title>title</title>
     </head>
     <body>
+        <img id="output_img1"/>
     
         <header id='header' class='header_top header'>
             <div id='header_content'>
@@ -26,9 +27,6 @@
                 <div class="dropdown header_button">
                     <a>account</a>
                     <div class="dropdown-content w3-bar-block w3-card-4 w3-animate-opacity">
-                        <!-- <a class='header_dropdown_button' href="#">Link 1</a>
-                        <a class='header_dropdown_button' href="#">Link 2</a>
-                        <a class='header_dropdown_button' href="#">Link 3</a> -->
 
                         @if (Route::has('login'))
                         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
@@ -54,39 +52,49 @@
         </header>
 
         <div id='spacefiller'></div>
-        <div id='spacefiller'></div>
-        
-        <div class="main_content_uploadphoto">
-            <h1>Upload a photo</h1>
 
+        <div id='upload_image_form_wrapper' class='upload_image_form_wrapper'>
             @if (Route::has('login'))
                 @auth
-                <i class="fas fa-user"></i>
-                <p>{{Auth::user()->name}}<p>
-
-                <form action="{{ route('images.store') }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                    <div class="form-group">
-                        <label>title</label>
-                        <input type="text" class="form-control" name="name" required>
+                <form class='upload_photo_form' method="POST" action="{{ route('images.store') }}" enctype="multipart/form-data">
+                    @csrf
+                    <img id="output_img2"/>
+                    <div class="form_row">
+                        <i class="far fa-user"></i>
+                        <input disabled value='{{Auth::user()->name}}'>
                     </div>
-                    <div class="form-group">
-                        <input type="file" name="file" required>
+                    <div class="form_row">
+                        <i class="fas fa-camera"></i>
+                        <input type="file" name="file" required accept="image/*" onchange="loadFile(event)" style="display: none;" id="selectedFile">
+                        <input id='file' type="button" value="Browse" onclick="document.getElementById('selectedFile').click();" />
                     </div>
-                    <button type="submit">Submit</button>
-                </form>
-
-
-
-                @else
-                    <h2>An account is neccesery to upload a photo. please <a href='/'>login</a>, or if you don't have an account yet: <a href='/'>register</a>, its free!<p>
-                    <a class='header_dropdown_button' href="{{ route('login') }}" class="dropdown-item w3-bar-item w3-button">login</a>
-                    @if (Route::has('register'))
-                        <a class='header_dropdown_button' href="{{ route('register') }}" class="dropdown-item w3-bar-item w3-button">Registrer</a>
-                    @endif
-                @endauth
-            @endif
+                    <div class="form_row">
+                        <i class="fas fa-heading"></i>
+                        <input id='title' type="text" class="form-control" name="name" required  value="A beautiful sky does wonders" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
+                    </div>
+                    <div class="form_row center no_border">
+                        <button type="submit" id='upload_image_form_submit'>Submit</button>
+                    </div>
+                    @else
+                        <p>Please <a>login</a> to upload a post.</p>
+                        <p>Not an account yet? <a>register</a> here<, its free!/p>
+                    @endauth
+                @endif
+            </form>
         </div>
+
+        <script>
+        var loadFile = function(event) {
+            output_img1.src = URL.createObjectURL(event.target.files[0]);
+            output_img1.onload = function() {
+                URL.revokeObjectURL(output.src)
+            }
+            output_img2.src = URL.createObjectURL(event.target.files[0]);
+            outpu1_img2.onload = function() {
+                URL.revokeObjectURL(output.src)
+            }
+        };
+        </script>
 
         <footer>
             <div class='footer_left_items'>
@@ -172,7 +180,6 @@
                 <p>copyright project almanac Aya, Mert en Pieterjan: ©2021 - <?= date("Y"); ?></p>
             </div>
         </footer>
-
-        <script src='../resources/js/animations_index.js'></script>
+        <script src='../resources/js/header_blur.js'></script>
     </body>
 </html>

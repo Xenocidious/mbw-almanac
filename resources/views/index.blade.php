@@ -10,6 +10,7 @@
         <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="{{ asset('js/app.js') }}"></script>
+        <script type='text/javascript' src='../resources/js/conditions.js'>test();</script>
 
         <title>title</title>
     </head>
@@ -71,7 +72,8 @@
                         <h2>Yesterday</h2>
                         <h3>{{$yesterdayData[0]['tempmax']}}°</h3>
                         <h4>{{$yesterdayData[0]['conditions']}}</h4>
-                        <i class="fas fa-sun"></i>
+                        <?php $condition = $yesterdayData[0]['conditions'] ?>
+                        <script>returnConditionIcon('{{$condition}}');</script>
                     </div>
                 </div>
                 @endforeach
@@ -82,7 +84,7 @@
                         <h2>Today</h2>
                         <h3>{{$todayData[0]['tempmax']}}°</h3>
                         <h4>{{$todayData[0]['conditions']}}</h4>
-                        <i class="fas fa-sun"></i>
+                        <script>returnConditionIcon('{{$condition}}');</script>
                     </div>
                 </div>
                 <div id='index_cards_wrapper_card_3' class='index_cards'>
@@ -90,7 +92,7 @@
                         <h2>Tomorrow</h2>
                         <h3>{{$forecastData[1]['tempmax']}}°</h3>
                         <h4>{{$forecastData[1]['conditions']}}</h4>
-                        <i class="fas fa-sun"></i>
+                        <script>returnConditionIcon('{{$condition}}');</script>
                     </div>
                 </div>
             </div>
@@ -224,6 +226,7 @@
 
 
         <script src='../resources/js/animations_index.js'></script>
+        <script src='../resources/js/header_blur.js'></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script src='../resources/js/chart_test.js'></script>
     </body>

@@ -78,5 +78,6 @@
                 </div>            
             </div>
         </header>
+        <script src='../resources/js/header_blur.js'></script>
     </body>
 </html>

@@ -199,5 +199,6 @@
                 <p>copyright project almanac Aya, Mert en Pieterjan: ©2021 - <?= date("Y"); ?></p>
             </div>
         </footer>
+        <script src='../resources/js/header_blur.js'></script>
     </body>
 </html>
