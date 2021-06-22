@@ -2,8 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="../../resources/css/animations.css">
-        <link rel="stylesheet" href="../../resources/css/app.css">
+        <link rel="stylesheet" href="{{asset('css/animation.css')}}">
+        <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -64,16 +64,26 @@
         <div id='spacefiller'></div>
         <div id='spacefiller'></div>
 
-        <form action="{{Route('get.date')}}">
+        <form action="{{Route('get.date')}}" autocomplete="off">
         {{  Form::text('date', '', array('id' => 'datepicker')) }}
 
         <input type="submit" value="Submit">
         </form>
 
-        <?php
-                dd($fetchedDate);
-        ?>
+        @if (isset($fetchedDate))
+        @foreach ($fetchedDate as $item)
+        <div id='index_cards_wrapper_card_1' class='index_cards'>
+            <div>
+                <h2>{{$fetchedDate[0]['datetime']}}</h2>
+                <h3>{{$fetchedDate[0]['tempmax']}}°</h3>
+                <h4>{{$fetchedDate[0]['conditions']}}</h4>
+                <i class="fas fa-sun"></i>
+            </div>
 
+        </div>
+        @endforeach
+        @else
+        @endif
 
 
 
@@ -166,7 +176,7 @@
         dateFormat: "yy-mm-dd",
         onSelect: function(){
             var selected = $(this).val();
-            alert(selected);
+            alert(h);
         }
             });
                         });

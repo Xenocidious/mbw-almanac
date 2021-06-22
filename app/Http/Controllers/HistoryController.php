@@ -26,8 +26,8 @@ class historyController extends Controller
 
         $selectedDate = $request->get('date');
 
-        $resultedDate = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/[selectedDate]?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH')->json();
-
+        //https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/2021-6-21?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH
+        $resultedDate = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/'.$selectedDate.'?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH')['days'];
 
         return view('history', ['fetchedDate'=> $resultedDate]);
      }

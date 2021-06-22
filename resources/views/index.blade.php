@@ -3,7 +3,7 @@
     <head>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="../resources/css/animations.css">
-        <link rel="stylesheet" href="../resources/css/app.css">
+        <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
 
@@ -221,8 +221,8 @@
         </footer>
 
 
-        <script src='../resources/js/animations_index.js'></script>
+        <script src={{'js/animations_index.js'}}></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script src='../resources/js/chart_test.js'></script>
+        <script src={{'js/chart_test.js'}}></script>
     </body>
 </html>
