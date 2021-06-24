@@ -1,5 +1,4 @@
 function returnConditionIcon(data){
-    console.log('data: ' + data);
     data = 'Light Freezing Rain';
     switch(data){
         case 'Blowing Or Drifting Snow':

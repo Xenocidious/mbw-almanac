@@ -67,13 +67,8 @@ class ImageController extends Controller
             ]);
             $image->save(); // Finally, save the record.
         }
-            $yesterday = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/yesterday?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH&include=obs%2Ccurrent%2Chistfcst')['days'];
 
-        return view('photohub', [
-            'images' => $images,
-            'votes' => $votes,
-            'comments' => $comments
-        ]);
+        return redirect('photohub');
     }
 
     public function upvote($image_id){
@@ -82,7 +77,7 @@ class ImageController extends Controller
         $vote->image_id = $image_id;
         $vote->user_id = Auth::user()->id;
         $vote->save();
-
+        
         return redirect()->back();
     }
 

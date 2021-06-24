@@ -2,8 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="../resources/css/animations.css">
-        <link rel="stylesheet" href="../resources/css/app.css">
+        <link rel="stylesheet" href="{{asset('css/animations.css')}}">
+        <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
 
@@ -11,7 +11,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="{{ asset('js/app.js') }}"></script>
 
-        <title>title</title>
+        <title>awesome photo - almanac</title>
     </head>
     <body>
         <img id="output_img1"/>
@@ -21,12 +21,15 @@
                 <a class='header_button' href='index'>home</a>
                 <a class='header_button' href='/'>about us</a>
                 <a class='header_button' href='statistics'>weather</a>
-                <a class='header_button' href='/'>history</a>
-                <a class='header_button' href='photohub'>photo's</a>
-                
+                <a class='header_button' href='{{Route("history")}}'>history</a>
+                <a class='header_button' href='{{Route("photohub")}}'>photo's</a>
+
                 <div class="dropdown header_button">
                     <a>account</a>
                     <div class="dropdown-content w3-bar-block w3-card-4 w3-animate-opacity">
+                        <!-- <a class='header_dropdown_button' href="#">Link 1</a>
+                        <a class='header_dropdown_button' href="#">Link 2</a>
+                        <a class='header_dropdown_button' href="#">Link 3</a> -->
 
                         @if (Route::has('login'))
                         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
@@ -46,17 +49,21 @@
                         </div>
                     @endif
                     </div>
-                </div>
-                <a href='uploadphoto'><i id='add_image_photohub' class="fas fa-image"></i></a>
             </div>
+            @auth
+                @if (Auth::user()->role == 'admin')
+                    <a class='header_button' href='{{Route("office")}}'>office</a>
+                @endif
+            @endauth
         </header>
+
 
         <div id='spacefiller'></div>
 
         <div id='upload_image_form_wrapper' class='upload_image_form_wrapper'>
             @if (Route::has('login'))
                 @auth
-                <form class='upload_photo_form' method="POST" action="{{ route('images.store') }}" enctype="multipart/form-data">
+                <form class='upload_photo_form' method="POST" action="{{url('upload.image') }}" enctype="multipart/form-data">
                     @csrf
                     <img id="output_img2"/>
                     <div class="form_row">
@@ -86,13 +93,7 @@
         <script>
         var loadFile = function(event) {
             output_img1.src = URL.createObjectURL(event.target.files[0]);
-            output_img1.onload = function() {
-                URL.revokeObjectURL(output.src)
-            }
             output_img2.src = URL.createObjectURL(event.target.files[0]);
-            outpu1_img2.onload = function() {
-                URL.revokeObjectURL(output.src)
-            }
         };
         </script>
 
@@ -180,6 +181,7 @@
                 <p>copyright project almanac Aya, Mert en Pieterjan: ©2021 - <?= date("Y"); ?></p>
             </div>
         </footer>
-        <script src='../resources/js/header_blur.js'></script>
+        
+        <script src="{{ URL::asset('js/header_blur.js') }}"></script>
     </body>
 </html>

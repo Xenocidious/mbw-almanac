@@ -2,16 +2,15 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="../resources/css/animations.css">
-        <link rel="stylesheet" href="../resources/css/app.css">
+        <link rel="stylesheet" href="{{asset('css/animations.css')}}">
+        <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
 
-        <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="{{ asset('js/app.js') }}"></script>
 
-        <title>title</title>
+        <title>weather - almanac</title>
     </head>
     <body>
 
@@ -33,7 +32,7 @@
                         @if (Route::has('login'))
                         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                             @auth
-                                <a class='header_dropdown_button' href="{{route('home')}}" class="dropdown-item w3-bar-item">{{Auth::user()->name}}</a>
+                                <a class='header_dropdown_button' href="{{route('accounts.index')}}" class="dropdown-item w3-bar-item">{{Auth::user()->name}}</a>
                                 <a class='header_dropdown_button' href="{{ route('logout') }}" class="dropdown-item w3-bar-item" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">Uitloggen</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -48,9 +47,12 @@
                         </div>
                     @endif
                     </div>
-                </div>
             </div>
-
+            @auth
+                @if (Auth::user()->role == 'admin')
+                    <a class='header_button' href='{{Route("office")}}'>office</a>
+                @endif
+            @endauth
         </header>
 
 
@@ -146,8 +148,8 @@
             </div>
         </footer>
 
-        <script src='../resources/js/header_blur.js'></script>
+        <script src="{{ URL::asset('js/header_blur.js') }}"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script src='../resources/js/chart_test.js'></script>
+        <script src="{{'js/chart_test.js'}}"></script>  
     </body>
 </html>

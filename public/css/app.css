@@ -105,7 +105,6 @@ header .dropdown-content a:hover{
     border-bottom: 2px solid white;
     height: 100vh;
     width: 100vw;
-    background-image: url('../images/cities/NY.jpg');
     -webkit-transition: background 3s;
     -moz-transition: background 3s;
     -o-transition: background 3s;
@@ -231,7 +230,6 @@ header .dropdown-content a:hover{
 }
 
 #index_about_us_wrapper .images{
-    background-image: url('../images/error/no_image_found.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position-x: center;
@@ -240,6 +238,7 @@ header .dropdown-content a:hover{
 #index_about_us_wrapper #img_1{
     background-image: url('../images/stock/programmers.jpg');
 }
+
 #index_about_us_wrapper #img_2{
     background-image: url('../images/stock/analyst.jpg');
 }
@@ -326,6 +325,8 @@ header .dropdown-content a:hover{
 
 footer{
     padding-top: 5vh;
+    position: relative;
+    z-index: 10;
     width: 100vw;
     background-color: rgb(8, 8, 8);
     font-family: montserrat;
@@ -529,7 +530,97 @@ footer ul p{
     color: greenyellow;
     cursor: pointer;
 }
+.upload_photo_form{
+    background-color: transparent;
+    width: 40vw;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: rgba(0,0,0,.55);
+    backdrop-filter: blur(0.156vw);
+    color: white;
+}
 
+.form_row>p>a{
+    text-decoration: underline;
+}
+
+.form_row input{
+    border: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    outline: none;
+    border-bottom: rgba(0,0,255,0) solid 1px;
+    transition: .4s ease-in-out;
+    width: 100%;
+    color: white;
+    font-size: 20px;
+}
+
+.form_row input::placeholder{
+    color: rgba(255,255,255,.65)
+}
+
+.form_row input:active, .form_row:focus{
+    border: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    outline: none;
+    border-bottom: rgba(0,0,255,1) solid 0.052vw;
+}
+
+.form_row{
+    border-bottom: 2px solid rgb(229,190,3);
+    margin-top: 1.302vw;
+}
+
+.upload_image_form_wrapper{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 3.906vw;
+}
+
+form img{
+    width: 100%;
+    height: auto;
+}
+
+form{
+    border-radius: 1vw;
+}
+
+.no_border{
+    border: none;
+}
+
+#file{
+    text-align: left !important;
+}
+
+#file:hover{
+    cursor: pointer;
+    text-align: left;
+}
+
+#output_img1{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    z-index: 0;
+    filter: brightness(50%);
+}
+
+#upload_image_form_submit{
+    width: 7.5vw;
+    height: auto;
+    font-size: 1.25vw;
+    font-family: montserrat, sans-serif;
+}
+
+#upload_image_form_submit:hover{
+    cursor: pointer;
+}
 
 
 /* image page styling */

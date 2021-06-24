@@ -22,3 +22,5 @@ $(window).on("scroll", function() {
        $(".header").removeClass("active");
     }
 });
+
+index_content_1.style.backgroundImage = 'url("../resources/images/cities/NY.jpg")';

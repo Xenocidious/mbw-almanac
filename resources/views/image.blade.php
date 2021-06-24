@@ -2,8 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="../../resources/css/animations.css">
-        <link rel="stylesheet" href="../../resources/css/app.css">
+        <link rel="stylesheet" href="{{asset('css/animations.css')}}">
+        <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
 
@@ -15,38 +15,47 @@
     </head>
     <body>
 
-        <header id='header' class='header_top header'>
+    <header id='header' class='header_top header'>
             <div id='header_content'>
-                <a class='header_button' href='{{route("home")}}'>home</a>
+                <a class='header_button' href='index'>home</a>
                 <a class='header_button' href='/'>about us</a>
                 <a class='header_button' href='statistics'>weather</a>
                 <a class='header_button' href='{{Route("history")}}'>history</a>
-                <a class='header_button' href='photohub'>photo's</a>
+                <a class='header_button' href='{{Route("photohub")}}'>photo's</a>
 
                 <div class="dropdown header_button">
                     <a>account</a>
                     <div class="dropdown-content w3-bar-block w3-card-4 w3-animate-opacity">
+                        <!-- <a class='header_dropdown_button' href="#">Link 1</a>
+                        <a class='header_dropdown_button' href="#">Link 2</a>
+                        <a class='header_dropdown_button' href="#">Link 3</a> -->
+
                         @if (Route::has('login'))
-                            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                                @auth
-                                    <a class='header_dropdown_button' href="{{route('accounts.index')}}" class="dropdown-item w3-bar-item">{{Auth::user()->name}}</a>
-                                    <a class='header_dropdown_button' href="{{ route('logout') }}" class="dropdown-item w3-bar-item" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">Uitloggen</a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                @else
-                                    <a class='header_dropdown_button' href="{{ route('login') }}" class="dropdown-item w3-bar-item w3-button">login</a>
-                                    @if (Route::has('register'))
-                                        <a class='header_dropdown_button' href="{{ route('register') }}" class="dropdown-item w3-bar-item w3-button">Registrer</a>
-                                    @endif
-                                @endauth
-                            </div>
-                        @endif
+                        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                            @auth
+                                <a class='header_dropdown_button' href="{{route('accounts.index')}}" class="dropdown-item w3-bar-item">{{Auth::user()->name}}</a>
+                                <a class='header_dropdown_button' href="{{ route('logout') }}" class="dropdown-item w3-bar-item" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">Uitloggen</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            @else
+                                <a class='header_dropdown_button' href="{{ route('login') }}" class="dropdown-item w3-bar-item w3-button">login</a>
+                                @if (Route::has('register'))
+                                    <a class='header_dropdown_button' href="{{ route('register') }}" class="dropdown-item w3-bar-item w3-button">Registrer</a>
+                                @endif
+                            @endauth
+                        </div>
+                    @endif
                     </div>
-                </div>
             </div>
+            @auth
+                @if (Auth::user()->role == 'admin')
+                    <a class='header_button' href='{{Route("office")}}'>office</a>
+                @endif
+            @endauth
         </header>
+
 
         <div id='spacefiller'></div>
         <div id='spacefiller'></div>
@@ -136,13 +145,17 @@
                         <p>{{$comment->comment}}</p>
                         <?php
                             if($comment->user_id == Auth::user()->id){ ?>
+                                @auth @if(Auth::user()->role == 'admin' || Auth::user()->role == 'moderator')
+
+                                @else
                                 <a href="{{ route('comment.delete', ['id' => $comment->id]) }}" onclick="return confirm('Are you sure that you want to delete your comment?')"><i class="fas fa-minus-circle comment_delete"></i></a>
+                                @endif @endif
                             <?php }
                         ?>
+                        @auth @if(Auth::user()->role == 'admin' || Auth::user()->role == 'moderator')
+                            <a href="{{ route('comment.delete', ['id' => $comment->id]) }}" onclick="return confirm('Are you sure that you want to delete your comment?')"><i class="fas fa-minus-circle comment_delete"></i></a>
+                        @endif @endif
                     </div>
-                    @auth @if(Auth::user()->role == 'admin' || Auth::user()->role == 'moderator')
-                        <a href="{{ route('comment.delete', ['id' => $comment->id]) }}" onclick="return confirm('Are you sure that you want to delete your comment?')"><i class="fas fa-minus-circle comment_delete"></i></a>
-                    @endif @endif
                 </div><?php
                         }
                     }

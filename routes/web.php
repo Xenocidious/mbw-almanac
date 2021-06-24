@@ -47,6 +47,10 @@ Route::post('user/promote', 'OfficeController@promote')->name('user.promote');
 
 Route::get('/office', 'OfficeController@index')->name('office');
 
+
+Route::post('upload.image', 'imageController@store');
+
+
 Route::get('/upvote/{id}', [
     'uses' => 'Imagecontroller@upvote',
     'as' => 'image.upvote'
