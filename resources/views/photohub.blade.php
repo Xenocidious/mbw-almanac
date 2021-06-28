@@ -49,6 +49,7 @@
                     @endif
                     </div>
             </div>
+                <a href='uploadphoto'><i id='add_image_photohub' class="fas fa-image"></i></a>
             @auth
                 @if (Auth::user()->role == 'admin')
                     <a class='header_button' href='{{Route("office")}}'>office</a>
@@ -210,5 +211,10 @@
         </footer>
         
         <script src="{{ URL::asset('js/header_blur.js') }}"></script>
+    
+    @if (Auth::user()->darkmode == 0)
+        <script src="{{ URL::asset('js/transformLightmode.js') }}"></script>
+    @else
+    @endif
     </body>
 </html>

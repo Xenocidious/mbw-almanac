@@ -16,6 +16,7 @@
     <body>
         <img id="output_img1"/>
     
+ 
         <header id='header' class='header_top header'>
             <div id='header_content'>
                 <a class='header_button' href='index'>home</a>
@@ -77,7 +78,7 @@
                     </div>
                     <div class="form_row">
                         <i class="fas fa-heading"></i>
-                        <input id='title' type="text" class="form-control" name="name" required  value="A beautiful sky does wonders" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
+                        <input id='title' type="text" name="name" required  value="A beautiful sky does wonders" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
                     </div>
                     <div class="form_row center no_border">
                         <button type="submit" id='upload_image_form_submit'>Submit</button>
@@ -183,5 +184,10 @@
         </footer>
         
         <script src="{{ URL::asset('js/header_blur.js') }}"></script>
+    
+        @if (Auth::user()->darkmode == 0)
+            <script src="{{ URL::asset('js/transformLightmode.js') }}"></script>
+        @else
+        @endif
     </body>
 </html>

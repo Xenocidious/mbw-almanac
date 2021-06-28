@@ -13,7 +13,6 @@
         <title>weather - almanac</title>
     </head>
     <body>
-
         <header id='header' class='header_top header'>
             <div id='header_content'>
                 <a class='header_button' href='index'>home</a>
@@ -66,23 +65,23 @@
         <footer>
             <div class='footer_left_items'>
                 <a>Frequently Asked Questions</a><br>
-                <hr style="width:50%;text-align:left;margin-left:0">
+                <hr  class='footer_hr' style="width:50%;text-align:left;margin-left:0">
             </div>
             <div class='footer_left_items'>
                 <a>Contact</a><br>
-                <hr style="width:50%;text-align:left;margin-left:0">
+                <hr  class='footer_hr' style="width:50%;text-align:left;margin-left:0">
             </div>
             <div class='footer_left_items'>
                 <a>Lorem Ipsum</a><br>
-                <hr style="width:50%;text-align:left;margin-left:0">
+                <hr  class='footer_hr' style="width:50%;text-align:left;margin-left:0">
             </div>
             <div class='footer_left_items'>
                 <a>Lorem Ipsum</a><br>
-                <hr style="width:50%;text-align:left;margin-left:0">
+                <hr  class='footer_hr' style="width:50%;text-align:left;margin-left:0">
             </div>
             <div class='footer_left_items'>
                 <a>Lorem Ipsum</a><br>
-                <hr style="width:50%;text-align:left;margin-left:0">
+                <hr  class='footer_hr' style="width:50%;text-align:left;margin-left:0">
             </div>
 
             <div class='footer_right_items'>
@@ -96,7 +95,7 @@
                         </li>
                         <p>follow us on facebook</p>
                     </ul>
-                    <hr style="width:50%;text-align:left;margin-left:2.5vw">
+                    <hr  class='footer_hr' style="width:50%;text-align:left;margin-left:2.5vw">
                 </span>
             </div>
             <div class='footer_right_items'>
@@ -110,7 +109,7 @@
                         </li>
                         <p>follow us on <a>twitter</a></p>
                     </ul>
-                    <hr style="width:50%;text-align:left;margin-left:2.5vw">
+                    <hr  class='footer_hr' style="width:50%;text-align:left;margin-left:2.5vw">
                 </span>
             </div>
             <div class='footer_right_items'>
@@ -125,7 +124,7 @@
                         </li>
                         <p id='footer_p'>follow us on instagram</p>
                     </ul>
-                    <hr style="width:50%;text-align:left;margin-left:2.5vw">
+                    <hr class='footer_hr' style="width:50%;text-align:left;margin-left:2.5vw">
                 </span>
             </div>
             <div class='footer_right_items'>
@@ -139,7 +138,7 @@
                         </li>
                         <p>follow us on linkedin</p>
                     </ul>
-                    <hr style="width:50%;text-align:left;margin-left:2.5vw">
+                    <hr  class='footer_hr' style="width:50%;text-align:left;margin-left:2.5vw">
                 </span>
             </div>
 
@@ -150,6 +149,13 @@
 
         <script src="{{ URL::asset('js/header_blur.js') }}"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+        @if (Auth::user()->darkmode == 0)
+            <script type="text/javascript">darkmode = false;</script>
+            <script src="{{ URL::asset('js/transformLightmode.js') }}"></script>
+        @else
+            <script type="text/javascript">darkmode = true;</script>
+        @endif
         <script src="{{'js/chart_test.js'}}"></script>  
     </body>
 </html>

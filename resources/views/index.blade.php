@@ -101,7 +101,7 @@
         <div id='index_content_2'>
             <h1>Check our historical weather data</h1>
             <div>
-                <p>Hey there! Ever wondered what the weather looked like 6 moths ago in your city? Or maybe a year, a decade?! This is your chance! Our very precise weather API has the historical data of 30+ years. What are you waiting for?</p>
+                <p>Hey there! Ever wondered what the weather looked like 6 months ago in your city? Or maybe a year, a decade?! This is your chance! Our very precise weather API has the historical data of 30+ years. What are you waiting for?</p>
             </div>
             <a id='historical_data_button' href="#">
                 <span>enter now</span>
@@ -225,6 +225,13 @@
         <script src="{{ URL::asset('js/animations_index.js') }}"></script>
         <script src="{{ URL::asset('js/header_blur.js') }}"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        
+        @if (Auth::user()->darkmode == 0)
+            <script type="text/javascript">darkmode = false;</script>
+            <script src="{{ URL::asset('js/transformLightmode.js') }}"></script>
+        @else
+            <script type="text/javascript">darkmode = true;</script>
+        @endif
         <script src="{{'js/chart_test.js'}}"></script>  
     </body>
 </html>

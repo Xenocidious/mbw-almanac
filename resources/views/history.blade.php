@@ -100,7 +100,7 @@
         <div id='spacefiller'></div>
 
 
-        <footer>
+        <footer id='footer_history'>
             <div class='footer_left_items'>
                 <a>Frequently Asked Questions</a><br>
                 <hr style="width:50%;text-align:left;margin-left:0">
@@ -217,5 +217,10 @@
 
         <script src="{{ URL::asset('js/header_blur.js') }}"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        
+        @if (Auth::user()->darkmode == 0)
+            <script src="{{ URL::asset('js/transformLightmode.js') }}"></script>
+        @else
+        @endif
     </body>
 </html>

@@ -50,6 +50,13 @@ function drawChart() {
 
     };
 
+    if(darkmode == false){
+        options.vAxis.textStyle.color = 'black';
+        options.hAxis.textStyle.color = 'black';
+        options.legend.textStyle.color = 'black';
+        options.text = 'black';
+    }
+
 
     var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 

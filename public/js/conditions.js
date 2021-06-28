@@ -1,5 +1,4 @@
 function returnConditionIcon(data){
-    data = 'Light Freezing Rain';
     switch(data){
         case 'Blowing Or Drifting Snow':
             document.write('<i class="far fa-snowflake"></i>');

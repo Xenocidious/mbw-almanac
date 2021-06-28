@@ -28,6 +28,11 @@
                             {{ __('Remove image') }}
                         </button>
                     </div>
+                    
+                    <div class="form-group">
+                        <label for="darkmode" class="form-label">Darkmode</label>
+                        <input type="checkbox" class="form-control-switch">
+                    </div>
 
                     <h4>{{ __('Edit password') }}</h4>
 
