@@ -17,9 +17,9 @@
 
         <header id='header' class='header_top header'>
             <div id='header_content'>
-                <a class='header_button' href='index'>home</a>
+                <a class='header_button' href='{{Route("home")}}'>home</a>
                 <a class='header_button' href='/'>about us</a>
-                <a class='header_button' href='statistics'>weather</a>
+                <a class='header_button' href='{{Route("statistics")}}'>weather</a>
                 <a class='header_button' href='{{Route("history")}}'>history</a>
                 <a class='header_button' href='{{Route("photohub")}}'>photo's</a>
 
@@ -226,11 +226,16 @@
         <script src="{{ URL::asset('js/header_blur.js') }}"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         
-        @if (Auth::user()->darkmode == 0)
-            <script type="text/javascript">darkmode = false;</script>
-            <script src="{{ URL::asset('js/transformLightmode.js') }}"></script>
-        @else
-            <script type="text/javascript">darkmode = true;</script>
+
+        @if (Route::has('login'))
+            @auth
+                @if (Auth::user()->darkmode == 0)
+                    <script type="text/javascript">darkmode = false;</script>
+                    <script src="{{ URL::asset('js/transformLightmode.js') }}"></script>
+                @else
+                    <script type="text/javascript">darkmode = true;</script>
+                @endif
+            @endauth
         @endif
         <script src="{{'js/chart_test.js'}}"></script>  
     </body>

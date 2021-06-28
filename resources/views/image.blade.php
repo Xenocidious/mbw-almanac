@@ -17,9 +17,9 @@
 
     <header id='header' class='header_top header'>
             <div id='header_content'>
-                <a class='header_button' href='index'>home</a>
+                <a class='header_button' href='{{Route("home")}}'>home</a>
                 <a class='header_button' href='/'>about us</a>
-                <a class='header_button' href='statistics'>weather</a>
+                <a class='header_button' href='{{Route("statistics")}}'>weather</a>
                 <a class='header_button' href='{{Route("history")}}'>history</a>
                 <a class='header_button' href='{{Route("photohub")}}'>photo's</a>
 
