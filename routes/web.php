@@ -35,8 +35,6 @@ Route::get('/index', 'WelcomeController@index')->name('home');
 
 Route::get('/statistics', 'StatisticsController@index')->name('statistics');
 
-Route::get('/photohub', 'PhotohubController@index')->name('photohub');
-
 Route::get('/uploadphoto', 'PhotohubController@photoform')->name('uploadphoto');
 
 Route::resource('images', 'ImageController');
@@ -101,6 +99,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/account', 'AccountController@index')->name('accounts.index');
     Route::patch('/account/{user}', 'AccountController@update')->name('accounts.update');
     Route::delete('/account/{user}', 'AccountController@destroy')->name('accounts.delete');
+
+    Route::get('/photohub', 'PhotohubController@index')->name('photohub');
 });
 
 Auth::routes();

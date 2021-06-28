@@ -42,4 +42,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(FavoriteImage::class);
     }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
+
+    public function upvotes()
+    {
+        return $this->hasMany(Vote::class);
+    }
 }

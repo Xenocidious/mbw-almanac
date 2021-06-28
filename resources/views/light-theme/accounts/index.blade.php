@@ -98,6 +98,11 @@
                         <button class="btn btn-lg btn-danger" type="submit">{{ __('Delete account') }}</button>
                     </div>
                 </form>
+                <div class="row">
+                    <div class="col">
+                        <a href="{{ route('favorite-images.index') }}">{{ __("Favorite Images") }}</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

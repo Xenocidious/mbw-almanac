@@ -12,77 +12,64 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/animations.css')}}">
 </head>
 <body>
 <div id="app" class="bg-dark">
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <header id="header" class="header_top header">
+        <div id="header_content">
+            <a class="header_button" href="{{ route("home") }}">home</a>
+            <a class="header_button" href="/">about us</a>
+            <a class="header_button" href="{{ route("statistics") }}">weather</a>
+            <a class="header_button" href="{{ route("history") }} ">history</a>
+            <a class="header_button" href="{{ route("photohub") }}">photo's</a>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
+            <div class="dropdown header_button">
+                <a>account</a>
+                <div class="dropdown-content w3-bar-block w3-card-4 w3-animate-opacity">
 
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
-                    @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                                <a href="{{ route('accounts.index') }}"
-                                   class="dropdown-item">{{ __('Profile') }}
-                                </a>
-
-                                <div class="dropdown-divider"></div>
-
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
+                    @if (Route::has('login'))
+                        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                            @auth
+                                <a href="{{route('accounts.index')}}"
+                                   class="header_dropdown_button dropdown-item w3-bar-item">{{Auth::user()->name}}</a>
+                                <a href="{{ route('logout') }}"
+                                   class="header_dropdown_button dropdown-item w3-bar-item" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">Uitloggen</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
-                            </div>
-                        </li>
-                    @endguest
-                </ul>
+                            @else
+                                <a href="{{ route('login') }}"
+                                   class="header_dropdown_button dropdown-item w3-bar-item w3-button">login</a>
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}"
+                                       class="header_dropdown_button dropdown-item w3-bar-item w3-button">Register</a>
+                                @endif
+                            @endauth
+                        </div>
+                    @endif
+                </div>
             </div>
-        </div>
-    </nav>
+            {{-- Dit hoort een rout te zijn  en niet hardcoded "uploadphoto" als text --}}
+            <a href="uploadphoto"><i id="add_image_photohub" class="fas fa-image"></i></a>
+            @auth
+                {{-- dit hoort in een middleware te zitten, of een view composer gebruiker. --}}
+                @if (Auth::user()->role == 'admin')
+                    <a class="header_button" href="{{ route("office") }}">office</a>
+        @endif
+        @endauth
+    </header>
+
     <main class="py-4">
         @if(session()->has('success'))
             <div class="alert alert-success">
@@ -98,6 +85,93 @@
         @yield('content')
     </main>
 </div>
+
+<footer>
+    <div class='footer_left_items'>
+        <a>Frequently Asked Questions</a><br>
+        <hr style="width:50%;text-align:left;margin-left:0">
+    </div>
+    <div class='footer_left_items'>
+        <a>Contact</a><br>
+        <hr style="width:50%;text-align:left;margin-left:0">
+    </div>
+    <div class='footer_left_items'>
+        <a>Lorem Ipsum</a><br>
+        <hr style="width:50%;text-align:left;margin-left:0">
+    </div>
+    <div class='footer_left_items'>
+        <a>Lorem Ipsum</a><br>
+        <hr style="width:50%;text-align:left;margin-left:0">
+    </div>
+    <div class='footer_left_items'>
+        <a>Lorem Ipsum</a><br>
+        <hr style="width:50%;text-align:left;margin-left:0">
+    </div>
+
+    <div class='footer_right_items'>
+        <div id='social_media_wrapper'>
+            <ul>
+                <li id='facebook_link'>
+                    <a href="#">
+                        <span></span><span></span><span></span><span></span>
+                        <span class="fa fa-facebook"></span>
+                    </a>
+                </li>
+                <p>follow us on facebook</p>
+            </ul>
+            <hr style="width:50%;text-align:left;margin-left:2.5vw">
+        </div>
+    </div>
+    <div class='footer_right_items'>
+        <div id='social_media_wrapper'>
+            <ul>
+                <li id='twitter_link'>
+                    <a href="#">
+                        <span></span><span></span><span></span><span></span>
+                        <span class="fa fa-twitter"></span>
+                    </a>
+                </li>
+                <p>follow us on <a>twitter</a></p>
+            </ul>
+            <hr style="width:50%;text-align:left;margin-left:2.5vw">
+        </div>
+    </div>
+    <div class='footer_right_items'>
+        <div id='social_media_wrapper'>
+            <ul>
+                <li id='instagram_link'>
+                    <a href="#">
+                        <span></span><span></span><span></span><span></span>
+                        <span class="fa fa-instagram"></span>
+                        <span class="fa fa-instagram insta_button"></span>
+                    </a>
+                </li>
+                <p id='footer_p'>follow us on instagram</p>
+            </ul>
+            <hr style="width:50%;text-align:left;margin-left:2.5vw">
+        </div>
+    </div>
+    <div class='footer_right_items'>
+        <div id='social_media_wrapper'>
+            <ul>
+                <li id='linkedin_link'>
+                    <a href="#">
+                        <span></span><span></span><span></span><span></span>
+                        <span class="fa fa-linkedin"></span>
+                    </a>
+                </li>
+                <p>follow us on linkedin</p>
+            </ul>
+            <hr style="width:50%;text-align:left;margin-left:2.5vw">
+        </div>
+    </div>
+
+    <div class='footer_copyright'>
+        <p>copyright project almanac Aya, Mert en Pieterjan: ©2021 - <?= date("Y"); ?></p>
+    </div>
+</footer>
+
+<script src="{{ asset('js/header_blur.js') }}"></script>
 
 </body>
 </html>

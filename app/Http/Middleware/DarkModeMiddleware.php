@@ -27,6 +27,10 @@ class DarkModeMiddleware
 
         view()->setFinder($finder);
 
+        view()->composer('*', function ($view) use ($darkMode) {
+            return $view->with('darkMode', $darkMode);
+        });
+
         return $next($request);
     }
 }
