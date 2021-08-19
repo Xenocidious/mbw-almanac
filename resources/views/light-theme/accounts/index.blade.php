@@ -58,12 +58,24 @@
                         <legend class="text-dark">{{ __('Settings') }}</legend>
 
                         <div class="form-group">
-                            <input class="form-check-control" name="settings[dark-mode]" id="dark-mode"
-                                   type="checkbox"
-                                   @if (isset($user->settings['dark-mode']) && $user->settings['dark-mode'] === "on") checked @endif/>
-                            <label class="form-check-label text-dark"
-                                   for="password-confirmation">{{ __('Enable dark mode') }}</label>
+                            <label class="form-label text-dark" for="theme">{{ __('Theme') }}</label>
+                            <select name="settings[theme]" id="theme">
+                                @foreach(App\Theme::all() as $theme)
+                                    <option value="{{ $theme->id }}"
+                                            @if(isset($user->settings['theme']) && $user->settings['theme'] == $theme->id) selected @endif>
+                                        {{ $theme->name }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
+
+                        {{--                        <div class="form-group">--}}
+                        {{--                            <input class="form-check-control" name="settings[dark-mode]" id="dark-mode"--}}
+                        {{--                                   type="checkbox"--}}
+                        {{--                                   @if (isset($user->settings['dark-mode']) && $user->settings['dark-mode'] === "on") checked @endif/>--}}
+                        {{--                            <label class="form-check-label text-dark"--}}
+                        {{--                                   for="password-confirmation">{{ __('Enable dark mode') }}</label>--}}
+                        {{--                        </div>--}}
                     </fieldset>
 
                     <fieldset>
