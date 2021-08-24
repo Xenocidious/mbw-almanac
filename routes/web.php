@@ -92,6 +92,8 @@ Route::resource('favorite-images', '\\App\\Http\\Controllers\\FavoriteImageContr
  * destroy -> DELETE (verwijderen) Route::delete('entities/{entity}', 'EntityController::destroy')->name('entities.destroy');
  */
 
+Route::get('/forecast', 'WeatherController@forecast')->name('weather.forecast');
+
 // Middleware zodat deze routes alleen maar worden gebruikt als je bent ingelogd.
 // https://laravel.com/docs/8.x/routing#route-group-middleware
 Route::middleware(['auth'])->group(function () {
@@ -104,3 +106,5 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Auth::routes();
+
+
