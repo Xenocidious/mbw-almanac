@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container bg-dark">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <form class="form" method="post" action="{{ route('accounts.update', ['user' => $user]) }}"
@@ -10,7 +10,7 @@
                     @method('patch')
 
                     <fieldset>
-                        <legend class="text-light">{{ __('Profile picture') }}</legend>
+                        <legend class="text-white">{{ __('Profile picture') }}</legend>
 
                         <div class="row">
                             <div class="col">
@@ -23,41 +23,41 @@
                                 @endif
                             </div>
                             <div class="col">
-                                <input class="form-control-file text-light" name="photo" id="photo" type="file"/>
+                                <input class="form-control-file text-white" name="photo" id="photo" type="file"/>
                             </div>
                             <div class="col">
 
                                 <button type="button" role="button"
                                         onclick="$('#photo').val(''); $('#profile-picture').hide();"
-                                        class="btn btn-sm btn-danger text-light">
+                                        class="btn btn-sm btn-danger text-white">
                                     {{ __('Remove image') }}
                                 </button>
                             </div>
                         </div>
                     </fieldset>
 
-                    <hr class="text-light bg-light border-color-light"/>
+                    <hr class="text-white bg-dark border-color-dark"/>
 
                     <fieldset>
-                        <legend class="text-light">{{ __('Info') }}</legend>
+                        <legend class="text-white">{{ __('Info') }}</legend>
 
                         <div class="form-group">
-                            <label class="form-label text-light" for="email">{{ __('E-mail address') }}</label>
+                            <label class="text-white" for="email">{{ __('E-mail address') }}</label>
                             <input class="form-control" name="email" id="email" value="{{ $user->email }}"
                                    type="email"/>
                         </div>
                         <div class="form-group">
-                            <label class="form-label text-light" for="name">{{ __('Name') }}</label>
+                            <label class="text-white" for="name">{{ __('Name') }}</label>
                             <input class="form-control" name="name" id="name" value="{{ $user->name }}" type="text"/>
                         </div>
                     </fieldset>
 
                     <fieldset>
-                        <legend class="text-light">{{ __('Settings') }}</legend>
+                        <legend class="text-white">{{ __('Settings') }}</legend>
 
                         <div class="form-group">
-                            <label class="form-label text-dark" for="theme">{{ __('Theme') }}</label>
-                            <select name="settings[theme]" id="theme">
+                            <label class="text-white" for="theme">{{ __('Theme') }}</label>
+                            <select name="settings[theme]" id="theme" class="form-control">
                                 @foreach(App\Theme::all() as $theme)
                                     <option value="{{ $theme->id }}"
                                             @if(isset($user->settings['theme']) && $user->settings['theme'] == $theme->id) selected @endif>
@@ -69,18 +69,18 @@
                     </fieldset>
 
                     <fieldset>
-                        <legend class="text-light pt-5">{{ __('Edit password') }}</legend>
+                        <legend class="text-white pt-5">{{ __('Edit password') }}</legend>
 
                         <div class="form-group">
-                            <label class="form-label text-light" for="password_old">{{ __('Old password') }}</label>
+                            <label class="text-white" for="password_old">{{ __('Old password') }}</label>
                             <input class="form-control" name="password_old" id="password_old" value="" type="password"/>
                         </div>
                         <div class="form-group">
-                            <label class="form-label text-light" for="password">{{ __('Password') }}</label>
+                            <label class="text-white" for="password">{{ __('Password') }}</label>
                             <input class="form-control" name="password" id="password" value="" type="password"/>
                         </div>
                         <div class="form-group">
-                            <label class="form-label text-light"
+                            <label class="text-white"
                                    for="password-confirmation">{{ __('Password confirmation') }}</label>
                             <input class="form-control" name="password_confirmation" id="password-confirmation" value=""
                                    type="password"/>
@@ -109,3 +109,4 @@
         </div>
     </div>
 @endsection
+

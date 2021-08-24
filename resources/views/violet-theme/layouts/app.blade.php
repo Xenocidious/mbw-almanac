@@ -42,8 +42,10 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link" href="index">home</a></li>
                 <li class="nav-item"><a class="nav-link" href="/">about us</a></li>
-                <li class="nav-item"><a class="nav-link" href="statistics">weather</a></li>
-                <li class="nav-item"><a class="nav-link" href="/">history</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('weather.forecast') }}">weather forecast</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/statistics">statistics</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route("photohub") }}">photo's</a></li>
             </ul>
 
@@ -63,7 +65,7 @@
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
+                            {{ Auth::user()->name }} <i class="fas fa-user"></i>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
