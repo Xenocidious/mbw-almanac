@@ -93,6 +93,7 @@ Route::resource('favorite-images', '\\App\\Http\\Controllers\\FavoriteImageContr
  */
 
 Route::get('/forecast', 'WeatherController@forecast')->name('weather.forecast');
+Route::get('/history', 'WeatherController@history')->name('weather.history');
 
 // Middleware zodat deze routes alleen maar worden gebruikt als je bent ingelogd.
 // https://laravel.com/docs/8.x/routing#route-group-middleware

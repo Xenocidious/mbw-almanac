@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Theme;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
@@ -14,22 +15,14 @@ class AccountController extends Controller
     {
         return view('accounts.index', [
             'user' => auth()->user(),
+            'themes' => Theme::all(),
         ]);
     }
 
     public function update(User $user, Request $request)
     {
         if ($request->hasFile('photo')) {
-            $photo = $request->file('photo');
-
-            if ($user->photo !== $photo->getFilename()) {
-                if ($user->photo !== null) {
-                    Storage::delete('public/profile-pictures/' . $user->photo);
-                }
-
-                $path = explode('/', $photo->store('public/profile-pictures'));
-                $user->photo = end($path);
-            }
+            $user->photo = base64_encode($request->file('photo')->getContent());
         }
 
         $user->email = $request->post('email');

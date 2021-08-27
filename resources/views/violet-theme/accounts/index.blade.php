@@ -15,7 +15,7 @@
                         <div class="row">
                             <div class="col">
                                 @if ($user->photo)
-                                    <img src="{{ asset('storage/profile-pictures/'.$user->photo) }}"
+                                    <img src="{{ $user->photo }}"
                                          width="120"
                                          height="120"
                                          class="rounded-circle"
@@ -58,7 +58,7 @@
                         <div class="form-group">
                             <label class="form-label text-dark" for="theme">{{ __('Theme') }}</label>
                             <select name="settings[theme]" id="theme">
-                                @foreach(App\Theme::all() as $theme)
+                                @foreach($themes as $theme)
                                     <option value="{{ $theme->id }}"
                                             @if(isset($user->settings['theme']) && $user->settings['theme'] == $theme->id) selected @endif>
                                         {{ $theme->name }}
@@ -92,10 +92,10 @@
                     </div>
                 </form>
 
-                <form method="post" action="{{ route('accounts.delete', ['user' => $user]) }}" class="form">
+                <form method="post" action="{{ route('accounts.delete', ['user' => $user]) }}" class="form"
+                      onsubmit="return confirm('{{ __('Do you really want to submit the form?') }}');">
                     @csrf
                     @method('delete')
-                    {{-- @todo confirmatie toevoegen als je hier op klikt dat je moet klikken op " weet je zeker dat je account wilt verwijderen? " --}}
                     <div class="form-group">
                         <button class="btn btn-lg btn-danger" type="submit">{{ __('Delete account') }}</button>
                     </div>

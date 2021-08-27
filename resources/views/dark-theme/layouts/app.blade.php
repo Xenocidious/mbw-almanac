@@ -11,7 +11,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -23,7 +22,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{--    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">--}}
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
 </head>
@@ -42,11 +40,24 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link text-white" href="index">home</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="/">about us</a></li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('weather.forecast') }}">weather forecast</a>
-                </li>
                 <li class="nav-item"><a class="nav-link text-white" href="/statistics">statistics</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="{{ route("photohub") }}">photo's</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="weather-dropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ __('Weather') }}
+                    </a>
+                    <div class="dropdown-menu bg-dark" aria-labelledby="weather-dropdown">
+                        <a class="dropdown-item text-white bg-dark"
+                           href="{{ route('weather.forecast') }}">
+                            {{ __('Forecast') }}
+                        </a>
+                        <a class="dropdown-item text-white bg-dark"
+                           href="{{ route('weather.history') }}">
+                            {{ __('History') }}
+                        </a>
+                    </div>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -130,61 +141,61 @@
         </div>
 
         <div class='footer_right_items'>
-                <span id='social_media_wrapper'>
-                    <ul>
-                        <li id='facebook_link'>
-                            <a href="#">
-                                <span></span><span></span><span></span><span></span>
-                                <span class="fa fa-facebook"></span>
-                            </a>
-                        </li>
-                        <p>follow us on facebook</p>
-                    </ul>
-                    <hr style="width:50%;text-align:left;margin-left:2.5vw">
-                </span>
+            <div id='social_media_wrapper'>
+                <ul>
+                    <li id='facebook_link'>
+                        <a href="#">
+                            <span></span><span></span><span></span><span></span>
+                            <span class="fa fa-facebook"></span>
+                        </a>
+                    </li>
+                    <p>follow us on facebook</p>
+                </ul>
+                <hr style="width:50%;text-align:left;margin-left:2.5vw">
+            </div>
         </div>
         <div class='footer_right_items'>
-                <span id='social_media_wrapper'>
-                    <ul>
-                        <li id='twitter_link'>
-                            <a href="#">
-                                <span></span><span></span><span></span><span></span>
-                                <span class="fa fa-twitter"></span>
-                            </a>
-                        </li>
-                        <p>follow us on <a>twitter</a></p>
-                    </ul>
-                    <hr style="width:50%;text-align:left;margin-left:2.5vw">
-                </span>
+            <div id='social_media_wrapper'>
+                <ul>
+                    <li id='twitter_link'>
+                        <a href="#">
+                            <span></span><span></span><span></span><span></span>
+                            <span class="fa fa-twitter"></span>
+                        </a>
+                    </li>
+                    <p>follow us on <a>twitter</a></p>
+                </ul>
+                <hr style="width:50%;text-align:left;margin-left:2.5vw">
+            </div>
         </div>
         <div class='footer_right_items'>
-                <span id='social_media_wrapper'>
-                    <ul>
-                        <li id='instagram_link'>
-                            <a href="#">
-                                <span></span><span></span><span></span><span></span>
-                                <span class="fa fa-instagram"></span>
-                                <span class="fa fa-instagram insta_button"></span>
-                            </a>
-                        </li>
-                        <p id='footer_p'>follow us on instagram</p>
-                    </ul>
-                    <hr style="width:50%;text-align:left;margin-left:2.5vw">
-                </span>
+            <div id='social_media_wrapper'>
+                <ul>
+                    <li id='instagram_link'>
+                        <a href="#">
+                            <span></span><span></span><span></span><span></span>
+                            <span class="fa fa-instagram"></span>
+                            <span class="fa fa-instagram insta_button"></span>
+                        </a>
+                    </li>
+                    <p id='footer_p'>follow us on instagram</p>
+                </ul>
+                <hr style="width:50%;text-align:left;margin-left:2.5vw">
+            </div>
         </div>
         <div class='footer_right_items'>
-                <span id='social_media_wrapper'>
-                    <ul>
-                        <li id='linkedin_link'>
-                            <a href="#">
-                                <span></span><span></span><span></span><span></span>
-                                <span class="fa fa-linkedin"></span>
-                            </a>
-                        </li>
-                        <p>follow us on linkedin</p>
-                    </ul>
-                    <hr style="width:50%;text-align:left;margin-left:2.5vw">
-                </span>
+            <div id='social_media_wrapper'>
+                <ul>
+                    <li id='linkedin_link'>
+                        <a href="#">
+                            <span></span><span></span><span></span><span></span>
+                            <span class="fa fa-linkedin"></span>
+                        </a>
+                    </li>
+                    <p>follow us on linkedin</p>
+                </ul>
+                <hr style="width:50%;text-align:left;margin-left:2.5vw">
+            </div>
         </div>
 
         <div class='footer_copyright'>

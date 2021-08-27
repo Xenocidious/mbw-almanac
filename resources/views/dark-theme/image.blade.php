@@ -34,7 +34,7 @@
                         <?
                         if($disable_upvote == false){
                         ?>
-                        <a href='{{Route("image.upvote", ["id" => $image[0]->id])}}'><i
+                        <a href='{{ route("image.upvote", ["id" => $image[0]->id])}}'><i
                                 class="fas fa-arrow-circle-up"></i></a>
                         <?php }else{ ?>
                         <a href='{{Route("image.remove_upvote", ["id" => $image[0]->id])}}'><i

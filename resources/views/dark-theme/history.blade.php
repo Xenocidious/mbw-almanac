@@ -2,13 +2,9 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container py-3">
 
-        <div id='spacefiller'></div>
-        <div id='spacefiller'></div>
-        <div id='spacefiller'></div>
-
-        <form action="{{Route('get.date')}}" autocomplete="off">
+        <form action="{{ Route('get.date') }}" autocomplete="off">
             {{  Form::text('date', '', array('id' => 'datepicker')) }}
 
             <input type="submit" value="Submit">
@@ -37,13 +33,6 @@
                     </div>
                 </div>
             @endforeach
-        @else
         @endif
-
-        <div id='spacefiller'></div>
-        <div id='spacefiller'></div>
-        <div id='spacefiller'></div>
-
-
     </div>
 @endsection

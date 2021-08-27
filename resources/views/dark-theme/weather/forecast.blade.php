@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h2>{{ __('Forecast') }}</h2>
+                <h2>{{ $title }}</h2>
             </div>
         </div>
 
@@ -15,7 +15,7 @@
                     <div class="form-group">
                         <label for="days">{{ __('Show days') }}</label>
                         <input class="form-control" name="days" value="{{ $days }}" type="number" min="1"
-                               max="{{ count($forecast['days']) }}"/>
+                               max="{{ count($forecast['values']) }}"/>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Show amount of days</button>
@@ -31,35 +31,35 @@
         <div class="row">
             @endif
             <div class="col-md-3 my-3">
-                {{-- laat forecast zien van $forecast['days'][$i] --}}
+                {{-- laat forecast zien van $forecast['values'][$i] --}}
                 <div class="card bg-dark">
                     <div class="card-body text-white">
                         <h5 class="card-title text-white">
                             <strong class="my-2">
                                 @switch(true)
-                                    @case(stripos($forecast['days'][$i]['description'], 'sun') !== false)
+                                    @case(stripos($forecast['values'][$i]['description'], 'sun') !== false)
                                     <i class="fas fa-sun fa-5x"></i>
                                     @break
-                                    @case(stripos($forecast['days'][$i]['description'], 'rain') !== false)
+                                    @case(stripos($forecast['values'][$i]['description'], 'rain') !== false)
                                     <i class="fas fa-cloud-rain fa-5x"></i>
                                     @break
-                                    @case(stripos($forecast['days'][$i]['description'], 'fog') !== false)
+                                    @case(stripos($forecast['values'][$i]['description'], 'fog') !== false)
                                     <i class="fas fa-smog fa-5x"></i>
                                     @break
-                                    @case(stripos($forecast['days'][$i]['description'], 'cloud') !== false)
+                                    @case(stripos($forecast['values'][$i]['description'], 'cloud') !== false)
                                     <i class="fas fa-cloud fa-5x"></i>
                                     @break
                                 @endswitch
                             </strong>
                             <br/><br/>
                             <strong>
-                                {{ \Carbon\Carbon::createFromFormat('Y-m-d', $forecast['days'][$i]['datetime'])->format('d-m-Y') }}
+                                {{ \Carbon\Carbon::createFromFormat('Y-m-d', $forecast['values'][$i]['datetime'])->format('d-m-Y') }}
                             </strong>
                             <br/><br/>
-                            {{ $forecast['days'][$i]['description'] }}
+                            {{ $forecast['values'][$i]['description'] }}
                         </h5>
-                        <p class="card-text text-white">{{ $forecast['days'][$i]['tempmin'] }}&#176;C
-                            - {{ $forecast['days'][$i]['tempmax'] }}&#176;C</p>
+                        <p class="card-text text-white">{{ $forecast['values'][$i]['tempmin'] }}&#176;C
+                            - {{ $forecast['values'][$i]['tempmax'] }}&#176;C</p>
                         <button type="button" class="btn btn-primary" data-toggle="modal"
                                 data-target="#details-modal-{{$i}}">
                             Show details
@@ -82,7 +82,7 @@
                         </div>
                         <div class="modal-body text-white">
                             <dl class="row">
-                                @foreach ($forecast['days'][$i] as $key => $value)
+                                @foreach ($forecast['values'][$i] as $key => $value)
                                     @if (!is_array($value))
                                         <dt class="col-sm-3">{{ $key }}</dt>
                                         <dd class="col-sm-9">{{ $value }}</dd>
