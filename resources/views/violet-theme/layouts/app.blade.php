@@ -40,13 +40,26 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="index">home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/">about us</a></li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('weather.forecast') }}">weather forecast</a>
+                <li class="nav-item"><a class="nav-link text-white" href="index">home</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="/">about us</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="/statistics">statistics</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="{{ route("photohub") }}">photo's</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="weather-dropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ __('Weather') }}
+                    </a>
+                    <div class="dropdown-menu bg-dark" aria-labelledby="weather-dropdown">
+                        <a class="dropdown-item text-white bg-dark"
+                           href="{{ route('weather.forecast') }}">
+                            {{ __('Forecast') }}
+                        </a>
+                        <a class="dropdown-item text-white bg-dark"
+                           href="{{ route('weather.history') }}">
+                            {{ __('History') }}
+                        </a>
+                    </div>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="/statistics">statistics</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route("photohub") }}">photo's</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
