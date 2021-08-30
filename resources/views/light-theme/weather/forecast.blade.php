@@ -98,7 +98,7 @@
                                 <dl class="row">
                                     @foreach ($forecast['days'][$i] as $key => $value)
                                         @if (!is_array($value))
-                                            <dt class="col-sm-3">{{ $key }}</dt>
+                                            <dt class="col-sm-3">{{ ucfirst(Illuminate\Support\Str::of($key)->split('/(?=[A-Z])/')->join(' ')) }}</dt>
                                             <dd class="col-sm-9">{{ $value }}</dd>
                                         @endif
                                     @endforeach

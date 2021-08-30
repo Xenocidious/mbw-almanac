@@ -27,7 +27,7 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-dark bg-black shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark text-white shadow-sm">
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -88,7 +88,7 @@
         </div>
     </nav>
 
-    <main class="py-4">
+    <main class="py-4 bg-dark">
         @if(session()->has('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
@@ -103,25 +103,25 @@
         @yield('content')
     </main>
 
-    <footer>
+    <footer class="bg-dark">
         <div class='footer_left_items'>
-            <a>Frequently Asked Questions</a><br>
+            <a class="text-light">Frequently Asked Questions</a><br>
             <hr style="width:50%;text-align:left;margin-left:0">
         </div>
         <div class='footer_left_items'>
-            <a>Contact</a><br>
+            <a class="text-light">Contact</a><br>
             <hr style="width:50%;text-align:left;margin-left:0">
         </div>
         <div class='footer_left_items'>
-            <a>Lorem Ipsum</a><br>
+            <a class="text-light">Lorem Ipsum</a><br>
             <hr style="width:50%;text-align:left;margin-left:0">
         </div>
         <div class='footer_left_items'>
-            <a>Lorem Ipsum</a><br>
+            <a class="text-light">Lorem Ipsum</a><br>
             <hr style="width:50%;text-align:left;margin-left:0">
         </div>
         <div class='footer_left_items'>
-            <a>Lorem Ipsum</a><br>
+            <a class="text-light">Lorem Ipsum</a><br>
             <hr style="width:50%;text-align:left;margin-left:0">
         </div>
 
@@ -129,12 +129,12 @@
             <div id='social_media_wrapper'>
                 <ul>
                     <li id='facebook_link'>
-                        <a href="#">
+                        <a href="#" class="text-light">
                             <span></span><span></span><span></span><span></span>
                             <span class="fa fa-facebook"></span>
                         </a>
                     </li>
-                    <p>follow us on facebook</p>
+                    <p class="text-light">follow us on facebook</p>
                 </ul>
                 <hr style="width:50%;text-align:left;margin-left:2.5vw">
             </div>
@@ -143,12 +143,12 @@
             <div id='social_media_wrapper'>
                 <ul>
                     <li id='twitter_link'>
-                        <a href="#">
+                        <a href="#" class="text-light">
                             <span></span><span></span><span></span><span></span>
                             <span class="fa fa-twitter"></span>
                         </a>
                     </li>
-                    <p>follow us on <a>twitter</a></p>
+                    <p class="text-light">follow us on <a>twitter</a></p>
                 </ul>
                 <hr style="width:50%;text-align:left;margin-left:2.5vw">
             </div>
@@ -157,13 +157,13 @@
             <div id='social_media_wrapper'>
                 <ul>
                     <li id='instagram_link'>
-                        <a href="#">
+                        <a href="#" class="text-light">
                             <span></span><span></span><span></span><span></span>
                             <span class="fa fa-instagram"></span>
                             <span class="fa fa-instagram insta_button"></span>
                         </a>
                     </li>
-                    <p id='footer_p'>follow us on instagram</p>
+                    <p id='footer_p' class="text-light">follow us on instagram</p>
                 </ul>
                 <hr style="width:50%;text-align:left;margin-left:2.5vw">
             </div>
@@ -172,19 +172,19 @@
             <div id='social_media_wrapper'>
                 <ul>
                     <li id='linkedin_link'>
-                        <a href="#">
+                        <a href="#" class="text-light">
                             <span></span><span></span><span></span><span></span>
                             <span class="fa fa-linkedin"></span>
                         </a>
                     </li>
-                    <p>follow us on linkedin</p>
+                    <p class="text-light">follow us on linkedin</p>
                 </ul>
                 <hr style="width:50%;text-align:left;margin-left:2.5vw">
             </div>
         </div>
 
         <div class='footer_copyright'>
-            <p>copyright project almanac Aya, Mert en Pieterjan: ©2021 - <?= date("Y"); ?></p>
+            <p class="text-light">copyright project almanac Aya, Mert en Pieterjan: ©2021 - <?= date("Y"); ?></p>
         </div>
     </footer>
 </div>

@@ -29,7 +29,7 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-light bg-white text-dark shadow-sm">
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -40,26 +40,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link text-white" href="index">home</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="/">about us</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="/statistics">statistics</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="{{ route("photohub") }}">photo's</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="weather-dropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ __('Weather') }}
-                    </a>
-                    <div class="dropdown-menu bg-dark" aria-labelledby="weather-dropdown">
-                        <a class="dropdown-item text-white bg-dark"
-                           href="{{ route('weather.forecast') }}">
-                            {{ __('Forecast') }}
-                        </a>
-                        <a class="dropdown-item text-white bg-dark"
-                           href="{{ route('weather.history') }}">
-                            {{ __('History') }}
-                        </a>
-                    </div>
-                </li>
+                <li class="nav-item"><a class="nav-link text-dark" href="index">home</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="/">about us</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="/statistics">statistics</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="{{ route("photohub") }}">photo's</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="{{ route("weather") }}">Weather</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -67,16 +52,16 @@
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link text-dark" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link text-dark" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <i class="fas fa-user"></i>
                         </a>
@@ -84,12 +69,12 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                             <a href="{{ route('accounts.index') }}"
-                               class="dropdown-item">{{ __('Profile') }}
+                               class="dropdown-item text-dark">{{ __('Profile') }}
                             </a>
 
                             <div class="dropdown-divider"></div>
 
-                            <a class="dropdown-item" href="{{ route('logout') }}"
+                            <a class="dropdown-item text-dark" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
@@ -120,7 +105,7 @@
         @yield('content')
     </main>
 
-    <footer>
+    <footer class="bg-light">
         <div class='footer_left_items'>
             <a>Frequently Asked Questions</a><br>
             <hr style="width:50%;text-align:left;margin-left:0">

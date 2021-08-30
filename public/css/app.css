@@ -10942,14 +10942,6 @@ a.text-dark:focus {
   }
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #1e1e1e;
-  color: white;
-  overflow-x: hidden;
-}
-
 header {
   width: 100vw;
   background-color: transparent;
@@ -11748,6 +11740,38 @@ form {
 .lightThemeBackgroundColor {
   background-color: #f0f0f0;
   color: black;
+}
+
+.bg-indigo {
+  background-color: #6574cd !important;
+}
+
+.text-indigo {
+  color: #6574cd !important;
+}
+
+.bg-cyan {
+  background-color: #6cb2eb !important;
+}
+
+.text-cyan {
+  color: #6cb2eb !important;
+}
+
+.bg-purple {
+  background-color: #9561e2 !important;
+}
+
+.text-purple {
+  color: #9561e2 !important;
+}
+
+.bg-dark-purple {
+  background-color: #680b8a !important;
+}
+
+.text-dark-purple {
+  color: #680b8a !important;
 }
 
 /* historical data button on the index page */

@@ -1,13 +1,5 @@
 @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
 
-body {
-    margin: 0;
-    padding: 0;
-    background-color: rgb(30, 30, 30);
-    color: white;
-    overflow-x: hidden;
-}
-
 header {
     width: 100vw;
     background-color: transparent;
@@ -785,4 +777,36 @@ form {
 .lightThemeBackgroundColor {
     background-color: rgb(240, 240, 240);
     color: black;
+}
+
+.bg-indigo {
+    background-color: $indigo !important;
+}
+
+.text-indigo {
+    color: $indigo !important;
+}
+
+.bg-cyan {
+    background-color: $cyan !important;
+}
+
+.text-cyan {
+    color: $cyan !important;
+}
+
+.bg-purple {
+    background-color: $purple !important;
+}
+
+.text-purple {
+    color: $purple !important;
+}
+
+.bg-dark-purple {
+    background-color: $dark-purple !important;
+}
+
+.text-dark-purple {
+    color: $dark-purple !important;
 }

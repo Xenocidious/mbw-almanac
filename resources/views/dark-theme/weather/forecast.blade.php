@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h2>{{ __('Forecast') }}</h2>
+                <h2 class="text-light">{{ __('Forecast') }}</h2>
             </div>
         </div>
 
@@ -13,12 +13,12 @@
             <div class="col">
                 <form class="form" method="GET">
                     <div class="form-group">
-                        <label for="start">{{ __('From') }}</label>
+                        <label for="start" class="text-light">{{ __('From') }}</label>
                         <input class="form-control" id="start" name="start" value="{{ $start }}" type="datetime-local"
                                step="1"/>
                     </div>
                     <div class="form-group">
-                        <label for="end">{{ __('Until') }}</label>
+                        <label for="end" class="text-light">{{ __('Until') }}</label>
                         <input class="form-control" id="end" name="end" value="{{ $end }}" type="datetime-local"
                                step="1"/>
                     </div>
@@ -87,19 +87,19 @@
                      aria-labelledby="details-modal-label-{{$i}}"
                      aria-hidden="true">
                     <div class="modal-dialog" role="document">
-                        <div class="modal-content">
+                        <div class="modal-content bg-dark">
                             <div class="modal-header">
-                                <h5 class="modal-title text-dark" id="details-modal-label-{{$i}}">Details</h5>
+                                <h5 class="modal-title text-light" id="details-modal-label-{{$i}}">Details</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body text-dark">
+                            <div class="modal-body text-light">
                                 <dl class="row">
                                     @foreach ($forecast['days'][$i] as $key => $value)
                                         @if (!is_array($value))
-                                            <dt class="col-sm-3">{{ $key }}</dt>
-                                            <dd class="col-sm-9">{{ $value }}</dd>
+                                            <dt class="col-sm-4">{{ ucfirst(Illuminate\Support\Str::of($key)->split('/(?=[A-Z])/')->join(' ')) }}</dt>
+                                            <dd class="col-sm-8">{{ $value }}</dd>
                                         @endif
                                     @endforeach
                                 </dl>

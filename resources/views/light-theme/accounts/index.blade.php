@@ -15,7 +15,7 @@
                         <div class="row">
                             <div class="col">
                                 @if ($user->photo)
-                                    <img src="{{ $user->photo }}"
+                                    <img src="data:image/png;base64, {{ $user->photo }}"
                                          width="120"
                                          height="120"
                                          class="rounded-circle"
@@ -56,8 +56,8 @@
                         <legend class="text-dark">{{ __('Settings') }}</legend>
 
                         <div class="form-group">
-                            <label class="form-label text-dark" for="theme">{{ __('Theme') }}</label>
-                            <select name="settings[theme]" id="theme">
+                            <label class="text-dark" for="theme">{{ __('Theme') }}</label>
+                            <select name="settings[theme]" id="theme" class="form-control">
                                 @foreach($themes as $theme)
                                     <option value="{{ $theme->id }}"
                                             @if(isset($user->settings['theme']) && $user->settings['theme'] == $theme->id) selected @endif>
