@@ -19,23 +19,11 @@ class PhotohubController extends Controller
      */
     public function index()
     {
-        $images = Image::all();
-        $votes = Vote::all();
-        $comments = Comment::all();
-
-        return view('photohub', [
-            'images' => $images,
-            'votes' => $votes,
-            'comments' => $comments
-        ]);
+        return view('photohub', ['images' => Image::all()]);
     }
 
     public function photoform()
     {
-        $users = User::get();
-
-        return view('uploadphoto', [
-            'users' => $users
-        ]);
+        return view('uploadphoto', ['users' => User::all()]);
     }
 }

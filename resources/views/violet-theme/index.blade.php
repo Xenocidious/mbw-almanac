@@ -17,7 +17,6 @@
                 </div>
             @endforeach
 
-
             <div id='index_cards_wrapper_card_2' class='index_cards'>
                 <div>
                     <h2>Today</h2>
@@ -37,21 +36,21 @@
         </div>
     </div>
 
-    <h1 id='chart_index' class="text-light">Check our data</h1>
+    <h1 id='chart_index' class="text-white">Check our data</h1>
     <a href='statistics'>
         <div id="curve_chart" style="width: 900px; height: 500px"></div>
     </a>
 
     <div id='index_content_2'>
-        <h1 class="text-light">Check our historical weather data</h1>
+        <h2 class="text-white">Check our historical weather data</h2>
         <div>
-            <p class="text-light">Hey there! Ever wondered what the weather looked like 6 moths ago in your city? Or
+            <p class="text-white">Hey there! Ever wondered what the weather looked like 6 moths ago in your city? Or
                 maybe a year, a
                 decade?! This is your chance! Our very precise weather API has the historical data of 30+ years. What
                 are you waiting for?</p>
         </div>
-        <a id='historical_data_button' href="#">
-            <span class="text-light">enter now</span>
+        <a id='historical_data_button' href="#" class="text-white">
+            <span>enter now</span>
             <div class="liquid"></div>
         </a>
     </div>
@@ -59,8 +58,8 @@
 
         <div id='img_1' class='images'></div>
         <div id='content_1' class='text'>
-            <h2 class="text-light">About us</h2>
-            <p class="text-light">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            <h2 class="text-white">About us</h2>
+            <p class="text-white">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
                 ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
@@ -69,8 +68,8 @@
         </div>
 
         <div id='content_2' class='text'>
-            <h2 class="text-light">What do we do</h2>
-            <p class="text-light">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            <h2 class="text-white">What do we do</h2>
+            <p class="text-white">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
                 ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
@@ -81,8 +80,8 @@
 
         <div id='img_3' class='images'></div>
         <div id='content_3' class='text'>
-            <h2 class="text-light">What we can provide for your company</h2>
-            <p class="text-light">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            <h2 class="text-white">What we can provide for your company</h2>
+            <p class="text-white">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
                 ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
@@ -91,8 +90,8 @@
         </div>
 
         <div id='content_4' class='text'>
-            <h2 class="text-light">Our team</h2>
-            <p class="text-light">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            <h2 class="text-white">Our team</h2>
+            <p class="text-white">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
                 ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
@@ -111,5 +110,6 @@
     <script src="{{ asset('js/animations_index.js') }}"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="{{ asset('js/chart_test.js') }}"></script>
+
 
 @endsection

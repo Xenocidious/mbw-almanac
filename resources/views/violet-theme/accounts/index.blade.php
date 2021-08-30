@@ -42,12 +42,12 @@
                         <legend class="text-white">{{ __('Info') }}</legend>
 
                         <div class="form-group">
-                            <label class="text-white" for="email">{{ __('E-mail address') }}</label>
+                            <label class="form-label text-white" for="email">{{ __('E-mail address') }}</label>
                             <input class="form-control" name="email" id="email" value="{{ $user->email }}"
                                    type="email"/>
                         </div>
                         <div class="form-group">
-                            <label class="text-white" for="name">{{ __('Name') }}</label>
+                            <label class="form-label text-white" for="name">{{ __('Name') }}</label>
                             <input class="form-control" name="name" id="name" value="{{ $user->name }}" type="text"/>
                         </div>
                     </fieldset>
@@ -72,15 +72,15 @@
                         <legend class="text-white pt-5">{{ __('Edit password') }}</legend>
 
                         <div class="form-group">
-                            <label class="text-white" for="password_old">{{ __('Old password') }}</label>
+                            <label class="form-label text-white" for="password_old">{{ __('Old password') }}</label>
                             <input class="form-control" name="password_old" id="password_old" value="" type="password"/>
                         </div>
                         <div class="form-group">
-                            <label class="text-white" for="password">{{ __('Password') }}</label>
+                            <label class="form-label text-white" for="password">{{ __('Password') }}</label>
                             <input class="form-control" name="password" id="password" value="" type="password"/>
                         </div>
                         <div class="form-group">
-                            <label class="text-white"
+                            <label class="form-label text-white"
                                    for="password-confirmation">{{ __('Password confirmation') }}</label>
                             <input class="form-control" name="password_confirmation" id="password-confirmation" value=""
                                    type="password"/>
@@ -88,19 +88,17 @@
                     </fieldset>
 
                     <div class="form-group">
-                        <button class="btn btn-lg btn-primary" type="submit">{{ __('Save') }}</button>
+                        <button class="btn btn-lg btn-primary text-white" type="submit">{{ __('Save') }}</button>
                     </div>
                 </form>
 
-                <form method="post"
-                      action="{{ route('accounts.delete', ['user' => $user]) }}"
-                      class="form"
-                      onsubmit="return confirm('{{ __('Do you really want to submit the form?') }}');"
-                >
+                <form method="post" action="{{ route('accounts.delete', ['user' => $user]) }}" class="form"
+                      onsubmit="return confirm('{{ __('Do you really want to submit the form?') }}');">
                     @csrf
                     @method('delete')
                     <div class="form-group">
-                        <button class="btn btn-lg btn-danger" type="submit">{{ __('Delete account') }}</button>
+                        <button class="btn btn-lg btn-danger text-white"
+                                type="submit">{{ __('Delete account') }}</button>
                     </div>
                 </form>
                 <div class="row">
@@ -112,3 +110,4 @@
         </div>
     </div>
 @endsection
+

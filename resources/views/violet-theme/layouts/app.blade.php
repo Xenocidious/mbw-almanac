@@ -29,7 +29,7 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white text-dark shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-light bg-dark-purple shadow-sm">
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -40,11 +40,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link text-dark" href="index">home</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="/">about us</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="/statistics">statistics</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="{{ route("photohub") }}">photo's</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="{{ route("weather") }}">Weather</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="index">home</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="/">about us</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="/statistics">statistics</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="{{ route("photohub") }}">photo's</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="{{ route("weather") }}">Weather</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -52,29 +52,29 @@
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <li class="nav-item text-white">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark" href="#" role="button"
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <i class="fas fa-user"></i>
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu dropdown-menu-right bg-dark-purple" aria-labelledby="navbarDropdown">
 
                             <a href="{{ route('accounts.index') }}"
-                               class="dropdown-item text-dark">{{ __('Profile') }}
+                               class="dropdown-item text-white">{{ __('Profile') }}
                             </a>
 
                             <div class="dropdown-divider"></div>
 
-                            <a class="dropdown-item text-dark" href="{{ route('logout') }}"
+                            <a class="dropdown-item text-white" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
@@ -90,7 +90,7 @@
         </div>
     </nav>
 
-    <main class="py-4">
+    <main class="py-4 bg-dark-purple">
         @if(session()->has('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
@@ -105,25 +105,25 @@
         @yield('content')
     </main>
 
-    <footer class="bg-light">
+    <footer class="bg-dark-purple">
         <div class='footer_left_items'>
-            <a>Frequently Asked Questions</a><br>
+            <a class="text-white">Frequently Asked Questions</a><br>
             <hr style="width:50%;text-align:left;margin-left:0">
         </div>
         <div class='footer_left_items'>
-            <a>Contact</a><br>
+            <a class="text-white">Contact</a><br>
             <hr style="width:50%;text-align:left;margin-left:0">
         </div>
         <div class='footer_left_items'>
-            <a>Lorem Ipsum</a><br>
+            <a class="text-white">Lorem Ipsum</a><br>
             <hr style="width:50%;text-align:left;margin-left:0">
         </div>
         <div class='footer_left_items'>
-            <a>Lorem Ipsum</a><br>
+            <a class="text-white">Lorem Ipsum</a><br>
             <hr style="width:50%;text-align:left;margin-left:0">
         </div>
         <div class='footer_left_items'>
-            <a>Lorem Ipsum</a><br>
+            <a class="text-white">Lorem Ipsum</a><br>
             <hr style="width:50%;text-align:left;margin-left:0">
         </div>
 
@@ -136,7 +136,7 @@
                                 <span class="fa fa-facebook"></span>
                             </a>
                         </li>
-                        <p>follow us on facebook</p>
+                        <p class="text-white">follow us on facebook</p>
                     </ul>
                     <hr style="width:50%;text-align:left;margin-left:2.5vw">
                 </span>
@@ -150,7 +150,7 @@
                                 <span class="fa fa-twitter"></span>
                             </a>
                         </li>
-                        <p>follow us on <a>twitter</a></p>
+                        <p class="text-white">follow us on <a>twitter</a></p>
                     </ul>
                     <hr style="width:50%;text-align:left;margin-left:2.5vw">
                 </span>
@@ -165,7 +165,7 @@
                                 <span class="fa fa-instagram insta_button"></span>
                             </a>
                         </li>
-                        <p id='footer_p'>follow us on instagram</p>
+                        <p class="text-white" id='footer_p'>follow us on instagram</p>
                     </ul>
                     <hr style="width:50%;text-align:left;margin-left:2.5vw">
                 </span>
@@ -179,14 +179,14 @@
                                 <span class="fa fa-linkedin"></span>
                             </a>
                         </li>
-                        <p>follow us on linkedin</p>
+                        <p class="text-white">follow us on linkedin</p>
                     </ul>
                     <hr style="width:50%;text-align:left;margin-left:2.5vw">
                 </span>
         </div>
 
         <div class='footer_copyright'>
-            <p>copyright project almanac Aya, Mert en Pieterjan: ©2021 - <?= date("Y"); ?></p>
+            <p class="text-white">copyright project almanac Aya, Mert en Pieterjan: ©2021 - <?= date("Y"); ?></p>
         </div>
     </footer>
 </div>

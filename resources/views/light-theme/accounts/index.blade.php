@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -17,7 +15,7 @@
                         <div class="row">
                             <div class="col">
                                 @if ($user->photo)
-                                    <img src="{{ asset('storage/profile-pictures/'.$user->photo) }}"
+                                    <img src="data:image/png;base64, {{ $user->photo }}"
                                          width="120"
                                          height="120"
                                          class="rounded-circle"
@@ -58,11 +56,15 @@
                         <legend class="text-dark">{{ __('Settings') }}</legend>
 
                         <div class="form-group">
-                            <input class="form-check-control" name="settings[dark-mode]" id="dark-mode"
-                                   type="checkbox"
-                                   @if (isset($user->settings['dark-mode']) && $user->settings['dark-mode'] === "on") checked @endif/>
-                            <label class="form-check-label text-dark"
-                                   for="password-confirmation">{{ __('Enable dark mode') }}</label>
+                            <label class="text-dark" for="theme">{{ __('Theme') }}</label>
+                            <select name="settings[theme]" id="theme" class="form-control">
+                                @foreach($themes as $theme)
+                                    <option value="{{ $theme->id }}"
+                                            @if(isset($user->settings['theme']) && $user->settings['theme'] == $theme->id) selected @endif>
+                                        {{ $theme->name }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                     </fieldset>
 
@@ -90,10 +92,10 @@
                     </div>
                 </form>
 
-                <form method="post" action="{{ route('accounts.delete', ['user' => $user]) }}" class="form">
+                <form method="post" action="{{ route('accounts.delete', ['user' => $user]) }}" class="form"
+                      onsubmit="return confirm('{{ __('Do you really want to submit the form?') }}');">
                     @csrf
                     @method('delete')
-                    {{-- @todo confirmatie toevoegen als je hier op klikt dat je moet klikken op " weet je zeker dat je account wilt verwijderen? " --}}
                     <div class="form-group">
                         <button class="btn btn-lg btn-danger" type="submit">{{ __('Delete account') }}</button>
                     </div>

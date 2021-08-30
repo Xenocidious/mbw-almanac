@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\View\FileViewFinder;
+use App\Theme;
 
 class DarkModeMiddleware
 {
@@ -16,20 +17,21 @@ class DarkModeMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $darkMode = false;
+        $theme = Theme::all()->first();
 
         if (auth()->check()) {
-            $darkMode = isset(auth()->user()->settings['dark-mode']);
+            if (isset(auth()->user()->settings['theme'])) {
+                $theme = Theme::find(auth()->user()->settings['theme']);
+            }
         }
 
-        $theme = ($darkMode) ? 'dark-theme' : 'light-theme';
-        $finder = new FileViewFinder(app()['files'], [resource_path('views') . DIRECTORY_SEPARATOR . $theme]);
+        $finder = new FileViewFinder(app()['files'], [resource_path('views') . DIRECTORY_SEPARATOR . $theme->path]);
 
         view()->setFinder($finder);
 
-        view()->composer('*', function ($view) use ($darkMode) {
-            return $view->with('darkMode', $darkMode);
-        });
+//        view()->composer('*', function ($view) use ($darkMode) {
+//            return $view->with('darkMode', $darkMode);
+//        });
 
         return $next($request);
     }
