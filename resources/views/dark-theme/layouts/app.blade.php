@@ -43,6 +43,11 @@
                 <li class="nav-item"><a class="nav-link text-white" href="/statistics">statistics</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="{{ route("photohub") }}">photo's</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="{{ route("weather") }}">Weather</a></li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ route("favorite-images.index") }}">
+                        Favorite images
+                    </a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
