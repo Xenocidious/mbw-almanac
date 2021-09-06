@@ -7,6 +7,7 @@ use App\Image;
 use App\Vote;
 use App\Comment;
 use Auth;
+use Illuminate\Support\Facades\Http;
 
 
 class CommentController extends Controller
