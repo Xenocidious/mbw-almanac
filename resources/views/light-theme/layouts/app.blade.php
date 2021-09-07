@@ -46,7 +46,7 @@
                 <li class="nav-item"><a class="nav-link text-dark" href="{{ route("photohub") }}">photo's</a></li>
                 <li class="nav-item"><a class="nav-link text-dark" href="{{ route("weather") }}">Weather</a></li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route("favorite-images.index") }}">
+                    <a class="nav-link text-dark" href="{{ route("favorite-images.index") }}">
                         Favorite images
                     </a>
                 </li>
