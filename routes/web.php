@@ -32,6 +32,7 @@ Route::get('/', function () {
 
 Route::get('/index', 'WelcomeController@index')->name('home');
 
+Route::get('/w3', 'WelcomeController@w3')->name('w3');
 
 Route::get('/statistics', 'StatisticsController@index')->name('statistics');
 
@@ -98,6 +99,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/photohub', 'PhotohubController@index')->name('photohub');
 });
+
+
 
 Auth::routes();
 
