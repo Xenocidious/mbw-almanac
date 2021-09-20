@@ -38,10 +38,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link text-white" href="index">home</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="/">about us</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="/statistics">statistics</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="{{ route("photohub") }}">photo's</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="index">Home</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="/">About us</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="/statistics">Statistics</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="{{ route("photohub") }}">Photo's</a></li>
                 <li class="nav-item"><a class="nav-link text-white" href="{{ route("weather") }}">Weather</a></li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{ route("favorite-images.index") }}">
