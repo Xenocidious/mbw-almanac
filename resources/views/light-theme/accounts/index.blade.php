@@ -1,4 +1,6 @@
+
 @extends('layouts.app')
+
 
 @section('content')
     <div class="container">
@@ -69,6 +71,21 @@
                     </fieldset>
 
                     <fieldset>
+                        <div class="form-group">
+
+                            <select class="js-example-basic-multiple" name="cities[]" multiple="multiple">
+                                @foreach($cities as $city)
+                                    <option value="{{$city->name}}">{{$city->name}}</option>
+                                    ...
+                                @endforeach
+                             </select>
+
+                          </div>
+                        </div>
+                    </fieldset>
+
+
+                    <fieldset>
                         <legend class="text-dark pt-5">{{ __('Edit password') }}</legend>
 
                         <div class="form-group">
@@ -108,5 +125,15 @@
             </div>
         </div>
     </div>
+
+
+
 @endsection
+
+
+
+
+
+
+
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Theme;
+use App\City;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
@@ -16,6 +17,7 @@ class AccountController extends Controller
         return view('accounts.index', [
             'user' => auth()->user(),
             'themes' => Theme::all(),
+            'cities' => City::all()
         ]);
     }
 

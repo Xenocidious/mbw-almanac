@@ -19,5 +19,11 @@ class DatabaseSeeder extends Seeder
         DB::table('themes')->insert(['name' => 'Light', 'path' => 'light-theme']);
         DB::table('themes')->insert(['name' => 'Dark', 'path' => 'dark-theme']);
         DB::table('themes')->insert(['name' => 'Violet', 'path' => 'violet-theme']);
+
+        DB::table('cities')->insert(['name' => 'Istanbul']);
+        DB::table('cities')->insert(['name' => 'Amsterdam']);
+        DB::table('cities')->insert(['name' => 'London']);
+        DB::table('cities')->insert(['name' => 'New York']);
+        DB::table('cities')->insert(['name' => 'Tokyo']);
     }
 }
