@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Image;
-use App\Vote;
-use App\Comment;
 use Auth;
+use App\Vote;
+use App\Image;
+use App\Comment;
+
+use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 
 class ImageController extends Controller
@@ -43,7 +46,7 @@ class ImageController extends Controller
         $request->validate([
             'name' => 'required',
         ]);
-        
+
 
         // ensure the request has a file before we attempt anything else.
         if ($request->hasFile('file')) {
@@ -65,7 +68,7 @@ class ImageController extends Controller
             $image->save(); // Finally, save the record.
         }
 
-        return view('index');
+        return redirect('photohub');
     }
 
     public function upvote($image_id){
@@ -74,7 +77,7 @@ class ImageController extends Controller
         $vote->image_id = $image_id;
         $vote->user_id = Auth::user()->id;
         $vote->save();
-
+        
         return redirect()->back();
     }
 

@@ -6,20 +6,12 @@ use Illuminate\Http\Request;
 use App\Image;
 use App\Vote;
 use App\Comment;
+use App\User;
 use Auth;
+use Illuminate\Support\Facades\Http;
 
 class PhotohubController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
@@ -27,19 +19,11 @@ class PhotohubController extends Controller
      */
     public function index()
     {
-        $images = Image::get();
-        $votes = Vote::get();
-        $comments = Comment::get();
-
-        return view('photohub', [
-            'images' => $images,
-            'votes' => $votes,
-            'comments' => $comments
-        ]);
+        return view('photohub', ['images' => Image::all()]);
     }
 
     public function photoform()
     {
-        return view('uploadphoto');
+        return view('uploadphoto', ['users' => User::all()]);
     }
 }
