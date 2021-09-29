@@ -72,18 +72,31 @@
 
                     <fieldset>
                         <div class="form-group">
-
-                            <select class="js-example-basic-multiple" name="cities[]" multiple="multiple">
-                                @foreach($cities as $city)
-                                    <option value="{{$city->name}}">{{$city->name}}</option>
-                                    ...
-                                @endforeach
-                             </select>
-
-                          </div>
+                            <label class="text-dark" for="cities">{{ __('cities') }}</label>
+                            <select name="selectedCities" id="cities" class="form-control">
+                            @foreach($cities as $city)
+                                <option value="{{ $city->id }}">
+                                {{ $city->name }}
+                                </option>
+                            @endforeach
+                            </select>
                         </div>
-                    </fieldset>
 
+                       <?php
+                       $chosenCities = [];
+                       foreach ($cities as $city) {
+                           foreach ($userCities as $userCity) {
+                               if($userCity->user_id == Auth::user()->id && $city->id == $userCity->city_id){
+                                    echo $city->name . '<br>';
+
+                               }
+                            }
+                        array_push($chosenCities, $city);
+                       }
+
+                       ?>
+
+                    </fieldset>
 
                     <fieldset>
                         <legend class="text-dark pt-5">{{ __('Edit password') }}</legend>
