@@ -1,5 +1,7 @@
 <?php
 
+use App\City;
+use App\UserCity;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +28,12 @@ Route::get('/', function () {
 
     $forecast = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=fcst,stats,current')['days'];
 
-    return view('index', ['yesterdayData' => $yesterday, 'forecastData' => $forecast, 'todayData' => $today]);
+    $city = City::get();
+    $userCity = UserCity::get();
+
+    dd($city);
+
+    return view('index' , ['yesterdayData'=> $yesterday, 'forecastData'=>$forecast, 'todayData'=>$today, 'cities'=>$city, 'userCities'=>$userCity]);
 
 });
 

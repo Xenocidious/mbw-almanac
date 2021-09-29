@@ -72,7 +72,7 @@
 
                     <fieldset>
                         <div class="form-group">
-                            <label class="text-dark" for="cities">{{ __('cities') }}</label>
+                            <label class="text-dark" for="cities">{{ __('Favorite cities') }}</label>
                             <select name="selectedCities" id="cities" class="form-control">
                             @foreach($cities as $city)
                                 <option value="{{ $city->id }}">

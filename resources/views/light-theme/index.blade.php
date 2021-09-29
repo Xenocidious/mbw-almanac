@@ -39,6 +39,23 @@
         </div>
     </div>
 
+
+
+    <?php
+    $chosenCities = [];
+    foreach ($cities as $city) {
+        foreach ($userCities as $userCity) {
+            if($userCity->user_id == Auth::user()->id && $city->id == $userCity->city_id){
+                echo $city->name . '<br>';
+
+            }
+        }
+    array_push($chosenCities, $city);
+    }
+
+    ?>
+
+
     <h1 id='chart_index'>Check our data</h1>
     <a href='statistics'>
         <div id="curve_chart" style="width: 900px; height: 500px"></div>
