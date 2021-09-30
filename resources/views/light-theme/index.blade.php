@@ -44,19 +44,28 @@
     <?php
 
     $check = false;
+    $requestWeather;
+    $requestedWeatherName;
 
 if (Auth::check()) {
     foreach ($userCities as $userCity) {
         if($userCity->user_id == Auth::user()->id){
             foreach ($cities as $city) {
                 if ($city->id == $userCity->city_id) {
-                    echo $city->name;
+                    $requestedWeatherName = $city->name;
+                    $requestedWeather = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/'.$requestedWeatherName.'?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH')['days'];
+
+                    echo $city->name . ' ' .round($requestedWeather[0]['tempmax'], 0).'°';
+
+
                     echo '<br>';
                 }
             }
         }
     }
 }
+
+
 
     // foreach ($cities as $city) {
     //     foreach ($userCities as $userCity) {
