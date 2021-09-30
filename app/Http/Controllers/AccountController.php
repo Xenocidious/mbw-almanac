@@ -33,26 +33,6 @@ class AccountController extends Controller
     public function update(User $user, Request $request)
     {
 
-         // Store the record, using the new file hashname which will be it's new filename identity.
-         $cityNumber = new City([
-            "name" => $request->get('selectedCities'),
-        ]);
-
-        //Creating a new instance of UserCity model
-        $saveCity = new UserCity;
-
-        //Assigning city ID to $saveCity
-        $saveCity->city_id = $cityNumber['name'];
-
-        //Assigning User ID to $saveCity
-        $saveCity->user_id = Auth::user()->id;
-
-        //Save and assign data to database
-        $saveCity->save();
-
-
-
-
 
         if ($request->hasFile('photo')) {
             $user->photo = base64_encode($request->file('photo')->getContent());
@@ -75,6 +55,32 @@ class AccountController extends Controller
         }
 
         $user->save();
+
+
+
+         // Store the record, using the new file hashname which will be it's new filename identity.
+         $cityNumber = new City([
+            "name" => $request->get('selectedCities'),
+        ]);
+
+        //Creating a new instance of UserCity model
+        $saveCity = new UserCity;
+        $allCities = UserCity::all();
+
+        //Assigning city ID to $saveCity
+        $saveCity->city_id = $cityNumber['name'];
+
+        //Assigning User ID to $saveCity
+        $saveCity->user_id = Auth::user()->id;
+
+        foreach ($allCities as $everyCity) {
+            if ($everyCity->user_id == Auth::user()->id && $everyCity->city_id == $cityNumber['name']) {
+                return redirect()->route('accounts.index')->with('error', __('This city is already added'));
+            }
+        }
+
+        //Save and assign data to database
+        $saveCity->save();
 
 
         return redirect()->route('accounts.index')->with('success', __('Account edited.'));

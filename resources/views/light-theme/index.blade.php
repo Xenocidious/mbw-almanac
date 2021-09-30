@@ -42,16 +42,31 @@
 
 
     <?php
-    $chosenCities = [];
-    foreach ($cities as $city) {
-        foreach ($userCities as $userCity) {
-            if($userCity->user_id == Auth::user()->id && $city->id == $userCity->city_id){
-                echo $city->name . '<br>';
 
+    $check = false;
+
+if (Auth::check()) {
+    foreach ($userCities as $userCity) {
+        if($userCity->user_id == Auth::user()->id){
+            foreach ($cities as $city) {
+                if ($city->id == $userCity->city_id) {
+                    echo $city->name;
+                    echo '<br>';
+                }
             }
         }
-    array_push($chosenCities, $city);
     }
+}
+
+    // foreach ($cities as $city) {
+    //     foreach ($userCities as $userCity) {
+    //         if($userCity->user_id == Auth::user()->id && $city->id == $userCity->city_id){
+    //             echo $city->name . '<br>';
+
+    //         }
+    //     }
+    // array_push($chosenCities, $city);
+    // }
 
     ?>
 

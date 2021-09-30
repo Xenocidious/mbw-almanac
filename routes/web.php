@@ -31,7 +31,6 @@ Route::get('/', function () {
     $city = City::get();
     $userCity = UserCity::get();
 
-    dd($city);
 
     return view('index' , ['yesterdayData'=> $yesterday, 'forecastData'=>$forecast, 'todayData'=>$today, 'cities'=>$city, 'userCities'=>$userCity]);
 
