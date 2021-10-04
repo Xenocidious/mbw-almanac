@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +12,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+       DB::table('users')->insert([
+           ['email' => 'admin@admin', 'name' => 'admin', 'password' => bcrypt('admin'), 'role' => 'admin', 'darkmode' => 1]
+       ]);
+
+        DB::table('themes')->insert(['name' => 'Light', 'path' => 'light-theme']);
+        DB::table('themes')->insert(['name' => 'Dark', 'path' => 'dark-theme']);
+        DB::table('themes')->insert(['name' => 'Violet', 'path' => 'violet-theme']);
+        DB::table('themes')->insert(['name' => 'Violet', 'path' => 'sadfdsfsdfsd-theme']);
     }
 }
