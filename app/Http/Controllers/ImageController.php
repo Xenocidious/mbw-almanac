@@ -54,6 +54,9 @@ class ImageController extends Controller
             $request->validate([
                 'image' => 'mimes:jpeg' // Only allow .jpg file types.
             ]);
+            $this->validate($request, [
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:width=1920,height=1080',
+            ]);
 
             // Save the file locally in the storage/public/ folder under a new folder named /image
             $request->file->store('image', 'public');

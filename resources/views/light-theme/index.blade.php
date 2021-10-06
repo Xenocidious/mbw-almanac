@@ -70,7 +70,7 @@
                         </p>
                     </a>
                 </li>
-            </il>
+              </li>
                 <li class="nav-item">
                     <a href="../resources/#" class="nav-link">
                         <i class="nav-icon fas fa-chart-bar"></i>
@@ -79,9 +79,9 @@
                         </p>
                     </a>
                 </li>
-            </il>
+            </li>
                 <li class="nav-item">
-                    <a href="../resources/#" class="nav-link">
+                    <a href="{{Route('photohub')}}" class="nav-link">
                         <i class="nav-icon fas fa-photo-video"></i>
                         <p>
                             Photohub
@@ -89,7 +89,7 @@
                         </p>
                     </a>
                 </li>
-            </il>
+            </li>
                 <li class="nav-item">
                     <a href="../resources/#" class="nav-link">
                         <i class="nav-icon fas fa-thermometer-half"></i>
@@ -98,7 +98,7 @@
                         </p>
                     </a>
                 </li>
-            </il>
+            </li>
                 <li class="nav-item">
                     <a href="../resources/#" class="nav-link">
                         <i class="nav-icon far fa-address-card"></i>
@@ -107,7 +107,7 @@
                         </p>
                     </a>
                 </li>
-            </il>
+            </li>
         <ul>
     </aside>
 
@@ -558,7 +558,6 @@
     </section>
     <!-- /.content -->
     <div class='div-center'>
-      <h5 class="mb-2">Custom Shadows Variations <small><i>Using Bootstrap's Shadow Utility</i></small></h5>
           <div class="row">
             <!-- /.col -->
             <div class="col-md-4">
@@ -656,7 +655,7 @@
       <strong>Copyright &copy; 2021 - <?= Date("Y"); ?> <a href="../resources/https://adminlte.io">Aya, Mert en Pieterjan</a>.</strong>
       Most rights reserved.
       <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.1.0
+        <b>Version</b> 1.0.0
       </div>
     </footer>
 
