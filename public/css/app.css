@@ -11352,7 +11352,7 @@ footer ul p {
 
 
 
-/* #spacefiller {
+#spacefiller {
   width: 100vw;
   height: 5vh;
 }
@@ -11363,7 +11363,7 @@ footer ul p {
 
 .wrap_photohub {
   display: inline-flex;
-}
+}*/
 
 #main_content_photohub {
   width: 100vw;
@@ -11371,7 +11371,7 @@ footer ul p {
   display: flex;
   flex-wrap: wrap;
 }
-
+/*
 .photohub_content {
   width: 29vw;
   height: 40vh;
@@ -11427,7 +11427,7 @@ footer ul p {
 
 .photohub_stats i {
   font-size: 1.5vw;
-} */
+}
 
 .upvote_amount,
 .comment_amount,
@@ -11909,4 +11909,22 @@ ul li:hover span:nth-child(1) {
 
 .dark-background {
   background-color: #343a40 !important;
+}
+
+body {
+  font-family: 'Source Sans Pro','Sans Serif' !important;
+}
+
+.photohub_img img{
+  width: 60vw;
+  object-fit: scale-down;
+}
+
+.hidden{
+  display: none !important;
+}
+
+.userImage{
+  width: 45px !important;
+  height: 45px !important;
 }

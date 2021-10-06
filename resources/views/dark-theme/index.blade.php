@@ -116,13 +116,13 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="../resources/#" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link text-light" data-widget="pushmenu" href="../resources/#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-        <a href="index" class="nav-link">Home</a>
+        <a href="index" class="nav-link text-light">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-        <a href="../resources/#" class="nav-link">Contact</a>
+        <a href="../resources/#" class="nav-link text-light">Contact</a>
         </li>
     </ul>
 
@@ -221,7 +221,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Dashboard</h1>
+                        <h1 class="m-0 text-light">Dashboard</h1>
                     </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -285,9 +285,9 @@
           <!-- Left col -->
           <section class="col-lg-7 connectedSortable">
             <!-- Custom tabs (Charts with tabs)-->
-            <div class="card">
+            <div class="card dark-background">
               <div class="card-header">
-                <h3 class="card-title">
+                <h3 class="card-title text-light">
                   <i class="fas fa-chart-bar"></i>
                   monthly Temperature
                 </h3>
@@ -311,9 +311,9 @@
             <!-- /.card -->
 
             <!-- TO DO List -->
-            <div class="card">
+            <div class="card dark-background">
               <div class="card-header">
-                <h3 class="card-title">
+                <h3 class="card-title text-light">
                   <i class="ion ion-clipboard mr-1"></i>
                   To Do List
                 </h3>

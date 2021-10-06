@@ -6,11 +6,11 @@
     <title>mbw - almanac</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="../resources/https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../resources/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="../resources/https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href="../resources/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- JQVMap -->
@@ -47,7 +47,7 @@
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           @if(auth::check())
             <div class="image">
-                <img src="../resources/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="data:image/png;base64, {{ $user->photo }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a  href="{{ route('accounts.index') }}" class="d-block">{{ Auth::user()->name }}</a>
@@ -222,38 +222,135 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
+            <div class="container">
+                <div class="div-center">
+                    <div class="row">
+                        @foreach($images as $image)
+                        <?php
+                            $commentAmount = 0;
+                            foreach($comments as $comment){
+                                if($comment->image_id == $image->id){
+                                    $commentAmount++;
+                                }
+                            }
+                            $upvotesAmount=0;
+                            foreach($upvotes as $upvote){
+                                if($upvote->image_id == $image->id){
+                                    $upvotesAmount++;
+                                }
+                            }
+                        ?>
+                        <div class="col-md-4">
+                            <!-- Box Comment -->
+                            <div class="card card-widget">
+                              <div class="card-header">
+                                <div class="user-block">
+                                  @foreach($users as $u)
+                                    @if($u->id == $image->user_id)
+                                        <img class="img-circle" src="data:image/png;base64, {{ $u->photo }}" alt="User Image">
+                                    @endif
+                                  @endforeach
+                                  <span class="username"><a href="#">{{$image->user_name}}</a></span>
+                                  <span class="description">Shared publicly - {{$image->created_at}}</span>
+                                </div>
+                                <!-- /.user-block -->
+                                <div class="card-tools">
+                                  <button type="button" class="btn btn-tool" title="Mark as read">
+                                    <i class="far fa-circle"></i>
+                                  </button>
+                                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                  </button>
+                                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                  </button>
+                                </div>
+                                <!-- /.card-tools -->
+                              </div>
+                              <!-- /.card-header -->
+                              <div class="card-body">
+                                <a href='{{ route("open.image", ["id" => $image->id])}}'>
+                                    <img class="img-fluid pad" src="../storage/app/public/image/{{$image->file_path}}" alt="Photo">
+                                </a>
+            
+                                <p>{{$image->description}}</p>
+                                <button type="button" class="btn btn-default btn-sm" onclick="copyImageUrl({{$image->id}})"><i class="fas fa-share"></i> Share</button>
+                                <input type="text" id="hidden{{$image->id}}" class='hidden' name='IMGurl' value='http://localhost/jaar%202+3/groepsprojecten/mbw-almanac/public/openImage/{{$image->id}}'>
+                                <script>
+                                    function copyImageUrl(id){
+                                        var copyText = document.getElementById("hidden"+id);
+                                        console.log(copyText);
+                                        copyText.select();
+                                        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+                                        navigator.clipboard.writeText(copyText.value);
+                                        alert("Copied the text: " + copyText.value);
+                                    }
+                                </script>
 
-            <div id="main_content_photohub">
-                @foreach($images as $image)
-                    <div class='photohub_content_wrapper'>
-                        <div class="photohub_content" id='photohub_content1'>
-                            <a href='{{ route("open.image", ["id" => $image->id])}}'>
-                                <img alt='image' src="../storage/app/public/image/{{$image->file_path}}">
-                            </a>
-                        </div>
-                        <div class='photohub_stats'>
-                            <div class="description">
-                                <h1>{{$image->name}}</h1>
-                                <hr style="width:100%;text-align:left;margin-left:0">
+                                <button type="button" class="btn btn-default btn-sm"><i class="far fa-thumbs-up"></i> Like</button>
+                                <span class="float-right text-muted">{{$image->votes}} likes - {{$commentAmount}} comments</span>
+                                
+                              </div>
+                              <!-- /.card-body -->
+                              <div class="card-footer card-comments">
+                                <div class="card-comment">
+                                  @foreach($comments as $comment)
+                                  <?php
+                                  ?>
+                                    @if($comment->image_id == $image->id)
+                                    <!-- User image -->
+                                    @foreach($users as $u)
+                                        @if($u->id == $comment->user_id)
+                                            <img class="img-circle img-sm" src="data:image/png;base64, {{ $u->photo }}" alt="User Image">
+                                        @endif
+                                    @endforeach
+                                        <div class="comment-text">
+                                            <span class="username">
+                                            {{$comment->user_name}}
+                                            <span class="text-muted float-right">{{date('H:i', strtotime($comment->created_at))}}</span>
+                                            </span><!-- /.username -->
+                                            {{$comment->comment}}
+                                        </div>
+                                    <!-- /.comment-text -->
+                                    @endif
+                                    
+                                  @endforeach
+                                  @if($commentAmount == 0)
+                                     Be the first to comment under <a href='#'>{{$image->user_name}}</a>'s post!
+                                  @endif
+
+
+                                </div>
+                              </div>
+                              <!-- /.card-footer -->
+                              <div class="card-footer">
+                                <form action="{{ route('comment.store') }}" method="post" enctype="multipart/form-data" name="comment">
+                                    @csrf
+                                  <input type="hidden" name='image_id' value='{{$image->id}}'>
+                                  <img class="img-fluid img-circle img-sm" src="data:image/png;base64, {{ $user->photo }}" alt="Alt Text">
+                                  <!-- .img-push is used to add margin to elements next to floating images -->
+                                  <div class="img-push">
+                                    <input type="text" class="form-control form-control-sm" placeholder="Press enter to post comment" name="comment">
+                                  </div>
+                                </form>
+                                <script>
+                                    document.onkeydown=function(evt){
+                                        var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
+                                        if(keyCode == 13)
+                                        {
+                                            document.comment.submit();
+                                        }
+                                    }
+                                </script>
+
+                              </div>
+                              <!-- /.card-footer -->
                             </div>
-                            <div class="upvote_amount">
-                                <p>{{ $image->upvotes->count() }}</p>
-                            </div>
-                            <div class="comment_amount">
-                                <i class="far fa-comments"></i>
-                                <p>{{ $image->comments->count() }}</p>
-                            </div>
-                            <div class="favourite">
-                                <i class="far fa-heart"></i>
-                                <!-- <i class="fas fa-heart"></i> -->
-                            </div>
-                            <div class="user">
-                                <i class="fas fa-user"></i>
-                                <p>{{$image->user_name}}</p>
-                            </div>
-                        </div>
+                            <!-- /.card -->
+                          </div>
+                        @endforeach
                     </div>
-                @endforeach
+                </div>
             </div>
         </div>
     </section>
@@ -286,9 +383,7 @@
 <script src="../resources/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
 <!-- jQuery Knob Chart -->
 <script src="../resources/plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
 <script src="../resources/plugins/moment/moment.min.js"></script>
-<script src="../resources/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="../resources/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->

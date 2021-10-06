@@ -48,7 +48,6 @@ class CommentController extends Controller
 
         $name = Auth::user()->name;
         $id = Auth::user()->id;
-
         
         $comment = new Comment([
             "image_id" => $request->get('image_id'),

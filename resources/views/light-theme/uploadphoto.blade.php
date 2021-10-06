@@ -238,8 +238,8 @@
                             <form action="{{ route('upload.image') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label>title</label>
-                                    <input type="text" class="form-control" name="name" required>
+                                    <label>description</label>
+                                    <input type="text" class="form-control" name="description" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="file" name="file" required>

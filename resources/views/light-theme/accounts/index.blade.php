@@ -6,11 +6,11 @@
     <title>mbw - almanac</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="../resources/https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../resources/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="../resources/https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href="../resources/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- JQVMap -->
@@ -26,7 +26,7 @@
     <!-- customizations -->
     <link rel="stylesheet" href="css/app.css">
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed" style="font-family: 'Source Sans Pro','Sans Serif' !important;">
 <div class="wrapper">
 
     <!-- Preloader -->
@@ -223,12 +223,17 @@
 
             <main class="py-4 bg-light">
                 @if(session()->has('success'))
-                    <div class="alert alert-success">
+                        
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-check"></i> Good job!</h5>
                         {{ session()->get('success') }}
                     </div>
                 @endif
                 @if(session()->has('error'))
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-ban"></i> Oops!</h5>
                         {{ session()->get('error') }}
                     </div>
                 @endif
@@ -372,9 +377,6 @@
 <script src="../resources/plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
 <script src="../resources/plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="../resources/plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="../resources/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
 <!-- jQuery Knob Chart -->
 <script src="../resources/plugins/jquery-knob/jquery.knob.min.js"></script>
 <!-- daterangepicker -->
@@ -388,9 +390,5 @@
 <script src="../resources/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../resources/dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../resources/dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="../resources/dist/js/pages/dashboard.js"></script>
 </body>
 </html>

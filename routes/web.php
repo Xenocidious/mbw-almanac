@@ -60,7 +60,7 @@ Route::get('/removeUpvote/{id}', [
 ]);
 
 Route::get('/openImage/{id}', [
-    'uses' => 'Imagecontroller@openImage',
+'uses' => 'Imagecontroller@openImage',
     'as' => 'open.image'
 ]);
 
