@@ -47,7 +47,11 @@
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           @if(auth::check())
             <div class="image">
-                <img src="data:image/png;base64, {{ $user->photo }}" class="img-circle elevation-2" alt="User Image">
+                @if($user->photo == NULL)
+                  <img src="../resources/dist/img/avatar.png" class="img-circle elevation-2 userImage" alt="User Image">
+                @else
+                  <img src="data:image/png;base64, {{ $user->photo }}" class="img-circle elevation-2 userImage" alt="User Image">
+                @endif
             </div>
             <div class="info">
                 <a  href="{{ route('accounts.index') }}" class="d-block">{{ Auth::user()->name }}</a>
@@ -247,7 +251,11 @@
                                 <div class="user-block">
                                   @foreach($users as $u)
                                     @if($u->id == $image->user_id)
-                                        <img class="img-circle" src="data:image/png;base64, {{ $u->photo }}" alt="User Image">
+                                        @if($u->photo == NULL)
+                                            <img class="img-circle" src="../resources/dist/img/avatar.png" alt="User Image">
+                                        @else
+                                            <img class="img-circle" src="data:image/png;base64, {{ $u->photo }}" alt="User Image">
+                                        @endif
                                     @endif
                                   @endforeach
                                   <span class="username"><a href="#">{{$image->user_name}}</a></span>
@@ -255,9 +263,13 @@
                                 </div>
                                 <!-- /.user-block -->
                                 <div class="card-tools">
-                                  <button type="button" class="btn btn-tool" title="Mark as read">
-                                    <i class="far fa-circle"></i>
-                                  </button>
+                                    @if($image->user_id == $user->id)
+                                    <a href='{{ route('post.delete', ['id' => $image->id]) }}' onclick='return confirm("Are you sure that you want to delete this post?")'>
+                                      <button type="button" class="btn btn-tool" title="delete post">
+                                        <i class="fas fa-trash"></i>
+                                      </button>
+                                    </a>
+                                  @endif
                                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
                                   </button>
@@ -288,26 +300,35 @@
                                 </script>
 
                                 <button type="button" class="btn btn-default btn-sm"><i class="far fa-thumbs-up"></i> Like</button>
-                                <span class="float-right text-muted">{{$image->votes}} likes - {{$commentAmount}} comments</span>
+                                <span class="float-right text-muted">{{$image->votes}} upvotes - {{$commentAmount}} comments</span>
                                 
                               </div>
                               <!-- /.card-body -->
                               <div class="card-footer card-comments">
                                 <div class="card-comment">
+                                <?php $commentAmount = 0; 
+                                $maxComments = 3?>
                                   @foreach($comments as $comment)
-                                  <?php
-                                  ?>
-                                    @if($comment->image_id == $image->id)
+                                    @if($comment->image_id == $image->id && $commentAmount < $maxComments)
+                                    <? $commentAmount++; ?>
                                     <!-- User image -->
                                     @foreach($users as $u)
                                         @if($u->id == $comment->user_id)
-                                            <img class="img-circle img-sm" src="data:image/png;base64, {{ $u->photo }}" alt="User Image">
+                                            @if($u->photo == NULL)
+                                                <img class="img-circle img-sm" src="../resources/dist/img/avatar.png" alt="User Image">
+                                            @else
+                                                <img class="img-circle img-sm" src="data:image/png;base64, {{ $u->photo }}" alt="User Image">
+                                            @endif
                                         @endif
                                     @endforeach
                                         <div class="comment-text">
                                             <span class="username">
                                             {{$comment->user_name}}
-                                            <span class="text-muted float-right">{{date('H:i', strtotime($comment->created_at))}}</span>
+                                            <span class="text-muted float-right">{{date('H:i', strtotime($comment->created_at))}}
+                                                @if($comment->user_id == $user->id)
+                                                    <a href="{{ route('comment.delete', ['id' => $comment->id]) }}"><i class="fas fa-trash"></a>
+                                                @endif
+                                            </i></span>
                                             </span><!-- /.username -->
                                             {{$comment->comment}}
                                         </div>
@@ -327,7 +348,11 @@
                                 <form action="{{ route('comment.store') }}" method="post" enctype="multipart/form-data" name="comment">
                                     @csrf
                                   <input type="hidden" name='image_id' value='{{$image->id}}'>
-                                  <img class="img-fluid img-circle img-sm" src="data:image/png;base64, {{ $user->photo }}" alt="Alt Text">
+                                  @if($user->photo == NULL)
+                                    <img class="img-fluid img-circle img-sm" src="../resources/dist/img/avatar.png" alt="Alt Text">
+                                  @else
+                                    <img class="img-fluid img-circle img-sm" src="data:image/png;base64, {{ $user->photo }}" alt="Alt Text">
+                                  @endif
                                   <!-- .img-push is used to add margin to elements next to floating images -->
                                   <div class="img-push">
                                     <input type="text" class="form-control form-control-sm" placeholder="Press enter to post comment" name="comment">

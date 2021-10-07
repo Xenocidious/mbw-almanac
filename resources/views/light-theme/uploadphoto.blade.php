@@ -226,6 +226,13 @@
             <div class="container">
                 <div id='spacefiller'></div>
                 <div id='spacefiller'></div>
+                @if (\Session::has('error'))
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-ban"></i> Oops!</h5>
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
         
                 <div class="main_content_uploadphoto">
                     <h1>Upload a photo</h1>

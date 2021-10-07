@@ -47,7 +47,11 @@
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           @if(auth::check())
             <div class="image">
-                <img src="data:image/png;base64, {{ $user->photo }}" class="img-circle elevation-2 userImage" alt="User Image">
+                @if($user->photo == NULL)
+                  <img src="../resources/dist/img/avatar.png" class="img-circle elevation-2 userImage" alt="User Image">
+                @else
+                  <img src="data:image/png;base64, {{ $user->photo }}" class="img-circle elevation-2 userImage" alt="User Image">
+                @endif
             </div>
             <div class="info">
                 <a  href="{{ route('accounts.index') }}" class="d-block">{{ Auth::user()->name }}</a>
