@@ -11937,4 +11937,10 @@ body {
   border: 1px dotted rgba(29, 104, 167);
 }
 
+.medium-dark-background{
+  background-color: rgb(36, 36, 36) !important;
+}
 
+.text-light{
+  color: #6c757d !important;
+}
