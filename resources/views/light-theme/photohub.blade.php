@@ -47,7 +47,7 @@
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           @if(auth::check())
             <div class="image">
-                @if($user->photo == NULL)
+                @if(Auth::user()->photo == NULL)
                   <img src="../resources/dist/img/avatar.png" class="img-circle elevation-2 userImage" alt="User Image">
                 @else
                   <img src="data:image/png;base64, {{ $user->photo }}" class="img-circle elevation-2 userImage" alt="User Image">
@@ -280,7 +280,7 @@
                                 <!-- /.card-tools -->
                               </div>
                               <!-- /.card-header -->
-                              <div class="card-body">
+                              <div class="card-body shadow">
                                 <a href='{{ route("open.image", ["id" => $image->id])}}'>
                                     <img class="img-fluid pad" src="../storage/app/public/image/{{$image->file_path}}" alt="Photo">
                                 </a>
@@ -299,8 +299,41 @@
                                     }
                                 </script>
 
-                                <button type="button" class="btn btn-default btn-sm"><i class="far fa-thumbs-up"></i> Like</button>
-                                <span class="float-right text-muted">{{$image->votes}} upvotes - {{$commentAmount}} comments</span>
+                                <?php
+                                    $voted = 'false';
+                                    foreach($upvotes as $vote){
+                                        if($vote->image_id == $image->id){
+                                            if($vote->user_id == $user->id){
+                                                $voted = 'true'; 
+                                            }
+                                        }
+                                    }
+                                ?>
+                                @if($voted == 'true')
+                                    <a href='{{ route('image.remove_upvote', ['id' => $image->id]) }}'>
+                                        <button type="button" class="btn btn-default btn-sm active_button">
+                                            <i class="far fa-arrow-alt-circle-up active_icon"></i>
+                                            Vote
+                                        </button>
+                                    </a>
+                                @else 
+                                    <a href='{{ route('image.upvote', ['id' => $image->id]) }}'>
+                                        <button type="button" class="btn btn-default btn-sm">
+                                            <i class="far fa-arrow-alt-circle-up"></i>
+                                            Vote
+                                        </button>
+                                    </a>
+                                @endif
+                                
+                                <?php
+                                $imageUpvotes = 0;
+                                foreach($upvotes as $upvote){
+                                    if($upvote->image_id == $image->id){
+                                        $imageUpvotes++;
+                                    }
+                                }
+                                ?>
+                                <span class="float-right text-muted">{{$imageUpvotes}} upvotes | {{$commentAmount}} comments</span>
                                 
                               </div>
                               <!-- /.card-body -->
@@ -326,9 +359,9 @@
                                             {{$comment->user_name}}
                                             <span class="text-muted float-right">{{date('H:i', strtotime($comment->created_at))}}
                                                 @if($comment->user_id == $user->id)
-                                                    <a href="{{ route('comment.delete', ['id' => $comment->id]) }}"><i class="fas fa-trash"></a>
+                                                    <a onclick='return confirm("are you sure that you want to delete this comment?")' href="{{ route('comment.delete', ['id' => $comment->id]) }}"><i class="fas fa-trash"></i></a>
                                                 @endif
-                                            </i></span>
+                                            </span>
                                             </span><!-- /.username -->
                                             {{$comment->comment}}
                                         </div>
@@ -349,9 +382,9 @@
                                     @csrf
                                   <input type="hidden" name='image_id' value='{{$image->id}}'>
                                   @if($user->photo == NULL)
-                                    <img class="img-fluid img-circle img-sm" src="../resources/dist/img/avatar.png" alt="Alt Text">
+                                    <img class="img-circle img-sm" src="../resources/dist/img/avatar.png" alt="Alt Text">
                                   @else
-                                    <img class="img-fluid img-circle img-sm" src="data:image/png;base64, {{ $user->photo }}" alt="Alt Text">
+                                    <img class="img-circle img-sm" src="data:image/png;base64, {{ $user->photo }}" alt="Alt Text">
                                   @endif
                                   <!-- .img-push is used to add margin to elements next to floating images -->
                                   <div class="img-push">

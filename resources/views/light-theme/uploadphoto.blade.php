@@ -6,11 +6,11 @@
     <title>mbw - almanac</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="../resources/https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../resources/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="../resources/https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href="../resources/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- JQVMap -->
@@ -46,9 +46,13 @@
 
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           @if(auth::check())
-            <div class="image">
-                <img src="../resources/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-            </div>
+          <div class="image">
+              @if(Auth::user()->photo == NULL)
+                <img src="../resources/dist/img/avatar.png" class="img-circle elevation-2 userImage" alt="User Image">
+              @else
+                <img src="data:image/png;base64, {{Auth::user()->photo }}" class="img-circle elevation-2 userImage" alt="User Image">
+              @endif
+          </div>
             <div class="info">
                 <a  href="{{ route('accounts.index') }}" class="d-block">{{ Auth::user()->name }}</a>
             </div>

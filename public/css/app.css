@@ -11928,3 +11928,13 @@ body {
   width: 45px !important;
   height: 45px !important;
 }
+
+.active_icon{
+  color: rgba(29, 104, 167);
+}
+
+.active_button{
+  border: 1px dotted rgba(29, 104, 167);
+}
+
+

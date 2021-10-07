@@ -47,7 +47,7 @@
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           @if(auth::check())
             <div class="image">
-                @if($user->photo == NULL)
+                @if(Auth::user()->photo == NULL)
                   <img src="../resources/dist/img/avatar.png" class="img-circle elevation-2 userImage" alt="User Image">
                 @else
                   <img src="data:image/png;base64, {{ $user->photo }}" class="img-circle elevation-2 userImage" alt="User Image">

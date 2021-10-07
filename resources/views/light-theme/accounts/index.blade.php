@@ -227,18 +227,37 @@
 
             <main class="py-4 bg-light">
                 @if(session()->has('success'))
-                        
-                    <div class="alert alert-success alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        <h5><i class="icon fas fa-check"></i> Good job!</h5>
-                        {{ session()->get('success') }}
+                    <div class="col-md-3">
+                        <div class="card bg-success">
+                        <div class="card-header">
+                            <h3 class="card-title">Good job!</h3>
+                            <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+                            </button>
+                            </div>
+                            <!-- /.card-tools -->
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            {{ session()->get('success') }}
+                        </div>
+                        <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
                     </div>
                 @endif
                 @if(session()->has('error'))
-                    <div class="alert alert-danger alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        <h5><i class="icon fas fa-ban"></i> Oops!</h5>
-                        {{ session()->get('error') }}
+                    <div class="col-md-3">
+                        <div class="card card-danger">
+                        <div class="card-header">
+                            <h3 class="card-title">Oops!</h3>
+                        </div>
+                        <div class="card-body">
+                            {{ session()->get('error') }}
+                        </div>
+                        <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
                     </div>
                 @endif
             
