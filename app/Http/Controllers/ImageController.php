@@ -40,11 +40,10 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         // Validate the inputs
         $request->validate([
-            'name' => 'required',
+            'description' => 'required',
         ]);
 
 
@@ -54,13 +53,16 @@ class ImageController extends Controller
             $request->validate([
                 'image' => 'mimes:jpeg' // Only allow .jpg file types.
             ]);
+            // $this->validate($request, [
+            //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:width=1920,height=1080',
+            // ]);
 
             // Save the file locally in the storage/public/ folder under a new folder named /image
             $request->file->store('image', 'public');
 
             // Store the record, using the new file hashname which will be it's new filename identity.
             $image = new Image([
-                "name" => $request->get('name'),
+                "description" => $request->get('description'),
                 "file_path" => $request->file->hashName(),
                 "user_id" => Auth::user()->id,
                 "user_name" => Auth::user()->name

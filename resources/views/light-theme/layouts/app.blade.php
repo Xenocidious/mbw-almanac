@@ -80,7 +80,7 @@
                         </p>
                     </a>
                 </li>
-            </il>
+            </li>
                 <li class="nav-item">
                     <a href="{{ route('statistics') }}" class="nav-link">
                         <i class="nav-icon fas fa-chart-bar"></i>
@@ -89,7 +89,7 @@
                         </p>
                     </a>
                 </li>
-            </il>
+            </li>
                 <li class="nav-item">
                     <a href="{{ route('photohub') }}" class="nav-link">
                         <i class="nav-icon fas fa-photo-video"></i>
@@ -99,7 +99,7 @@
                         </p>
                     </a>
                 </li>
-            </il>
+            </li>
                 <li class="nav-item">
                     <a href="{{ route("statistics") }}" class="nav-link">
                         <i class="nav-icon fas fa-thermometer-half"></i>
@@ -108,7 +108,7 @@
                         </p>
                     </a>
                 </li>
-            </il>
+            </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-address-card"></i>
@@ -117,7 +117,7 @@
                         </p>
                     </a>
                 </li>
-            </il>
+            </li>
         <ul>
     </aside>
 

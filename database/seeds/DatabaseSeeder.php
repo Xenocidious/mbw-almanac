@@ -19,6 +19,5 @@ class DatabaseSeeder extends Seeder
         DB::table('themes')->insert(['name' => 'Light', 'path' => 'light-theme']);
         DB::table('themes')->insert(['name' => 'Dark', 'path' => 'dark-theme']);
         DB::table('themes')->insert(['name' => 'Violet', 'path' => 'violet-theme']);
-        DB::table('themes')->insert(['name' => 'Violet', 'path' => 'sadfdsfsdfsd-theme']);
     }
 }
