@@ -1,4 +1,3 @@
-        $favoriteImage = new FavoriteImage();
 <?php
 
 namespace App\Http\Controllers;
