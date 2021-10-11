@@ -325,7 +325,7 @@
                           <div class="icon">
                               <i class="ion ion-ios-partlysunny-outline"></i>
                           </div>
-                          <a href="../resources/#" class="small-box-footer">{{$forecastData[1]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
+                          <a href="{{Route('weather')}}" class="small-box-footer"> see more date's <i class="fas fa-arrow-circle-right"></i></a>
                       </div>
                   </div>
                   @endif

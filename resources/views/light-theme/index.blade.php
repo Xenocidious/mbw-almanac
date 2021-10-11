@@ -277,7 +277,7 @@
                           <div class="icon">
                               <i class="ion ion-ios-partlysunny-outline"></i>
                           </div>
-                          <a href="../resources/#" class="small-box-footer">{{$forecastData[1]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
+                          <a href="../resources/#" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i></a>
                       </div>
                   </div>
                   <!-- ./col -->
@@ -310,23 +310,20 @@
                                             if ($city->id == $userCity->city_id) {
                                                 $requestedWeatherName = $city->name;
                                                 $requestedWeather = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/'.$requestedWeatherName.'?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH')['days'];
-                        
                                                 echo $city->name . ' ' .round($requestedWeather[0]['tempmax'], 0).'°';
-                        
-                        
                                                 echo '<br>';
                                             }
                                         }
                                     }
                                 }
                             }
-                        
+
                             ?>
                           </div>
                           <div class="icon">
                               <i class="ion ion-ios-partlysunny-outline"></i>
                           </div>
-                          <a href="../resources/#" class="small-box-footer">{{$forecastData[1]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
+                          <a href="{{Route('weather')}}" class="small-box-footer"> see more date's <i class="fas fa-arrow-circle-right"></i></a>
                       </div>
                   </div>
                   @endif
