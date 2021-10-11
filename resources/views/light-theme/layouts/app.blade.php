@@ -17,11 +17,14 @@
     <link rel="stylesheet" href="../resources/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <link rel="stylesheet" href="../resources/plugins/jqvmap/jqvmap.min.css">
 
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
     <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{--    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">--}}
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
@@ -39,6 +42,7 @@
     <link rel="stylesheet" href="../resources/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="../resources/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <link rel="stylesheet" href="../resources/plugins/summernote/summernote-bs4.min.css">
+
 
 </head>
 <body>
