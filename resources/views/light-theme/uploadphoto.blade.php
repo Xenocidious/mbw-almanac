@@ -95,7 +95,7 @@
                 </li>
             </li>
                 <li class="nav-item">
-                    <a href="../resources/#" class="nav-link">
+                    <a href="{{Route('weather')}}" class="nav-link">
                         <i class="nav-icon fas fa-thermometer-half"></i>
                         <p>
                             Weather

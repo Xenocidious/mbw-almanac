@@ -50,7 +50,7 @@
                 @if(Auth::user()->photo == NULL)
                   <img src="../resources/dist/img/avatar.png" class="img-circle elevation-2 userImage" alt="User Image">
                 @else
-                  <img src="data:image/png;base64, {{ $user->photo }}" class="img-circle elevation-2 userImage" alt="User Image">
+                  <img src="data:image/png;base64, {{ Auth::user()->photo }}" class="img-circle elevation-2 userImage" alt="User Image">
                 @endif
             </div>
             <div class="info">
@@ -95,7 +95,7 @@
                 </li>
             </li>
                 <li class="nav-item">
-                    <a href="../resources/#" class="nav-link">
+                    <a href="{{Route('weather')}}" class="nav-link">
                         <i class="nav-icon fas fa-thermometer-half"></i>
                         <p>
                             Weather
@@ -381,10 +381,10 @@
                                 <form action="{{ route('comment.store') }}" method="post" enctype="multipart/form-data" name="comment">
                                     @csrf
                                   <input type="hidden" name='image_id' value='{{$image->id}}'>
-                                  @if($user->photo == NULL)
+                                  @if(Auth::user()->photo == NULL)
                                     <img class="img-circle img-sm" src="../resources/dist/img/avatar.png" alt="Alt Text">
                                   @else
-                                    <img class="img-circle img-sm" src="data:image/png;base64, {{ $user->photo }}" alt="Alt Text">
+                                    <img class="img-circle img-sm" src="data:image/png;base64, {{ Auth::user()->photo }}" alt="Alt Text">
                                   @endif
                                   <!-- .img-push is used to add margin to elements next to floating images -->
                                   <div class="img-push">

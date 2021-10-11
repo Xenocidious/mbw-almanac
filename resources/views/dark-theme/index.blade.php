@@ -47,10 +47,10 @@
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           @if(auth::check())
             <div class="image">
-              @if($user->photo == NULL)
+              @if(Auth::user()->photo == NULL)
                 <img src="../resources/dist/img/avatar.png" class="img-circle elevation-2 userImage" alt="User Image">
               @else
-                <img src="data:image/png;base64, {{ $user->photo }}" class="img-circle elevation-2 userImage" alt="User Image">
+                <img src="data:image/png;base64, {{ Auth::user()->photo }}" class="img-circle elevation-2 userImage" alt="User Image">
               @endif
             </div>
             <div class="info">
@@ -95,7 +95,7 @@
                 </li>
             </li>
                 <li class="nav-item">
-                    <a href="../resources/#" class="nav-link">
+                    <a href="{{Route('weather')}}" class="nav-link">
                         <i class="nav-icon fas fa-thermometer-half"></i>
                         <p>
                             Weather

@@ -22,7 +22,7 @@ class AccountController extends Controller
     public function update(User $user, Request $request)
     {
         if ($request->hasFile('photo')) {
-            $user->photo = base64_encode($request->file('photo')->getContent());
+            Auth::user()->photo = base64_encode($request->file('photo')->getContent());
         }
 
         $user->email = $request->post('email');
