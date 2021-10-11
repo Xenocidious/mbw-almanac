@@ -268,67 +268,72 @@
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
-                <!-- small box -->
-                    <div class="small-box bg-info background-green">
-                        <div class="inner">
-                            <h3>tomorrow, {{$forecastData[1]['tempmax']}}°</h3>
-                            <p><?= date('l',strtotime("1 days"));?></p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-ios-partlysunny-outline"></i>
-                        </div>
-                        <a href="../resources/#" class="small-box-footer">{{$forecastData[1]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
+                  <!-- small box -->
+                      <div class="small-box bg-info background-green">
+                          <div class="inner">
+                              <h3>tomorrow, {{$forecastData[1]['tempmax']}}°</h3>
+                              <p><?= date('l',strtotime("1 days"));?></p>
+                          </div>
+                          <div class="icon">
+                              <i class="ion ion-ios-partlysunny-outline"></i>
+                          </div>
+                          <a href="../resources/#" class="small-box-footer">{{$forecastData[1]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
+                      </div>
+                  </div>
+                  <!-- ./col -->
                 <!-- ./col -->
+                  <?php
+                  $favoCities = false;
+                  if(Auth::check()){
+                    foreach($userCities as $userCity){
+                      if($userCity->user_id == Auth::user()->id){
+                        $favoCities = true;
+                      }
+                    }
+                  }
+                ?>
+                @if($favoCities == true)
+                <div class="col-lg-3 col-6">
+                  <!-- small box -->
+                      <div class="small-box bg-info background-green">
+                          <div class="inner">
+                            <?php
+  
+                            $check = false;
+                            $requestWeather;
+                            $requestedWeatherName;
+                        
+                            if (Auth::check()) {
+                                foreach ($userCities as $userCity) {
+                                    if($userCity->user_id == Auth::user()->id){
+                                        foreach ($cities as $city) {
+                                            if ($city->id == $userCity->city_id) {
+                                                $requestedWeatherName = $city->name;
+                                                $requestedWeather = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/'.$requestedWeatherName.'?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH')['days'];
+                        
+                                                echo $city->name . ' ' .round($requestedWeather[0]['tempmax'], 0).'°';
+                        
+                        
+                                                echo '<br>';
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        
+                            ?>
+                          </div>
+                          <div class="icon">
+                              <i class="ion ion-ios-partlysunny-outline"></i>
+                          </div>
+                          <a href="../resources/#" class="small-box-footer">{{$forecastData[1]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
+                      </div>
+                  </div>
+                  @endif
+                  <!-- ./col -->
             </div>
         </div>
 
-
-
-    <?php
-
-    $check = false;
-    $requestWeather;
-    $requestedWeatherName;
-
-if (Auth::check()) {
-    foreach ($userCities as $userCity) {
-        if($userCity->user_id == Auth::user()->id){
-            foreach ($cities as $city) {
-                if ($city->id == $userCity->city_id) {
-                    $requestedWeatherName = $city->name;
-                    $requestedWeather = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/'.$requestedWeatherName.'?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH')['days'];
-
-                    echo $city->name . ' ' .round($requestedWeather[0]['tempmax'], 0).'°';
-
-
-                    echo '<br>';
-                }
-            }
-        }
-    }
-}
-
-
-
-    // foreach ($cities as $city) {
-    //     foreach ($userCities as $userCity) {
-    //         if($userCity->user_id == Auth::user()->id && $city->id == $userCity->city_id){
-    //             echo $city->name . '<br>';
-
-    //         }
-    //     }
-    // array_push($chosenCities, $city);
-    // }
-
-    ?>
-
-
-    <h1 id='chart_index'>Check our data</h1>
-    <a href='statistics'>
-        <div id="curve_chart" style="width: 900px; height: 500px"></div>
-    </a>
         <!-- Main row -->
         <div class="row">
           <!-- Left col -->

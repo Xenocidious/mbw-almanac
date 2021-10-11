@@ -57,7 +57,7 @@ class AccountController extends Controller
         $user->save();
 
 
-
+        
          // Store the record, using the new file hashname which will be it's new filename identity.
          $cityNumber = new City([
             "name" => $request->get('selectedCities'),
@@ -67,8 +67,10 @@ class AccountController extends Controller
         $saveCity = new UserCity;
         $allCities = UserCity::all();
 
+
         //Assigning city ID to $saveCity
         $saveCity->city_id = $cityNumber['name'];
+        
 
         //Assigning User ID to $saveCity
         $saveCity->user_id = Auth::user()->id;
@@ -79,8 +81,11 @@ class AccountController extends Controller
             }
         }
 
+        if($saveCity->city_id != null) {
+            $saveCity->save();
+        }
+
         //Save and assign data to database
-        $saveCity->save();
 
 
         return redirect()->route('accounts.index')->with('success', __('Account edited.'));

@@ -281,10 +281,8 @@
                               </div>
                               <!-- /.card-header -->
                               <div class="card-body shadow">
-                                <a href='{{ route("open.image", ["id" => $image->id])}}'>
-                                    <img class="img-fluid pad" src="../storage/app/public/image/{{$image->file_path}}" alt="Photo">
-                                </a>
-            
+                                <img class="img-fluid pad" src="../storage/app/public/image/{{$image->file_path}}" alt="Photo">
+
                                 <p>{{$image->description}}</p>
                                 <button type="button" class="btn btn-default btn-sm" onclick="copyImageUrl({{$image->id}})"><i class="fas fa-share"></i> Share</button>
                                 <input type="text" id="hidden{{$image->id}}" class='hidden' name='IMGurl' value='http://localhost/jaar%202+3/groepsprojecten/mbw-almanac/public/openImage/{{$image->id}}'>

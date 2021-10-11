@@ -281,9 +281,7 @@
                               </div>
                               <!-- /.card-header -->
                               <div class="card-body shadow">
-                                <a href='{{ route("open.image", ["id" => $image->id])}}'>
-                                    <img class="img-fluid pad" src="../storage/app/public/image/{{$image->file_path}}" alt="Photo">
-                                </a>
+                                <img class="img-fluid pad" src="../storage/app/public/image/{{$image->file_path}}" alt="Photo">
             
                                 <p class="text-light">{{$image->description}}</p>
                                 <button type="button" class="btn btn-default btn-sm text-light" onclick="copyImageUrl({{$image->id}})"><i class="fas fa-share text-light"></i> Share</button>
@@ -370,7 +368,7 @@
                                     
                                   @endforeach
                                   @if($commentAmount == 0)
-                                     Be the first to comment under <a href='#'>{{$image->user_name}}</a>'s post!
+                                     <p class='text-light'>Be the first to comment under <a href='#'>{{$image->user_name}}</a>'s post!</p>
                                   @endif
 
 

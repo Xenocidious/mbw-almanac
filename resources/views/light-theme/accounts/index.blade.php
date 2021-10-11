@@ -330,11 +330,12 @@
                         <div class="form-group">
                             <label class="text-dark" for="cities">{{ __('Favorite cities') }}</label>
                             <select name="selectedCities" id="cities" class="form-control">
-                            @foreach($cities as $city)
-                                <option value="{{ $city->id }}">
-                                {{ $city->name }}
-                                </option>
-                            @endforeach
+                                <option disabled selected>select to add cities to homepage</option>
+                                @foreach($cities as $city)
+                                    <option value="{{ $city->id }}">
+                                    {{ $city->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
 

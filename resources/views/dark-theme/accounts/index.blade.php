@@ -307,6 +307,35 @@
                     </fieldset>
 
                     <fieldset>
+                        <div class="form-group">
+                            <label class="text-dark" for="cities">{{ __('Favorite cities') }}</label>
+                            <select name="selectedCities" id="cities" class="form-control">
+                                <option disabled selected>select to add cities to homepage</option>
+                                @foreach($cities as $city)
+                                    <option value="{{ $city->id }}">
+                                    {{ $city->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                       <?php
+                       $chosenCities = [];
+                       foreach ($cities as $city) {
+                           foreach ($userCities as $userCity) {
+                               if($userCity->user_id == Auth::user()->id && $city->id == $userCity->city_id){
+                                    echo $city->name . '<br>';
+
+                               }
+                            }
+                        array_push($chosenCities, $city);
+                       }
+
+                       ?>
+
+                    </fieldset>
+
+                    <fieldset>
                         <legend class="text-light pt-5">{{ __('Edit password') }}</legend>
 
                         <div class="form-group">
