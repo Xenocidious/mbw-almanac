@@ -361,6 +361,15 @@
 
                        ?>
 
+                        @if($checkCityHighlight == true)
+                            <script>
+                                cities.style.transition = '5s';
+                                cities.style.cssText = '-webkit-box-shadow: 0px 0px 65px 5px rgba(255,255,255,.85);-moz-box-shadow: 0px 0px 65px 5px rgba(255,255,255,.85);box-shadow: 0px 0px 65px 5px rgba(255,255,255,.85);';
+                                setTimeout(function(){ cities.style.cssText = '-webkit-box-shadow: 0px 0px 65px 5px rgba(0,255,0,0.85);-moz-box-shadow: 0px 0px 65px 5px rgba(0,255,0,0.85);box-shadow: 0px 0px 65px 5px rgba(0,255,0,0.85);'; }, 1000);
+                                setTimeout(function(){ cities.style.cssText = '-webkit-box-shadow: 0px 0px 65px 5px rgba(255,255,255,.85);-moz-box-shadow: 0px 0px 65px 5px rgba(255,255,255,.85);box-shadow: 0px 0px 65px 5px rgba(255,255,255,.85);'; }, 3000);
+                            </script>
+                        @endif
+
                     </fieldset>
 
                     <fieldset>
