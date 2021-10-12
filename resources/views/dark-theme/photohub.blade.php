@@ -8,21 +8,21 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../resources/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../public/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="../resources/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="../public/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- JQVMap -->
-    <link rel="stylesheet" href="../resources/plugins/jqvmap/jqvmap.min.css">
+    <link rel="stylesheet" href="../public/plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../resources/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../public/dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="../resources/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="../public/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
-    <link rel="stylesheet" href="../resources/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="../public/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
-    <link rel="stylesheet" href="../resources/plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="../public/plugins/summernote/summernote-bs4.min.css">
     <!-- customizations -->
     <link rel="stylesheet" href="css/app.css">
 </head>
@@ -31,7 +31,7 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="../resources/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+        <img class="animation__shake" src="../public/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
     </div>
 
 
@@ -39,7 +39,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="../resources/index3.html" class="brand-link">
-            <img src="../resources/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <img src="../public/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">mbw Almanac</span>
         </a>
     
@@ -48,7 +48,7 @@
           @if(auth::check())
             <div class="image">
                 @if(Auth::user()->photo == NULL)
-                  <img src="../resources/dist/img/avatar.png" class="img-circle elevation-2 userImage" alt="User Image">
+                  <img src="../public/dist/img/avatar.png" class="img-circle elevation-2 userImage" alt="User Image">
                 @else
                   <img src="data:image/png;base64, {{ Auth::user()->photo }}" class="img-circle elevation-2 userImage" alt="User Image">
                 @endif
@@ -164,7 +164,7 @@
                 <a href="../resources/#" class="dropdown-item">
                 <!-- Message Start -->
                     <div class="media">
-                        <img src="../resources/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                        <img src="../public/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 Mert Özdal
@@ -180,7 +180,7 @@
                 <a href="../resources/#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
-                    <img src="../resources/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                    <img src="../public/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                     <div class="media-body">
                         <h3 class="dropdown-item-title">
                             Pieterjan van Dijk
@@ -196,7 +196,7 @@
                 <a href="../resources/#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
-                    <img src="../resources/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                    <img src="../public/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                     <div class="media-body">
                         <h3 class="dropdown-item-title">
                             Aya Mohammed
@@ -252,7 +252,7 @@
                                   @foreach($users as $u)
                                     @if($u->id == $image->user_id)
                                         @if($u->photo == NULL)
-                                            <img class="img-circle" src="../resources/dist/img/avatar.png" alt="User Image">
+                                            <img class="img-circle" src="../public/dist/img/avatar.png" alt="User Image">
                                         @else
                                             <img class="img-circle" src="data:image/png;base64, {{ $u->photo }}" alt="User Image">
                                         @endif
@@ -346,7 +346,7 @@
                                     @foreach($users as $u)
                                         @if($u->id == $comment->user_id)
                                             @if($u->photo == NULL)
-                                                <img class="img-circle img-sm" src="../resources/dist/img/avatar.png" alt="User Image">
+                                                <img class="img-circle img-sm" src="../public/dist/img/avatar.png" alt="User Image">
                                             @else
                                                 <img class="img-circle img-sm" src="data:image/png;base64, {{ $u->photo }}" alt="User Image">
                                             @endif
@@ -380,7 +380,7 @@
                                     @csrf
                                   <input type="hidden" name='image_id' value='{{$image->id}}'>
                                   @if(Auth::user()->photo == NULL)
-                                    <img class="img-circle img-sm" src="../resources/dist/img/avatar.png" alt="Alt Text">
+                                    <img class="img-circle img-sm" src="../public/dist/img/avatar.png" alt="Alt Text">
                                   @else
                                     <img class="img-circle img-sm" src="data:image/png;base64, {{ Auth::user()->photo }}" alt="Alt Text">
                                   @endif
@@ -421,32 +421,32 @@
       </footer>
 
 <!-- jQuery -->
-<script src="../resources/plugins/jquery/jquery.min.js"></script>
+<script src="../public/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="../resources/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../public/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="../resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
-<script src="../resources/plugins/chart.js/Chart.min.js"></script>
+<script src="../public/plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
-<script src="../resources/plugins/sparklines/sparkline.js"></script>
+<script src="../public/plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->
-<script src="../resources/plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="../resources/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<script src="../public/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="../public/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
 <!-- jQuery Knob Chart -->
-<script src="../resources/plugins/jquery-knob/jquery.knob.min.js"></script>
-<script src="../resources/plugins/moment/moment.min.js"></script>
+<script src="../public/plugins/jquery-knob/jquery.knob.min.js"></script>
+<script src="../public/plugins/moment/moment.min.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="../resources/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="../public/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->
-<script src="../resources/plugins/summernote/summernote-bs4.min.js"></script>
+<script src="../public/plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
-<script src="../resources/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="../public/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../resources/dist/js/adminlte.js"></script>
+<script src="../public/dist/js/adminlte.js"></script>
 </body>
 </html>
