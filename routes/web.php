@@ -1,5 +1,7 @@
 <?php
 
+use App\City;
+use App\UserCity;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
@@ -26,12 +28,17 @@ Route::get('/', function () {
 
     $forecast = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=fcst,stats,current')['days'];
 
-    return view('index', ['yesterdayData' => $yesterday, 'forecastData' => $forecast, 'todayData' => $today]);
+    $city = City::get();
+    $userCity = UserCity::get();
+
+
+    return view('index' , ['yesterdayData'=> $yesterday, 'forecastData'=>$forecast, 'todayData'=>$today, 'cities'=>$city, 'userCities'=>$userCity]);
 
 });
 
 Route::get('/index', 'WelcomeController@index')->name('home');
 
+Route::get('/w3', 'WelcomeController@w3')->name('w3');
 
 Route::get('/statistics', 'StatisticsController@index')->name('statistics');
 
@@ -98,6 +105,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/photohub', 'PhotohubController@index')->name('photohub');
 });
+
+
 
 Auth::routes();
 

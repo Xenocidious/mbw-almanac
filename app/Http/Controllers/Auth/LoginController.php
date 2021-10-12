@@ -30,7 +30,7 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {
-        return 'index';
+        return Route('home');
     }
 
     /**

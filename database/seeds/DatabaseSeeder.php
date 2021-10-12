@@ -23,5 +23,11 @@ class DatabaseSeeder extends Seeder
         DB::table('images_upvotes')->insert([
             ['id' => '0', 'image_id' => -1, 'created_at' => '', 'updated_at' => '']
         ]);
+
+        DB::table('cities')->insert(['name' => 'Istanbul']);
+        DB::table('cities')->insert(['name' => 'Amsterdam']);
+        DB::table('cities')->insert(['name' => 'London']);
+        DB::table('cities')->insert(['name' => 'New York']);
+        DB::table('cities')->insert(['name' => 'Tokyo']);
     }
 }
