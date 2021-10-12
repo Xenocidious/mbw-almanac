@@ -323,9 +323,9 @@
                             ?>
                           </div>
                           <div class="icon">
-                              <i class="ion ion-ios-partlysunny-outline"></i>
+                            <i class="fas fa-map-marked-alt fa-5x"></i>
                           </div>
-                          <a href="{{Route('weather')}}" class="small-box-footer"> see more date's <i class="fas fa-arrow-circle-right"></i></a>
+                          <a href="{{route('accounts.indexHighlighted')}}" class="small-box-footer"> Add more favorite cities <i class="fas fa-arrow-circle-right"></i></a>
                       </div>
                   </div>
                   @endif
