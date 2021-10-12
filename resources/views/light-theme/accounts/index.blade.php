@@ -40,7 +40,7 @@
             <img src="../public/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">mbw Almanac</span>
         </a>
-    
+
 
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           @if(auth::check())
@@ -58,7 +58,7 @@
             <p><a href="{{ route('login') }}">{{ __('Login') }} </a> or <a href="{{ route('register') }}">{{ __('Register') }}</a></p>
           @endif
         </div>
-        
+
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
@@ -260,7 +260,7 @@
                         <!-- /.card -->
                     </div>
                 @endif
-            
+
             <div class="col-md-8">
                 <form class="form" method="post" action="{{ route('accounts.update', ['user' => $user]) }}"
                       enctype="multipart/form-data">
@@ -293,6 +293,11 @@
                             </div>
                         </div>
                     </fieldset>
+
+                    @if ($checkCityHighlight == true)
+
+                    @endif
+
 
                     <hr class="text-light bg-dark border-color-dark"/>
 
@@ -344,7 +349,10 @@
                        foreach ($cities as $city) {
                            foreach ($userCities as $userCity) {
                                if($userCity->user_id == Auth::user()->id && $city->id == $userCity->city_id){
-                                    echo $city->name . '<br>';
+                                    echo $city->name;
+                                    ?>
+                                    <a href="{{ route('favoriteCity.delete', ['id' => $city->id])}}"><i class="fas fa-minus-circle"></i></a><br>
+                                    <?php
 
                                }
                             }

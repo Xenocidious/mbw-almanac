@@ -55,6 +55,7 @@ Route::get('/office', 'OfficeController@index')->name('office');
 
 Route::post('upload.image', 'imageController@store')->name('upload.image');
 
+Route::get('/removeFavoriteCity/{id}','accountController@deleteFavoriteCity')->name('favoriteCity.delete');
 
 Route::get('/upvote/{id}', [
     'uses' => 'Imagecontroller@upvote',
@@ -100,6 +101,7 @@ Route::get('/weather', 'WeatherController@weather')->name('weather');
 Route::middleware(['auth'])->group(function () {
     // Route wanneer je bent ingelogd zodat je naar je account kan gaan.
     Route::get('/account', 'AccountController@index')->name('accounts.index');
+    Route::get('/accountHighlighted', 'AccountController@indexHighlighted')->name('accounts.indexHighlighted');
     Route::patch('/account/{user}', 'AccountController@update')->name('accounts.update');
     Route::delete('/account/{user}', 'AccountController@destroy')->name('accounts.delete');
 
