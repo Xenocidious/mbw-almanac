@@ -42,7 +42,7 @@
             <img src="../resources/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">mbw Almanac</span>
         </a>
-    
+
 
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           @if(auth::check())
@@ -54,13 +54,13 @@
                 @endif
             </div>
             <div class="info">
-                <a  href="{{ route('accounts.index') }}" class="d-block">{{ Auth::user()->name }}</a>
+                <a  href="{{route('accounts.index')}}" class="d-block">{{ Auth::user()->name }}</a>
             </div>
           @else
             <p><a href="{{ route('login') }}">{{ __('Login') }} </a> or <a href="{{ route('register') }}">{{ __('Register') }}</a></p>
           @endif
         </div>
-        
+
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
@@ -282,6 +282,7 @@
                   </div>
                   <!-- ./col -->
                 <!-- ./col -->
+                <!--Favorite cities foreach-->
                   <?php
                   $favoCities = false;
                   if(Auth::check()){
@@ -298,11 +299,11 @@
                       <div class="small-box bg-info background-green">
                           <div class="inner">
                             <?php
-  
+
                             $check = false;
                             $requestWeather;
                             $requestedWeatherName;
-                        
+
                             if (Auth::check()) {
                                 foreach ($userCities as $userCity) {
                                     if($userCity->user_id == Auth::user()->id){
@@ -321,9 +322,9 @@
                             ?>
                           </div>
                           <div class="icon">
-                              <i class="ion ion-ios-partlysunny-outline"></i>
+                            <i class="fas fa-map-marked-alt fa-5x"></i>
                           </div>
-                          <a href="{{Route('weather')}}" class="small-box-footer"> see more date's <i class="fas fa-arrow-circle-right"></i></a>
+                          <a href="{{route('accounts.indexHighlighted')}}" class="small-box-footer"> Add more favorite cities <i class="fas fa-arrow-circle-right"></i></a>
                       </div>
                   </div>
                   @endif
@@ -727,7 +728,7 @@
 
 
 
-            
+
 </div>
 
 
