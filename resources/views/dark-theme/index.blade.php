@@ -161,7 +161,11 @@
                 <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                     <div class="media">
+<<<<<<< HEAD
                         <img src="../public/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+=======
+                        <img src="../public/dist/img/avatar.png" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+>>>>>>> develop
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 Mert Özdal
@@ -177,7 +181,11 @@
                 <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
+<<<<<<< HEAD
                     <img src="../public/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+=======
+                    <img src="../public/dist/img/avatar.png" alt="User Avatar" class="img-size-50 img-circle mr-3">
+>>>>>>> develop
                     <div class="media-body">
                         <h3 class="dropdown-item-title">
                             Pieterjan van Dijk
@@ -193,7 +201,11 @@
                 <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
+<<<<<<< HEAD
                     <img src="../public/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+=======
+                    <img src="../public/dist/img/avatar.png" alt="User Avatar" class="img-size-50 img-circle mr-3">
+>>>>>>> develop
                     <div class="media-body">
                         <h3 class="dropdown-item-title">
                             Aya Mohammed
@@ -614,35 +626,39 @@
               <!-- Widget: user widget style 1 -->
               <div class="card card-widget widget-user shadow">
                 <!-- Add the bg color to the header using any of the bg-* classes -->
-                <div class="widget-user-header bg-info">
-                  <h3 class="widget-user-username">Alexander Pierce</h3>
-                  <h5 class="widget-user-desc">Founder & CEO</h5>
+                <div class="widget-user-header bg-info" style="background: url('../dist/img/photo4.jpg') center center;">
+                  <h3 class="widget-user-username">Pieterjan van Dijk</h3>
+                  <h5 class="widget-user-desc">likes trains</h5>
                 </div>
                 <div class="widget-user-image">
+<<<<<<< HEAD
                   <img class="img-circle elevation-2" src="../public/dist/img/user1-128x128.jpg" alt="User Avatar">
+=======
+                  <img class="img-circle elevation-2" src="../public/dist/img/avatar.png" alt="User Avatar">
+>>>>>>> develop
                 </div>
                 <div class="card-footer">
                   <div class="row">
                     <div class="col-sm-4 border-right">
                       <div class="description-block">
-                        <h5 class="description-header">3,200</h5>
-                        <span class="description-text">SALES</span>
+                        <h5 class="description-header">writes</h5>
+                        <span class="description-text">code</span>
                       </div>
                       <!-- /.description-block -->
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-4 border-right">
                       <div class="description-block">
-                        <h5 class="description-header">13,000</h5>
-                        <span class="description-text">FOLLOWERS</span>
+                        <h5 class="description-header">destroys</h5>
+                        <span class="description-text">applications</span>
                       </div>
                       <!-- /.description-block -->
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-4">
                       <div class="description-block">
-                        <h5 class="description-header">35</h5>
-                        <span class="description-text">PRODUCTS</span>
+                        <h5 class="description-header">sleeps</h5>
+                        <span class="description-text">a lot</span>
                       </div>
                       <!-- /.description-block -->
                     </div>
@@ -653,41 +669,86 @@
               </div>
               <!-- /.widget-user -->
             </div>
-            <!-- /.col -->
             <div class="col-md-4">
               <!-- Widget: user widget style 1 -->
-              <div class="card card-widget widget-user shadow-lg">
+              <div class="card card-widget widget-user shadow">
                 <!-- Add the bg color to the header using any of the bg-* classes -->
-                <div class="widget-user-header text-white"
-                    style="background: url('dist/img/photo1.png') center center;">
-                  <h3 class="widget-user-username text-right">Elizabeth Pierce</h3>
-                  <h5 class="widget-user-desc text-right">Web Designer</h5>
+                <div class="widget-user-header bg-info" style="background: url('../dist/img/photo1.png') center center;">
+                  <h3 class="widget-user-username">Mert Ozdal</h3>
+                  <h5 class="widget-user-desc">likes code</h5>
                 </div>
                 <div class="widget-user-image">
-                  <img class="img-circle" src="../public/dist/img/user3-128x128.jpg" alt="User Avatar">
+                  <img class="img-circle elevation-2" src="../public/dist/img/avatar.png" alt="User Avatar">
                 </div>
                 <div class="card-footer">
                   <div class="row">
                     <div class="col-sm-4 border-right">
                       <div class="description-block">
-                        <h5 class="description-header">3,200</h5>
-                        <span class="description-text">SALES</span>
+                        <h5 class="description-header">writes</h5>
+                        <span class="description-text">code</span>
                       </div>
                       <!-- /.description-block -->
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-4 border-right">
                       <div class="description-block">
-                        <h5 class="description-header">13,000</h5>
-                        <span class="description-text">FOLLOWERS</span>
+                        <h5 class="description-header">destroys</h5>
+                        <span class="description-text">applications</span>
                       </div>
                       <!-- /.description-block -->
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-4">
                       <div class="description-block">
-                        <h5 class="description-header">35</h5>
-                        <span class="description-text">PRODUCTS</span>
+                        <h5 class="description-header">sleeps</h5>
+                        <span class="description-text">a lot</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+              </div>
+              <!-- /.widget-user -->
+            </div>
+            <div class="col-md-4">
+              <!-- Widget: user widget style 1 -->
+              <div class="card card-widget widget-user shadow">
+                <!-- Add the bg color to the header using any of the bg-* classes -->
+                <div class="widget-user-header bg-info" style="background: url('../dist/img/photo2.png') center center;">
+                  <h3 class="widget-user-username">Aya Mohammed</h3>
+                  <h5 class="widget-user-desc">likes code</h5>
+                </div>
+                <div class="widget-user-image">
+<<<<<<< HEAD
+                  <img class="img-circle" src="../public/dist/img/user3-128x128.jpg" alt="User Avatar">
+=======
+                  <img class="img-circle elevation-2" src="../public/dist/img/avatar.png" alt="User Avatar">
+>>>>>>> develop
+                </div>
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-sm-4 border-right">
+                      <div class="description-block">
+                        <h5 class="description-header">writes</h5>
+                        <span class="description-text">code</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4 border-right">
+                      <div class="description-block">
+                        <h5 class="description-header">destroys</h5>
+                        <span class="description-text">applications</span>
+                      </div>
+                      <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4">
+                      <div class="description-block">
+                        <h5 class="description-header">sleeps</h5>
+                        <span class="description-text">a lot</span>
                       </div>
                       <!-- /.description-block -->
                     </div>
