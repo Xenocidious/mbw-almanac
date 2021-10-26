@@ -308,7 +308,7 @@
 
                     <fieldset>
                         <div class="form-group">
-                            <label class="text-dark" for="cities">{{ __('Favorite cities') }}</label>
+                            <label class="text-light" for="cities">{{ __('Favorite cities') }}</label>
                             <select name="selectedCities" id="cities" class="form-control">
                                 <option disabled selected>select to add cities to homepage</option>
                                 @foreach($cities as $city)
@@ -319,19 +319,31 @@
                             </select>
                         </div>
 
-                       <?php
-                       $chosenCities = [];
-                       foreach ($cities as $city) {
-                           foreach ($userCities as $userCity) {
-                               if($userCity->user_id == Auth::user()->id && $city->id == $userCity->city_id){
-                                    echo $city->name . '<br>';
+                        <?php
+                        $chosenCities = [];
+                        foreach ($cities as $city) {
+                            foreach ($userCities as $userCity) {
+                                if($userCity->user_id == Auth::user()->id && $city->id == $userCity->city_id){
+                                     echo $city->name;
+                                     ?>
+                                     <a href="{{ route('favoriteCity.delete', ['id' => $city->id])}}"><i class="fas fa-minus-circle"></i></a><br>
+                                     <?php
+ 
+                                }
+                             }
+                         array_push($chosenCities, $city);
+                        }
+ 
+                        ?>
 
-                               }
-                            }
-                        array_push($chosenCities, $city);
-                       }
-
-                       ?>
+                        @if($checkCityHighlight = true)
+                            <script>
+                                cities.style.transition = '5s';
+                                cities.style.cssText = '-webkit-box-shadow: 0px 0px 65px 5px rgba(52,57,64,0.85);-moz-box-shadow: 0px 0px 65px 5px rgba(52,57,64,0.85);box-shadow: 0px 0px 65px 5px rgba(52,57,64,85);';
+                                setTimeout(function(){ cities.style.cssText = '-webkit-box-shadow: 0px 0px 65px 5px rgba(0,255,0,0.85);-moz-box-shadow: 0px 0px 65px 5px rgba(0,255,0,0.85);box-shadow: 0px 0px 65px 5px rgba(0,255,0,0.85);'; }, 1000);
+                                setTimeout(function(){ cities.style.cssText = '-webkit-box-shadow: 0px 0px 65px 5px rgba(52,57,64,0.85);-moz-box-shadow: 0px 0px 65px 5px rgba(52,57,64,0.85);box-shadow: 0px 0px 65px 5px rgba(52,57,64,85);'; }, 3000);
+                            </script>
+                        @endif
 
                     </fieldset>
 
