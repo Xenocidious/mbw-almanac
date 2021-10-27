@@ -8,36 +8,36 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../resources/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../public/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="../resources/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="../public/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- JQVMap -->
-    <link rel="stylesheet" href="../resources/plugins/jqvmap/jqvmap.min.css">
+    <link rel="stylesheet" href="../public/plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../resources/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../public/dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="../resources/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="../public/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
-    <link rel="stylesheet" href="../resources/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="../public/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
-    <link rel="stylesheet" href="../resources/plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="../public/plugins/summernote/summernote-bs4.min.css">
     <!-- customizations -->
     <link rel="stylesheet" href="css/app.css">
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="dark-background hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="../resources/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+        <img class="animation__shake" src="../public/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
     </div>
 
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="../resources/index3.html" class="brand-link">
-            <img src="../resources/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <img src="../public/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-dark">mbw Almanac</span>
         </a>
 
@@ -46,7 +46,7 @@
           @if(auth::check())
             <div class="image">
                 @if(Auth::user()->photo == NULL)
-                  <img src="../resources/dist/img/avatar.png" class="img-circle elevation-2 userImage" alt="User Image">
+                  <img src="../public/dist/img/avatar.png" class="img-circle elevation-2 userImage" alt="User Image">
                 @else
                   <img src="data:image/png;base64, {{ Auth::user()->photo }}" class="img-circle elevation-2 userImage" alt="User Image">
                 @endif
@@ -159,7 +159,7 @@
                 <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                     <div class="media">
-                        <img src="../resources/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                        <img src="../public/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 Mert Özdal
@@ -175,7 +175,7 @@
                 <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
-                    <img src="../resources/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                    <img src="../public/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                     <div class="media-body">
                         <h3 class="dropdown-item-title">
                             Pieterjan van Dijk
@@ -191,7 +191,7 @@
                 <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
-                    <img src="../resources/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                    <img src="../public/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                     <div class="media-body">
                         <h3 class="dropdown-item-title">
                             Aya Mohammed
@@ -308,7 +308,7 @@
 
                     <fieldset>
                         <div class="form-group">
-                            <label class="text-dark" for="cities">{{ __('Favorite cities') }}</label>
+                            <label class="text-light" for="cities">{{ __('Favorite cities') }}</label>
                             <select name="selectedCities" id="cities" class="form-control">
                                 <option disabled selected>select to add cities to homepage</option>
                                 @foreach($cities as $city)
@@ -319,19 +319,31 @@
                             </select>
                         </div>
 
-                       <?php
-                       $chosenCities = [];
-                       foreach ($cities as $city) {
-                           foreach ($userCities as $userCity) {
-                               if($userCity->user_id == Auth::user()->id && $city->id == $userCity->city_id){
-                                    echo $city->name . '<br>';
+                        <?php
+                        $chosenCities = [];
+                        foreach ($cities as $city) {
+                            foreach ($userCities as $userCity) {
+                                if($userCity->user_id == Auth::user()->id && $city->id == $userCity->city_id){
+                                     echo $city->name;
+                                     ?>
+                                     <a href="{{ route('favoriteCity.delete', ['id' => $city->id])}}"><i class="fas fa-minus-circle"></i></a><br>
+                                     <?php
+ 
+                                }
+                             }
+                         array_push($chosenCities, $city);
+                        }
+ 
+                        ?>
 
-                               }
-                            }
-                        array_push($chosenCities, $city);
-                       }
-
-                       ?>
+                        @if($checkCityHighlight = true)
+                            <script>
+                                cities.style.transition = '5s';
+                                cities.style.cssText = '-webkit-box-shadow: 0px 0px 65px 5px rgba(52,57,64,0.85);-moz-box-shadow: 0px 0px 65px 5px rgba(52,57,64,0.85);box-shadow: 0px 0px 65px 5px rgba(52,57,64,85);';
+                                setTimeout(function(){ cities.style.cssText = '-webkit-box-shadow: 0px 0px 65px 5px rgba(0,255,0,0.85);-moz-box-shadow: 0px 0px 65px 5px rgba(0,255,0,0.85);box-shadow: 0px 0px 65px 5px rgba(0,255,0,0.85);'; }, 1000);
+                                setTimeout(function(){ cities.style.cssText = '-webkit-box-shadow: 0px 0px 65px 5px rgba(52,57,64,0.85);-moz-box-shadow: 0px 0px 65px 5px rgba(52,57,64,0.85);box-shadow: 0px 0px 65px 5px rgba(52,57,64,85);'; }, 3000);
+                            </script>
+                        @endif
 
                     </fieldset>
 
@@ -396,38 +408,38 @@
 
 
 <!-- jQuery -->
-<script src="../resources/plugins/jquery/jquery.min.js"></script>
+<script src="../public/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="../resources/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../public/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="../resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
-<script src="../resources/plugins/chart.js/Chart.min.js"></script>
+<script src="../public/plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
-<script src="../resources/plugins/sparklines/sparkline.js"></script>
+<script src="../public/plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->
-<script src="../resources/plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="../resources/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<script src="../public/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="../public/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
 <!-- jQuery Knob Chart -->
-<script src="../resources/plugins/jquery-knob/jquery.knob.min.js"></script>
+<script src="../public/plugins/jquery-knob/jquery.knob.min.js"></script>
 <!-- daterangepicker -->
-<script src="../resources/plugins/moment/moment.min.js"></script>
-<script src="../resources/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="../public/plugins/moment/moment.min.js"></script>
+<script src="../public/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="../resources/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="../public/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->
-<script src="../resources/plugins/summernote/summernote-bs4.min.js"></script>
+<script src="../public/plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
-<script src="../resources/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="../public/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../resources/dist/js/adminlte.js"></script>
+<script src="../public/dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../resources/dist/js/demo.js"></script>
+<script src="../public/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="../resources/dist/js/pages/dashboard.js"></script>
+<script src="../public/dist/js/pages/dashboard.js"></script>
 </body>
 </html>
