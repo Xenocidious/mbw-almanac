@@ -26,7 +26,7 @@
     <!-- customizations -->
     <link rel="stylesheet" href="css/app.css">
 </head>
-<body class="hold-transition sidebar-mini layout-fixed dark-background">
+<body class="dark-background hold-transition sidebar-mini layout-fixed dark-background">
 <div class="wrapper">
 
     <!-- Preloader -->
