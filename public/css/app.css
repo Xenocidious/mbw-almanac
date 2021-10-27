@@ -11944,3 +11944,33 @@ body {
 .text-light{
   color: #6c757d !important;
 }
+
+.inner h3{
+  font-size: 2vw !important;
+}
+
+@media (max-width:985px) {
+  .inner h3{
+    font-size: 3vw !important;
+  }
+}
+
+@media (max-width:750px) {
+  .inner h3, .inner p{
+    font-size: 4.5vw !important;
+  }
+  
+
+  .row{
+    display: block !important;
+  }
+
+  .small-box{
+    display: block !important;
+    width: 90vw;
+  }
+
+  .col-lg-3{
+    flex: 100vw !important;
+  }
+}
