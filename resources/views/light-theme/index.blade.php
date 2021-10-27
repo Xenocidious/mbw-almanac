@@ -243,11 +243,24 @@
                 <!-- small box -->
                     <div class="small-box bg-info background-green">
                         <div class="inner">
-                            <h3>yesterday, {{$yesterdayData[0]['tempmax']}}°</h3>
+                            <h3>yesterday, {{round($yesterdayData[0]['tempmax'],0)}}°</h3>
                             <p><?= date('l',strtotime("-1 days"));?></p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-ios-partlysunny-outline"></i>
+                            @switch(true)
+                            @case(stripos($yesterdayData[0]['description'], 'sun') !== false)
+                            <i class="fas fa-sun fa-5x"></i>
+                            @break
+                            @case(stripos($yesterdayData[0]['description'], 'rain') !== false)
+                            <i class="fas fa-cloud-rain fa-5x"></i>
+                            @break
+                            @case(stripos($yesterdayData[0]['description'], 'fog') !== false)
+                            <i class="fas fa-smog fa-5x"></i>
+                            @break
+                            @case(stripos($yesterdayData[0]['description'], 'cloud') !== false)
+                            <i class="fas fa-cloud fa-5x"></i>
+                            @break
+                        @endswitch
                         </div>
                         <a href="../resources/#" class="small-box-footer">{{$yesterdayData[0]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -257,12 +270,25 @@
                 <!-- small box -->
                     <div class="small-box bg-info background-green">
                         <div class="inner">
-                            <h3>today, {{$todayData[0]['tempmax']}}°</h3>
+                            <h3>today, {{round($todayData[0]['tempmax'],0)}}°</h3>
                             <p><?= date('l');?></p>
                         </div>
-                        <div class="icon">
-                            <i class="ion ion-ios-partlysunny-outline"></i>
-                        </div>
+                            <div class="icon">
+                                @switch(true)
+                                    @case(stripos($todayData[0]['conditions'], 'sun') !== false)
+                                    <i class="fas fa-sun fa-5x"></i>
+                                    @break
+                                    @case(stripos($todayData[0]['conditions'], 'rain') !== false)
+                                    <i class="fas fa-cloud-rain fa-5x"></i>
+                                    @break
+                                    @case(stripos($todayData[0]['conditions'], 'fog') !== false)
+                                    <i class="fas fa-smog fa-5x"></i>
+                                    @break
+                                    @case(stripos($todayData[0]['conditions'], 'cloud') !== false)
+                                    <i class="fas fa-cloud fa-5x"></i>
+                                    @break
+                                @endswitch
+                          </div>
                         <a href="../resources/#" class="small-box-footer">{{$todayData[0]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -271,13 +297,30 @@
                   <!-- small box -->
                       <div class="small-box bg-info background-green">
                           <div class="inner">
-                              <h3>tomorrow, {{$forecastData[1]['tempmax']}}°</h3>
+                              <h3>tomorrow, {{round($forecastData[1]['tempmax'],0)}}°</h3>
                               <p><?= date('l',strtotime("1 days"));?></p>
                           </div>
+
                           <div class="icon">
-                              <i class="ion ion-ios-partlysunny-outline"></i>
+                                @switch(true)
+                                    @case(stripos($forecastData[1]['conditions'], 'sun') !== false)
+                                    <i class="fas fa-sun fa-5x"></i>
+                                    @break
+                                    @case(stripos($forecastData[1]['conditions'], 'rain') !== false)
+                                    <i class="fas fa-cloud-rain fa-5x"></i>
+                                    @break
+                                    @case(stripos($forecastData[1]['conditions'], 'fog') !== false)
+                                    <i class="fas fa-smog fa-5x"></i>
+                                    @break
+                                    @case(stripos($forecastData[1]['conditions'], 'cloud') !== false)
+                                    <i class="fas fa-cloud fa-5x"></i>
+                                    @break
+                                    @case(stripos($forecastData[1]['conditions'], 'clear') !== false)
+                                    <i class="fas fa-sun fa-5x"></i>
+                                    @break
+                                @endswitch
                           </div>
-                          <a href="../resources/#" class="small-box-footer"> More info <i class="fas fa-arrow-circle-right"></i></a>
+                          <a href="../resources/#" class="small-box-footer">{{$forecastData[1]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
                       </div>
                   </div>
                   <!-- ./col -->
