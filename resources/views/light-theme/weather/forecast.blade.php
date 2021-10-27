@@ -42,7 +42,7 @@
             <img src="../resources/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">mbw Almanac</span>
         </a>
-    
+
 
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           @if(auth::check())
@@ -60,7 +60,7 @@
             <p><a href="{{ route('login') }}">{{ __('Login') }} </a> or <a href="{{ route('register') }}">{{ __('Register') }}</a></p>
           @endif
         </div>
-        
+
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
@@ -76,7 +76,7 @@
                 </li>
               </li>
                 <li class="nav-item">
-                    <a href="../resources/#" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-bar"></i>
                         <p>
                             Statistics
@@ -104,7 +104,7 @@
                 </li>
             </li>
                 <li class="nav-item">
-                    <a href="../resources/#" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon far fa-address-card"></i>
                         <p>
                             About us
@@ -120,13 +120,13 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="../resources/#" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
         <a href="index" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-        <a href="../resources/#" class="nav-link">Contact</a>
+        <a href="#" class="nav-link">Contact</a>
         </li>
     </ul>
 
@@ -153,12 +153,12 @@
 
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="../resources/#">
+            <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-comments"></i>
                 <span class="badge badge-danger navbar-badge">3</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <a href="../resources/#" class="dropdown-item">
+                <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                     <div class="media">
                         <img src="../resources/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
@@ -174,7 +174,7 @@
                 <!-- Message End -->
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="../resources/#" class="dropdown-item">
+                <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
                     <img src="../resources/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
@@ -190,7 +190,7 @@
                 <!-- Message End -->
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="../resources/#" class="dropdown-item">
+                <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
                     <img src="../resources/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
@@ -206,7 +206,7 @@
                 <!-- Message End -->
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="../resources/#" class="dropdown-item dropdown-footer">See All Messages</a>
+                <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
             </div>
         </li>
         <li class="nav-item">
@@ -346,42 +346,42 @@
           <b>Version</b> 1.0.0
         </div>
       </footer>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </div>
-  
-  
+
+
   </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
   <!-- jQuery -->
   <script src="../resources/plugins/jquery/jquery.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
@@ -418,4 +418,3 @@
   <script src="../resources/dist/js/pages/dashboard.js"></script>
   </body>
   </html>
-  

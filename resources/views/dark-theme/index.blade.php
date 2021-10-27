@@ -42,7 +42,7 @@
             <img src="../resources/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">mbw Almanac</span>
         </a>
-    
+
 
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           @if(auth::check())
@@ -60,7 +60,7 @@
             <p><a href="{{ route('login') }}">{{ __('Login') }} </a> or <a href="{{ route('register') }}">{{ __('Register') }}</a></p>
           @endif
         </div>
-        
+
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
@@ -76,7 +76,7 @@
                 </li>
               </li>
                 <li class="nav-item">
-                    <a href="../resources/#" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-bar"></i>
                         <p>
                             Statistics
@@ -104,7 +104,7 @@
                 </li>
             </li>
                 <li class="nav-item">
-                    <a href="../resources/#" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon far fa-address-card"></i>
                         <p>
                             About us
@@ -120,13 +120,13 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
-        <a class="nav-link text-light" data-widget="pushmenu" href="../resources/#" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link text-light" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
         <a href="index" class="nav-link text-light">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-        <a href="../resources/#" class="nav-link text-light">Contact</a>
+        <a href="#" class="nav-link text-light">Contact</a>
         </li>
     </ul>
 
@@ -153,12 +153,12 @@
 
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="../resources/#">
+            <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-comments"></i>
                 <span class="badge badge-danger navbar-badge">3</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <a href="../resources/#" class="dropdown-item">
+                <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                     <div class="media">
                         <img src="../resources/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
@@ -174,7 +174,7 @@
                 <!-- Message End -->
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="../resources/#" class="dropdown-item">
+                <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
                     <img src="../resources/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
@@ -190,7 +190,7 @@
                 <!-- Message End -->
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="../resources/#" class="dropdown-item">
+                <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
                     <img src="../resources/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
@@ -206,7 +206,7 @@
                 <!-- Message End -->
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="../resources/#" class="dropdown-item dropdown-footer">See All Messages</a>
+                <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
             </div>
         </li>
         <li class="nav-item">
@@ -249,7 +249,7 @@
                         <div class="icon">
                             <i class="ion ion-ios-partlysunny-outline"></i>
                         </div>
-                        <a href="../resources/#" class="small-box-footer">{{$yesterdayData[0]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer">{{$yesterdayData[0]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -263,7 +263,7 @@
                         <div class="icon">
                             <i class="ion ion-ios-partlysunny-outline"></i>
                         </div>
-                        <a href="../resources/#" class="small-box-footer">{{$todayData[0]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer">{{$todayData[0]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -277,7 +277,7 @@
                         <div class="icon">
                             <i class="ion ion-ios-partlysunny-outline"></i>
                         </div>
-                        <a href="../resources/#" class="small-box-footer">{{$forecastData[1]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer">{{$forecastData[1]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -297,11 +297,11 @@
                       <div class="small-box bg-info background-green">
                           <div class="inner">
                             <?php
-  
+
                             $check = false;
                             $requestWeather;
                             $requestedWeatherName;
-                        
+
                             if (Auth::check()) {
                                 foreach ($userCities as $userCity) {
                                     if($userCity->user_id == Auth::user()->id){
@@ -309,17 +309,17 @@
                                             if ($city->id == $userCity->city_id) {
                                                 $requestedWeatherName = $city->name;
                                                 $requestedWeather = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/'.$requestedWeatherName.'?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH')['days'];
-                        
+
                                                 echo $city->name . ' ' .round($requestedWeather[0]['tempmax'], 0).'°';
-                        
-                        
+
+
                                                 echo '<br>';
                                             }
                                         }
                                     }
                                 }
                             }
-                        
+
                             ?>
                           </div>
                           <div class="icon">
@@ -373,11 +373,11 @@
 
                 <div class="card-tools">
                   <ul class="pagination pagination-sm">
-                    <li class="page-item"><a href="../resources/#" class="page-link">&laquo;</a></li>
-                    <li class="page-item"><a href="../resources/#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="../resources/#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="../resources/#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="../resources/#" class="page-link">&raquo;</a></li>
+                    <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
                   </ul>
                 </div>
               </div>
@@ -579,10 +579,10 @@
                   <!-- button with a dropdown -->
                   <div class="btn-group">
                     <div class="dropdown-menu" role="menu">
-                      <a href="../resources/#" class="dropdown-item">Add new event</a>
-                      <a href="../resources/#" class="dropdown-item">Clear events</a>
+                      <a href="#" class="dropdown-item">Add new event</a>
+                      <a href="#" class="dropdown-item">Clear events</a>
                       <div class="dropdown-divider"></div>
-                      <a href="../resources/#" class="dropdown-item">View calendar</a>
+                      <a href="#" class="dropdown-item">View calendar</a>
                     </div>
                   </div>
                   <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
@@ -605,7 +605,7 @@
           </section>
           <!-- right col -->
       </div><!-- /.container-fluid -->
-    <!-- /.content --> 
+    <!-- /.content -->
     <div class='div-center'>
           <div class="row">
             <!-- /.col -->
@@ -728,7 +728,7 @@
 
 
 
-            
+
 </div>
 
 

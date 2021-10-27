@@ -42,7 +42,7 @@
             <img src="../resources/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">mbw Almanac</span>
         </a>
-    
+
 
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           @if(auth::check())
@@ -60,7 +60,7 @@
             <p><a href="{{ route('login') }}">{{ __('Login') }} </a> or <a href="{{ route('register') }}">{{ __('Register') }}</a></p>
           @endif
         </div>
-        
+
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
@@ -104,7 +104,7 @@
                 </li>
             </li>
                 <li class="nav-item">
-                    <a href="../resources/#" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon far fa-address-card"></i>
                         <p>
                             About us
@@ -120,7 +120,7 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
-        <a class="nav-link text-light" data-widget="pushmenu" href="../resources/#" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link text-light" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
         <a href="index" class="nav-link text-light">Home</a>
@@ -156,12 +156,12 @@
 
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="../resources/#">
+            <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-comments"></i>
                 <span class="badge badge-danger navbar-badge">3</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <a href="../resources/#" class="dropdown-item">
+                <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                     <div class="media">
                         <img src="../resources/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
@@ -177,7 +177,7 @@
                 <!-- Message End -->
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="../resources/#" class="dropdown-item">
+                <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
                     <img src="../resources/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
@@ -193,7 +193,7 @@
                 <!-- Message End -->
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="../resources/#" class="dropdown-item">
+                <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
                     <img src="../resources/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
@@ -209,7 +209,7 @@
                 <!-- Message End -->
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="../resources/#" class="dropdown-item dropdown-footer">See All Messages</a>
+                <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
             </div>
         </li>
         <li class="nav-item">
@@ -282,7 +282,7 @@
                               <!-- /.card-header -->
                               <div class="card-body shadow">
                                 <img class="img-fluid pad" src="../storage/app/public/image/{{$image->file_path}}" alt="Photo">
-            
+
                                 <p class="text-light">{{$image->description}}</p>
                                 <button type="button" class="btn btn-default btn-sm text-light" onclick="copyImageUrl({{$image->id}})"><i class="fas fa-share text-light"></i> Share</button>
                                 <input type="text" id="hidden{{$image->id}}" class='hidden' name='IMGurl' value='http://localhost/jaar%202+3/groepsprojecten/mbw-almanac/public/openImage/{{$image->id}}'>
@@ -302,7 +302,7 @@
                                     foreach($upvotes as $vote){
                                         if($vote->image_id == $image->id){
                                             if($vote->user_id == $user->id){
-                                                $voted = 'true'; 
+                                                $voted = 'true';
                                             }
                                         }
                                     }
@@ -314,7 +314,7 @@
                                             Vote
                                         </button>
                                     </a>
-                                @else 
+                                @else
                                     <a href='{{ route('image.upvote', ['id' => $image->id]) }}'>
                                         <button type="button" class="btn btn-default btn-sm text-light">
                                             <i class="far fa-arrow-alt-circle-up text-light"></i>
@@ -322,7 +322,7 @@
                                         </button>
                                     </a>
                                 @endif
-                                
+
                                 <?php
                                 $imageUpvotes = 0;
                                 foreach($upvotes as $upvote){
@@ -332,12 +332,12 @@
                                 }
                                 ?>
                                 <span class="float-right text-muted">{{$imageUpvotes}} upvotes | {{$commentAmount}} comments</span>
-                                
+
                               </div>
                               <!-- /.card-body -->
                               <div class="card-footer card-comments">
                                 <div class="card-comment">
-                                <?php $commentAmount = 0; 
+                                <?php $commentAmount = 0;
                                 $maxComments = 3?>
                                   @foreach($comments as $comment)
                                     @if($comment->image_id == $image->id && $commentAmount < $maxComments)
@@ -365,7 +365,7 @@
                                         </div>
                                     <!-- /.comment-text -->
                                     @endif
-                                    
+
                                   @endforeach
                                   @if($commentAmount == 0)
                                      <p class='text-light'>Be the first to comment under <a href='#'>{{$image->user_name}}</a>'s post!</p>

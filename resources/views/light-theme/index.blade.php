@@ -260,6 +260,9 @@
                             @case(stripos($yesterdayData[0]['description'], 'cloud') !== false)
                             <i class="fas fa-cloud fa-5x"></i>
                             @break
+                            @case(stripos($yesterdayData[0]['description'], 'clear') !== false)
+                            <i class="fas fa-sun fa-5x"></i>
+                            @break
                         @endswitch
                         </div>
                         <a href="../resources/#" class="small-box-footer">{{$yesterdayData[0]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
@@ -286,6 +289,9 @@
                                     @break
                                     @case(stripos($todayData[0]['conditions'], 'cloud') !== false)
                                     <i class="fas fa-cloud fa-5x"></i>
+                                    @break
+                                    @case(stripos($todayData[0]['conditions'], 'clear') !== false)
+                                    <i class="fas fa-sun fa-5x"></i>
                                     @break
                                 @endswitch
                           </div>
@@ -753,21 +759,6 @@
         <b>Version</b> 1.0.0
       </div>
     </footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
