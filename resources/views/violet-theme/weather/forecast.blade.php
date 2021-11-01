@@ -52,7 +52,6 @@
                                 <strong class="my-2">
                                     @switch(true)
                                         @case(stripos($forecast['days'][$i]['description'], 'sun') !== false)
-                                        @case(stripos($forecast['days'][$i]['description'], 'clear') !== false)
                                         <i class="fas fa-sun fa-5x"></i>
                                         @break
                                         @case(stripos($forecast['days'][$i]['description'], 'rain') !== false)

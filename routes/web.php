@@ -1,5 +1,7 @@
 <?php
 
+use App\City;
+use App\UserCity;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
@@ -26,12 +28,17 @@ Route::get('/', function () {
 
     $forecast = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=fcst,stats,current')['days'];
 
-    return view('index', ['yesterdayData' => $yesterday, 'forecastData' => $forecast, 'todayData' => $today]);
+    $city = City::get();
+    $userCity = UserCity::get();
+
+
+    return view('index' , ['yesterdayData'=> $yesterday, 'forecastData'=>$forecast, 'todayData'=>$today, 'cities'=>$city, 'userCities'=>$userCity]);
 
 });
 
 Route::get('/index', 'WelcomeController@index')->name('home');
 
+Route::get('/w3', 'WelcomeController@w3')->name('w3');
 
 Route::get('/statistics', 'StatisticsController@index')->name('statistics');
 
@@ -46,8 +53,9 @@ Route::post('user/promote', 'OfficeController@promote')->name('user.promote');
 Route::get('/office', 'OfficeController@index')->name('office');
 
 
-Route::post('upload.image', 'imageController@store');
+Route::post('upload.image', 'imageController@store')->name('upload.image');
 
+Route::get('/removeFavoriteCity/{id}','accountController@deleteFavoriteCity')->name('favoriteCity.delete');
 
 Route::get('/upvote/{id}', [
     'uses' => 'Imagecontroller@upvote',
@@ -93,11 +101,14 @@ Route::get('/weather', 'WeatherController@weather')->name('weather');
 Route::middleware(['auth'])->group(function () {
     // Route wanneer je bent ingelogd zodat je naar je account kan gaan.
     Route::get('/account', 'AccountController@index')->name('accounts.index');
+    Route::get('/accountHighlighted', 'AccountController@indexHighlighted')->name('accounts.indexHighlighted');
     Route::patch('/account/{user}', 'AccountController@update')->name('accounts.update');
     Route::delete('/account/{user}', 'AccountController@destroy')->name('accounts.delete');
 
     Route::get('/photohub', 'PhotohubController@index')->name('photohub');
 });
+
+
 
 Auth::routes();
 
