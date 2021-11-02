@@ -6,6 +6,8 @@ use Auth;
 use App\Vote;
 use App\Image;
 use App\Comment;
+use App\UserImageSeen;
+use App\User;
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
@@ -67,7 +69,25 @@ class ImageController extends Controller
                     "user_id" => Auth::user()->id,
                     "user_name" => Auth::user()->name
                 ]);
+
                 $image->save(); // Finally, save the record.
+                
+                $imageId = $image['id'];
+                
+                //update the user_images_seen table to update amount of missed images
+
+                $maxUser = User::where('id', \DB::raw("(select max(`id`) from users)"))->get();
+
+                for($i=1; $i<=$maxUser[0]['id']; $i++){
+                    if (User::where('id', $i)->exists()) {
+                        $newRow = new UserImageSeen([
+                            "user_id" => $i,
+                            "image_id" => $imageId,
+                        ]);
+
+                        $newRow->save();
+                    }
+                }
             }
         }else{
             return redirect()->back()->with('error', 'file extension must be an .PNG, .JPG or .JPEG');   
@@ -107,11 +127,11 @@ class ImageController extends Controller
 
     public function delete($id){
         sleep(1);
-        $image = Image::find($id);
-        $image->delete();
 
+        Image::where('id', $id)->delete();
         Comment::where('image_id', $id)->delete();
         Vote::where('image_id', $id)->delete();
+        UserImageSeen::where('image_id', $id)->delete();
 
         return redirect('photohub');
     }

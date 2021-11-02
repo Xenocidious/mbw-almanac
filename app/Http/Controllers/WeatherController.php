@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
+use App\UserImageSeen;
 
 class WeatherController extends Controller
 {
@@ -59,7 +60,8 @@ class WeatherController extends Controller
             'forecast' => $data,
             'error' => $error,
             'start' => Carbon::createFromTimestamp($startDate)->format('Y-m-d\TH:i:s'),
-            'end' => Carbon::createFromTimestamp($endDate)->format('Y-m-d\TH:i:s')
+            'end' => Carbon::createFromTimestamp($endDate)->format('Y-m-d\TH:i:s'),
+            'UserImageSeen' => UserImageSeen::get(),
         ]);
     }
 }

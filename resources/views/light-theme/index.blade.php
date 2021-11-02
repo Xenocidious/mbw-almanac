@@ -28,6 +28,17 @@
 </head>
 <body class="transition sidebar-mini layout-fixed">
 <div class="wrapper">
+  
+    <?php
+      if(Auth::check()){
+        $countSeenImages = 0;
+        for($i=0; $i<count($UserImageSeen); $i++){
+          if($UserImageSeen[$i]['user_id'] == Auth::user()->id && $UserImageSeen[$i]['seen'] == 0){
+            $countSeenImages++;
+          }
+        }
+      }
+    ?>
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
@@ -89,7 +100,15 @@
                         <i class="nav-icon fas fa-photo-video"></i>
                         <p>
                             Photohub
-                            <span class="badge badge-info right">2</span>
+                            
+                            @if(Auth::check())
+                              @if($countSeenImages > 9)
+                                {{$countSeenImages = '9+'}}
+                                <span class="badge badge-info right">{{$countSeenImages}}</span>
+                              @elseif($countSeenImages <= 9 && $countSeenImages > 0)
+                                <span class="badge badge-info right">{{$countSeenImages}}</span>
+                              @endif
+                            @endif
                         </p>
                     </a>
                 </li>
@@ -602,10 +621,6 @@
           <!-- right col -->
         </div>
         <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-    <div class='div-center'>
           <div class="row">
             <!-- /.col -->
             <div class="col-md-4">
@@ -705,7 +720,7 @@
       <strong>Copyright &copy; 2021 - <?= Date("Y"); ?> <a href="../resources/https://adminlte.io">Aya, Mert en Pieterjan</a>.</strong>
       Most rights reserved.
       <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 1.0.0
+        <b>Version</b> 1.0.1
       </div>
     </footer>
 

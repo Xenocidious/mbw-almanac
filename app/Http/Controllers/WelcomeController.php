@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\City;
 
 use App\UserCity;
+use App\UserImageSeen;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -27,12 +28,10 @@ class WelcomeController extends Controller
 
         $city = City::get();
         $userCity = UserCity::get();
+        $UserImageSeen = UserImageSeen::get();
 
 
-
-
-
-            return view('index' , ['yesterdayData'=> $yesterday, 'forecastData'=>$forecast, 'todayData'=>$today, 'cities'=>$city, 'userCities'=>$userCity]);
+        return view('index' , ['yesterdayData'=> $yesterday, 'forecastData'=>$forecast, 'todayData'=>$today, 'cities'=>$city, 'userCities'=>$userCity, 'UserImageSeen'=>$UserImageSeen]);
 
 
     }

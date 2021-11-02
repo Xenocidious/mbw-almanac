@@ -96,7 +96,15 @@
                         <i class="nav-icon fas fa-photo-video"></i>
                         <p>
                             Photohub
-                            <span class="badge badge-info right">2</span>
+                            
+                            @if(Auth::check())
+                              @if($countSeenImages > 9)
+                                {{$countSeenImages = '9+'}}
+                                <span class="badge badge-info right">{{$countSeenImages}}</span>
+                              @elseif($countSeenImages <= 9 && $countSeenImages > 0)
+                                <span class="badge badge-info right">{{$countSeenImages}}</span>
+                              @endif
+                            @endif
                         </p>
                     </a>
                 </li>

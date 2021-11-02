@@ -6,6 +6,7 @@ use App\City;
 use App\User;
 use App\Theme;
 use App\UserCity;
+use App\UserImageSeen;
 use function json_encode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,7 +23,8 @@ class AccountController extends Controller
             'themes' => Theme::all(),
             'cities' => City::all(),
             'userCities' => UserCity::all(),
-            'checkCityHighlight' => false
+            'checkCityHighlight' => false,
+            'UserImageSeen' =>UserImageSeen::all(),
         ]);
     }
 
@@ -33,7 +35,8 @@ class AccountController extends Controller
             'themes' => Theme::all(),
             'cities' => City::all(),
             'userCities' => UserCity::all(),
-            'checkCityHighlight' => true
+            'checkCityHighlight' => true,
+            'UserImageSeen' =>UserImageSeen::all(),
         ]);
     }
 
@@ -114,6 +117,10 @@ class AccountController extends Controller
 
     public function destroy(User $user)
     {
+        if (UserImageSeen::exists()) {
+            UserImageSeen::where('user_id', $user['id'])->delete();
+        }
+        
         auth()->logout();
         $user->delete();
 
