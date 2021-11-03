@@ -50,8 +50,9 @@ class AccountController extends Controller
 
 
         if ($request->hasFile('photo')) {
-            Auth::user()->photo = base64_encode($request->file('photo')->getContent());
+            $user->photo = base64_encode($request->file('photo')->getContent());
         }
+
 
         $user->email = $request->post('email');
         $user->name = $request->post('name');

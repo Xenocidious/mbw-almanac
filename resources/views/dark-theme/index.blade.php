@@ -180,11 +180,7 @@
                 <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                     <div class="media">
-<<<<<<< HEAD
                         <img src="../public/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-=======
-                        <img src="../public/dist/img/avatar.png" alt="User Avatar" class="img-size-50 mr-3 img-circle">
->>>>>>> develop
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 Mert Özdal
@@ -200,11 +196,7 @@
                 <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
-<<<<<<< HEAD
                     <img src="../public/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-=======
-                    <img src="../public/dist/img/avatar.png" alt="User Avatar" class="img-size-50 img-circle mr-3">
->>>>>>> develop
                     <div class="media-body">
                         <h3 class="dropdown-item-title">
                             Pieterjan van Dijk
@@ -220,11 +212,7 @@
                 <a href="#" class="dropdown-item">
                 <!-- Message Start -->
                 <div class="media">
-<<<<<<< HEAD
                     <img src="../public/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-=======
-                    <img src="../public/dist/img/avatar.png" alt="User Avatar" class="img-size-50 img-circle mr-3">
->>>>>>> develop
                     <div class="media-body">
                         <h3 class="dropdown-item-title">
                             Aya Mohammed
@@ -736,11 +724,7 @@
                   <h5 class="widget-user-desc">likes code</h5>
                 </div>
                 <div class="widget-user-image">
-<<<<<<< HEAD
                   <img class="img-circle" src="../public/dist/img/user3-128x128.jpg" alt="User Avatar">
-=======
-                  <img class="img-circle elevation-2" src="../public/dist/img/avatar.png" alt="User Avatar">
->>>>>>> develop
                 </div>
                 <div class="card-footer">
                   <div class="row">
