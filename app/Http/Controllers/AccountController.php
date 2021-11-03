@@ -12,10 +12,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+// use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class AccountController extends Controller
 {
+    public const MAX_IMAGE_WIDTH = 300;
+    public const MAX_IMAGE_HEIGHT = 300;
+
     public function index()
     {
         return view('accounts.index', [
@@ -50,7 +55,37 @@ class AccountController extends Controller
 
 
         if ($request->hasFile('photo')) {
-            $user->photo = base64_encode($request->file('photo')->getContent());
+
+            $image = $request->file('photo');
+            $filename = $image->getClientOriginalName();
+
+
+            $resize = Image::make($image->getRealPath());
+
+            $ratio = $resize->getWidth() / self::MAX_IMAGE_WIDTH;
+
+            if ($ratio > 1) {
+                $resize->resize(self::MAX_IMAGE_WIDTH, $resize->getHeight() / $ratio);
+            }
+
+            $ratio = $resize->getHeight() / self::MAX_IMAGE_HEIGHT;
+
+            if ($ratio > 1) {
+                $resize->resize(self::MAX_IMAGE_WIDTH, $resize->getHeight() / $ratio);
+            }
+
+
+
+            $user->photo = $resize;
+
+
+            if (!is_dir(public_path('tmp'))) {
+                mkdir(public_path('tmp'));
+            }
+    
+            $resize->save(public_path('tmp/' . $filename));
+            $user->photo = base64_encode(file_get_contents(public_path('tmp/' . $filename)));
+            unlink(public_path('tmp/' . $filename));
         }
 
 
