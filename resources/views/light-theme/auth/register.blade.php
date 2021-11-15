@@ -1,15 +1,29 @@
 @extends('layouts.app')
 
+
 @section('content')
-<div class="container">
-    <div class="register-box">
+
+<body class="transition sidebar-mini layout-fixed">
+
+    <div class="wrapper ">
+        <div class="content-wrapper" ">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+              <div class="row mb-2">
+
+            </div><!-- /.row -->
+        </div>
+
+
+<div class="content">
+    <div class="register-box" style="margin-top:3%">
         <div class="card card-outline card-primary">
           <div class="card-header text-center">
             <a href="../../index2.html" class="h1"><b>mbw</b> Almanac</a>
           </div>
           <div class="card-body">
             <p class="login-box-msg">Register a new account</p>
-      
+
             <form method="POST" action="{{ route('register') }}">
                 @csrf
               <div class="input-group mb-3">
@@ -78,8 +92,8 @@
                 <!-- /.col -->
               </div>
             </form>
-      
-            <div class="social-auth-links text-center">
+
+            {{-- <div class="social-auth-links text-center">
               <a href="#" class="btn btn-block btn-primary disabled">
                 <i class="fab fa-facebook mr-2"></i>
                 Sign up using Facebook
@@ -88,8 +102,8 @@
                 <i class="fab fa-google-plus mr-2"></i>
                 Sign up using Google+
               </a>
-            </div>
-      
+            </div> --}}
+
             <a href="login.html" class="text-center">I already have an account</a>
           </div>
           <!-- /.form-box -->
@@ -97,4 +111,5 @@
       </div>
     </div>
 </div>
-@endsection
+</div>
+</body>

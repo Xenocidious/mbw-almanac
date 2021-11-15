@@ -3,6 +3,7 @@
 use App\City;
 use App\UserCity;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,7 @@ Route::get('/', function () {
     $city = City::get();
     $userCity = UserCity::get();
 
+    View::share('todayData', $today);
 
     return view('index' , ['yesterdayData'=> $yesterday, 'forecastData'=>$forecast, 'todayData'=>$today, 'cities'=>$city, 'userCities'=>$userCity]);
 
