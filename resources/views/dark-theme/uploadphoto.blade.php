@@ -53,7 +53,7 @@
             <img src="../public/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">mbw Almanac</span>
         </a>
-    
+
 
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           @if(auth::check())
@@ -71,7 +71,7 @@
             <p><a href="{{ route('login') }}">{{ __('Login') }} </a> or <a href="{{ route('register') }}">{{ __('Register') }}</a></p>
           @endif
         </div>
-        
+
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
@@ -256,15 +256,15 @@
                         {{ session()->get('error') }}
                     </div>
                 @endif
-        
+
                 <div class="main_content_uploadphoto">
                     <h1 class='text-light'>Upload a photo</h1>
-        
+
                     @if (Route::has('login'))
                         @auth
                             <i class="fas fa-user text-light"></i>
                             <p class="text-light">{{Auth::user()->name}}<p>
-        
+
                             <form action="{{ route('upload.image') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group text-light">

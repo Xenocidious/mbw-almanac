@@ -53,7 +53,7 @@
             <img src="../public/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">mbw Almanac</span>
         </a>
-    
+
 
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           @if(auth::check())
@@ -71,7 +71,7 @@
             <p><a href="{{ route('login') }}">{{ __('Login') }} </a> or <a href="{{ route('register') }}">{{ __('Register') }}</a></p>
           @endif
         </div>
-        
+
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
@@ -243,7 +243,7 @@
                               <!-- /.card-header -->
                               <div class="card-body shadow">
                                 <img class="img-fluid pad" src="../storage/app/public/image/{{$image->file_path}}" alt="Photo">
-            
+
                                 <p class="text-light">{{$image->description}}</p>
                                 <button type="button" class="btn btn-default btn-sm text-light" onclick="copyImageUrl({{$image->id}})"><i class="fas fa-share text-light"></i> Share</button>
                                 <input type="text" id="hidden{{$image->id}}" class='hidden' name='IMGurl' value='http://localhost/jaar%202+3/groepsprojecten/mbw-almanac/public/openImage/{{$image->id}}'>
@@ -263,7 +263,7 @@
                                     foreach($upvotes as $vote){
                                         if($vote->image_id == $image->id){
                                             if($vote->user_id == $user->id){
-                                                $voted = 'true'; 
+                                                $voted = 'true';
                                             }
                                         }
                                     }
@@ -275,7 +275,7 @@
                                             Vote
                                         </button>
                                     </a>
-                                @else 
+                                @else
                                     <a href='{{ route('image.upvote', ['id' => $image->id]) }}'>
                                         <button type="button" class="btn btn-default btn-sm text-light">
                                             <i class="far fa-arrow-alt-circle-up text-light"></i>
@@ -283,7 +283,7 @@
                                         </button>
                                     </a>
                                 @endif
-                                
+
                                 <?php
                                 $imageUpvotes = 0;
                                 foreach($upvotes as $upvote){
@@ -293,12 +293,12 @@
                                 }
                                 ?>
                                 <span class="float-right text-muted">{{$imageUpvotes}} upvotes | {{$commentAmount}} comments</span>
-                                
+
                               </div>
                               <!-- /.card-body -->
                               <div class="card-footer card-comments">
                                 <div class="card-comment">
-                                <?php $commentAmount = 0; 
+                                <?php $commentAmount = 0;
                                 $maxComments = 3?>
                                   @foreach($comments as $comment)
                                     @if($comment->image_id == $image->id && $commentAmount < $maxComments)
@@ -326,7 +326,7 @@
                                         </div>
                                     <!-- /.comment-text -->
                                     @endif
-                                    
+
                                   @endforeach
                                   @if($commentAmount == 0)
                                      <p class='text-light'>Be the first to comment under <a href='#'>{{$image->user_name}}</a>'s post!</p>
