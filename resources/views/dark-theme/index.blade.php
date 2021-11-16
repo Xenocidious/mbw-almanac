@@ -3,17 +3,6 @@
 @section('content')
 <body class="dark-background hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-  
-    <?php
-      if(Auth::check()){
-        $countSeenImages = 0;
-        for($i=0; $i<count($UserImageSeen); $i++){
-          if($UserImageSeen[$i]['user_id'] == Auth::user()->id && $UserImageSeen[$i]['seen'] == 0){
-            $countSeenImages++;
-          }
-        }
-      }
-    ?>
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">

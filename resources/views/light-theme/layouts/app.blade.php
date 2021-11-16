@@ -30,6 +30,17 @@
     <link rel="stylesheet" href="css/app.css">
 </head>
 <header>
+  
+    <?php
+      if(Auth::check()){
+        $countSeenImages = 0;
+        for($i=0; $i<count($UserImageSeen); $i++){
+          if($UserImageSeen[$i]['user_id'] == Auth::user()->id && $UserImageSeen[$i]['seen'] == 0){
+            $countSeenImages++;
+          }
+        }
+      }
+    ?>
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -67,7 +78,7 @@
         <!-- Navbar (side) left -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="../resources/index3.html" class="brand-link">
+            <a href="#" class="brand-link">
                 <img src="../public/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">mbw Almanac</span>
             </a>
@@ -116,34 +127,6 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{Route('photohub')}}" class="nav-link">
-                            <i class="nav-icon fas fa-photo-video"></i>
-                            <p>
-                                Photohub
-                                <span class="badge badge-info right">2</span>
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{Route('weather')}}" class="nav-link">
-                            <i class="nav-icon fas fa-thermometer-half"></i>
-                            <p>
-                                Weather
-                            </p>
-                        </a>
-                    </li>
-                </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon far fa-address-card"></i>
-                            <p>
-                                About us
-                            </p>
-                        </a>
-                    </li>
-                </li>
-            </li>
                 <li class="nav-item">
                     <a href="{{ route('photohub') }}" class="nav-link">
                         <i class="nav-icon fas fa-photo-video"></i>
@@ -163,7 +146,7 @@
                 </li>
             </li>
                 <li class="nav-item">
-                    <a href="{{ route("statistics") }}" class="nav-link">
+                    <a href="{{ route("weather") }}" class="nav-link">
                         <i class="nav-icon fas fa-thermometer-half"></i>
                         <p>
                             Weather

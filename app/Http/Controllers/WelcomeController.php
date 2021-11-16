@@ -30,7 +30,6 @@ class WelcomeController extends Controller
         $userCity = UserCity::get();
         $UserImageSeen = UserImageSeen::get();
 
-
         return view('index' , ['yesterdayData'=> $yesterday, 'forecastData'=>$forecast, 'todayData'=>$today, 'cities'=>$city, 'userCities'=>$userCity, 'UserImageSeen'=>$UserImageSeen]);
 
 

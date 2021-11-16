@@ -1,5 +1,7 @@
-<body class="hold-transition sidebar-mini layout-fixed" style="font-family: 'Source Sans Pro','Sans Serif' !important;">
+
     @include('layouts.app')
+
+<body class="hold-transition sidebar-mini layout-fixed" style="font-family: 'Source Sans Pro','Sans Serif' !important;">
 <div class="wrapper">
   
     <?php
