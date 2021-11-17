@@ -111,7 +111,4 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-
 Auth::routes();
-
-
