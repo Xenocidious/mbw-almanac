@@ -43,6 +43,11 @@ return [
 
     'disks' => [
 
+        'image_public' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/images/uploaded',
+        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),

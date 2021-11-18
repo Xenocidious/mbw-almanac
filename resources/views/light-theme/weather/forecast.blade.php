@@ -2,7 +2,12 @@
 
 @section('content')
 <body class="hold-transition sidebar-mini layout-fixed">
+<section class="content">
 <div class="wrapper">
+    <div class="container-fluid">
+        
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height: 911.953px;">
   
 
     <?php
@@ -22,7 +27,6 @@
     </div>
     <br>
     <!-- main content -->
-    <div class="container">
         <div class="row">
             <div class="col">
                 <h2>{{ __('Forecast') }}</h2>
@@ -135,6 +139,8 @@
             </div>
         @endif
         </div>
+    </div>
+</div>
   </div>
   </div>
   </body>
