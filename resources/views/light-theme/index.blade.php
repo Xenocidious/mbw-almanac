@@ -97,7 +97,7 @@
                                     @break
                                 @endswitch
                           </div>
-                        <a href="../resources/#" class="small-box-footer">{{$todayData[0]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer">{{$todayData[0]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -467,7 +467,7 @@
               <h5 class="widget-user-desc">likes trains</h5>
             </div>
             <div class="widget-user-image">
-              <img class="img-circle elevation-2" src="../public/dist/img/avatar.png" alt="User Avatar">
+              <img class="img-circle elevation-2" src="{{asset('dist/img/avatar.png')}}" alt="User Avatar">
             </div>
             <div class="card-footer">
               <div class="row">

@@ -388,16 +388,6 @@
 </section>
 
 
-
-<footer class="main-footer dark-background">
-    <strong>Copyright &copy; 2021 - <?= Date("Y"); ?> <a href="../resources/https://adminlte.io">Aya, Mert en Pieterjan</a>.</strong>
-    Most rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 1.0.0
-    </div>
-
-
-
     @section('javascripts')
     <!-- jQuery -->
     <script src="../public/plugins/jquery/jquery.min.js"></script>
@@ -434,7 +424,6 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="../public/dist/js/pages/dashboard.js"></script>
     @show
-</footer>
 
 {{--
     <main>
