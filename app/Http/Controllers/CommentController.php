@@ -7,6 +7,7 @@ use App\Image;
 use App\Vote;
 use App\Comment;
 use Auth;
+use App\UserImageSeen;
 use Illuminate\Support\Facades\Http;
 
 

@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
+use App\UserImageSeen;
 
 class WeatherController extends Controller
 {
     public const BASE_URL = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline';
-    public const API_KEY = '7SXFUD7ARDRC9KTR6ETCRYGFG';
+    public const API_KEY = '7GMWKWQNTVQL4F6RUBKLAAGMA';
+    // public const API_KEY = '7SXFUD7ARDRC9KTR6ETCRYGFG';
 
     /**
      * @param Request $request
@@ -59,7 +61,8 @@ class WeatherController extends Controller
             'forecast' => $data,
             'error' => $error,
             'start' => Carbon::createFromTimestamp($startDate)->format('Y-m-d\TH:i:s'),
-            'end' => Carbon::createFromTimestamp($endDate)->format('Y-m-d\TH:i:s')
+            'end' => Carbon::createFromTimestamp($endDate)->format('Y-m-d\TH:i:s'),
+            'UserImageSeen' => UserImageSeen::get(),
         ]);
     }
 }

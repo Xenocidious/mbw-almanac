@@ -28,6 +28,17 @@
 </head>
 <body class="dark-background hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
+  
+    <?php
+      if(Auth::check()){
+        $countSeenImages = 0;
+        for($i=0; $i<count($UserImageSeen); $i++){
+          if($UserImageSeen[$i]['user_id'] == Auth::user()->id && $UserImageSeen[$i]['seen'] == 0){
+            $countSeenImages++;
+          }
+        }
+      }
+    ?>
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
@@ -38,16 +49,16 @@
 
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="../resources/index3.html" class="brand-link">
+        <a href="#" class="brand-link">
             <img src="../public/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">mbw Almanac</span>
         </a>
-    
+
 
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           @if(auth::check())
             <div class="image">
-                
+
               @if(Auth::user()->photo == NULL)
                 <img src="../public/dist/img/avatar.png" class="img-circle elevation-2 userImage" alt="User Image">
               @else
@@ -61,7 +72,7 @@
             <p><a href="{{ route('login') }}">{{ __('Login') }} </a> or <a href="{{ route('register') }}">{{ __('Register') }}</a></p>
           @endif
         </div>
-        
+
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
@@ -90,7 +101,15 @@
                         <i class="nav-icon fas fa-photo-video"></i>
                         <p>
                             Photohub
-                            <span class="badge badge-info right">2</span>
+                            
+                            @if(Auth::check())
+                              @if($countSeenImages > 9)
+                                {{$countSeenImages = '9+'}}
+                                <span class="badge badge-info right">{{$countSeenImages}}</span>
+                              @elseif($countSeenImages <= 9 && $countSeenImages > 0)
+                                <span class="badge badge-info right">{{$countSeenImages}}</span>
+                              @endif
+                            @endif
                         </p>
                     </a>
                 </li>
@@ -360,45 +379,45 @@
         <strong>Copyright &copy; 2021 - <?= Date("Y"); ?> <a href="../resources/https://adminlte.io">Aya, Mert en Pieterjan</a>.</strong>
         Most rights reserved.
         <div class="float-right d-none d-sm-inline-block">
-          <b>Version</b> 1.0.0
+          <b>Version</b> 1.0.1
         </div>
       </footer>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </div>
-  
-  
+
+
   </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
   <!-- jQuery -->
   <script src="../public/plugins/jquery/jquery.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
@@ -435,4 +454,3 @@
   <script src="../public/dist/js/pages/dashboard.js"></script>
   </body>
   </html>
-  
