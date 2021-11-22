@@ -12,6 +12,7 @@ class WeatherController extends Controller
     public const BASE_URL = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline';
     public const API_KEY = '7GMWKWQNTVQL4F6RUBKLAAGMA';
     // public const API_KEY = '7SXFUD7ARDRC9KTR6ETCRYGFG';
+    public const MAX_RANGE = 14;
 
     /**
      * @param Request $request
@@ -39,8 +40,12 @@ class WeatherController extends Controller
         $startDate = strtotime($request->get('start', 'now'));
         $endDate = strtotime($request->get('end', 'now'));
 
-        // mag niet de verkeerde volgorde doen.
-        if ($startDate > $endDate) {
+        $diffInDays = round(($endDate - $startDate) / (60 * 60 * 24));
+        // Mag niet meer dan 14 dagen
+        if ($diffInDays > self::MAX_RANGE) {
+            $error = __('Cannot pick a date range larger than %i days', self::MAX_RANGE);
+            // mag niet de verkeerde volgorde doen.
+        } else if ($startDate > $endDate) {
             $error = __('Start date can not be after end date');
         } else {
             // haal de gegevens op vanuit de api
