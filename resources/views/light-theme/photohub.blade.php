@@ -83,7 +83,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body shadow">
-                  <img class="img-fluid pad" src="../storage/app/public/image/{{$image->file_path}}" alt="Photo">
+                  <img class="img-fluid pad" src="{{asset('uploads/image/'.$image->file_path)}}" alt="Photo">
 
                   <p>{{$image->description}}</p>
                   <button type="button" class="btn btn-default btn-sm" onclick="copyImageUrl({{$image->id}})"><i class="fas fa-share"></i> Share</button>

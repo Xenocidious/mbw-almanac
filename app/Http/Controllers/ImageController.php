@@ -74,7 +74,7 @@ class ImageController extends Controller
                 
                 $imageId = $image['id'];
                 
-                //update the user_images_seen table to update amount of missed images
+                //update the users_images_seen table to update amount of missed images
 
                 $maxUser = User::where('id', \DB::raw("(select max(`id`) from users)"))->get();
 

@@ -15,8 +15,8 @@ class UsersImagesTable extends Migration
     {
         Schema::create('users_images_seen', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
             $table->integer('image_id');
+            $table->integer('user_id');
             $table->boolean('seen')->default(false);
         });
     }
