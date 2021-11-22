@@ -26,9 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $today = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/today?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=stats,current')['days'];
-        $UserImageSeen = 'test';
-        
-        View::share(['todayData' => $today, 'UserImageSeen' => UserImageSeen::get()]);
+        View::composer('*', function ($view) {
+            $today = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/today?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=stats,current')['days'];
+            $view->with('todayData', $today);
+            $view->with('USerImageSeen', UserImageSeen::get());
+        });
     }
 }
