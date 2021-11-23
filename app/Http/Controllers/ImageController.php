@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\User;
 use App\Vote;
 use App\Image;
 use App\Comment;
 use App\UserImageSeen;
-use App\User;
 
-use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\Storage;
 
 
 class ImageController extends Controller
@@ -38,10 +39,10 @@ class ImageController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created image in directory.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * there will be 2 instances saved of the image, one row in the DB, and the physical file in the local directory
+     * 
      */
     public function store(Request $request){
         // Validate the inputs
@@ -49,15 +50,24 @@ class ImageController extends Controller
             // ensure the request has a file before we attempt anything else.
             if ($request->hasFile('file')) {
 
+                //create $file using the request
                 $file = $request->file('file');
+
+                //making sure that the image has a description and consists out of the right format
                 $request->validate([
                     'description' => 'required',
                 ],[
                     'image' => 'mimes:jpeg' // Only allow .jpg file types.
                 ]);
+
+                //define filename
                 $fileName = $file->getClientOriginalName();
+
+                //define where the image will be saved in the local directory
                 $destinationPath = public_path().'/uploads/image';
-                $file->move($destinationPath,$fileName);
+
+                //save the image in the local directory
+                $file->move($destinationPath, $fileName);
                 
 
 
@@ -126,13 +136,24 @@ class ImageController extends Controller
     }
 
     public function delete($id){
-        sleep(1);
 
+        //get filename of the image that we want to remove
+        $filename = Image::get()->where('id', $id)[0]['file_path'];
+        //get filepath of the image that we want to remove
+        $file_path = public_path().'/uploads/image/'.$filename;
+        //remove image from local directory
+        unlink($file_path);
+
+        //remove image in the DB
         Image::where('id', $id)->delete();
+        //remove all comments in the DB
         Comment::where('image_id', $id)->delete();
+        //remove all upvotes in the DB
         Vote::where('image_id', $id)->delete();
+        //remove all 'unseen messages' for the sidebar in DB
         UserImageSeen::where('image_id', $id)->delete();
 
+        //return user to photohub
         return redirect('photohub');
     }
 

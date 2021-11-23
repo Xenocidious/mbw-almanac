@@ -18,7 +18,7 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="../public/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+        <img class="animation__shake" src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
     </div>
 
 
@@ -61,7 +61,7 @@
                                   @foreach($users as $u)
                                     @if($u->id == $image->user_id)
                                         @if($u->photo == NULL)
-                                            <img class="img-circle" src="../public/dist/img/avatar.png" alt="User Image">
+                                            <img class="img-circle" src="{{asset('dist/img/avatar.png')}}" alt="User Image">
                                         @else
                                             <img class="img-circle" src="data:image/png;base64, {{ $u->photo }}" alt="User Image">
                                         @endif
@@ -90,7 +90,7 @@
                               </div>
                               <!-- /.card-header -->
                               <div class="card-body shadow">
-                                <img class="img-fluid pad" src="../storage/app/public/image/{{$image->file_path}}" alt="Photo">
+                                <img class="img-fluid pad" src="{{asset('uploads/image/'.$image->file_path)}}" alt="Photo">
 
                                 <p>{{$image->description}}</p>
                                 <button type="button" class="btn btn-default btn-sm" onclick="copyImageUrl({{$image->id}})"><i class="fas fa-share"></i> Share</button>
@@ -155,7 +155,7 @@
                                     @foreach($users as $u)
                                         @if($u->id == $comment->user_id)
                                             @if($u->photo == NULL)
-                                                <img class="img-circle img-sm" src="../public/dist/img/avatar.png" alt="User Image">
+                                                <img class="img-circle img-sm" src="{{asset('dist/img/avatar.png')}}" alt="User Image">
                                             @else
                                                 <img class="img-circle img-sm" src="data:image/png;base64, {{ $u->photo }}" alt="User Image">
                                             @endif
@@ -189,7 +189,7 @@
                                     @csrf
                                   <input type="hidden" name='image_id' value='{{$image->id}}'>
                                   @if(Auth::user()->photo == NULL)
-                                    <img class="img-circle img-sm" src="../public/dist/img/avatar.png" alt="Alt Text">
+                                    <img class="img-circle img-sm" src="{{asset('dist/img/avatar.png')}}" alt="Alt Text">
                                   @else
                                     <img class="img-circle img-sm" src="data:image/png;base64, {{ Auth::user()->photo }}" alt="Alt Text">
                                   @endif
@@ -216,38 +216,9 @@
                         @endforeach
                     </div>
                 </div>
-    </div>
+      </div>
     </section>
 
-
-<!-- jQuery -->
-<script src="../public/plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="../public/plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="../public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="../public/plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="../public/plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="../public/plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="../public/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="../public/plugins/jquery-knob/jquery.knob.min.js"></script>
-<script src="../public/plugins/moment/moment.min.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="../public/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Summernote -->
-<script src="../public/plugins/summernote/summernote-bs4.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="../public/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../public/dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
+    @show
 </body>
 </html>

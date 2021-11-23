@@ -17,7 +17,7 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="../public/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+        <img class="animation__shake" src="{{asset('/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
     </div>
 
 <div class="container-fluid">
@@ -97,7 +97,7 @@
                                     @break
                                 @endswitch
                           </div>
-                        <a href="../resources/#" class="small-box-footer">{{$todayData[0]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer">{{$todayData[0]['conditions']}}, More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -466,7 +466,7 @@
                   <h5 class="widget-user-desc">Founder & CEO</h5>
                 </div>
                 <div class="widget-user-image">
-                  <img class="img-circle elevation-2" src="../public/dist/img/user1-128x128.jpg" alt="User Avatar">
+                  <img class="img-circle elevation-2" src="{{asset('dist/img/user1-128x128.jpg')}}" alt="User Avatar">
                 </div>
                 <div class="card-footer">
                   <div class="row">
@@ -511,7 +511,7 @@
                   <h5 class="widget-user-desc text-right">Web Designer</h5>
                 </div>
                 <div class="widget-user-image">
-                  <img class="img-circle" src="../public/dist/img/user3-128x128.jpg" alt="User Avatar">
+                  <img class="img-circle" src="{{asset('dist/img/user3-128x128.jpg')}}" alt="User Avatar">
                 </div>
                 <div class="card-footer">
                   <div class="row">
