@@ -6,7 +6,8 @@
             <div class="col-md-8">
                 @foreach ($images as $image)
                     <img src="data:image/png;base64, {{ $image->image }}" alt=""/>
-                    <form method="post" action="{{ route('favorite-images.destroy', ['favorite_image' => $image]) }}">
+                    <form method="post" action="{{ route('favorite-images.destroy', ['favorite_image' => $image]) }}"
+                          onsubmit="return confirm('{{ __('Do you really want to submit the form?') }}');">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-sm btn-danger">X</button>

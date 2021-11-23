@@ -31,7 +31,7 @@
 </head>
 <body class='background-dark'>
 <header>
-  
+
     <?php
       if(Auth::check()){
         $countSeenImages = 0;
@@ -108,7 +108,7 @@
                         <i class="nav-icon fas fa-photo-video"></i>
                         <p>
                             Photohub
-                            
+
                             @if(Auth::check())
                               @if($countSeenImages > 9)
                                 {{$countSeenImages = '9+'}}
