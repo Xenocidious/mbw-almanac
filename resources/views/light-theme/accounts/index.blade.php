@@ -1,5 +1,19 @@
-<body class="hold-transition sidebar-mini layout-fixed" style="font-family: 'Source Sans Pro','Sans Serif' !important;">
+
     @include('layouts.app')
+
+<body class="hold-transition sidebar-mini layout-fixed" style="font-family: 'Source Sans Pro','Sans Serif' !important;">
+<div class="wrapper">
+  
+    <?php
+      if(Auth::check()){
+        $countSeenImages = 0;
+        for($i=0; $i<count($UserImageSeen); $i++){
+          if($UserImageSeen[$i]['user_id'] == Auth::user()->id && $UserImageSeen[$i]['seen'] == 0){
+            $countSeenImages++;
+          }
+        }
+      }
+    ?>
 
 
     <!-- Preloader -->

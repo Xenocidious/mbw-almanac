@@ -412,11 +412,7 @@
                   <h5 class="widget-user-desc">likes trains</h5>
                 </div>
                 <div class="widget-user-image">
-<<<<<<< HEAD
                   <img class="img-circle elevation-2" src="../public/dist/img/user1-128x128.jpg" alt="User Avatar">
-=======
-                  <img class="img-circle elevation-2" src="../public/dist/img/avatar.png" alt="User Avatar">
->>>>>>> develop
                 </div>
                 <div class="card-footer">
                   <div class="row">
@@ -502,11 +498,7 @@
                   <h5 class="widget-user-desc">likes code</h5>
                 </div>
                 <div class="widget-user-image">
-<<<<<<< HEAD
                   <img class="img-circle" src="../public/dist/img/user3-128x128.jpg" alt="User Avatar">
-=======
-                  <img class="img-circle elevation-2" src="../public/dist/img/avatar.png" alt="User Avatar">
->>>>>>> develop
                 </div>
                 <div class="card-footer">
                   <div class="row">
