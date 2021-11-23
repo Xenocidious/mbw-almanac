@@ -3,7 +3,7 @@
 
 @section('content')
     <body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper ps-5 pl-5">
+    <div class="wrapper">
 
 
     <?php
