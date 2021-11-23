@@ -11,6 +11,7 @@ use App\User;
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 
 
@@ -47,25 +48,24 @@ class ImageController extends Controller
         if($request->file->extension() == "jpg" || $request->file->extension() == "png" || $request->file->extension() == "jpeg"){
             // ensure the request has a file before we attempt anything else.
             if ($request->hasFile('file')) {
-                
+
+                $file = $request->file('file');
                 $request->validate([
                     'description' => 'required',
-                ]);
-
-                $request->validate([
+                ],[
                     'image' => 'mimes:jpeg' // Only allow .jpg file types.
                 ]);
-                // $this->validate($request, [
-                //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:width=1920,height=1080',
-                // ]);
-    
-                // Save the file locally in the storage/public/ folder under a new folder named /image
-                $request->file->store('image', 'public');
+                $fileName = $file->getClientOriginalName();
+                $destinationPath = public_path().'/uploads/image';
+                $file->move($destinationPath,$fileName);
+                
+
+
     
                 // Store the record, using the new file hashname which will be it's new filename identity.
                 $image = new Image([
                     "description" => $request->get('description'),
-                    "file_path" => $request->file->hashName(),
+                    "file_path" => $request->file->getClientOriginalName(),
                     "user_id" => Auth::user()->id,
                     "user_name" => Auth::user()->name
                 ]);

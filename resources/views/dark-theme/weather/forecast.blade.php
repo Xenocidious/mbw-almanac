@@ -375,6 +375,28 @@
 
 
 
+    <footer class="main-footer dark-background">
+        <strong>Copyright &copy; 2021 - <?= Date("Y"); ?> <a href="../resources/https://adminlte.io">Aya, Mert en Pieterjan</a>.</strong>
+        Most rights reserved.
+        <div class="float-right d-none d-sm-inline-block">
+          <b>Version</b> 1.0.1
+        </div>
+      </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -104,6 +104,91 @@
 
         @yield('content')
     </main>
+
+    <footer class="bg-dark-purple">
+        <div class='footer_left_items'>
+            <a class="text-white">Frequently Asked Questions</a><br>
+            <hr style="width:50%;text-align:left;margin-left:0">
+        </div>
+        <div class='footer_left_items'>
+            <a class="text-white">Contact</a><br>
+            <hr style="width:50%;text-align:left;margin-left:0">
+        </div>
+        <div class='footer_left_items'>
+            <a class="text-white">Lorem Ipsum</a><br>
+            <hr style="width:50%;text-align:left;margin-left:0">
+        </div>
+        <div class='footer_left_items'>
+            <a class="text-white">Lorem Ipsum</a><br>
+            <hr style="width:50%;text-align:left;margin-left:0">
+        </div>
+        <div class='footer_left_items'>
+            <a class="text-white">Lorem Ipsum</a><br>
+            <hr style="width:50%;text-align:left;margin-left:0">
+        </div>
+
+        <div class='footer_right_items'>
+                <span id='social_media_wrapper'>
+                    <ul>
+                        <li id='facebook_link'>
+                            <a href="#">
+                                <span></span><span></span><span></span><span></span>
+                                <span class="fa fa-facebook"></span>
+                            </a>
+                        </li>
+                        <p class="text-white">follow us on facebook</p>
+                    </ul>
+                    <hr style="width:50%;text-align:left;margin-left:2.5vw">
+                </span>
+        </div>
+        <div class='footer_right_items'>
+                <span id='social_media_wrapper'>
+                    <ul>
+                        <li id='twitter_link'>
+                            <a href="#">
+                                <span></span><span></span><span></span><span></span>
+                                <span class="fa fa-twitter"></span>
+                            </a>
+                        </li>
+                        <p class="text-white">follow us on <a>twitter</a></p>
+                    </ul>
+                    <hr style="width:50%;text-align:left;margin-left:2.5vw">
+                </span>
+        </div>
+        <div class='footer_right_items'>
+                <span id='social_media_wrapper'>
+                    <ul>
+                        <li id='instagram_link'>
+                            <a href="#">
+                                <span></span><span></span><span></span><span></span>
+                                <span class="fa fa-instagram"></span>
+                                <span class="fa fa-instagram insta_button"></span>
+                            </a>
+                        </li>
+                        <p class="text-white" id='footer_p'>follow us on instagram</p>
+                    </ul>
+                    <hr style="width:50%;text-align:left;margin-left:2.5vw">
+                </span>
+        </div>
+        <div class='footer_right_items'>
+                <span id='social_media_wrapper'>
+                    <ul>
+                        <li id='linkedin_link'>
+                            <a href="#">
+                                <span></span><span></span><span></span><span></span>
+                                <span class="fa fa-linkedin"></span>
+                            </a>
+                        </li>
+                        <p class="text-white">follow us on linkedin</p>
+                    </ul>
+                    <hr style="width:50%;text-align:left;margin-left:2.5vw">
+                </span>
+        </div>
+
+        <div class='footer_copyright'>
+            <p class="text-white">copyright project almanac Aya, Mert en Pieterjan: ©2021 - <?= date("Y"); ?></p>
+        </div>
+    </footer>
 </div>
 
 @section('body-scripts')
