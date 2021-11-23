@@ -3,7 +3,7 @@
 @section('content')
 <body class="transition sidebar-mini layout-fixed">
 <div class="wrapper">
-  
+
     <?php
       if(Auth::check()){
         $countSeenImages = 0;
@@ -33,6 +33,20 @@
     </div><!-- /.row -->
 </div>
 <!-- /.content-header -->
+
+<?php
+$intY= mt_rand(1, time());
+$string = date("Y-m-d",$intY);
+
+for ($x = 0; $x <= 4; $x++) {
+    $intY= mt_rand(1, time());
+    $randomDate = date("Y-m-d",$intY);
+
+    echo $randomDate;
+
+}
+
+?>
 
 
         <!-- Main content -->
