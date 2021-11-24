@@ -38,13 +38,14 @@
 $intY= mt_rand(1, time());
 $string = date("Y-m-d",$intY);
 
+$randomDate = [];
 for ($x = 0; $x <= 4; $x++) {
     $intY= mt_rand(1, time());
-    $randomDate = date("Y-m-d",$intY);
-
-    echo $randomDate;
-
+    array_push($randomDate,date("Y-m-d",$intY));
 }
+dd($randomDate) ;
+
+
 
 ?>
 
