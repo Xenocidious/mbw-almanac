@@ -21,22 +21,7 @@ use Illuminate\Support\Facades\Route;
 /**
  * De api word gefetched met data van 'yesterday' en doorgestuurd naar de index
  */
-Route::get('/', function () {
 
-    $yesterday = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/yesterday?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=obs,current,histfcst')['days'];
-
-    $today = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/today?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=stats,current')['days'];
-
-    $forecast = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=fcst,stats,current')['days'];
-
-    $city = City::get();
-    $userCity = UserCity::get();
-
-    View::share('todayData', $today);
-
-    return view('index' , ['yesterdayData'=> $yesterday, 'forecastData'=>$forecast, 'todayData'=>$today, 'cities'=>$city, 'userCities'=>$userCity]);
-
-});
 
 Route::get('/index', 'WelcomeController@index')->name('home');
 

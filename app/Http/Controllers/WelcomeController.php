@@ -25,10 +25,10 @@ class WelcomeController extends Controller
 
         $forecast = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH&include=fcst%2Cstats%2Ccurrent')['days'];
 
-
         $city = City::get();
         $userCity = UserCity::get();
         $UserImageSeen = UserImageSeen::get();
+
 
         return view('index' , ['yesterdayData'=> $yesterday, 'forecastData'=>$forecast, 'todayData'=>$today, 'cities'=>$city, 'userCities'=>$userCity, 'UserImageSeen'=>$UserImageSeen]);
 

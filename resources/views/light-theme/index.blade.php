@@ -5,6 +5,8 @@
 <div class="wrapper">
   
     <?php
+    
+
       if(Auth::check()){
         $countSeenImages = 0;
         for($i=0; $i<count($UserImageSeen); $i++){
@@ -21,7 +23,6 @@
     </div>
 
 <div class="container-fluid">
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -33,7 +34,6 @@
     </div><!-- /.row -->
 </div>
 <!-- /.content-header -->
-
 
         <!-- Main content -->
     <section class="content">
