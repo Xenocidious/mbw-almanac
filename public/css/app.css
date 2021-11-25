@@ -11980,3 +11980,20 @@ body {
 {
     float:left !important;
 }
+
+
+path{
+  transition: .25s ease-in-out;
+  fill: rgb(108,178,235) !important;
+  stroke: rgb(247, 247, 247); stroke-width: 0.99871px;
+} 
+
+path:hover{
+  fill: rgb(50,169,187) !important;
+  cursor: pointer;
+}
+
+#mapToolbox{
+  z-index: 999;
+  position: absolute;
+}
