@@ -12,9 +12,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-       DB::table('users')->insert([
-           ['email' => 'admin@admin', 'name' => 'admin', 'password' => bcrypt('admin'), 'role' => 'admin', 'darkmode' => 1]
-       ]);
+        DB::table('users')->insert([
+            ['email' => 'admin@admin', 'name' => 'admin', 'password' => bcrypt('admin'), 'role' => 'admin', 'darkmode' => 1]
+        ]);
 
         DB::table('themes')->insert(['name' => 'Light', 'path' => 'light-theme']);
         DB::table('themes')->insert(['name' => 'Dark', 'path' => 'dark-theme']);
@@ -29,5 +29,9 @@ class DatabaseSeeder extends Seeder
         DB::table('cities')->insert(['name' => 'London']);
         DB::table('cities')->insert(['name' => 'New York']);
         DB::table('cities')->insert(['name' => 'Tokyo']);
+
+        DB::table('city_user')->insert(['user_id' => 1, 'city_id' => 1]);
+        DB::table('city_user')->insert(['user_id' => 1, 'city_id' => 2]);
+        DB::table('city_user')->insert(['user_id' => 1, 'city_id' => 3]);
     }
 }

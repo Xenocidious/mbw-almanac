@@ -21,26 +21,7 @@ use Illuminate\Support\Facades\Route;
 /**
  * De api word gefetched met data van 'yesterday' en doorgestuurd naar de index
  */
-Route::get('/', function () {
-
-    $yesterday = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/yesterday?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=obs,current,histfcst')['days'];
-
-    $today = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/today?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=stats,current')['days'];
-
-    $forecast = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=fcst,stats,current')['days'];
-
-    $city = City::get();
-    $userCity = UserCity::get();
-
-    View::share('todayData', $today);
-
-    return view('index' , ['yesterdayData'=> $yesterday, 'forecastData'=>$forecast, 'todayData'=>$today, 'cities'=>$city, 'userCities'=>$userCity]);
-
-});
-
-Route::get('/index', 'WelcomeController@index')->name('home');
-
-Route::get('/w3', 'WelcomeController@w3')->name('w3');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/statistics', 'StatisticsController@index')->name('statistics');
 
@@ -57,7 +38,7 @@ Route::get('/office', 'OfficeController@index')->name('office');
 
 Route::post('upload.image', 'imageController@store')->name('upload.image');
 
-Route::get('/removeFavoriteCity/{id}','accountController@deleteFavoriteCity')->name('favoriteCity.delete');
+Route::get('/removeFavoriteCity/{id}', 'accountController@deleteFavoriteCity')->name('favoriteCity.delete');
 
 Route::get('/upvote/{id}', [
     'uses' => 'Imagecontroller@upvote',
@@ -109,7 +90,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/photohub', 'PhotohubController@index')->name('photohub');
 });
-
 
 
 Auth::routes();

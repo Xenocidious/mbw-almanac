@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Vote::class);
     }
+
+    public function cities()
+    {
+        return $this->hasMany(City::class);
+    }
 }

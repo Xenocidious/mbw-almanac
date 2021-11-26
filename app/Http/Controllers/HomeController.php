@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\City;
-use App\UserCity;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use App\Helpers\WeatherApiHelper;
 
 class HomeController extends Controller
 {
@@ -25,32 +24,36 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    function index(){
-
-
+    function index()
+    {
         $yesterday = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/yesterday?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH&include=obs%2Ccurrent%2Chistfcst')['days'];
-
         $today = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/today?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH&include=stats%2Ccurrent')['days'];
-
         $forecast = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH&include=fcst%2Cstats%2Ccurrent')['days'];
 
-        $city = City::get();
-        $userCity = UserCity::get();
-        $favoriteCityWeather = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/.$city->name;.%2C%20DR%2C%20NL?unitGroup=metric&key=GQXN9FLLR9DNHAPNTW49E6BGH&include=fcst%2Cstats%2Ccurrent')['days'];
 
-        if (Auth::check()) {
-            foreach ($userCity as $userCity) {
-                if($userCity->user_id == Auth::user()->id){
-                    foreach ($city as $city) {
-                        if ($city->id == $userCity->city_id) {
-                         $favoriteCityWeather;
-                        }
-                    }
-                }
-            }
+        // Maak nieuwe instance van de api helper object zodat we makkelijk meer resultaten kunnen opvragen.
+        // @todo kijken of de api meerdere cities in 1 call kan doen
+        $apiHelper = new WeatherApiHelper(strtotime('now'), strtotime('now'));
+        $citiesWeather = [];
+
+        // Kijk of de user favoriete cities heeft.
+        $userCities = Auth::check() ? Auth::user()->cities() : [];
+
+        // voor alle favoriete cities van de user
+        foreach ($userCities as $userCity) {
+            // update de city property in de api helper zodat we de juiste city naam gebruiken
+            $apiHelper->setCity($userCity->name);
+            // Roep de api call aan met de juiste gegevens.
+            $citiesWeather[] = $apiHelper->getApiResult();
         }
-            return view('index' , ['yesterdayData'=> $yesterday, 'forecastData'=>$forecast, 'todayData'=>$today, 'cities'=>$city, 'userCities'=>$userCity]);
 
+        return view('index', [
+            'yesterdayData' => $yesterday,
+            'forecastData' => $forecast,
+            'todayData' => $today,
+            'cities' => City::all(),
+            'userCities' => $citiesWeather,
+            'countSeenImages' => Auth::check() ? Auth::user()->images->count() : 0,
+        ]);
     }
-
 }
