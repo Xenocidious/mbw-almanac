@@ -91,7 +91,4 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/photohub', 'PhotohubController@index')->name('photohub');
 });
 
-
 Auth::routes();
-
-

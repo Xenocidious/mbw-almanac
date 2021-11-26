@@ -10,8 +10,9 @@ use App\UserImageSeen;
 class WeatherController extends Controller
 {
     public const BASE_URL = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline';
-    public const API_KEY = '7GMWKWQNTVQL4F6RUBKLAAGMA';
     // public const API_KEY = '7SXFUD7ARDRC9KTR6ETCRYGFG';
+    public const API_KEY = 'GQXN9FLLR9DNHAPNTW49E6BGH';
+    // public const API_KEY = '7GMWKWQNTVQL4F6RUBKLAAGMA';
     public const MAX_RANGE = 14;
 
     /**

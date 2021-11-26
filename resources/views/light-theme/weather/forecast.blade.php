@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
+
 @section('content')
     <body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper ps-5 pl-5">
+    <div class="wrapper">
 
 
     <?php
@@ -17,26 +18,28 @@
     ?>
 
     <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="../public/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60"
-                 width="60">
-        </div>
-        <br>
-        <!-- main content -->
+    <div class="preloader flex-column justify-content-center align-items-center">
+        <img class="animation__shake" src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
+    </div>
+
+    <div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
         <div class="container">
+            <div id='spacefiller'></div>
+            <div id='spacefiller'></div>
             <div class="row">
                 <div class="col">
                     <h2>{{ __('Forecast') }}</h2>
                 </div>
             </div>
-
+    
             <div class="row">
                 <div class="col">
                     <form class="form" method="GET">
                         <div class="form-group">
                             <label for="start">{{ __('From') }}</label>
-                            <input class="form-control" id="start" name="start" value="{{ $start }}"
-                                   type="datetime-local"
+                            <input class="form-control" id="start" name="start" value="{{ $start }}" type="datetime-local"
                                    step="1"/>
                         </div>
                         <div class="form-group">
@@ -44,12 +47,12 @@
                             <input class="form-control" id="end" name="end" value="{{ $end }}" type="datetime-local"
                                    step="1"/>
                         </div>
-
+    
                         <button type="submit" class="btn btn-primary">Load information</button>
                     </form>
                 </div>
             </div>
-
+    
             @if(!empty($error))
                 <div class="row">
                     <div class="col">
@@ -103,7 +106,7 @@
                             </div>
                         </div>
                     </div>
-
+    
                     {{-- modals toevoegen voor details --}}
                     <div class="modal fade" id="details-modal-{{$i}}" tabindex="-1" role="dialog"
                          aria-labelledby="details-modal-label-{{$i}}"
@@ -132,12 +135,16 @@
                             </div>
                         </div>
                     </div>
-
+    
                     @endfor
                 </div>
             @endif
-        </div>
-    </div>
-    </div>
-    </body>
-    </html>
+            </div>
+      </div>
+    </section>
+
+
+
+    @show
+</body>
+</html>
