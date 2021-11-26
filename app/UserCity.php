@@ -14,7 +14,6 @@ use Illuminate\Database\Eloquent\Model;
 class UserCity extends Model
 {
     protected $table = 'users_cities';
-
     protected $fillable = [
         "id",
         "city_id",

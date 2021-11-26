@@ -131,11 +131,11 @@
                         Photohub
 
                         @if(Auth::check())
-                            @if($countSeenImages > 9)
+                            @if($userImageSeen->count() > 9)
                                 {{$countSeenImages = '9+'}}
                                 <span class="badge badge-info right">{{$countSeenImages}}</span>
-                            @elseif($countSeenImages <= 9 && $countSeenImages > 0)
-                                <span class="badge badge-info right">{{$countSeenImages}}</span>
+                            @elseif($userImageSeen->count() <= 9 && $userImageSeen->count() > 0)
+                                <span class="badge badge-info right">{{ $userImageSeen->count() }}</span>
                             @endif
                         @endif
                     </p>

@@ -37,7 +37,7 @@ class HomeController extends Controller
         $citiesWeather = [];
 
         // Kijk of de user favoriete cities heeft.
-        $userCities = Auth::check() ? Auth::user()->cities() : [];
+        $userCities = Auth::check() ? Auth::user()->cities : [];
 
         // voor alle favoriete cities van de user
         foreach ($userCities as $userCity) {

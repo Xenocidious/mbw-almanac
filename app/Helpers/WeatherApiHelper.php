@@ -38,12 +38,13 @@ class WeatherApiHelper
         string $startDate,
         string $endDate,
         string $city = null,
-        array $params = null
+        array $params = []
     )
     {
         self::$startDate = $startDate;
         self::$endDate = $endDate;
         self::$city = $city;
+        self::$params = array_merge(self::$params, $params);
     }
 
     /**

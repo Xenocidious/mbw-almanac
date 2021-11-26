@@ -116,7 +116,6 @@
                         <!-- ./col -->
 
                         <!--Favorite cities foreach-->
-
                         @if(!empty($userCities))
                             <div class="col-lg-3 col-6">
                                 <!-- small box -->
@@ -124,7 +123,10 @@
                                     <div class="inner">
                                         {{-- @todo implement juiste gegevens vanuit home controller --}}
                                         @foreach ($userCities as $city)
-                                            {{ $city['temp'] }}
+                                            <h4>
+                                                {{ $city['address'] }}
+                                                <small>{{ $city['days'][0]['temp'] }}&deg;</small>
+                                            </h4>
                                         @endforeach
                                     </div>
                                     <div class="icon">
