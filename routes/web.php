@@ -1,9 +1,5 @@
 <?php
 
-use App\City;
-use App\UserCity;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-/**
- * De api word gefetched met data van 'yesterday' en doorgestuurd naar de index
- */
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/statistics', 'StatisticsController@index')->name('statistics');

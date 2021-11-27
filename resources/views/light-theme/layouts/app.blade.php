@@ -126,11 +126,7 @@
             <li class="nav-header">Navigate</li>
             <li class="nav-item">
                 <a href="index" class="nav-link">
-                    @if ($todayData[0]['tempmax'] > 0)
-                        <i class="nav-icon fas fa-igloo"></i>
-                    @else
-                        <i class="nav-icon fas fa-home"></i>
-                    @endif
+                    <i class="nav-icon fas fa-home"></i>
                     <p>
                         Home
                     </p>
