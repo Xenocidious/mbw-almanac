@@ -15,130 +15,37 @@
 
                 <section class="content">
                     <div class="row">
-                        <div class="col-lg-3 col-6">
-                            <div class="small-box bg-info background-green">
-                                <div class="inner">
-                                    <h3>yesterday, {{ round($yesterdayData[0]['tempmax'], 0) }}&deg;</h3>
-                                    <p>{{ date('l', strtotime("-1 days")) }}</p>
-                                </div>
-                                <div class="icon">
-                                    @switch(true)
-                                        @case(stripos($yesterdayData[0]['description'], 'sun') !== false)
-                                        <i class="fas fa-sun fa-5x"></i>
-                                        @break
-                                        @case(stripos($yesterdayData[0]['description'], 'rain') !== false)
-                                        <i class="fas fa-cloud-rain fa-5x"></i>
-                                        @break
-                                        @case(stripos($yesterdayData[0]['description'], 'fog') !== false)
-                                        <i class="fas fa-smog fa-5x"></i>
-                                        @break
-                                        @case(stripos($yesterdayData[0]['description'], 'cloud') !== false)
-                                        <i class="fas fa-cloud fa-5x"></i>
-                                        @break
-                                        @case(stripos($yesterdayData[0]['description'], 'clear') !== false)
-                                        <i class="fas fa-sun fa-5x"></i>
-                                        @break
-                                    @endswitch
-                                </div>
-                                <a href="#" class="small-box-footer">
-                                    {{$yesterdayData[0]['conditions']}}, More info
-                                    <i class="fas fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
+                        <div class="col-lg-4 col-6">
                             <!-- small box -->
-                            <div class="small-box bg-info background-green">
-                                <div class="inner">
-                                    <h3>today, {{ round($todayData[0]['tempmax'], 0) }}&deg;</h3>
-                                    <p>{{ date('l') }}</p>
-                                </div>
-
-                                <div class="icon">
-                                    @switch(true)
-                                        @case(stripos($todayData[0]['conditions'], 'sun') !== false)
-                                        <i class="fas fa-sun fa-5x"></i>
-                                        @break
-                                        @case(stripos($todayData[0]['conditions'], 'rain') !== false)
-                                        <i class="fas fa-cloud-rain fa-5x"></i>
-                                        @break
-                                        @case(stripos($todayData[0]['conditions'], 'fog') !== false)
-                                        <i class="fas fa-smog fa-5x"></i>
-                                        @break
-                                        @case(stripos($todayData[0]['conditions'], 'cloud') !== false)
-                                        <i class="fas fa-cloud fa-5x"></i>
-                                        @break
-                                        @case(stripos($todayData[0]['conditions'], 'clear') !== false)
-                                        <i class="fas fa-sun fa-5x"></i>
-                                        @break
-                                    @endswitch
-                                </div>
-                                <a href="#" class="small-box-footer">
-                                    {{ $todayData[0]['conditions'] }}, More
-                                    info <i class="fas fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
+                            <x-weather :city="'gorinchem'"
+                                       :start-date="strtotime('yesterday')"
+                                       :end-date="strtotime('yesterday')"/>
                         </div>
                         <!-- ./col -->
-                        <div class="col-lg-3 col-6">
+                        <div class="col-lg-4 col-6">
                             <!-- small box -->
-                            <div class="small-box bg-info background-green">
-                                <div class="inner">
-                                    <h3>tomorrow, {{ round($forecastData[1]['tempmax'], 0) }}&deg;</h3>
-                                    <p>{{ date('l', strtotime("1 days")) }}</p>
-                                </div>
-
-                                <div class="icon">
-                                    @switch(true)
-                                        @case(stripos($forecastData[1]['conditions'], 'sun') !== false)
-                                        <i class="fas fa-sun fa-5x"></i>
-                                        @break
-                                        @case(stripos($forecastData[1]['conditions'], 'rain') !== false)
-                                        <i class="fas fa-cloud-rain fa-5x"></i>
-                                        @break
-                                        @case(stripos($forecastData[1]['conditions'], 'fog') !== false)
-                                        <i class="fas fa-smog fa-5x"></i>
-                                        @break
-                                        @case(stripos($forecastData[1]['conditions'], 'cloud') !== false)
-                                        <i class="fas fa-cloud fa-5x"></i>
-                                        @break
-                                        @case(stripos($forecastData[1]['conditions'], 'clear') !== false)
-                                        <i class="fas fa-sun fa-5x"></i>
-                                        @break
-                                    @endswitch
-                                </div>
-                                <a href="#" class="small-box-footer"> More info
-                                    <i class="fas fa-arrow-circle-right"></i>
-                                </a>
-                            </div>
+                            <x-weather :city="'gorinchem'"
+                                       :start-date="strtotime('now')"
+                                       :end-date="strtotime('now')"/>
                         </div>
                         <!-- ./col -->
-
+                        <div class="col-lg-4 col-6">
+                            <!-- small box -->
+                            <x-weather :city="'gorinchem'"
+                                       :start-date="strtotime('tomorrow')"
+                                       :end-date="strtotime('tomorrow')"/>
+                        </div>
+                        <!-- ./col -->
                         <!--Favorite cities foreach-->
                         @if(!empty($userCities))
-                            <div class="col-lg-3 col-6">
-                                <!-- small box -->
-                                <div class="small-box bg-info background-green">
-                                    <div class="inner">
-                                        {{-- @todo implement juiste gegevens vanuit home controller --}}
-                                        @foreach ($userCities as $city)
-                                            <h4>
-                                                {{ $city['address'] }}
-                                                <small>{{ $city['days'][0]['temp'] }}&deg;</small>
-                                            </h4>
-                                        @endforeach
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fas fa-map-marked-alt fa-5x"></i>
-                                    </div>
-                                    <a href="{{ route('accounts.indexHighlighted') }}" class="small-box-footer">
-                                        Add more favorite cities
-                                        <i class="fas fa-arrow-circle-right"></i>
-                                    </a>
-                                </div>
+                    </div>
+                    <div class="row">
+                        @foreach ($userCities as $city)
+                            <div class="col-lg-4 col-6">
+                                <x-weather :city="$city['name']"/>
                             </div>
-                            <!-- ./col -->
+                        @endforeach
+                    <!-- ./col -->
                         @endif
                     </div>
 

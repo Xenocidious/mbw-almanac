@@ -78,6 +78,7 @@ Route::resource('favorite-images', '\\App\\Http\\Controllers\\FavoriteImageContr
  */
 
 Route::get('/weather', 'WeatherController@weather')->name('weather');
+Route::post('/weather/result', 'Weathercontroller@weatherJson')->name('weather.json');
 
 // Middleware zodat deze routes alleen maar worden gebruikt als je bent ingelogd.
 // https://laravel.com/docs/8.x/routing#route-group-middleware

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\WeatherApiHelper;
 use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use App\UserImageSeen;
@@ -70,5 +72,19 @@ class WeatherController extends Controller
             'end' => Carbon::createFromTimestamp($endDate)->format('Y-m-d\TH:i:s'),
             'UserImageSeen' => UserImageSeen::get(),
         ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function weatherJson(Request $request): JsonResponse
+    {
+        return response()->json((new WeatherApiHelper(
+            $request->get('startDate') ?? strtotime('now'),
+            $request->get('endDate') ?? strtotime('now'),
+            $request->get('city') ?? 'Gorinchem Netherlands',
+            []
+        ))->getApiResult());
     }
 }
