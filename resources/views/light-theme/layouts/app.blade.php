@@ -125,7 +125,7 @@
                 with font-awesome or any other icon font library -->
             <li class="nav-header">Navigate</li>
             <li class="nav-item">
-                <a href="index" class="nav-link">
+                <a href="{{ route('home') }}" class="nav-link">
                     <i class="nav-icon fas fa-home"></i>
                     <p>
                         Home
@@ -133,7 +133,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('statistics') }}" class="nav-link">
                     <i class="nav-icon fas fa-chart-bar"></i>
                     <p>
                         Statistics
