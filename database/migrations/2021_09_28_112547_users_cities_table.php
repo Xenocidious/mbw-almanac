@@ -4,6 +4,10 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Class UsersCitiesTable
+ * @deprecated
+ */
 class UsersCitiesTable extends Migration
 {
     /**
