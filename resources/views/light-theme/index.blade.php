@@ -227,17 +227,6 @@
 
                     function provinceHover(name, action){
                       
-
-                      
-                      var js_data = '<?php echo json_encode($php_data); ?>';
-                      //was working on this ^^^^^
-
-
-
-                      var dataSet = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Gorinchem%2C%20DR%2C%20NL/today?unitGroup=metric&key=7GMWKWQNTVQL4F6RUBKLAAGMA&include=stats%2Ccurrent';
-
-                      console.log(dataSet);
-                      
                       if(action == 'enable'){
 
                         setTimeout(function(){
