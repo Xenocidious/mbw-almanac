@@ -93,6 +93,7 @@
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <ul class="todo-list" data-widget="todo-list">
+                                        {{--Foreach loops through the random historical dates to create a list item with temp and date --}}
                                         @foreach ($randomizedDayWeather as $randomizedDayWeather)
                                             <li>
                                                 <!-- drag handle -->
