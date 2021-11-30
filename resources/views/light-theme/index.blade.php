@@ -35,14 +35,6 @@
                                        :start-date="strtotime('tomorrow')"
                                        :end-date="strtotime('tomorrow')"/>
                         </div>
-
-                        <div class="col-lg-4 col-6">
-                            <!-- small box -->
-                            <x-weather :city="'gorinchem'"
-                                       :start-date="strtotime('yesterday')"
-                                       :end-date="strtotime('yesterday')"/>
-
-                        </div>
                         <!-- ./col -->
                         <!--Favorite cities foreach-->
                         @if(!empty($userCities))
@@ -101,55 +93,21 @@
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <ul class="todo-list" data-widget="todo-list">
-                                        <li>
-                                            <!-- drag handle -->
-                                            <span class="handle">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </span>
-                                            <!-- todo text -->
-                                            <span class="text">{{$randomDates[0]}}</span>
-                                            <!-- Emphasis label -->
-                                            <small class="badge badge-danger">
-                                                <i class="far fa-clock"></i>
-                                                2 mins
-                                            </small>
-                                        </li>
-                                        <li>
-                                            <span class="handle">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </span>
-                                            <span class="text">{{$randomDates[1]}}</span>
-                                            <small class="badge badge-info"><i class="far fa-clock"></i> 4 hours</small>
-                                        </li>
-                                        <li>
-                                            <span class="handle">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </span>
-                                            <span class="text">{{$randomDates[2]}}</span>
-                                            <span class="badge badge-warning"><i class="far fa-clock"></i> 1
-                                                day</span>
-                                        </li>
-                                        <li>
-                                            <span class="handle">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </span>
-                                            <span class="text">{{$randomDates[3]}}</span>
-                                            <small class="badge badge-success"><i class="far fa-clock"></i> 3
-                                                days</small>
-                                        </li>
-                                        <li>
-                                            <span class="handle">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </span>
-                                            <span class="text">{{$randomDates[4]}}</span>
-                                            <small class="badge badge-primary"><i class="far fa-clock"></i> 1
-                                                week</small>
-                                        </li>
+                                        @foreach ($randomizedDayWeather as $randomizedDayWeather)
+                                            <li>
+                                                <!-- drag handle -->
+                                                <span class="handle">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </span>
+                                                <!-- todo text -->
+                                                <span class="text">{{$randomizedDayWeather[0]['datetime']}}</span>
+                                                <!-- Emphasis label -->
+                                                <span class="text">
+                                                    {{$randomizedDayWeather[0]['tempmax']}} °
+                                                </span>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                                 {{-- <!-- /.card-body -->

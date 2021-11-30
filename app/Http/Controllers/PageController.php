@@ -24,7 +24,7 @@ class PageController extends Controller
         $randomDayWeather = [];
         //Loops over the 5 random dates, prints the $randomDate in the response and pushes the response in the returned API request
         foreach ($randomDate as $randomDate) {
-            $response = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Gorinchem/'.$randomDate.'?unitGroup=metric&key=7GMWKWQNTVQL4F6RUBKLAAGMA')['days'];
+            $response = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Gorinchem/'.$randomDate.'?unitGroup=metric&key=WAQ7TNDNXCZQJ74JARJ6W94QZ')['days'];
             array_push($randomDayWeather, $response);
         }
 
