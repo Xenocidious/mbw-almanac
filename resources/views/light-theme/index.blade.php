@@ -107,6 +107,9 @@
                                                 <span class="text">
                                                     {{$randomizedDayWeather[0]['tempmax']}} °
                                                 </span>
+                                                <span class="text">
+                                                    {{$randomizedDayWeather[0]['conditions']}}
+                                                </span>
                                             </li>
                                         @endforeach
                                     </ul>
