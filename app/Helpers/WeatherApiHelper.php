@@ -43,7 +43,11 @@ class WeatherApiHelper
     {
         self::$startDate = $startDate;
         self::$endDate = $endDate;
-        self::$city = $city;
+
+        if ($city) {
+            self::$city = $city;
+        }
+
         self::$params = array_merge(self::$params, $params);
     }
 

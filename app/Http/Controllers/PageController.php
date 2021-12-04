@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\WeatherApiHelper;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -32,6 +33,9 @@ class PageController extends Controller
      */
     public function compare(Request $request)
     {
-        return response()->view('compare');
+        return response()->view('compare', [
+            'first' => $request->get('first-date'),
+            'second' => $request->get('second-date')
+        ]);
     }
 }
