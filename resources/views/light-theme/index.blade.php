@@ -90,11 +90,13 @@
                                         Random Historical Weather
                                     </h3>
                                 </div>
+
+
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <ul class="todo-list" data-widget="todo-list">
                                         {{--Foreach loops through the random historical dates to create a list item with temp and date --}}
-                                        @foreach ($randomizedDayWeather as $randomizedDayWeather)
+                                        @foreach ($randomWeather as $weather)
                                             <li>
                                                 <!-- drag handle -->
                                                 <span class="handle">
@@ -102,13 +104,13 @@
                                                     <i class="fas fa-ellipsis-v"></i>
                                                 </span>
                                                 <!-- todo text -->
-                                                <span class="text">{{$randomizedDayWeather[0]['datetime']}}</span>
+                                                <span class="text">{{$weather['days'][0]['datetime']}}</span>
                                                 <!-- Emphasis label -->
                                                 <span class="text">
-                                                    {{$randomizedDayWeather[0]['tempmax']}} °
+                                                    {{$weather['days'][0]['tempmax']}} °
                                                 </span>
                                                 <span class="text">
-                                                    {{$randomizedDayWeather[0]['conditions']}}
+                                                    {{$weather['days'][0]['conditions']}}
                                                 </span>
                                             </li>
                                         @endforeach
