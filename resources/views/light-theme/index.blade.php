@@ -45,6 +45,7 @@
                                 <x-weather :city="$city['name']"/>
                             </div>
                         @endforeach
+
                     <!-- ./col -->
                         @endif
                     </div>
@@ -90,7 +91,6 @@
                                         Random Historical Weather
                                     </h3>
                                 </div>
-
 
                                 <!-- /.card-header -->
                                 <div class="card-body">

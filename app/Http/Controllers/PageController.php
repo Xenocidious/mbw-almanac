@@ -15,13 +15,15 @@ class PageController extends Controller
     {
         $apiHelper = new WeatherApiHelper(strtotime('now'), strtotime('now'));
         $randomWeather = [];
-       for ($i = 0; $i < 5; $i++) {
-           $random = mt_rand(1, time());
-           $randomDate = date("Y-m-d",$random);
-           $apiHelper->setStartDate(strtotime("$randomDate"));
-           $apiHelper->setEndDate(strtotime("$randomDate"));
-           $randomWeather[] = $apiHelper->getApiResult();
-       }
+
+        for ($i = 0; $i < 5; $i++) {
+            $random = mt_rand(1, time());
+            $randomDate = date("Y-m-d", $random);
+            $apiHelper->setStartDate(strtotime("$randomDate"));
+            $apiHelper->setEndDate(strtotime("$randomDate"));
+            $randomWeather[] = $apiHelper->getApiResult();
+        }
+
         return response()->view('index', [
             'userCities' => auth()->check() ? auth()->user()->cities : [],
             'randomWeather' => $randomWeather
