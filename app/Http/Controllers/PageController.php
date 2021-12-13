@@ -12,8 +12,17 @@ class PageController extends Controller
      */
     public function home()
     {
+        $apiHelper = new WeatherApiHelper(strtotime('now'), strtotime('now'));
+        $randomWeather = [];
+//        for ($i = 0; $i < 5; $i++) {
+//            $random = rand(1, 30);
+//            $apiHelper->setStartDate(strtotime("$random days ago"));
+//            $apiHelper->setEndDate(strtotime("$random days ago"));
+//            $randomWeather[] = $apiHelper->getApiResult();
+//        }
         return response()->view('index', [
             'userCities' => auth()->check() ? auth()->user()->cities : [],
+            'randomWeather' => $randomWeather
         ]);
     }
 
