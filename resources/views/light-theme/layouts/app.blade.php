@@ -88,7 +88,7 @@
 
 
 <!-- Navbar (side) left -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4 position-sticky vh-100">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
         <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
