@@ -82,7 +82,7 @@ class AccountController extends Controller
             if (!is_dir(public_path('tmp'))) {
                 mkdir(public_path('tmp'));
             }
-    
+
             $resize->save(public_path('tmp/' . $filename));
             $user->photo = base64_encode(file_get_contents(public_path('tmp/' . $filename)));
             unlink(public_path('tmp/' . $filename));
@@ -156,7 +156,7 @@ class AccountController extends Controller
         if (UserImageSeen::exists()) {
             UserImageSeen::where('user_id', $user['id'])->delete();
         }
-        
+
         auth()->logout();
         $user->delete();
 

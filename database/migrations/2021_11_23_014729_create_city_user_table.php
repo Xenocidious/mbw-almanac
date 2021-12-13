@@ -4,11 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-/**
- * Class UsersCitiesTable
- * @deprecated
- */
-class UsersCitiesTable extends Migration
+class CreateCityUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,10 +13,11 @@ class UsersCitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_cities', function (Blueprint $table) {
+        Schema::create('city_user', function (Blueprint $table) {
             $table->id();
-            $table->integer('city_id');
-            $table->integer('user_id');
+            $table->foreignId('city_id')->references('id')->on('cities');
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->timestamps();
         });
     }
 
@@ -31,6 +28,6 @@ class UsersCitiesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('city_user');
     }
 }

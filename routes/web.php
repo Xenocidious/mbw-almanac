@@ -1,9 +1,5 @@
 <?php
 
-use App\City;
-use App\UserCity;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,86 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// je mag door deze middleware
+// niet meer dan 15 keer per minuut een pagina laden
+// want anders kan je de api spammen
+// en dat is niet goed :D
+Route::group(['middleware' => 'throttle:15,1'], function () {
+    Route::get('/', 'PageController@home')->name('home');
+    Route::get('/statistics', 'PageController@statistics')->name('statistics');
+    Route::get('/compare', 'PageController@compare')->name('compare');
 
-/**
- * De api word gefetched met data van 'yesterday' en doorgestuurd naar de index
- */
-Route::get('/', function () {
+    // in deze controller word alleen de resource gebruikt voor store,
+    // heeft het dan nut om dit als resource te doen, of is het beter om dit als een losse route op te schrijven?
+    // als je deze acties alleen kan doen als je ingelogd bent, is het beter
+    // om deze onderaan in de guard routes te zetten.
+    Route::resource('images', 'ImageController');
 
-    $yesterday = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/yesterday?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=obs,current,histfcst')['days'];
-
-    $today = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL/today?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=stats,current')['days'];
-
-    $forecast = Http::get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kerkenveld%2C%20DR%2C%20NL?unitGroup=metric&key=7SXFUD7ARDRC9KTR6ETCRYGFG&include=fcst,stats,current')['days'];
-
-    $city = City::get();
-    $userCity = UserCity::get();
-
-    View::share('todayData', $today);
-
-    return view('index' , ['yesterdayData'=> $yesterday, 'forecastData'=>$forecast, 'todayData'=>$today, 'cities'=>$city, 'userCities'=>$userCity]);
-
+    Route::get('/weather', 'WeatherController@weather')->name('weather');
+    Route::post('/weather/result', 'Weathercontroller@weatherJson')->name('weather.json');
 });
-
-Route::get('/index', 'WelcomeController@index')->name('home');
-
-Route::get('/w3', 'WelcomeController@w3')->name('w3');
-
-Route::get('/statistics', 'StatisticsController@index')->name('statistics');
-
-Route::get('/uploadphoto', 'PhotohubController@photoform')->name('uploadphoto');
-
-Route::resource('images', 'ImageController');
-
-Route::resource('comment', 'CommentController');
-
-Route::post('user/promote', 'OfficeController@promote')->name('user.promote');
-
-Route::get('/office', 'OfficeController@index')->name('office');
-
-
-Route::post('upload.image', 'imageController@store')->name('upload.image');
-
-Route::get('/removeFavoriteCity/{id}','accountController@deleteFavoriteCity')->name('favoriteCity.delete');
-
-Route::get('/upvote/{id}', [
-    'uses' => 'Imagecontroller@upvote',
-    'as' => 'image.upvote'
-]);
-
-Route::get('/removeUpvote/{id}', [
-    'uses' => 'Imagecontroller@removeUpvote',
-    'as' => 'image.remove_upvote'
-]);
-
-Route::get('/openImage/{id}', [
-    'uses' => 'Imagecontroller@openImage',
-    'as' => 'open.image'
-]);
-
-Route::get('/deleteComment/{id}', [
-    'uses' => 'CommentController@delete',
-    'as' => 'comment.delete'
-]);
-
-Route::get('/deletePost/{id}', [
-    'uses' => 'ImageController@delete',
-    'as' => 'post.delete'
-]);
-
-/** Favorite images routes */
-Route::resource('favorite-images', '\\App\\Http\\Controllers\\FavoriteImageController')->only(['index', 'store', 'destroy']);
-/**
- * index -> GET (Lijst ophalen) Route::get('entities', 'EntityController::index')->name('entities.index');
- * show -> GET {entity} (Eentje ophalen) Route::get('entities/{entity}', 'EntityController::show')->name('entities.show');
- * create  -> GET (Met leeg formulier) Route::get('entities', 'EntityController::create')->name('entities.create');
- * store -> POST (Om nieuwe te maken) Route::post('entities', 'EntityController::store')->name('entities.store');
- * edit -> GET (Met formulier van bestaande) Route::get('entities/{entity}', 'EntityController::edit')->name('entities.edit');
- * update -> PATCH/PUT (Bestaande bijwerken in de database) Route::patch('entities/{entity}', 'EntityController::update')->name('entities.update');
- * destroy -> DELETE (verwijderen) Route::delete('entities/{entity}', 'EntityController::destroy')->name('entities.destroy');
- */
-
-Route::get('/weather', 'WeatherController@weather')->name('weather');
 
 // Middleware zodat deze routes alleen maar worden gebruikt als je bent ingelogd.
 // https://laravel.com/docs/8.x/routing#route-group-middleware
@@ -108,7 +42,56 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/account/{user}', 'AccountController@destroy')->name('accounts.delete');
 
     Route::get('/photohub', 'PhotohubController@index')->name('photohub');
-});
+    Route::get('/uploadphoto', 'PhotohubController@photoform')->name('uploadphoto');
 
+    Route::post('upload.image', 'imageController@store')->name('upload.image');
+
+    Route::get('/removeFavoriteCity/{id}', 'accountController@deleteFavoriteCity')->name('favoriteCity.delete');
+
+    // hier word ook maar 1 gebruikt, en kan je deze wel doen als je niet bent ingelogd?
+    // beter is dit dan geen resource
+    Route::resource('comment', 'CommentController');
+
+    Route::get('/office', 'OfficeController@index')->name('office');
+    Route::post('user/promote', 'OfficeController@promote')->name('user.promote');
+
+
+    Route::get('/upvote/{id}', [
+        'uses' => 'Imagecontroller@upvote',
+        'as' => 'image.upvote'
+    ]);
+
+    Route::get('/removeUpvote/{id}', [
+        'uses' => 'Imagecontroller@removeUpvote',
+        'as' => 'image.remove_upvote'
+    ]);
+
+    Route::get('/openImage/{id}', [
+        'uses' => 'Imagecontroller@openImage',
+        'as' => 'open.image'
+    ]);
+
+    Route::get('/deleteComment/{id}', [
+        'uses' => 'CommentController@delete',
+        'as' => 'comment.delete'
+    ]);
+
+    Route::get('/deletePost/{id}', [
+        'uses' => 'ImageController@delete',
+        'as' => 'post.delete'
+    ]);
+
+    /** Favorite images routes */
+    Route::resource('favorite-images', '\\App\\Http\\Controllers\\FavoriteImageController')->only(['index', 'store', 'destroy']);
+    /**
+     * index -> GET (Lijst ophalen) Route::get('entities', 'EntityController::index')->name('entities.index');
+     * show -> GET {entity} (Eentje ophalen) Route::get('entities/{entity}', 'EntityController::show')->name('entities.show');
+     * create  -> GET (Met leeg formulier) Route::get('entities', 'EntityController::create')->name('entities.create');
+     * store -> POST (Om nieuwe te maken) Route::post('entities', 'EntityController::store')->name('entities.store');
+     * edit -> GET (Met formulier van bestaande) Route::get('entities/{entity}', 'EntityController::edit')->name('entities.edit');
+     * update -> PATCH/PUT (Bestaande bijwerken in de database) Route::patch('entities/{entity}', 'EntityController::update')->name('entities.update');
+     * destroy -> DELETE (verwijderen) Route::delete('entities/{entity}', 'EntityController::destroy')->name('entities.destroy');
+     */
+});
 
 Auth::routes();
