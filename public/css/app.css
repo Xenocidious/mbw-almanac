@@ -11261,11 +11261,10 @@ header .dropdown-content a:hover {
 
 /* styling footer */
 
-footer {
+/* footer {
   padding-top: 5vh;
   position: relative;
   z-index: 10;
-  width: 100vw;
   background-color: #080808;
   font-family: montserrat;
   display: grid;
@@ -11273,7 +11272,7 @@ footer {
   grid-template-columns: 50vw 50vw;
   border-top: 2px solid white;
   margin-top: -5px;
-}
+} */
 
 #footer_history {
   z-index: 0;
@@ -11352,6 +11351,8 @@ footer ul p {
 
 /* photohub page */
 
+
+
 #spacefiller {
   width: 100vw;
   height: 5vh;
@@ -11363,7 +11364,7 @@ footer ul p {
 
 .wrap_photohub {
   display: inline-flex;
-}
+}*/
 
 #main_content_photohub {
   width: 100vw;
@@ -11371,7 +11372,7 @@ footer ul p {
   display: flex;
   flex-wrap: wrap;
 }
-
+/*
 .photohub_content {
   width: 29vw;
   height: 40vh;
@@ -11907,3 +11908,95 @@ ul li:hover span:nth-child(1) {
   z-index: 99;
 }
 
+.dark-background {
+  background-color: #343a40 !important;
+}
+
+body {
+  font-family: 'Source Sans Pro','Sans Serif' !important;
+}
+
+.photohub_img img{
+  width: 60vw;
+  object-fit: scale-down;
+}
+
+.hidden{
+  display: none !important;
+}
+
+.userImage{
+  width: 45px !important;
+  height: 45px !important;
+}
+
+.active_icon{
+  color: rgba(29, 104, 167);
+}
+
+.active_button{
+  border: 1px dotted rgba(29, 104, 167);
+}
+
+.medium-dark-background{
+  background-color: rgb(36, 36, 36) !important;
+}
+
+.text-light{
+  color: #6c757d !important;
+}
+
+.inner h3{
+  font-size: 2vw !important;
+}
+
+@media (max-width:985px) {
+  .inner h3{
+    font-size: 3vw !important;
+  }
+}
+
+@media (max-width:750px) {
+  .inner h3, .inner p{
+    font-size: 4.5vw !important;
+  }
+
+
+  .row{
+    display: block !important;
+  }
+
+  .small-box{
+    display: block !important;
+    width: 90vw;
+  }
+
+  .col-lg-3{
+    flex: 100vw !important;
+  }
+}
+
+.navItem
+{
+    float:left !important;
+}
+
+path{
+  transition: .25s ease-in-out;
+  fill: rgb(108,178,235) !important;
+  stroke: rgb(247, 247, 247); stroke-width: 0.99871px;
+} 
+
+path:hover{
+  fill: rgb(50,169,187) !important;
+  cursor: pointer;
+}
+
+#mapToolbox{
+  z-index: 999;
+  position: absolute;
+}
+
+.wrapper{
+  width: 97.5vw;
+}
