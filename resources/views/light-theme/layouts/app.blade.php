@@ -88,7 +88,7 @@
 
 
 <!-- Navbar (side) left -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4 position-sticky vh-100">
+<aside class="main-sidebar sidebar-dark-primary elevation-4 position-fixed vh-100">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
         <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
@@ -177,19 +177,10 @@
     </nav>
 </aside>
 
-<main>
+<main style="top:10%; position:absolute;">
     @yield('content')
 </main>
 
-<footer class="main-footer">
-    <strong>Copyright &copy; 2021 - <?= Date("Y"); ?> <a href="https://adminlte.io">Aya, Mert en
-            Pieterjan</a>.</strong>
-    Most rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 1.0.0
-    </div>
-
-</footer>
 
 @section('javascripts')
     <!-- ChartJS -->

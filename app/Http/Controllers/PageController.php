@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\WeatherApiHelper;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class PageController extends Controller
 {
@@ -14,12 +15,15 @@ class PageController extends Controller
     {
         $apiHelper = new WeatherApiHelper(strtotime('now'), strtotime('now'));
         $randomWeather = [];
-//        for ($i = 0; $i < 5; $i++) {
-//            $random = rand(1, 30);
-//            $apiHelper->setStartDate(strtotime("$random days ago"));
-//            $apiHelper->setEndDate(strtotime("$random days ago"));
-//            $randomWeather[] = $apiHelper->getApiResult();
-//        }
+
+        for ($i = 0; $i < 5; $i++) {
+            $random = mt_rand(1, time());
+            $randomDate = date("Y-m-d", $random);
+            $apiHelper->setStartDate(strtotime("$randomDate"));
+            $apiHelper->setEndDate(strtotime("$randomDate"));
+            $randomWeather[] = $apiHelper->getApiResult();
+        }
+
         return response()->view('index', [
             'userCities' => auth()->check() ? auth()->user()->cities : [],
             'randomWeather' => $randomWeather
