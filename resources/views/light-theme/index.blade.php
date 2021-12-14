@@ -96,24 +96,26 @@
                                 <div class="card-body">
                                     <ul class="todo-list" data-widget="todo-list">
                                         {{--Foreach loops through the random historical dates to create a list item with temp and date --}}
-                                        @foreach ($randomWeather as $weather)
-                                            <li>
-                                                <!-- drag handle -->
-                                                <span class="handle">
+                                        @if(isset($randomWeather['days']))
+                                            @foreach ($randomWeather as $weather)
+                                                <li>
+                                                    <!-- drag handle -->
+                                                    <span class="handle">
                                                     <i class="fas fa-ellipsis-v"></i>
                                                     <i class="fas fa-ellipsis-v"></i>
                                                 </span>
-                                                <!-- todo text -->
-                                                <span class="text">{{$weather['days'][0]['datetime']}}</span>
-                                                <!-- Emphasis label -->
-                                                <span class="text">
+                                                    <!-- todo text -->
+                                                    <span class="text">{{$weather['days'][0]['datetime']}}</span>
+                                                    <!-- Emphasis label -->
+                                                    <span class="text">
                                                     {{$weather['days'][0]['tempmax']}} °
                                                 </span>
-                                                <span class="text">
+                                                    <span class="text">
                                                     {{$weather['days'][0]['conditions']}}
                                                 </span>
-                                            </li>
-                                        @endforeach
+                                                </li>
+                                            @endforeach
+                                        @endif
                                     </ul>
                                 </div>
                                 {{-- <!-- /.card-body -->
