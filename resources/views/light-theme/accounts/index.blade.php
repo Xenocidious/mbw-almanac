@@ -1,8 +1,72 @@
-@extends('layouts.app')
 
-@section('content')
-    <div class="container">
-        <div class="row justify-content-center">
+@include('layouts.app')
+
+<body class="hold-transition sidebar-mini layout-fixed" style="font-family: 'Source Sans Pro','Sans Serif' !important;">
+<div class="wrapper">
+  
+    <?php
+      if(Auth::check()){
+        $countSeenImages = 0;
+        for($i=0; $i<count($UserImageSeen); $i++){
+          if($UserImageSeen[$i]['user_id'] == Auth::user()->id && $UserImageSeen[$i]['seen'] == 0){
+            $countSeenImages++;
+          }
+        }
+      }
+    ?>
+
+
+    <!-- Preloader -->
+    <div class="preloader flex-column justify-content-center align-items-center">
+        <img class="animation__shake" src="{{asset('/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
+    </div>
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <main class="py-4 bg-light">
+                @if(session()->has('success'))
+                    <div class="col-md-3">
+                        <div class="card bg-success">
+                        <div class="card-header">
+                            <h3 class="card-title">Good job!</h3>
+                            <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+                            </button>
+                            </div>
+                            <!-- /.card-tools -->
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            {{ session()->get('success') }}
+                        </div>
+                        <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                @endif
+                @if(session()->has('error'))
+                    <div class="col-md-3">
+                        <div class="card card-danger">
+                        <div class="card-header">
+                            <h3 class="card-title">Oops!</h3>
+                        </div>
+                        <div class="card-body">
+                            {{ session()->get('error') }}
+                        </div>
+                        <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                @endif
+
             <div class="col-md-8">
                 <form class="form" method="post" action="{{ route('accounts.update', ['user' => $user]) }}"
                       enctype="multipart/form-data">
@@ -14,8 +78,8 @@
 
                         <div class="row">
                             <div class="col">
-                                @if ($user->photo)
-                                    <img src="data:image/png;base64, {{ $user->photo }}"
+                                @if (Auth::user()->photo)
+                                    <img src="data:image/png;base64, {{ Auth::user()->photo }}"
                                          width="120"
                                          height="120"
                                          class="rounded-circle"
@@ -35,6 +99,11 @@
                             </div>
                         </div>
                     </fieldset>
+
+                    @if ($checkCityHighlight == true)
+
+                    @endif
+
 
                     <hr class="text-light bg-dark border-color-dark"/>
 
@@ -69,6 +138,47 @@
                     </fieldset>
 
                     <fieldset>
+                        <div class="form-group">
+                            <label class="text-dark" for="cities">{{ __('Favorite cities') }}</label>
+                            <select name="selectedCities" id="cities" class="form-control">
+                                <option disabled selected>select to add cities to homepage</option>
+                                @foreach($cities as $city)
+                                    <option value="{{ $city->id }}">
+                                    {{ $city->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                       <?php
+                       $chosenCities = [];
+                       foreach ($cities as $city) {
+                           foreach ($userCities as $userCity) {
+                               if($userCity->user_id == Auth::user()->id && $city->id == $userCity->city_id){
+                                    echo $city->name;
+                                    ?>
+                                    <a href="{{ route('favoriteCity.delete', ['id' => $city->id])}}"><i class="fas fa-minus-circle"></i></a><br>
+                                    <?php
+
+                               }
+                            }
+                        array_push($chosenCities, $city);
+                       }
+
+                       ?>
+
+                        @if($checkCityHighlight == true)
+                            <script>
+                                cities.style.transition = '5s';
+                                cities.style.cssText = '-webkit-box-shadow: 0px 0px 65px 5px rgba(255,255,255,.85);-moz-box-shadow: 0px 0px 65px 5px rgba(255,255,255,.85);box-shadow: 0px 0px 65px 5px rgba(255,255,255,.85);';
+                                setTimeout(function(){ cities.style.cssText = '-webkit-box-shadow: 0px 0px 65px 5px rgba(0,255,0,0.85);-moz-box-shadow: 0px 0px 65px 5px rgba(0,255,0,0.85);box-shadow: 0px 0px 65px 5px rgba(0,255,0,0.85);'; }, 1000);
+                                setTimeout(function(){ cities.style.cssText = '-webkit-box-shadow: 0px 0px 65px 5px rgba(255,255,255,.85);-moz-box-shadow: 0px 0px 65px 5px rgba(255,255,255,.85);box-shadow: 0px 0px 65px 5px rgba(255,255,255,.85);'; }, 3000);
+                            </script>
+                        @endif
+
+                    </fieldset>
+
+                    <fieldset>
                         <legend class="text-dark pt-5">{{ __('Edit password') }}</legend>
 
                         <div class="form-group">
@@ -100,6 +210,11 @@
                         <button class="btn btn-lg btn-danger" type="submit">{{ __('Delete account') }}</button>
                     </div>
                 </form>
+                <button class="btn btn-lg btn-danger"  onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">Logout</button>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
                 <div class="row">
                     <div class="col">
                         <a href="{{ route('favorite-images.index') }}">{{ __("Favorite Images") }}</a>
@@ -108,5 +223,10 @@
             </div>
         </div>
     </div>
-@endsection
+</main>
 
+</section>
+
+@show
+</body>
+</html>

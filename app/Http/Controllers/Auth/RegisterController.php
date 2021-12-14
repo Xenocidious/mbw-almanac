@@ -8,6 +8,8 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\UserImageSeen;
+use App\Image;
 
 class RegisterController extends Controller
 {
@@ -33,7 +35,7 @@ class RegisterController extends Controller
 
     protected function redirectTo()
     {
-        return 'index';
+        return Route('home');
     }
 
     /**
@@ -69,11 +71,30 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if (Image::exists()) {
+            $maxImage = Image::where('id', \DB::raw("(select max(`id`) from Images)"))->get();
+        
+            $newUserID = User::where('id', \DB::raw("(select max(`id`) from Users)"))->get();
+            $newUserID = $newUserID[0]['id'] + 1;
+    
+            for($i=0; $i<=$maxImage[0]['id']; $i++){
+                if (image::where('id', $i)->exists()) {
+                    $newRow = new UserImageSeen([
+                        "user_id" => $newUserID,
+                        "image_id" => $i,
+                    ]);
+    
+                    $newRow->save();
+                }
+            }
+        }else{
+        }
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'darkmode' => 1
-        ]);
+        ]);     
     }
 }

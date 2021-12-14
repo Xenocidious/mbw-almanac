@@ -7,6 +7,7 @@ use App\Image;
 use App\Vote;
 use App\Comment;
 use Auth;
+use App\UserImageSeen;
 use Illuminate\Support\Facades\Http;
 
 
@@ -35,13 +36,12 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         // Validate the inputs
-
         $request->validate([
             'comment' => 'required',
         ]);
@@ -49,7 +49,6 @@ class CommentController extends Controller
         $name = Auth::user()->name;
         $id = Auth::user()->id;
 
-        
         $comment = new Comment([
             "image_id" => $request->get('image_id'),
             "user_name" => $name,
@@ -61,17 +60,18 @@ class CommentController extends Controller
         return redirect()->back();
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $comment = Comment::find($id);
         $comment->delete();
-        
+
         return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -82,7 +82,7 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -93,8 +93,8 @@ class CommentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -105,7 +105,7 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

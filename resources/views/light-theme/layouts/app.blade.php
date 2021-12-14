@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -7,192 +7,206 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Load these scripts in the head so that they're always available -->
+    <!-- jQuery -->
+    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://kit.fontawesome.com/269ab4fa37.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{--    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">--}}
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-
+    <title>{{ config('app.name', 'MBW-Almanac') }}</title>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet"
+          href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="{{ asset('plugins/jqvmap/jqvmap.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
+    <!-- summernote -->
+    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+    <!-- customizations -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-<div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white text-dark shadow-sm">
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="{{ __('Toggle navigation') }}">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link text-dark" href="index">home</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="/">about us</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="/statistics">statistics</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="{{ route("photohub") }}">photo's</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="{{ route("weather") }}">Weather</a></li>
-            </ul>
-
-            <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Authentication Links -->
-                @guest
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif
-                @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark" href="#" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <i class="fas fa-user"></i>
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                            <a href="{{ route('accounts.index') }}"
-                               class="dropdown-item text-dark">{{ __('Profile') }}
-                            </a>
-
-                            <div class="dropdown-divider"></div>
-
-                            <a class="dropdown-item text-dark" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                @endguest
-            </ul>
-        </div>
+<header>
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="{{ route('home') }}" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="#" class="nav-link">Contact</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="uploadphoto" class="nav-link">upload photo</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="fullscreen" role="button">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </a>
+            </li>
+        </ul>
     </nav>
+</header>
 
-    <main class="py-4">
-        @if(session()->has('success'))
-            <div class="alert alert-success">
-                {{ session()->get('success') }}
-            </div>
-        @endif
-        @if(session()->has('error'))
-            <div class="alert alert-danger">
-                {{ session()->get('error') }}
-            </div>
-        @endif
-
-        @yield('content')
-    </main>
-
-    <footer class="bg-light">
-        <div class='footer_left_items'>
-            <a>Frequently Asked Questions</a><br>
-            <hr style="width:50%;text-align:left;margin-left:0">
-        </div>
-        <div class='footer_left_items'>
-            <a>Contact</a><br>
-            <hr style="width:50%;text-align:left;margin-left:0">
-        </div>
-        <div class='footer_left_items'>
-            <a>Lorem Ipsum</a><br>
-            <hr style="width:50%;text-align:left;margin-left:0">
-        </div>
-        <div class='footer_left_items'>
-            <a>Lorem Ipsum</a><br>
-            <hr style="width:50%;text-align:left;margin-left:0">
-        </div>
-        <div class='footer_left_items'>
-            <a>Lorem Ipsum</a><br>
-            <hr style="width:50%;text-align:left;margin-left:0">
-        </div>
-
-        <div class='footer_right_items'>
-                <span id='social_media_wrapper'>
-                    <ul>
-                        <li id='facebook_link'>
-                            <a href="#">
-                                <span></span><span></span><span></span><span></span>
-                                <span class="fa fa-facebook"></span>
-                            </a>
-                        </li>
-                        <p>follow us on facebook</p>
-                    </ul>
-                    <hr style="width:50%;text-align:left;margin-left:2.5vw">
-                </span>
-        </div>
-        <div class='footer_right_items'>
-                <span id='social_media_wrapper'>
-                    <ul>
-                        <li id='twitter_link'>
-                            <a href="#">
-                                <span></span><span></span><span></span><span></span>
-                                <span class="fa fa-twitter"></span>
-                            </a>
-                        </li>
-                        <p>follow us on <a>twitter</a></p>
-                    </ul>
-                    <hr style="width:50%;text-align:left;margin-left:2.5vw">
-                </span>
-        </div>
-        <div class='footer_right_items'>
-                <span id='social_media_wrapper'>
-                    <ul>
-                        <li id='instagram_link'>
-                            <a href="#">
-                                <span></span><span></span><span></span><span></span>
-                                <span class="fa fa-instagram"></span>
-                                <span class="fa fa-instagram insta_button"></span>
-                            </a>
-                        </li>
-                        <p id='footer_p'>follow us on instagram</p>
-                    </ul>
-                    <hr style="width:50%;text-align:left;margin-left:2.5vw">
-                </span>
-        </div>
-        <div class='footer_right_items'>
-                <span id='social_media_wrapper'>
-                    <ul>
-                        <li id='linkedin_link'>
-                            <a href="#">
-                                <span></span><span></span><span></span><span></span>
-                                <span class="fa fa-linkedin"></span>
-                            </a>
-                        </li>
-                        <p>follow us on linkedin</p>
-                    </ul>
-                    <hr style="width:50%;text-align:left;margin-left:2.5vw">
-                </span>
-        </div>
-
-        <div class='footer_copyright'>
-            <p>copyright project almanac Aya, Mert en Pieterjan: ©2021 - <?= date("Y"); ?></p>
-        </div>
-    </footer>
+<!-- Preloader -->
+<div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60"
+         width="60">
 </div>
 
-@section('body-scripts')
-    {{-- Defineer alle scripts die op het einde van de pagina ingeladen moeten worden voor Alle paginas. --}}
+
+<!-- Navbar (side) left -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4 position-fixed vh-100">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-link">
+        <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+             class="brand-image img-circle elevation-3"
+             style="opacity: .8">
+        <span class="brand-text font-weight-light">mbw Almanac</span>
+    </a>
+
+
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        @if(auth::check())
+            <div class="image">
+                @if(Auth::user()->photo == NULL)
+                    <img src="{{ asset('dist/img/avatar.png') }}" class="img-circle elevation-2 userImage"
+                         alt="User Image">
+                @else
+                    <img src="data:image/png;base64, {{ Auth::user()->photo }}" class="img-circle elevation-2 userImage"
+                         alt="User Image">
+                @endif
+            </div>
+            <div class="info">
+                <a href="{{ route('accounts.index') }}" class="d-block">{{ Auth::user()->name }}</a>
+            </div>
+        @else
+            <p><a href="{{ route('login') }}">{{ __('Login') }} </a> or <a
+                    href="{{ route('register') }}">{{ __('Register') }}</a></p>
+        @endif
+    </div>
+
+
+    <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+            <li class="nav-header">Navigate</li>
+            <li class="nav-item">
+                <a href="{{ route('home') }}" class="nav-link">
+                    <i class="nav-icon fas fa-home"></i>
+                    <p>
+                        Home
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('statistics') }}" class="nav-link">
+                    <i class="nav-icon fas fa-chart-bar"></i>
+                    <p>
+                        Statistics
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('photohub') }}" class="nav-link">
+                    <i class="nav-icon fas fa-photo-video"></i>
+                    <p>
+                        Photohub
+
+                        @if(Auth::check())
+                            @if($userImageSeen->count() > 9)
+                                {{$countSeenImages = '9+'}}
+                                <span class="badge badge-info right">{{$countSeenImages}}</span>
+                            @elseif($userImageSeen->count() <= 9 && $userImageSeen->count() > 0)
+                                <span class="badge badge-info right">{{ $userImageSeen->count() }}</span>
+                            @endif
+                        @endif
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route("weather") }}" class="nav-link">
+                    <i class="nav-icon fas fa-thermometer-half"></i>
+                    <p>
+                        Weather
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon far fa-address-card"></i>
+                    <p>
+                        About us
+                    </p>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</aside>
+
+<main style="top:10%; position:absolute;">
+    @yield('content')
+</main>
+
+
+@section('javascripts')
+    <!-- ChartJS -->
+    <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
+    <!-- Sparkline -->
+    <script src="{{ asset('plugins/sparklines/sparkline.js') }}"></script>
+    <!-- JQVMap -->
+    <script src="{{ asset('plugins/jqvmap/jquery.vmap.min.js' )}}"></script>
+    <script src="{{ asset('plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="{{ asset('plugins/jquery-knob/jquery.knob.min.js') }}"></script>
+    <!-- daterangepicker -->
+    <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+    <!-- Summernote -->
+    <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
+    <!-- overlayScrollbars -->
+    <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('dist/js/adminlte.js') }}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('dist/js/demo.js') }}"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
 @show
 
 </body>

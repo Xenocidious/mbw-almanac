@@ -10,7 +10,7 @@ class Image extends Model
     protected $table = 'images';
 
     protected $fillable = [
-        "name",
+        "description",
         "file_path",
         "created_at",
         "updated_at",

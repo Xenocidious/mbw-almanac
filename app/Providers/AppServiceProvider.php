@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use App\Helpers\WeatherApiHelper;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use App\UserImageSeen;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View::composer('*', function ($view) {
+            $view->with('userImageSeen', UserImageSeen::get());
+        });
     }
 }

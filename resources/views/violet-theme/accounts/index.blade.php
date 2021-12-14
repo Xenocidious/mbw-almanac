@@ -14,8 +14,8 @@
 
                         <div class="row">
                             <div class="col">
-                                @if ($user->photo)
-                                    <img src="data:image/png;base64, {{ $user->photo }}"
+                                @if (Auth::user()->photo)
+                                    <img src="data:image/png;base64, {{ Auth::user()->photo }}"
                                          width="120"
                                          height="120"
                                          class="rounded-circle"

@@ -94,12 +94,12 @@
                     </div>
                     <div class="commenter_comment">
                         <p>{{$comment->comment}}</p>
-                        <?php
-                        if($comment->user_id == Auth::user()->id){ ?>
-                        <a href="{{ route('comment.delete', ['id' => $comment->id]) }}"
-                           onclick="return confirm('Are you sure that you want to delete your comment?')"><i
-                                class="fas fa-minus-circle comment_delete"></i></a>
-                        <?php } ?>
+                        @if($comment->user_id == Auth::user()->id)
+                            <a href="{{ route('comment.delete', ['id' => $comment->id]) }}"
+                               onclick="return confirm('Are you sure that you want to delete your comment?')">
+                                <i class="fas fa-minus-circle comment_delete"></i>
+                            </a>
+                        @endif
                         @auth @if(Auth::user()->role == 'admin' || Auth::user()->role == 'moderator')
                             <a href="{{ route('comment.delete', ['id' => $comment->id]) }}"
                                onclick="return confirm('Are you sure that you want to delete your comment?')"><i
