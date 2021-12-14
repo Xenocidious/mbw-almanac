@@ -75,6 +75,5 @@
 
 
 
-    @show
 </body>
 </html>

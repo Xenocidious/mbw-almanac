@@ -10,6 +10,7 @@
         $countSeenImages = 0;
         for($i=0; $i<count($UserImageSeen); $i++){
           if($UserImageSeen[$i]['user_id'] == Auth::user()->id && $UserImageSeen[$i]['seen'] == 0){
+            echo '<script>console.log("yayyyyyy");</script>';
             $countSeenImages++;
           }
         }
@@ -29,7 +30,7 @@
             <div class="content-header">
 
                   <div class="col-sm-6">
-                      <h1 class="m-0">Dashboard</h1>
+                      <h1 class="m-0">Photohub</h1>
                   </div><!-- /.col -->
 
         </div>
@@ -219,6 +220,5 @@
       </div>
     </section>
 
-    @show
 </body>
 </html>
