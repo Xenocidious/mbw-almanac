@@ -65,13 +65,28 @@ class ImageController extends Controller
                 $fileName = $file->getClientOriginalName();
 
                 //define where the image will be saved in the local directory
-                $destinationPath = public_path() . '/uploads/image';
+                $destinationPath = public_path() . '/uploads/image/';
+
+                
+                $file_path = public_path() . '/uploads/image/' . $request->file->getClientOriginalName();
+                
+                $endLoop = false;
+                $i = 0;
+
+                while($endLoop == false){
+                    if(file_exists($destinationPath . $fileName)){
+                        $fileName = $fileName = preg_replace('/\\.[^.\\s]{3,4}$/', '', $fileName) . $i . '.jpg';
+                        $i++;
+                    }else{
+                        $endLoop = true;
+                    }
+                }
+                
 
                 //save the image in the local directory
                 $file->move($destinationPath, $fileName);
 
 
-                $file_path = public_path() . '/uploads/image/' . $request->file->getClientOriginalName();
                 
                 // Store the record, using the new file hashname which will be it's new filename identity.
                 $image = new Image([
