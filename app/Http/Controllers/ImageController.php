@@ -70,6 +70,9 @@ class ImageController extends Controller
                 //save the image in the local directory
                 $file->move($destinationPath, $fileName);
 
+
+                $file_path = public_path() . '/uploads/image/' . $request->file->getClientOriginalName();
+                
                 // Store the record, using the new file hashname which will be it's new filename identity.
                 $image = new Image([
                     "description" => $request->get('description'),
@@ -134,8 +137,11 @@ class ImageController extends Controller
 
     public function delete($id)
     {
+        $ImageName = Image::get()->where('id', $id);
+        $ImageName = reset($ImageName);
+        $key = key($ImageName);
         //get filename of the image that we want to remove
-        $filename = Image::get()->where('id', $id)[0]['file_path'];
+        $filename = Image::get()->where('id', $id)[$key]['file_path'];
         //get filepath of the image that we want to remove
         $file_path = public_path() . '/uploads/image/' . $filename;
         //check whether image exists in local direcory
