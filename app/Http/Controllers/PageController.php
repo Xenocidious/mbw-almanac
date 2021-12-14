@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\UserImageSeen;
 use App\Helpers\WeatherApiHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -26,7 +27,8 @@ class PageController extends Controller
 
         return response()->view('index', [
             'userCities' => auth()->check() ? auth()->user()->cities : [],
-            'randomWeather' => $randomWeather
+            'randomWeather' => $randomWeather,
+            'UserImageSeen' => UserImageSeen::all()
         ]);
     }
 

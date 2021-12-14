@@ -11996,3 +11996,7 @@ path:hover{
   z-index: 999;
   position: absolute;
 }
+
+.wrapper{
+  width: 97.5vw;
+}

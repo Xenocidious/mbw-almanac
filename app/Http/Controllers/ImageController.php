@@ -138,8 +138,11 @@ class ImageController extends Controller
         $filename = Image::get()->where('id', $id)[0]['file_path'];
         //get filepath of the image that we want to remove
         $file_path = public_path() . '/uploads/image/' . $filename;
-        //remove image from local directory
-        unlink($file_path);
+        //check whether image exists in local direcory
+        if(file_exists($file_path)){
+            //remove image from local directory
+            unlink($file_path);
+        }
 
         //remove image in the DB
         Image::where('id', $id)->delete();
