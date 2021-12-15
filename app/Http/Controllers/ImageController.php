@@ -91,7 +91,7 @@ class ImageController extends Controller
                 // Store the record, using the new file hashname which will be it's new filename identity.
                 $image = new Image([
                     "description" => $request->get('description'),
-                    "file_path" => $request->file->getClientOriginalName(),
+                    "file_path" => $fileName,
                     "user_id" => Auth::user()->id,
                     "user_name" => Auth::user()->name
                 ]);
