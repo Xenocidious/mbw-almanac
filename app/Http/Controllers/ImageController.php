@@ -66,16 +66,16 @@ class ImageController extends Controller
 
                 //define where the image will be saved in the local directory
                 $destinationPath = public_path() . '/uploads/image/';
-
-                
-                $file_path = public_path() . '/uploads/image/' . $request->file->getClientOriginalName();
                 
                 $endLoop = false;
                 $i = 0;
 
                 while($endLoop == false){
                     if(file_exists($destinationPath . $fileName)){
-                        $fileName = $fileName = preg_replace('/\\.[^.\\s]{3,4}$/', '', $fileName) . $i . '.jpg';
+                        $fileName = preg_replace('/\\.[^.\\s]{3,4}$/', '', $fileName);
+                        $fileName = preg_replace ('/[0-9]+/', '', $fileName);
+
+                        $fileName = $fileName . $i . '.jpg';
                         $i++;
                     }else{
                         $endLoop = true;
