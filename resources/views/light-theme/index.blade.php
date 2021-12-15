@@ -125,6 +125,12 @@
                                                 </span>
                                                 </li>
                                             @endforeach
+                                        @else
+                                        <li>
+                                        <span class="text">
+                                            You have exceeded the maximum amount of requests allowed
+                                        </span>
+                                        </li>
                                         @endif
                                     </ul>
                                 </div>
