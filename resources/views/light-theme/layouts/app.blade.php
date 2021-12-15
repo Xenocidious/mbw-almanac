@@ -98,29 +98,68 @@
     </a>
 
 
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        @if(auth::check())
-            <div class="image">
-                @if(Auth::user()->photo == NULL)
-                    <img src="{{ asset('dist/img/avatar.png') }}" class="img-circle elevation-2 userImage"
-                         alt="User Image">
-                @else
-                    <img src="data:image/png;base64, {{ Auth::user()->photo }}" class="img-circle elevation-2 userImage"
-                         alt="User Image">
-                @endif
-            </div>
-            <div class="info">
-                <a href="{{ route('accounts.index') }}" class="d-block">{{ Auth::user()->name }}</a>
-            </div>
-        @else
-            <p><a href="{{ route('login') }}">{{ __('Login') }} </a> or <a
-                    href="{{ route('register') }}">{{ __('Register') }}</a></p>
-        @endif
-    </div>
-
 
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+            @if(auth::check())
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-user-circle"></i>
+                            <p>
+                                {{ Auth::user()->name }}
+                            <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview" style="display: none;">
+                            <li class="nav-item">
+                            <a href="{{ route('accounts.index') }}" class="nav-link">
+                                <i class="fas fa-user-alt"></i>
+
+
+                                <p>Account</p>
+                            </a>
+                            </li>
+                            <li class="nav-item">
+                            <a href="{{ route('logout') }}" class="nav-link">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <p>Log out</p>
+                            </a>
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+        
+            @else
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-user-circle"></i>
+                            <p>
+                            Account
+                            <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview" style="display: none;">
+                            <li class="nav-item">
+                            <a href="{{ route('login') }}" class="nav-link">
+                                <i class="fas fa-sign-in-alt"></i>
+                                <p>Login</p>
+                            </a>
+                            </li>
+                            <li class="nav-item">
+                            <a href="{{ route('register') }}" class="nav-link">
+                                <i class="fas fa-cash-register"></i>
+                                <p>Register</p>
+                            </a>
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+            @endif
+
+            
             <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
             <li class="nav-header">Navigate</li>

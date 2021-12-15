@@ -40,6 +40,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/accountHighlighted', 'AccountController@indexHighlighted')->name('accounts.indexHighlighted');
     Route::patch('/account/{user}', 'AccountController@update')->name('accounts.update');
     Route::delete('/account/{user}', 'AccountController@destroy')->name('accounts.delete');
+    Route::get('logout', '\App\Http\Controllers\AccountController@logout');
+
 
     Route::get('/photohub', 'PhotohubController@index')->name('photohub');
     Route::get('/uploadphoto', 'PhotohubController@photoform')->name('uploadphoto');

@@ -162,4 +162,10 @@ class AccountController extends Controller
 
         return redirect('/')->with('success', __('Account deleted'));
     }
+    
+
+    public function logout(Request $request) {
+        auth()->logout();
+        return redirect('/')->with('success', __('Account deleted'));
+    }
 }
