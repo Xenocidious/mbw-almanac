@@ -105,9 +105,14 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <ul class="todo-list" data-widget="todo-list">
+                                    <li style="display:none" class="out-of-requests">
+                                        <span class="text">
+                                            You have exceeded the maximum amount of requests allowed
+                                        </span>
+                                    </li>
                                     {{--Foreach loops through the random historical dates to create a list item with temp and date --}}
                                     @foreach ($randomDates as $key => $randomDate)
-                                        <li class="random-weather-{{ $key }}">
+                                        <li class="random-weather-{{ $key }}" style="display:none;">
                                             <!-- drag handle -->
                                             <span class="handle">
                                                 <i class="fas fa-ellipsis-v"></i>
@@ -130,15 +135,18 @@
                                                     },
                                                     dataType: 'json',
                                                     success: function (data) {
+                                                        let randomWeather = $(".random-weather-{{ $key }}");
+
                                                         if (!Array.isArray(data)) {
+                                                            $(".out-of-requests").show();
+                                                            $(randomWeather).remove();
                                                             return;
                                                         }
-
-                                                        let randomWeather = $(".random-weather-{{ $key }}");
 
                                                         $(randomWeather).find('.datetime').html(data[0].datetime)
                                                         $(randomWeather).find(".tempmax").html(data[0].tempmax + "&deg;");
                                                         $(randomWeather).find(".conditions").html(data[0].conditions);
+                                                        $(randomWeather).show();
                                                     }
                                                 });
                                             });
