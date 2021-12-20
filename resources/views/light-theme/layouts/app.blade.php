@@ -97,8 +97,6 @@
         <span class="brand-text font-weight-light">mbw Almanac</span>
     </a>
 
-
-
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
@@ -109,58 +107,58 @@
                             <i class="fas fa-user-circle"></i>
                             <p>
                                 {{ Auth::user()->name }}
-                            <i class="right fas fa-angle-left"></i>
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview" style="display: none;">
                             <li class="nav-item">
-                            <a href="{{ route('accounts.index') }}" class="nav-link">
-                                <i class="fas fa-user-alt"></i>
+                                <a href="{{ route('accounts.index') }}" class="nav-link">
+                                    <i class="fas fa-user-alt"></i>
 
 
-                                <p>Account</p>
-                            </a>
+                                    <p>Account</p>
+                                </a>
                             </li>
                             <li class="nav-item">
-                            <a href="{{ route('logout') }}" class="nav-link">
-                                <i class="fas fa-sign-out-alt"></i>
-                                <p>Log out</p>
-                            </a>
+                                <a href="{{ route('logout') }}" class="nav-link">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <p>Log out</p>
+                                </a>
                             </li>
                         </ul>
                     </li>
                 </div>
-        
+
             @else
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-user-circle"></i>
                             <p>
-                            Account
-                            <i class="right fas fa-angle-left"></i>
+                                Account
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview" style="display: none;">
                             <li class="nav-item">
-                            <a href="{{ route('login') }}" class="nav-link">
-                                <i class="fas fa-sign-in-alt"></i>
-                                <p>Login</p>
-                            </a>
+                                <a href="{{ route('login') }}" class="nav-link">
+                                    <i class="fas fa-sign-in-alt"></i>
+                                    <p>Login</p>
+                                </a>
                             </li>
                             <li class="nav-item">
-                            <a href="{{ route('register') }}" class="nav-link">
-                                <i class="fas fa-cash-register"></i>
-                                <p>Register</p>
-                            </a>
+                                <a href="{{ route('register') }}" class="nav-link">
+                                    <i class="fas fa-cash-register"></i>
+                                    <p>Register</p>
+                                </a>
                             </li>
                         </ul>
                     </li>
                 </div>
-            @endif
+        @endif
 
-            
-            <!-- Add icons to the links using the .nav-icon class
+
+        <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
             <li class="nav-header">Navigate</li>
             <li class="nav-item">
@@ -216,7 +214,7 @@
     </nav>
 </aside>
 
-<main style="top:10%; position:absolute;">
+<main style="top:10%; position:absolute;" class="w-100">
     @yield('content')
 </main>
 

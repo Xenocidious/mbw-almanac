@@ -67,27 +67,27 @@
                 dataType: 'json',
                 success: function (data) {
                     let classname = '', info = '';
-                    $("#{{ $id }}").find(".degrees").html(data.days[0].tempmax);
+                    $("#{{ $id }}").find(".degrees").html(data[0].tempmax);
 
                     switch (true) {
                         default:
-                        case (data.days[0].conditions.toLowerCase().indexOf('sun')):
+                        case (data[0].conditions.toLowerCase().indexOf('sun')):
                             classname = 'fa-sun'
                             break;
-                        case (data.days[0].conditions.toLowerCase().indexOf('rain')):
+                        case (data[0].conditions.toLowerCase().indexOf('rain')):
                             classname = 'fa-cloud-rain'
                             break;
-                        case (data.days[0].conditions.toLowerCase().indexOf('fog')):
+                        case (data[0].conditions.toLowerCase().indexOf('fog')):
                             classname = 'fa-fog'
                             break;
-                        case (data.days[0].conditions.toLowerCase().indexOf('cloud')):
+                        case (data[0].conditions.toLowerCase().indexOf('cloud')):
                             classname = 'fa-cloud'
                             break;
                     }
 
                     $("#{{ $id }}").find(".icon i").addClass(classname);
 
-                    $.each(data.days[0], function (key, value) {
+                    $.each(data[0], function (key, value) {
                         if (typeof value === 'undefined'
                             || typeof value === 'object'
                             || value === null

@@ -48,8 +48,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('upload.image', 'imageController@store')->name('upload.image');
 
-    Route::get('/removeFavoriteCity/{id}', 'accountController@deleteFavoriteCity')->name('favoriteCity.delete');
-
     // hier word ook maar 1 gebruikt, en kan je deze wel doen als je niet bent ingelogd?
     // beter is dit dan geen resource
     Route::resource('comment', 'CommentController');
