@@ -68,7 +68,7 @@
                 success: function (data) {
                     let classname = '', info = '';
                     $("#{{ $id }}").find(".degrees").html(data[0].tempmax);
-
+                    
                     if (!Array.isArray(data)) {
                         return;
                     }
