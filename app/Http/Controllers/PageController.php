@@ -15,6 +15,7 @@ class PageController extends Controller
     public function home()
     {
         $apiHelper = new WeatherApiHelper(strtotime('now'), strtotime('now'));
+
         $randomWeather = [];
 
         for ($i = 0; $i < 5; $i++) {
