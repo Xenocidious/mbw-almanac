@@ -4,11 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-/**
- * Class UsersCitiesTable
- * @deprecated
- */
-class UsersCitiesTable extends Migration
+class UsersImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,10 +13,11 @@ class UsersCitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_cities', function (Blueprint $table) {
+        Schema::create('users_images_seen', function (Blueprint $table) {
             $table->id();
-            $table->integer('city_id');
             $table->integer('user_id');
+            $table->integer('image_id');
+            $table->boolean('seen')->default(false);
         });
     }
 

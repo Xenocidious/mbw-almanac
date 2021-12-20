@@ -2,14 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\WeatherApiHelper;
 use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
+use App\UserImageSeen;
 
 class WeatherController extends Controller
 {
     public const BASE_URL = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline';
-    public const API_KEY = '7SXFUD7ARDRC9KTR6ETCRYGFG';
+    public const API_KEY = 'WAQ7TNDNXCZQJ74JARJ6W94QZ';
+//    public const API_KEY = 'GQXN9FLLR9DNHAPNTW49E6BGH';
+//     public const API_KEY = '7GMWKWQNTVQL4F6RUBKLAAGMA';
+//     public const API_KEY = '7SXFUD7ARDRC9KTR6ETCRYGFG';
+//     public const API_KEY = 'WAQ7TNDNXCZQJ74JARJ6W94QZ';
+    public const MAX_RANGE = 14;
 
     /**
      * @param Request $request
@@ -37,8 +45,12 @@ class WeatherController extends Controller
         $startDate = strtotime($request->get('start', 'now'));
         $endDate = strtotime($request->get('end', 'now'));
 
-        // mag niet de verkeerde volgorde doen.
-        if ($startDate > $endDate) {
+        $diffInDays = round(($endDate - $startDate) / (60 * 60 * 24));
+        // Mag niet meer dan 14 dagen
+        if ($diffInDays > self::MAX_RANGE) {
+            $error = __('Cannot pick a date range larger than %i days', self::MAX_RANGE);
+            // mag niet de verkeerde volgorde doen.
+        } else if ($startDate > $endDate) {
             $error = __('Start date can not be after end date');
         } else {
             // haal de gegevens op vanuit de api
@@ -59,7 +71,22 @@ class WeatherController extends Controller
             'forecast' => $data,
             'error' => $error,
             'start' => Carbon::createFromTimestamp($startDate)->format('Y-m-d\TH:i:s'),
-            'end' => Carbon::createFromTimestamp($endDate)->format('Y-m-d\TH:i:s')
+            'end' => Carbon::createFromTimestamp($endDate)->format('Y-m-d\TH:i:s'),
+            'UserImageSeen' => UserImageSeen::get(),
         ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function weatherJson(Request $request): JsonResponse
+    {
+        return response()->json((new WeatherApiHelper(
+            $request->get('startDate') ?? strtotime('now'),
+            $request->get('endDate') ?? strtotime('now'),
+            $request->get('city') ?? 'Gorinchem Netherlands',
+            []
+        ))->getApiResult());
     }
 }

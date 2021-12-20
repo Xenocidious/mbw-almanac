@@ -6,15 +6,21 @@ use App\City;
 use App\User;
 use App\Theme;
 use App\UserCity;
+use App\UserImageSeen;
 use function json_encode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+// use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class AccountController extends Controller
 {
+    public const MAX_IMAGE_WIDTH = 300;
+    public const MAX_IMAGE_HEIGHT = 300;
+
     public function index()
     {
         return view('accounts.index', [
@@ -22,7 +28,8 @@ class AccountController extends Controller
             'themes' => Theme::all(),
             'cities' => City::all(),
             'userCities' => UserCity::all(),
-            'checkCityHighlight' => false
+            'checkCityHighlight' => false,
+            'UserImageSeen' =>UserImageSeen::all(),
         ]);
     }
 
@@ -33,7 +40,8 @@ class AccountController extends Controller
             'themes' => Theme::all(),
             'cities' => City::all(),
             'userCities' => UserCity::all(),
-            'checkCityHighlight' => true
+            'checkCityHighlight' => true,
+            'UserImageSeen' =>UserImageSeen::all(),
         ]);
     }
 
@@ -47,8 +55,39 @@ class AccountController extends Controller
 
 
         if ($request->hasFile('photo')) {
-            Auth::user()->photo = base64_encode($request->file('photo')->getContent());
+
+            $image = $request->file('photo');
+            $filename = $image->getClientOriginalName();
+
+
+            $resize = Image::make($image->getRealPath());
+
+            $ratio = $resize->getWidth() / self::MAX_IMAGE_WIDTH;
+
+            if ($ratio > 1) {
+                $resize->resize(self::MAX_IMAGE_WIDTH, $resize->getHeight() / $ratio);
+            }
+
+            $ratio = $resize->getHeight() / self::MAX_IMAGE_HEIGHT;
+
+            if ($ratio > 1) {
+                $resize->resize(self::MAX_IMAGE_WIDTH, $resize->getHeight() / $ratio);
+            }
+
+
+
+            $user->photo = $resize;
+
+
+            if (!is_dir(public_path('tmp'))) {
+                mkdir(public_path('tmp'));
+            }
+
+            $resize->save(public_path('tmp/' . $filename));
+            $user->photo = base64_encode(file_get_contents(public_path('tmp/' . $filename)));
+            unlink(public_path('tmp/' . $filename));
         }
+
 
         $user->email = $request->post('email');
         $user->name = $request->post('name');
@@ -114,9 +153,19 @@ class AccountController extends Controller
 
     public function destroy(User $user)
     {
+        if (UserImageSeen::exists()) {
+            UserImageSeen::where('user_id', $user['id'])->delete();
+        }
+
         auth()->logout();
         $user->delete();
 
+        return redirect('/')->with('success', __('Account deleted'));
+    }
+    
+
+    public function logout(Request $request) {
+        auth()->logout();
         return redirect('/')->with('success', __('Account deleted'));
     }
 }

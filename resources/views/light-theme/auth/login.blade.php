@@ -1,7 +1,23 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
+
+<body class="transition sidebar-mini layout-fixed">
+
+<div class="wrapper ">
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+          <div class="row mb-2">
+              <div class="col-sm-6">
+                  <h1 class="m-0">Dashboard</h1>
+              </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div>
+
+
+
+<div class="content">
     <div class="login-box">
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
@@ -10,7 +26,7 @@
       </div>
       <div class="card-body">
         <p class="login-box-msg">Sign in to start your session</p>
-  
+
         <form method="POST" action="{{ route('login') }}">
             @csrf
           <div class="input-group mb-3">
@@ -55,23 +71,23 @@
             <!-- /.col -->
           </div>
         </form>
-  
-        <div class="social-auth-links text-center mt-2 mb-3">
+
+        {{-- <div class="social-auth-links text-center mt-2 mb-3">
           <a href="#" class="btn btn-block btn-primary disabled">
             <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
           </a>
           <a href="#" class="btn btn-block btn-danger disabled">
             <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
           </a>
-        </div>
+        </div> --}}
         <!-- /.social-auth-links -->
-  
+
         @if (Route::has('password.request'))
-            <p class="mb-1">
+            {{-- <p class="mb-1">
                 <a href="{{ route('password.request') }}">
                     {{ __('Forgot Your Password?') }}
                 </a>
-            </p>
+            </p> --}}
         @endif
         <p class="mb-0">
           <a href="{{ route('register') }}" class="text-center">Register a new account</a>
@@ -82,4 +98,10 @@
     <!-- /.card -->
   </div>
 </div>
-@endsection
+</div>
+
+
+@section('card-footer')
+
+@stop
+</body>

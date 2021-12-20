@@ -49,6 +49,7 @@ html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  overflow-x: hidden !important;
 }
 
 article,
@@ -11943,4 +11944,59 @@ body {
 
 .text-light{
   color: #6c757d !important;
+}
+
+.inner h3{
+  font-size: 2vw !important;
+}
+
+@media (max-width:985px) {
+  .inner h3{
+    font-size: 3vw !important;
+  }
+}
+
+@media (max-width:750px) {
+  .inner h3, .inner p{
+    font-size: 4.5vw !important;
+  }
+
+
+  .row{
+    display: block !important;
+  }
+
+  .small-box{
+    display: block !important;
+    width: 90vw;
+  }
+
+  .col-lg-3{
+    flex: 100vw !important;
+  }
+}
+
+.navItem
+{
+    float:left !important;
+}
+
+path{
+  transition: .25s ease-in-out;
+  fill: rgb(108,178,235) !important;
+  stroke: rgb(247, 247, 247); stroke-width: 0.99871px;
+} 
+
+path:hover{
+  fill: rgb(50,169,187) !important;
+  cursor: pointer;
+}
+
+#mapToolbox{
+  z-index: 999;
+  position: absolute;
+}
+
+.wrapper{
+  width: 97.5vw;
 }
