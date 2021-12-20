@@ -94,8 +94,8 @@
                                 <img class="img-fluid pad" src="{{asset('uploads/image/'.$image->file_path)}}" alt="Photo">
 
                                 <p>{{$image->description}}</p>
-                                <button type="button" class="btn btn-default btn-sm" onclick="copyImageUrl({{$image->id}})"><i class="fas fa-share"></i> Share</button>
-                                <input type="text" id="hidden{{$image->id}}" class='hidden' name='IMGurl' value='http://localhost/jaar%202+3/groepsprojecten/mbw-almanac/public/openImage/{{$image->id}}'>
+                                <button disabled type="button" class="btn btn-default btn-sm" onclick="copyImageUrl({{$image->id}})"><i class="fas fa-share"></i> Share</button>
+                                <input type="hidden" id="hidden{{$image->id}}" class='hidden' name='IMGurl' value='http://localhost/jaar%202+3/groepsprojecten/mbw-almanac/public/openImage/{{$image->id}}'>
                                 <script>
                                     function copyImageUrl(id){
                                         var copyText = document.getElementById("hidden"+id);

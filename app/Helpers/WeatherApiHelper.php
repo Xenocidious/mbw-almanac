@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Http;
 class WeatherApiHelper
 {
     public const BASE_URL = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline';
-    public const API_KEY = 'WAQ7TNDNXCZQJ74JARJ6W94QZ';
+    public const API_KEY = '7SXFUD7ARDRC9KTR6ETCRYGFG';
     public const MAX_RANGE = 14;
 
     protected static $params = [

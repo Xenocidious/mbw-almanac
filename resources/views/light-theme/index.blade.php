@@ -129,7 +129,7 @@
                                                     type: "POST",
                                                     url: "{{ route('weather.json') }}",
                                                     data: {
-                                                        city: "{{ $city }}",
+                                                        city: "Gorinchem Netherlands",
                                                         startDate: "{{ $randomDate }}",
                                                         endDate: "{{ $randomDate }}"
                                                     },
