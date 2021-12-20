@@ -2,14 +2,16 @@
 
 namespace App\Helpers;
 
+use App\WeatherHistory;
+use Carbon\Carbon;
 use DateTime;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class WeatherApiHelper
 {
     public const BASE_URL = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline';
     public const API_KEY = 'WAQ7TNDNXCZQJ74JARJ6W94QZ';
-    // public const API_KEY = '7SXFUD7ARDRC9KTR6ETCRYGFG';
     public const MAX_RANGE = 14;
 
     protected static $params = [
@@ -93,6 +95,17 @@ class WeatherApiHelper
 
     public function getApiResult()
     {
+        // eerst kijken of we al een record hebben van deze datum set voor we de api aanroepen
+        $history = WeatherHistory::whereCity(self::$city)
+            ->whereBetween('day', [
+                Carbon::createFromTimestamp(self::$startDate, 'Europe/Amsterdam')->format('Y-m-d'),
+                Carbon::createFromTimestamp(self::$endDate, 'Europe/Amsterdam')->format('Y-m-d')
+            ]);
+
+        if ($history->count() > 0) {
+            return $history->pluck('data')->toArray();
+        }
+
         $url = implode('/', [self::BASE_URL, self::$city, self::$startDate, self::$endDate])
             . '?'
             . http_build_query(self::$params);
@@ -102,11 +115,20 @@ class WeatherApiHelper
         // als er een error is dan lezen we de error uit
         // anders lezen we de json uit.
         if ($response->status() !== 200) {
-            $data = $response->body();
+            return $response->body();
         } else {
             $data = $response->json();
         }
 
-        return $data;
+        foreach ($data['days'] as $day) {
+            // Als die nog niet bestaat lokaal dan slaan we hem op per stad, per dag
+            WeatherHistory::create([
+                'city' => self::$city,
+                'day' => $day['datetime'],
+                'data' => $day
+            ]);
+        }
+
+        return $data['days'];
     }
 }

@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+
 // use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -27,9 +28,9 @@ class AccountController extends Controller
             'user' => auth()->user(),
             'themes' => Theme::all(),
             'cities' => City::all(),
-            'userCities' => UserCity::all(),
+            'userCities' => auth()->user()->cities,
             'checkCityHighlight' => false,
-            'UserImageSeen' =>UserImageSeen::all(),
+            'UserImageSeen' => UserImageSeen::all(),
         ]);
     }
 
@@ -39,14 +40,15 @@ class AccountController extends Controller
             'user' => auth()->user(),
             'themes' => Theme::all(),
             'cities' => City::all(),
-            'userCities' => UserCity::all(),
+            'userCities' => auth()->user()->cities,
             'checkCityHighlight' => true,
-            'UserImageSeen' =>UserImageSeen::all(),
+            'UserImageSeen' => UserImageSeen::all(),
         ]);
     }
 
 
-    public function selectCities(){
+    public function selectCities()
+    {
 
     }
 
@@ -73,7 +75,6 @@ class AccountController extends Controller
             if ($ratio > 1) {
                 $resize->resize(self::MAX_IMAGE_WIDTH, $resize->getHeight() / $ratio);
             }
-
 
 
             $user->photo = $resize;
@@ -107,48 +108,10 @@ class AccountController extends Controller
 
         $user->save();
 
-
-
-         // Store the record, using the new file hashname which will be it's new filename identity.
-         $cityNumber = new City([
-            "name" => $request->get('selectedCities'),
-        ]);
-
-        //Creating a new instance of UserCity model
-        $saveCity = new UserCity;
-        $allCities = UserCity::all();
-
-
-        //Assigning city ID to $saveCity
-        $saveCity->city_id = $cityNumber['name'];
-
-
-        //Assigning User ID to $saveCity
-        $saveCity->user_id = Auth::user()->id;
-
-        foreach ($allCities as $everyCity) {
-            if ($everyCity->user_id == Auth::user()->id && $everyCity->city_id == $cityNumber['name']) {
-                return redirect()->route('accounts.index')->with('error', __('This city is already added'));
-            }
-        }
-
-        if($saveCity->city_id != null) {
-            $saveCity->save();
-        }
-
-
-
-
-        //Save and assign data to database
+        $user->cities()->sync($request->get('cities'));
 
 
         return redirect()->route('accounts.index')->with('success', __('Account edited.'));
-    }
-
-    public function deleteFavoriteCity(Request $request, $id){
-        UserCity::where('user_id',  Auth::user()->id)->where('city_id', $id)->delete();
-
-        return redirect()->route('accounts.index')->with('success', __('City removed'));
     }
 
     public function destroy(User $user)
@@ -162,9 +125,10 @@ class AccountController extends Controller
 
         return redirect('/')->with('success', __('Account deleted'));
     }
-    
 
-    public function logout(Request $request) {
+
+    public function logout(Request $request)
+    {
         auth()->logout();
         return redirect('/')->with('success', __('Account deleted'));
     }
