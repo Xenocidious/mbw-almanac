@@ -68,19 +68,23 @@
                 success: function (data) {
                     let classname = '', info = '';
                     $("#{{ $id }}").find(".degrees").html(data[0].tempmax);
+                    
+                    if (!Array.isArray(data)) {
+                        return;
+                    }
 
                     switch (true) {
+                        case (data[0].conditions.toLowerCase().indexOf('sun') !== -1):
                         default:
-                        case (data[0].conditions.toLowerCase().indexOf('sun')):
                             classname = 'fa-sun'
                             break;
-                        case (data[0].conditions.toLowerCase().indexOf('rain')):
+                        case (data[0].conditions.toLowerCase().indexOf('rain') !== -1):
                             classname = 'fa-cloud-rain'
                             break;
-                        case (data[0].conditions.toLowerCase().indexOf('fog')):
+                        case (data[0].conditions.toLowerCase().indexOf('fog') !== -1):
                             classname = 'fa-fog'
                             break;
-                        case (data[0].conditions.toLowerCase().indexOf('cloud')):
+                        case (data[0].conditions.toLowerCase().indexOf('cloud') !== -1):
                             classname = 'fa-cloud'
                             break;
                     }
