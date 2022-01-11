@@ -112,7 +112,7 @@
                                     </li>
                                     {{--Foreach loops through the random historical dates to create a list item with temp and date --}}
                                     @foreach ($randomDates as $key => $randomDate)
-                                        <li class="random-weather-{{ $key }}" style="display:none;">
+                                        <li id="random-weather" class="random-weather-{{ $key }}" style="display:none;">
                                             <!-- drag handle -->
                                             <span class="handle">
                                                 <i class="fas fa-ellipsis-v"></i>
@@ -126,6 +126,7 @@
                                         <script type="text/javascript">
                                             $(document).ready(function () {
                                                 $.ajax({
+                                                            $("#random-weather").css("display", "block");
                                                     type: "POST",
                                                     url: "{{ route('weather.json') }}",
                                                     data: {
@@ -140,6 +141,7 @@
                                                         if (!Array.isArray(data)) {
                                                             $(".out-of-requests").show();
                                                             $(randomWeather).remove();
+                                                            $("#random-weather").addClass('newClass');
                                                             return;
                                                         }
 
