@@ -85,9 +85,14 @@ class CommentController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $id = $request->get('edited_comment_id');
+        $comment =  Comment::find($id);
+        $comment->update(['comment' => $request->get('edited_comment')]);
+        $comment->update(['edited' => true]);
+
+        return redirect()->back();
     }
 
     /**

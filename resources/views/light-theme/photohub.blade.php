@@ -73,7 +73,7 @@
                                 </div>
                                 <!-- /.user-block -->
                                 <div class="card-tools">
-                                    @if($image->user_id == $user->id)
+                                    @if($image->user_id == Auth::user()->id)
                                     <a href='{{ route('post.delete', ['id' => $image->id]) }}' onclick='return confirm("Are you sure that you want to delete this post?")'>
                                       <button type="button" class="btn btn-tool" title="delete post">
                                         <i class="fas fa-trash"></i>
@@ -111,7 +111,7 @@
                                     $voted = 'false';
                                     foreach($upvotes as $vote){
                                         if($vote->image_id == $image->id){
-                                            if($vote->user_id == $user->id){
+                                            if($vote->user_id == Auth::user()->id){
                                                 $voted = 'true';
                                             }
                                         }
@@ -164,17 +164,40 @@
                                     @endforeach
                                         <div class="comment-text">
                                             <span class="username">
-                                            {{$comment->user_name}}
-                                            <span class="text-muted float-right">{{date('H:i', strtotime($comment->created_at))}}
-                                                @if($comment->user_id == $user->id)
-                                                    <a onclick='return confirm("are you sure that you want to delete this comment?")' href="{{ route('comment.delete', ['id' => $comment->id]) }}"><i class="fas fa-trash"></i></a>
+                                              {{$comment->user_name}}
+                                              <span class="text-muted float-right">
+                                                @if($comment->edited == 1)
+                                                  (edited)
                                                 @endif
-                                            </span>
+                                                {{date('H:i', strtotime($comment->created_at))}}
+                                                @if($comment->user_id == Auth::user()->id)
+                                                  <a onclick='return confirm("are you sure that you want to delete this comment?")' href="{{ route('comment.delete', ['id' => $comment->id]) }}"><i class="fas fa-trash"></i></a>
+                                                @endif
+                                              </span>
                                             </span><!-- /.username -->
-                                            {{$comment->comment}}
+
+                                            @if($comment->user_id == Auth::user()->id)
+                                              <p class="comment_value" onClick="editComment(event, {{$comment['id']}})">{{$comment->comment}}</p>
+                                              <form action="{{ route('comment.edit') }}" method="post" enctype="multipart/form-data" name="commentEdit">
+                                                @csrf
+                                                <input class="comment_value_hidden" id="p-input{{$comment['id']}}" style="display:none;" type="text" value="{{$comment->comment}}" name="edited_comment"/>
+                                                <input class="comment_id_value_hidden" type="hidden" value="{{$comment->id}}" name="edited_comment_id"/>
+                                              </form>
+                                            @else
+                                              <p>{{$comment->comment}}</p>
+                                            @endif
+
+
+                                            <section>
+                                            </section>
+
+                                            <script src='{{ asset('js/commentEditLogic.js') }}'></script>
+
+
                                         </div>
                                     <!-- /.comment-text -->
                                     @endif
+                                    
 
                                   @endforeach
                                   @if($commentAmount == 0)
@@ -205,6 +228,7 @@
                                         if(keyCode == 13)
                                         {
                                             document.comment.submit();
+                                            document.commentEdit.submit();
                                         }
                                     }
                                 </script>
