@@ -21,6 +21,7 @@ class CreateImagesCommentsTable extends Migration
             $table->text('comment');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
+            $table->boolean('edited');
         });
     }
 
