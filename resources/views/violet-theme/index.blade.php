@@ -107,7 +107,6 @@
 
     @parent()
 
-    <script src="{{ asset('js/animations_index.js') }}"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="{{ asset('js/chart_test.js') }}"></script>
 
