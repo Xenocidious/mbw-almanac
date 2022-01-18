@@ -11,7 +11,7 @@ class Comment extends Model
 {
 
     protected $table = 'images_comments';
-    protected $fillable = ["image_id", "user_name", "created_at", "updated_at", "comment", "user_id"];
+    protected $fillable = ["image_id", "user_name", "created_at", "updated_at", "comment", "user_id", "edited"];
 
     public function image()
     {

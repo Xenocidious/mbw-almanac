@@ -76,6 +76,8 @@ Route::middleware(['auth'])->group(function () {
         'as' => 'comment.delete'
     ]);
 
+    Route::post('comment/edit', 'CommentController@edit')->name('comment.edit');
+
     Route::get('/deletePost/{id}', [
         'uses' => 'ImageController@delete',
         'as' => 'post.delete'
