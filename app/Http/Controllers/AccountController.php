@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\City;
 use App\User;
-use App\Theme;
 use App\UserCity;
 use App\UserImageSeen;
 use function json_encode;
@@ -26,7 +25,7 @@ class AccountController extends Controller
     {
         return view('accounts.index', [
             'user' => auth()->user(),
-            'themes' => Theme::all(),
+            'themes' => ['Light', 'Dark', 'Violet'],
             'cities' => City::all(),
             'userCities' => auth()->user()->cities,
             'checkCityHighlight' => false,
@@ -38,7 +37,7 @@ class AccountController extends Controller
     {
         return view('accounts.index', [
             'user' => auth()->user(),
-            'themes' => Theme::all(),
+            'themes' => ['Light', 'Dark', 'Violet'],
             'cities' => City::all(),
             'userCities' => auth()->user()->cities,
             'checkCityHighlight' => true,
@@ -54,7 +53,9 @@ class AccountController extends Controller
 
     public function update(User $user, Request $request)
     {
-
+        $user = Auth()->user();
+        $theme = $request->settings['theme'];
+        User::where('id', $user->id)->update(['theme' => $theme]);
 
         if ($request->hasFile('photo')) {
 
