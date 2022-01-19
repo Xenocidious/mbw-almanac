@@ -3,6 +3,32 @@
 
 @section('content')
 <body class="hold-transition sidebar-mini layout-fixed">
+  <div class="image_opened">
+    <div class="image_opened_content">
+      <i onclick='closeImage()' class="far fa-times-circle"></i>
+
+      <div class="image_opened_content_image">
+        <img id="opened_image_image" src="{{asset('uploads/image/'.'Afbeelding1.jpg')}}" alt="user uploaded image">
+        <p id='image_opened_username'>Username unknown</p>
+      </div>
+      <div class="image_opened_comment_section">
+        <div>
+          <p>comments:</p> 
+        </div>
+        <div>
+          <div>
+            <p>comment</p> 
+          </div>
+          <div>
+            <p>comment</p> 
+          </div>
+          <div>
+            <p>comment</p> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <div class="wrapper">
   
     <?php
@@ -10,7 +36,6 @@
         $countSeenImages = 0;
         for($i=0; $i<count($UserImageSeen); $i++){
           if($UserImageSeen[$i]['user_id'] == Auth::user()->id && $UserImageSeen[$i]['seen'] == 0){
-            echo '<script>console.log("yayyyyyy");</script>';
             $countSeenImages++;
           }
         }
@@ -26,19 +51,19 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
 
-                  <div class="col-sm-6">
-                      <h1 class="m-0">Photohub</h1>
-                  </div><!-- /.col -->
-
-        </div>
-        <!-- /.content-header -->
 
     <!-- Main content -->
             <div class="content">
                     <div class="row">
+                      <div class="col-md-4">
+                        <a href="{{route('uploadphoto')}}">
+                          <div class="card card-widget fake_image_image_upload">
+                            <img class="fake_image_image_upload_img" src="{{asset('images/giant_plus.png')}}" alt="">
+                          </div>
+                        </a>
+                      </div>
+
                         @foreach($images as $image)
                         <?php
                             $commentAmount = 0;
@@ -91,11 +116,13 @@
                               </div>
                               <!-- /.card-header -->
                               <div class="card-body shadow">
-                                <img class="img-fluid pad" src="{{asset('uploads/image/'.$image->file_path)}}" alt="Photo">
+                                <a onclick="openImage({{$image}},{{$upvotes}},{{$comments}})">
+                                  <img class="img-fluid pad photohub_image" src="{{asset('uploads/image/'.$image->file_path)}}" alt="Photo">
+                                </a>
 
                                 <p>{{$image->description}}</p>
                                 <button disabled type="button" class="btn btn-default btn-sm" onclick="copyImageUrl({{$image->id}})"><i class="fas fa-share"></i> Share</button>
-                                <input type="hidden" id="hidden{{$image->id}}" class='hidden' name='IMGurl' value='http://localhost/jaar%202+3/groepsprojecten/mbw-almanac/public/openImage/{{$image->id}}'>
+                                <input type="hidden" id="hidden{{$image->id}}" class='hidden' name='IMGurl' value='{{$image->id}}'>
                                 <script>
                                     function copyImageUrl(id){
                                         var copyText = document.getElementById("hidden"+id);
@@ -243,6 +270,8 @@
                 </div>
       </div>
     </section>
+
+    <script src="{{asset('js/photohubLogic.js')}}"></script>
 
 </body>
 </html>
