@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            ['email' => 'admin@admin', 'name' => 'admin', 'password' => bcrypt('admin'), 'role' => 'admin', 'darkmode' => 1]
+            ['email' => 'admin@admin', 'name' => 'admin', 'password' => bcrypt('admin'), 'role' => 'admin', 'theme' => 'Light']
         ]);
 
         DB::table('themes')->insert(['name' => 'Light', 'path' => 'light-theme']);

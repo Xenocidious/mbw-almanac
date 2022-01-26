@@ -25,7 +25,8 @@ class DarkModeMiddleware
             }
         }
 
-        $finder = new FileViewFinder(app()['files'], [resource_path('views') . DIRECTORY_SEPARATOR . $theme->path]);
+        $finder = new FileViewFinder(app()['files'], [resource_path('views')
+    ]);
 
         view()->setFinder($finder);
 

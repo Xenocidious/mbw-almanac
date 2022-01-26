@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="{{ $theme }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -65,9 +65,6 @@
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="#" class="nav-link">Contact</a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="uploadphoto" class="nav-link">upload photo</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
@@ -177,12 +174,17 @@
                     </p>
                 </a>
             </li>
+            
+
+
+
+
             <li class="nav-item">
-                <a href="{{ route('photohub') }}" class="nav-link">
+                <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-photo-video"></i>
                     <p>
                         Photohub
-
+                        <i class="right fas fa-angle-left"></i>
                         @if(Auth::check())
                             @if($userImageSeen->count() > 9)
                                 {{$countSeenImages = '9+'}}
@@ -193,7 +195,26 @@
                         @endif
                     </p>
                 </a>
+                <ul class="nav nav-treeview" style="display: none;">
+                    <li class="nav-item">
+                        <a href="{{ route('photohub') }}" class="nav-link">
+                            <i class="fas fa-images"></i>
+                            <p>Photohub</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('uploadphoto') }}" class="nav-link">
+                            <i class="fas fa-upload"></i>
+                            <p>'Upload photo</p>
+                        </a>
+                    </li>
+                </ul>
             </li>
+
+
+
+
+
             <li class="nav-item">
                 <a href="{{ route("weather") }}" class="nav-link">
                     <i class="nav-icon fas fa-thermometer-half"></i>

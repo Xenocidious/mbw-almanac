@@ -69,9 +69,9 @@
                                     <label class="form-label text-dark" for="theme">{{ __('Theme') }}</label>
                                     <select name="settings[theme]" id="theme" class="form-control">
                                         @foreach($themes as $theme)
-                                            <option value="{{ $theme->id }}"
-                                                    @if(isset($user->settings['theme']) && $user->settings['theme'] == $theme->id) selected @endif>
-                                                {{ $theme->name }}
+                                            <option value="{{ $theme }}"
+                                                    @if(isset($user->settings['theme']) && $user->settings['theme'] == $theme) selected @endif>
+                                                {{ $theme }}
                                             </option>
                                         @endforeach
                                     </select>

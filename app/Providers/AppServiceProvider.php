@@ -20,6 +20,14 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 
+    // Get theme from the user
+    public function GetTheme() {
+        if (auth()->check()) {
+            $theme = Auth()->user()->theme;
+            return $theme;
+        }
+    }
+
     /**
      * Bootstrap any application services.
      *
@@ -28,7 +36,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', function ($view) {
-            $view->with('userImageSeen', UserImageSeen::get());
+            $view->with(['userImageSeen' => UserImageSeen::get(), 'theme' => AppServiceProvider::GetTheme()]);
         });
+        
     }
 }
