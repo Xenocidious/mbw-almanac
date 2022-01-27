@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
     <!-- customizations -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/themes.css') }}">
 </head>
 <body>
 <header>
@@ -214,7 +215,7 @@
     </nav>
 </aside>
 
-<main style="top:10%; position:absolute;" class="w-100">
+<main style="top:10%; position:relative; margin-top:55px;" class="w-100">
     @yield('content')
 </main>
 
