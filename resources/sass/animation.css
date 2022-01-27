@@ -1,0 +1,137 @@
+/* historical data button on the index page */
+#historical_data_button .liquid::after, #historical_data_button .liquid::before {
+  content: '';
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, -75%);
+          transform: translate(-50%, -75%);
+  background: transparent;
+}
+
+#historical_data_button .liquid::before {
+  border-radius: 45%;
+  background: #141414;
+  -webkit-animation: animate 7.5s linear infinite;
+          animation: animate 7.5s linear infinite;
+}
+
+#historical_data_button .liquid::after {
+  border-radius: 40%;
+  background: rgba(20, 20, 20, 0.5);
+  -webkit-animation: animate 15s linear infinite;
+          animation: animate 15s linear infinite;
+}
+
+#historical_data_button:hover .liquid {
+  top: -17.5vh;
+}
+
+/* this causes the rotation, givin an illusion of an animation */
+@-webkit-keyframes animate {
+  0% {
+    -webkit-transform: translate(-50%, -75%) rotate(0deg);
+            transform: translate(-50%, -75%) rotate(0deg);
+  }
+  100% {
+    -webkit-transform: translate(-50%, -75%) rotate(360deg);
+            transform: translate(-50%, -75%) rotate(360deg);
+  }
+}
+@keyframes animate {
+  0% {
+    -webkit-transform: translate(-50%, -75%) rotate(0deg);
+            transform: translate(-50%, -75%) rotate(0deg);
+  }
+  100% {
+    -webkit-transform: translate(-50%, -75%) rotate(360deg);
+            transform: translate(-50%, -75%) rotate(360deg);
+  }
+}
+
+/* social media buttons in footer */
+#social_media_wrapper li:before {
+  position: absolute;
+  bottom: -10px;
+  left: -5px;
+  width: 100%;
+  height: 10px;
+}
+
+#social_media_wrapper li:after {
+  position: absolute;
+  top: 5px;
+  left: -9px;
+  width: 9px;
+  height: 100%;
+}
+
+#social_media_wrapper li:hover span {
+  -webkit-transition: .3s;
+  transition: .3s;
+  /* time to pop out */
+  color: white;
+  -webkit-box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.5);
+          box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* how far each 'platform' pokes out + transparency*/
+#social_media_wrapper li:hover span:nth-child(5) {
+  -webkit-transform: translate(40px, -40px);
+          transform: translate(40px, -40px);
+  opacity: 1;
+}
+
+#social_media_wrapper li:hover span:nth-child(4) {
+  -webkit-transform: translate(30px, -30px);
+          transform: translate(30px, -30px);
+  opacity: .8;
+}
+
+#social_media_wrapper li:hover span:nth-child(3) {
+  -webkit-transform: translate(20px, -20px);
+          transform: translate(20px, -20px);
+  opacity: .6;
+}
+
+#social_media_wrapper li:hover span:nth-child(2) {
+  -webkit-transform: translate(10px, -10px);
+          transform: translate(10px, -10px);
+  opacity: .4;
+}
+
+ul li:hover span:nth-child(1) {
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+  opacity: .2;
+}
+
+/* colors of the popout platforms */
+#social_media_wrapper #facebook_link:hover span {
+  background: #3b5998 !important;
+}
+
+#social_media_wrapper #twitter_link:hover span {
+  background: #1DA1F2 !important;
+}
+
+#social_media_wrapper #linkedin_link:hover span {
+  background: #2867B2 !important;
+}
+
+#social_media_wrapper #instagram_link:hover .insta_button {
+  -webkit-transform: translate(40px, -40px);
+          transform: translate(40px, -40px);
+  opacity: 1;
+}
+
+.insta_button {
+  opacity: 0;
+  -webkit-transition: 2s;
+  transition: 2s;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%) !important;
+  z-index: 99;
+}
+/*# sourceMappingURL=animation.css.map */
