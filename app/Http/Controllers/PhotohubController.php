@@ -22,7 +22,7 @@ class PhotohubController extends Controller
     {
         UserImageSeen::where('user_id', Auth::user()->id)->update(['seen' => true]);;
         
-        return view('photohub', ['images' => Image::all(), 'comments' => Comment::all()], ['upvotes' => Vote::all(), 'users' => User::all(), 'user' => auth()->user(), 'UserImageSeen' => UserImageSeen::all()]);
+        return view('photohub', ['images' => Image::all(), 'comments' => Comment::orderBy('created_at', 'DESC')->get()], ['upvotes' => Vote::all(), 'users' => User::all(), 'user' => auth()->user(), 'UserImageSeen' => UserImageSeen::all()]);
     }
 
     public function photoform()

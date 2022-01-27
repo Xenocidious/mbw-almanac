@@ -62,9 +62,6 @@
               
 
             @endforeach
-            @if($commentAmount == 0)
-               Be the first to comment under <a href='#'>{{$image->user_name}}</a>'s post!
-            @endif
 
 
           </div>
