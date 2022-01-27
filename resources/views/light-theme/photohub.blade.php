@@ -8,24 +8,66 @@
       <i onclick='closeImage()' class="far fa-times-circle"></i>
 
       <div class="image_opened_content_image">
-        <img id="opened_image_image" src="{{asset('uploads/image/'.'Afbeelding1.jpg')}}" alt="user uploaded image">
+        <img id="opened_image_image" src="" alt="user uploaded image">
         <p id='image_opened_username'>Username unknown</p>
       </div>
       <div class="image_opened_comment_section">
-        <div>
-          <p>comments:</p> 
-        </div>
-        <div>
-          <div>
-            <p>comment</p> 
+        <div class="card-comment">
+          <?php $commentAmount = 0; ?>
+            @foreach($comments as $comment)
+              <? $commentAmount++; ?>
+              <!-- User image -->
+              @foreach($users as $u)
+                  @if($u->id == $comment->user_id)
+                      @if($u->photo == NULL)
+                          <img class="img-circle img-sm" src="{{asset('dist/img/avatar.png')}}" alt="User Image">
+                      @else
+                          <img class="img-circle img-sm" src="data:image/png;base64, {{ $u->photo }}" alt="User Image">
+                      @endif
+                  @endif
+              @endforeach
+                  <div class="comment-text">
+                      <span class="username">
+                        {{$comment->user_name}}
+                        <span class="text-muted float-right">
+                          @if($comment->edited == 1)
+                            (edited)
+                          @endif
+                          {{date('H:i', strtotime($comment->created_at))}}
+                          @if($comment->user_id == Auth::user()->id)
+                            <a onclick='return confirm("are you sure that you want to delete this comment?")' href="{{ route('comment.delete', ['id' => $comment->id]) }}"><i class="fas fa-trash"></i></a>
+                          @endif
+                        </span>
+                      </span><!-- /.username -->
+
+                      @if($comment->user_id == Auth::user()->id)
+                        <p class="comment_value" onClick="editComment(event, {{$comment['id']}}, 'open')">{{$comment->comment}}</p>
+                        <form action="{{ route('comment.edit') }}" method="post" enctype="multipart/form-data" name="commentEdit">
+                          @csrf
+                          <input class="comment_value_hidden" id="p-input{{$comment['id']}}opened" style="display:none;" type="text" value="{{$comment->comment}}" name="edited_comment"/>
+                          <input class="comment_id_value_hidden" type="hidden" value="{{$comment->id}}" name="edited_comment_id"/>
+                        </form>
+                      @else
+                        <p>{{$comment->comment}}</p>
+                      @endif
+
+
+                      <section>
+                      </section>
+
+                      <script src='{{ asset('js/commentEditLogic.js') }}'></script>
+
+                  </div>
+              <!-- /.comment-text -->
+              
+
+            @endforeach
+            @if($commentAmount == 0)
+               Be the first to comment under <a href='#'>{{$image->user_name}}</a>'s post!
+            @endif
+
+
           </div>
-          <div>
-            <p>comment</p> 
-          </div>
-          <div>
-            <p>comment</p> 
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -204,7 +246,7 @@
                                             </span><!-- /.username -->
 
                                             @if($comment->user_id == Auth::user()->id)
-                                              <p class="comment_value" onClick="editComment(event, {{$comment['id']}})">{{$comment->comment}}</p>
+                                              <p class="comment_value" onClick="editComment(event, {{$comment['id']}}, 'closed')">{{$comment->comment}}</p>
                                               <form action="{{ route('comment.edit') }}" method="post" enctype="multipart/form-data" name="commentEdit">
                                                 @csrf
                                                 <input class="comment_value_hidden" id="p-input{{$comment['id']}}" style="display:none;" type="text" value="{{$comment->comment}}" name="edited_comment"/>
@@ -213,10 +255,6 @@
                                             @else
                                               <p>{{$comment->comment}}</p>
                                             @endif
-
-
-                                            <section>
-                                            </section>
 
                                             <script src='{{ asset('js/commentEditLogic.js') }}'></script>
 

@@ -11955,6 +11955,7 @@ ul li:hover span:nth-child(1) {
   top: 5vh;
   display: grid;
   grid-gap: 0;
+  grid-template-columns: 80% 20%;
 }
 
 .image_opened_content img{
@@ -11974,7 +11975,6 @@ ul li:hover span:nth-child(1) {
 .image_opened_comment_section{
   -webkit-box-shadow: inset 0px 0px 25px 5px rgba(0,0,0,0.18); 
   box-shadow: inset 0px 0px 25px 5px rgba(0,0,0,0.18);
-  width: 30vw;
   padding: 2vw;
   grid-row: 1;
   grid-column: 2/3;
@@ -11982,4 +11982,20 @@ ul li:hover span:nth-child(1) {
 
 .image_opened{
   display: none;
+}
+
+@media (max-width: 1199.98px) {
+  .image_opened_content{
+    display: block;
+  }
+
+  .image_opened_content_image{
+    text-align: center;
+  }
+
+  #opened_image_image{
+    max-width: 75vw;
+    width: 100vw;
+  }
+  
 }

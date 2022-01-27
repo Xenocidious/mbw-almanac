@@ -2,10 +2,12 @@
 var comments = document.querySelectorAll(".comment_value");
 var commentsHidden = document.querySelectorAll(".comment_value_hidden");
 
-function editComment(e, i) {
+function editComment(e, i, v) {
+
 
     comments.forEach(forEachComments);
     function forEachComments(item, index) {
+
         item.style.display = 'block';
     }
 
@@ -15,6 +17,12 @@ function editComment(e, i) {
     }
 
     e.currentTarget.style.display = 'none';
+
+    if(v == 'open'){
+        document.querySelector('#p-input'+i+'opened').style.display = 'block';
+    }else{
+        document.querySelector('#p-input'+i).style.display = 'block';
+    }
     document.querySelector('#p-input'+i).style.display = 'block';
 }
 
