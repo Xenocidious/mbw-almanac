@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="{{ $theme }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
     <!-- customizations -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/themes.css') }}">
 </head>
 <body>
 <header>
@@ -235,7 +236,7 @@
     </nav>
 </aside>
 
-<main style="top:10%; position:absolute;" class="w-100">
+<main style="top:10%; position:relative; margin-top:55px;" class="w-100">
     @yield('content')
 </main>
 

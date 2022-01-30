@@ -1,0 +1,635 @@
+html[class="Dark"] {
+  --bg-dashboard: #0e0f2e;
+  --dashboard-blocks-bg-light1: #191D43;
+  --light-accent-1: #2770E7;
+  --text-light: white;
+}
+
+html[class="Violet"] {
+  --bg-dashboard: #1D0040;
+  --dashboard-blocks-bg-violet-light1: #32066C;
+  --dashboard-blocks-bg-violet-light2: #FD6264;
+  --dashboard-blocks-bg-violet-light3: #8A31FE;
+  --dashboard-blocks-bg-violet-light4: #42C8DB;
+  --dashboard-blocks-bg-violet-light5: #66D0B7;
+  --text-light: white;
+}
+
+/*  Styling on the pages where the html has a class of "Violet" or "Dark"  */
+html[class="Dark"] {
+  background-color: var(--bg-dashboard) !important;
+}
+
+html[class="Dark"] body {
+  /*  Sets styling on the left navbar on all the pages */
+}
+
+html[class="Dark"] body header {
+  /*  Sets styling the header top of the page */
+}
+
+html[class="Dark"] body header .main-header {
+  background-color: var(--dashboard-blocks-bg-light1);
+  border-bottom: 2px solid var(--light-accent-1);
+}
+
+html[class="Dark"] body header .main-header ul .user-panel .nav-item:hover {
+  color: var(--light-accent-1) !important;
+}
+
+html[class="Dark"] body header .main-header ul .nav-item a {
+  color: var(--text-light) !important;
+}
+
+html[class="Dark"] body header .main-header ul .nav-item a:hover {
+  color: var(--light-accent-1) !important;
+}
+
+html[class="Dark"] body .main-sidebar {
+  background-color: var(--dashboard-blocks-bg-light1);
+}
+
+html[class="Dark"] body .main-sidebar .brand-link {
+  border-bottom: 2px solid var(--light-accent-1);
+}
+
+html[class="Dark"] body .main-sidebar nav ul .user-panel {
+  border-bottom: 2px solid var(--light-accent-1) !important;
+}
+
+html[class="Dark"] body .main-sidebar nav ul .user-panel li {
+  color: white !important;
+}
+
+html[class="Dark"] body .main-sidebar nav ul .user-panel li .nav-link {
+  color: white !important;
+}
+
+html[class="Dark"] body .main-sidebar nav ul .user-panel li .nav-link:hover {
+  color: var(--light-accent-1) !important;
+  background-color: rgba(14, 15, 46, 0.55) !important;
+}
+
+html[class="Dark"] body .main-sidebar nav ul .nav-item .nav-link {
+  color: white !important;
+}
+
+html[class="Dark"] body .main-sidebar nav ul .nav-item .nav-link:hover {
+  color: var(--light-accent-1) !important;
+  background-color: rgba(14, 15, 46, 0.55) !important;
+}
+
+html[class="Dark"] body main {
+  background-color: var(--bg-dashboard) !important;
+  /* styling for the account page */
+}
+
+html[class="Dark"] body main .wrapper {
+  color: var(--text-light);
+  /*  Sets styling on the content section on all pages  */
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper {
+  padding: 15px 25px;
+  background-color: var(--bg-dashboard);
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper .content-header {
+  padding: 15px 25px !important;
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row {
+  /*  Styling on the cards on top of the homepage */
+  /* Styling for popup small boxes */
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .small-box {
+  background-color: var(--dashboard-blocks-bg-light1) !important;
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .small-box-footer:hover {
+  color: var(--light-accent-1) !important;
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .modal-content {
+  background-color: var(--dashboard-blocks-bg-light1) !important;
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .modal-content .modal-header {
+  border-bottom: 2px solid var(--light-accent-1) !important;
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .modal-content .modal-header h5 {
+  color: var(--text-light) !important;
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .modal-content .modal-header button {
+  color: var(--light-accent-1) !important;
+  opacity: 1 !important;
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .modal-content .modal-header button:hover {
+  opacity: 0.75 !important;
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .modal-content .modal-body {
+  color: var(--text-light) !important;
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .modal-content .modal-footer {
+  border-top: 2px solid var(--light-accent-1) !important;
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .modal-content .modal-footer button {
+  background-color: var(--light-accent-1) !important;
+  color: var(--text-light) !important;
+  border: 1px solid var(--light-accent-1) !important;
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .modal-content .modal-footer button:hover {
+  opacity: 0.75;
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .card {
+  background-color: var(--dashboard-blocks-bg-light1) !important;
+  color: var(--text-light) !important;
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .card-header {
+  color: var(--text-light) !important;
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .card-header button {
+  background-color: var(--light-accent-1) !important;
+  border: 1px solid var(--light-accent-1) !important;
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .card-header button:hover, html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .card-header button:active {
+  opacity: 0.75 !important;
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .connectedSortable {
+  /*  Sets styling on all card classes on the homepage */
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .connectedSortable .card {
+  background: var(--dashboard-blocks-bg-light1) !important;
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .connectedSortable .card .card-body #calendar table thead tr th:hover {
+  background: var(--light-accent-1) !important;
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .connectedSortable .card .card-body #calendar table tbody td:hover {
+  background: var(--light-accent-1) !important;
+}
+
+html[class="Dark"] body main .wrapper .content-wrapper section[class="content"] .row .connectedSortable .card .card-body #calendar table tbody td.active {
+  background: var(--light-accent-1) !important;
+}
+
+html[class="Dark"] body main .content .container-fluid {
+  padding-top: 35px;
+}
+
+html[class="Dark"] body main .content .container-fluid main {
+  background-color: var(--dashboard-blocks-bg-light1) !important;
+}
+
+html[class="Dark"] body main .content .container-fluid main form hr {
+  height: 1px;
+  background: var(--light-accent-1) !important;
+}
+
+html[class="Dark"] body main .content .container-fluid main form fieldset .form-control-file {
+  color: var(--text-light) !important;
+}
+
+html[class="Dark"] body main .content .container-fluid main form fieldset legend {
+  color: var(--text-light) !important;
+}
+
+html[class="Dark"] body main .content .container-fluid main form fieldset .form-group label {
+  color: var(--text-light) !important;
+}
+
+html[class="Dark"] body .content-wrapper {
+  background-color: var(--bg-dashboard);
+  /* Styling for weather page */
+}
+
+html[class="Dark"] body .content-wrapper .content {
+  padding: 15px 25px;
+  /* Styling for the photohub page  */
+}
+
+html[class="Dark"] body .content-wrapper .content .container {
+  color: var(--text-light) !important;
+  /* Styling for the upload photo page */
+}
+
+html[class="Dark"] body .content-wrapper .content .container .main_content_uploadphoto {
+  background-color: var(--dashboard-blocks-bg-light1);
+  padding: 25px;
+  border-radius: 0.25rem;
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.13), 0 1px 3px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0.13), 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: block;
+}
+
+html[class="Dark"] body .content-wrapper .content .card-widget {
+  background-color: var(--dashboard-blocks-bg-light1) !important;
+  color: var(--text-light) !important;
+}
+
+html[class="Dark"] body .content-wrapper .content .card-widget .card-header {
+  color: var(--text-light) !important;
+}
+
+html[class="Dark"] body .content-wrapper .content .card-widget .card-header .user-block .description {
+  color: var(--text-light) !important;
+}
+
+html[class="Dark"] body .content-wrapper .content .card-widget .card-header .card-tools a:hover {
+  text-decoration: unset !important;
+}
+
+html[class="Dark"] body .content-wrapper .content .card-widget .card-header .card-tools button.btn {
+  color: var(--text-light) !important;
+}
+
+html[class="Dark"] body .content-wrapper .content .card-widget .card-header .card-tools button.btn:hover {
+  color: var(--light-accent-1) !important;
+}
+
+html[class="Dark"] body .content-wrapper .content .card-widget .card-body {
+  color: var(--text-light) !important;
+}
+
+html[class="Dark"] body .content-wrapper .content .card-widget .card-body img {
+  margin-bottom: 10px;
+}
+
+html[class="Dark"] body .content-wrapper .content .card-widget .card-body button {
+  color: var(--text-light) !important;
+  opacity: 1 !important;
+}
+
+html[class="Dark"] body .content-wrapper .content .card-widget .card-body button:hover {
+  background-color: var(--light-accent-1) !important;
+  opacity: 0.65 !important;
+}
+
+html[class="Dark"] body .content-wrapper .content .card-widget .card-body span {
+  color: var(--text-light) !important;
+}
+
+html[class="Dark"] body .content-wrapper .content .card-widget .card-footer {
+  color: var(--text-light) !important;
+}
+
+html[class="Dark"] body .content-wrapper .content .card-widget .card-footer .comment-text {
+  color: var(--text-light) !important;
+}
+
+html[class="Dark"] body .content-wrapper .content .card-widget .card-footer .comment-text span {
+  color: var(--text-light) !important;
+}
+
+html[class="Dark"] body .content-wrapper .card .card-body {
+  color: var(--text-light) !important;
+}
+
+html[class="Dark"] body .content-wrapper .card .card-body h5 {
+  color: var(--text-light) !important;
+}
+
+html[class="Dark"] body .content-wrapper .card .card-body p {
+  color: var(--text-light) !important;
+}
+
+/* Styling violet theme */
+html[class="Violet"] {
+  background-color: var(--dashboard-blocks-bg-violet-light1) !important;
+}
+
+html[class="Violet"] body {
+  /*  Sets styling on the left navbar on all the pages */
+}
+
+html[class="Violet"] body header {
+  /*  Sets styling the header top of the page */
+}
+
+html[class="Violet"] body header .main-header {
+  background-color: var(--dashboard-blocks-bg-violet-light1);
+  border-bottom: 2px solid var(--dashboard-blocks-bg-violet-light3);
+}
+
+html[class="Violet"] body header .main-header ul .nav-item a {
+  color: var(--text-light);
+}
+
+html[class="Violet"] body header .main-header ul .nav-item a:hover, html[class="Violet"] body header .main-header ul .nav-item a:active {
+  color: var(--dashboard-blocks-bg-violet-light3) !important;
+}
+
+html[class="Violet"] body .main-sidebar {
+  background-color: var(--dashboard-blocks-bg-violet-light1);
+}
+
+html[class="Violet"] body .main-sidebar .brand-link {
+  border-bottom: 2px solid var(--dashboard-blocks-bg-violet-light3);
+}
+
+html[class="Violet"] body .main-sidebar nav ul .user-panel {
+  border-bottom: 2px solid var(--dashboard-blocks-bg-violet-light3) !important;
+}
+
+html[class="Violet"] body .main-sidebar nav ul .user-panel li {
+  color: white !important;
+}
+
+html[class="Violet"] body .main-sidebar nav ul .user-panel li .nav-link {
+  color: white !important;
+}
+
+html[class="Violet"] body .main-sidebar nav ul .user-panel li .nav-link:hover {
+  color: var(--text-light) !important;
+  background-color: rgba(138, 49, 254, 0.55) !important;
+}
+
+html[class="Violet"] body .main-sidebar nav ul .nav-item .nav-link {
+  color: white !important;
+}
+
+html[class="Violet"] body .main-sidebar nav ul .nav-item .nav-link:hover {
+  color: var(--text-light) !important;
+  background-color: rgba(138, 49, 254, 0.55) !important;
+}
+
+html[class="Violet"] body main {
+  background-color: var(--dashboard-blocks-bg-violet-light1) !important;
+  /* styling for the account page */
+}
+
+html[class="Violet"] body main .wrapper {
+  color: var(--text-light);
+  /*  Sets styling on the content section on all pages  */
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper {
+  padding: 15px 25px;
+  background-color: var(--bg-dashboard);
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper .content-header {
+  padding: 15px 25px !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row {
+  /*  Styling on the cards on top of the homepage */
+  /* Styling for popup small boxes */
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .col-6:nth-child(1) .small-box {
+  background-color: var(--dashboard-blocks-bg-violet-light2) !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .col-6:nth-child(2) .small-box {
+  background-color: var(--dashboard-blocks-bg-violet-light5) !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .col-6:nth-child(3) .small-box {
+  background-color: var(--dashboard-blocks-bg-violet-light4) !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .small-box {
+  background-color: var(--dashboard-blocks-bg-violet-light3) !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .small-box-footer:hover {
+  color: var(--light-accent-1) !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .modal-content {
+  background-color: var(--dashboard-blocks-bg-violet-light3) !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .modal-content .modal-header {
+  border-bottom: 2px solid var(--light-accent-1) !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .modal-content .modal-header h5 {
+  color: white !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .modal-content .modal-header button {
+  color: var(--light-accent-1) !important;
+  opacity: 1 !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .modal-content .modal-header button:hover {
+  opacity: 0.75 !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .modal-content .modal-body {
+  color: white !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .modal-content .modal-footer {
+  border-top: 2px solid var(--light-accent-1) !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .modal-content .modal-footer button {
+  background-color: var(--light-accent-1) !important;
+  color: white !important;
+  border: 1px solid var(--light-accent-1) !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .modal-content .modal-footer button:hover {
+  opacity: 0.75;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .card {
+  background-color: var(--dashboard-blocks-bg-violet-light3) !important;
+  color: white;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .card-header {
+  color: white;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .card-body .btn-primary {
+  background-color: var(--dashboard-blocks-bg-violet-light1) !important;
+  border: 1px solid var(--dashboard-blocks-bg-violet-light1) !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .connectedSortable {
+  /*  Sets styling on all card classes on the homepage */
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .connectedSortable .card {
+  background: var(--dashboard-blocks-bg-violet-light3) !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .connectedSortable .card .card-header .card-tools button {
+  background-color: var(--dashboard-blocks-bg-violet-light1) !important;
+  border: 1px solid var(--dashboard-blocks-bg-violet-light1) !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .connectedSortable .card .card-header .card-tools button:hover, html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .connectedSortable .card .card-header .card-tools button:active {
+  opacity: 0.75 !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .connectedSortable .card .card-body #calendar table thead tr th:hover {
+  background: var(--dashboard-blocks-bg-violet-light1) !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .connectedSortable .card .card-body #calendar table tbody td:hover {
+  background: var(--dashboard-blocks-bg-violet-light1) !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .connectedSortable .card .card-body #calendar table tbody td.active {
+  background: var(--dashboard-blocks-bg-violet-light1) !important;
+}
+
+html[class="Violet"] body main .wrapper .content-wrapper section[class="content"] .row .btn-primary {
+  background-color: var(--dashboard-blocks-bg-violet-light3) !important;
+  border: 1px solid var(--dashboard-blocks-bg-violet-light3) !important;
+}
+
+html[class="Violet"] body main .content .container-fluid {
+  padding-top: 35px;
+}
+
+html[class="Violet"] body main .content .container-fluid main {
+  background-color: var(--dashboard-blocks-bg-violet-light3) !important;
+  border-radius: 0.25rem;
+}
+
+html[class="Violet"] body main .content .container-fluid main form hr {
+  height: 1px;
+  background: var(--dashboard-blocks-bg-violet-light1) !important;
+}
+
+html[class="Violet"] body main .content .container-fluid main form .form-group .btn-primary {
+  background-color: var(--dashboard-blocks-bg-violet-light1) !important;
+  border: 1px solid var(--dashboard-blocks-bg-violet-light1) !important;
+}
+
+html[class="Violet"] body main .content .container-fluid main form fieldset .form-control-file {
+  color: white !important;
+}
+
+html[class="Violet"] body main .content .container-fluid main form fieldset legend {
+  color: white !important;
+}
+
+html[class="Violet"] body main .content .container-fluid main form fieldset .form-group label {
+  color: white !important;
+}
+
+html[class="Violet"] body .content-wrapper {
+  background-color: var(--bg-dashboard);
+  /* Styling for weather page */
+}
+
+html[class="Violet"] body .content-wrapper .content {
+  padding: 15px 25px;
+  /* Styling for the photohub page  */
+}
+
+html[class="Violet"] body .content-wrapper .content .container {
+  color: white;
+  /* Styling for the upload photo page */
+}
+
+html[class="Violet"] body .content-wrapper .content .container .main_content_uploadphoto {
+  background-color: var(--dashboard-blocks-bg-violet-light1);
+  padding: 25px;
+  border-radius: 0.25rem;
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.13), 0 1px 3px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0.13), 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: block;
+}
+
+html[class="Violet"] body .content-wrapper .content .card-widget {
+  background-color: var(--dashboard-blocks-bg-violet-light1) !important;
+  color: white !important;
+}
+
+html[class="Violet"] body .content-wrapper .content .card-widget .card-header {
+  color: white !important;
+}
+
+html[class="Violet"] body .content-wrapper .content .card-widget .card-header .user-block .description {
+  color: white;
+}
+
+html[class="Violet"] body .content-wrapper .content .card-widget .card-header .card-tools a:hover {
+  text-decoration: unset !important;
+}
+
+html[class="Violet"] body .content-wrapper .content .card-widget .card-header .card-tools button.btn {
+  color: white !important;
+}
+
+html[class="Violet"] body .content-wrapper .content .card-widget .card-header .card-tools button.btn:hover {
+  color: var(--dashboard-blocks-bg-violet-light3) !important;
+}
+
+html[class="Violet"] body .content-wrapper .content .card-widget .card-body {
+  color: white !important;
+}
+
+html[class="Violet"] body .content-wrapper .content .card-widget .card-body img {
+  margin-bottom: 10px;
+}
+
+html[class="Violet"] body .content-wrapper .content .card-widget .card-body button {
+  color: white !important;
+  opacity: 1 !important;
+}
+
+html[class="Violet"] body .content-wrapper .content .card-widget .card-body button:hover {
+  background-color: var(--light-accent-1) !important;
+  opacity: 0.75 !important;
+}
+
+html[class="Violet"] body .content-wrapper .content .card-widget .card-body span {
+  color: white !important;
+}
+
+html[class="Violet"] body .content-wrapper .content .card-widget .card-footer {
+  color: white !important;
+}
+
+html[class="Violet"] body .content-wrapper .content .card-widget .card-footer a {
+  color: var(--dashboard-blocks-bg-violet-light3) !important;
+}
+
+html[class="Violet"] body .content-wrapper .content .card-widget .card-footer a:hover {
+  text-decoration: underline;
+}
+
+html[class="Violet"] body .content-wrapper .content .card-widget .card-footer .comment-text {
+  color: white !important;
+}
+
+html[class="Violet"] body .content-wrapper .content .card-widget .card-footer .comment-text span {
+  color: white !important;
+}
+
+html[class="Violet"] body .content-wrapper .card .card-body {
+  color: white !important;
+}
+
+html[class="Violet"] body .content-wrapper .card .card-body h5 {
+  color: white !important;
+}
+
+html[class="Violet"] body .content-wrapper .card .card-body p {
+  color: white !important;
+}
+/*# sourceMappingURL=themes.css.map */
