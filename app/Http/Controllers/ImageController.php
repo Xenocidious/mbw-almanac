@@ -65,15 +65,33 @@ class ImageController extends Controller
                 $fileName = $file->getClientOriginalName();
 
                 //define where the image will be saved in the local directory
-                $destinationPath = public_path() . '/uploads/image';
+                $destinationPath = public_path() . '/uploads/image/';
+                
+                $endLoop = false;
+                $i = 0;
+
+                while($endLoop == false){
+                    if(file_exists($destinationPath . $fileName)){
+                        $fileName = preg_replace('/\\.[^.\\s]{3,4}$/', '', $fileName);
+                        $fileName = preg_replace ('/[0-9]+/', '', $fileName);
+
+                        $fileName = $fileName . $i . '.jpg';
+                        $i++;
+                    }else{
+                        $endLoop = true;
+                    }
+                }
+                
 
                 //save the image in the local directory
                 $file->move($destinationPath, $fileName);
 
+
+                
                 // Store the record, using the new file hashname which will be it's new filename identity.
                 $image = new Image([
                     "description" => $request->get('description'),
-                    "file_path" => $request->file->getClientOriginalName(),
+                    "file_path" => $fileName,
                     "user_id" => Auth::user()->id,
                     "user_name" => Auth::user()->name
                 ]);
@@ -134,12 +152,18 @@ class ImageController extends Controller
 
     public function delete($id)
     {
+        $ImageName = Image::get()->where('id', $id);
+        $ImageName = reset($ImageName);
+        $key = key($ImageName);
         //get filename of the image that we want to remove
-        $filename = Image::get()->where('id', $id)[0]['file_path'];
+        $filename = Image::get()->where('id', $id)[$key]['file_path'];
         //get filepath of the image that we want to remove
         $file_path = public_path() . '/uploads/image/' . $filename;
-        //remove image from local directory
-        unlink($file_path);
+        //check whether image exists in local direcory
+        if(file_exists($file_path)){
+            //remove image from local directory
+            unlink($file_path);
+        }
 
         //remove image in the DB
         Image::where('id', $id)->delete();

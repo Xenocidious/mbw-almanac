@@ -40,13 +40,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/accountHighlighted', 'AccountController@indexHighlighted')->name('accounts.indexHighlighted');
     Route::patch('/account/{user}', 'AccountController@update')->name('accounts.update');
     Route::delete('/account/{user}', 'AccountController@destroy')->name('accounts.delete');
+    Route::get('logout', '\App\Http\Controllers\AccountController@logout');
+
 
     Route::get('/photohub', 'PhotohubController@index')->name('photohub');
     Route::get('/uploadphoto', 'PhotohubController@photoform')->name('uploadphoto');
 
     Route::post('upload.image', 'imageController@store')->name('upload.image');
-
-    Route::get('/removeFavoriteCity/{id}', 'accountController@deleteFavoriteCity')->name('favoriteCity.delete');
 
     // hier word ook maar 1 gebruikt, en kan je deze wel doen als je niet bent ingelogd?
     // beter is dit dan geen resource
@@ -75,6 +75,8 @@ Route::middleware(['auth'])->group(function () {
         'uses' => 'CommentController@delete',
         'as' => 'comment.delete'
     ]);
+
+    Route::post('comment/edit', 'CommentController@edit')->name('comment.edit');
 
     Route::get('/deletePost/{id}', [
         'uses' => 'ImageController@delete',
